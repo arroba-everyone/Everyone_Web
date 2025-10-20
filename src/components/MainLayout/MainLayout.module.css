@@ -1,0 +1,26 @@
+.layout {
+  width: 100%;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 40px;
+  z-index: 1;
+  background: none;
+
+  .menu {
+    justify-content: space-between;
+    min-width: 0;
+    border-radius: 160px;
+    width: 1024px;
+    height: 64px;
+    background-color: #0a0a0a;
+    padding: 0px 5px;
+
+    .menuButton {
+      height: 54px;
+      font-weight: bold;
+    }
+  }
+}
