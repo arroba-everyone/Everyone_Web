@@ -3,9 +3,10 @@ import { Layout } from 'antd';
 import styles from './MainLayout.module.css';
 import { Navbar } from './Navbar';
 import { Flex } from '@everyone-web/ui/Common/Flex';
+import { Footer } from './Footer';
 
 export const MainLayout: IBaseComponent = ({ children }) => {
-  const { Header, Content, Footer } = Layout;
+  const { Header, Content, Footer: LayoutFooter } = Layout;
 
   return (
     <Layout className={styles.layout}>
@@ -15,7 +16,9 @@ export const MainLayout: IBaseComponent = ({ children }) => {
         </Flex>
       </Header>
       <Content>{children}</Content>
-      <Footer></Footer>
+      <LayoutFooter>
+        <Footer />
+      </LayoutFooter>
     </Layout>
   );
 };
