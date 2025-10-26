@@ -9,7 +9,7 @@ export const OurProjects = () => {
     <Flex justify="center" align="center" gap={50} style={{ height: '100dvh' }}>
       <Card bgColor="var(--color-primary)" borderRadius={70} bodySize={'45dvw'}>
         <Flex style={{ height: '100%', marginLeft: '25px' }} align="end">
-          <Title level={1} style={{ color: '#0A0A0A' }}>
+          <Title level={1} color="var(--color-bg)">
             YouTube
           </Title>
         </Flex>
@@ -27,11 +27,11 @@ export const OurProjects = () => {
           <Card bgColor="var(--color-primary)" borderRadius={70} bodySize={'20dvw'}>
             <Flex vertical justify="space-between" style={{ height: '100%' }}>
               <Flex vertical>
-                <Title level={4} style={{ color: '#0A0A0A' }}>
+                <Title level={4} color="var(--color-bg)">
                   Compite con tus amigos en las cosas del día a día
                 </Title>
               </Flex>
-              <Title level={1} style={{ color: '#0A0A0A' }}>
+              <Title level={1} color="var(--color-bg)">
                 EveryLog
               </Title>
             </Flex>

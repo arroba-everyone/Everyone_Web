@@ -7,14 +7,8 @@ export const theme: ThemeConfig = {
     colorInfo: '#87e300',
   },
   components: {
-    Layout: {
-      headerBg: '#0A0A0A',
-    },
     Button: {
       primaryColor: '#0A0A0A',
-    },
-    Typography: {
-      colorTextHeading: '#FFFAFA',
     },
   },
 };

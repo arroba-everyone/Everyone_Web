@@ -24,3 +24,10 @@
     }
   }
 }
+
+.footer {
+  color: var(--color-bg);
+  .socialIcon {
+    font-size: 2rem;
+  }
+}

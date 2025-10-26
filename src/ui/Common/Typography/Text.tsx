@@ -1,11 +1,17 @@
 import type { IBaseComponent } from '@everyone-web/types/global';
 import { Typography } from 'antd';
-import type { TitleProps } from 'antd/es/typography/Title';
+import type { TextProps } from 'antd/es/typography/Text';
 
-interface IText extends TitleProps {}
+interface IText extends TextProps {
+  color?: string;
+}
 
-export const Text: IBaseComponent<IText> = ({ children, ...props }) => {
+export const Text: IBaseComponent<IText> = ({ children, color, style, ...props }) => {
   const { Text: AntdText } = Typography;
 
-  return <AntdText {...props}>{children}</AntdText>;
+  return (
+    <AntdText style={{ ...style, color }} {...props}>
+      {children}
+    </AntdText>
+  );
 };

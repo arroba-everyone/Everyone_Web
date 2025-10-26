@@ -4,8 +4,12 @@ import type { TitleProps } from 'antd/es/typography/Title';
 
 interface ITitle extends TitleProps {}
 
-export const Title: IBaseComponent<ITitle> = ({ children, ...props }) => {
+export const Title: IBaseComponent<ITitle> = ({ children, color, style, ...props }) => {
   const { Title: AntdTitle } = Typography;
 
-  return <AntdTitle {...props}>{children}</AntdTitle>;
+  return (
+    <AntdTitle style={{ ...style, color }} {...props}>
+      {children}
+    </AntdTitle>
+  );
 };
