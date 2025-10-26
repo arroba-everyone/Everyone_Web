@@ -10,7 +10,7 @@ export const YouTube = () => {
   const { data = FALLBACK_VIDEOS } = useGetLatestVideos();
 
   return (
-    <Flex style={{ height: '100dvh' }} align="center" justify="space-around">
+    <Flex fullScreen align="center" justify="space-around">
       <Card bgColor="var(--color-secondary)" borderRadius={50} width={'97dvw'} height={'97dvh'}>
         <Flex gap={8} justify="center" align="center" style={{ width: '100%', height: '100%' }}>
           <Flex vertical gap={16} style={{ width: '45%' }}>
@@ -28,16 +28,16 @@ export const YouTube = () => {
             />
           </Flex>
           <Flex vertical gap={16} style={{ width: '45%' }}>
-            <Title level={1} style={{ fontSize: 72 }}>
+            <Title color="var(--color-bg)" level={1} style={{ fontSize: 72 }}>
               Entérate de las últimas novedades
             </Title>
-            <Title level={3}>
+            <Title color="var(--color-bg)" level={3}>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae repellat minima,
               quidem sed nulla, soluta ea amet voluptatem exercitationem consectetur, ad quas
               temporibus reiciendis iusto. Sed optio esse soluta eum.
             </Title>
             <Space>
-              <Button type="primary" shape="round" size="large" style={{ marginTop: '16px' }}>
+              <Button type="primary" shape="round" size="large" className="mt-16">
                 Descubre más
               </Button>
             </Space>

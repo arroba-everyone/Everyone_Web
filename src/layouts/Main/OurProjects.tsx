@@ -6,9 +6,9 @@ import { Space } from 'antd';
 
 export const OurProjects = () => {
   return (
-    <Flex justify="center" align="center" gap={50} style={{ height: '100dvh' }}>
+    <Flex fullScreen justify="center" align="center" gap={50}>
       <Card bgColor="var(--color-primary)" borderRadius={70} bodySize={'45dvw'}>
-        <Flex style={{ height: '100%', marginLeft: '25px' }} align="end">
+        <Flex fullHeight style={{ marginLeft: '25px' }} align="end">
           <Title level={1} color="var(--color-bg)">
             YouTube
           </Title>
@@ -19,9 +19,14 @@ export const OurProjects = () => {
           <Card bgColor="var(--color-secondary)" borderRadius={70} bodySize={'20dvw'}>
             <Flex vertical justify="space-between" style={{ height: '100%' }}>
               <Flex vertical>
-                <Title level={4}>Tu chef personal en la palma de tu mano</Title>
+                {/* TODO: Hablar con Juan. Cambio de color de texto para aumentar contraste (Opción 2 es cambiar el color morado) */}
+                <Title color="var(--color-bg)" level={4}>
+                  Tu chef personal en la palma de tu mano
+                </Title>
               </Flex>
-              <Title level={1}>NutrIA</Title>
+              <Title color="var(--color-bg)" level={1}>
+                NutrIA
+              </Title>
             </Flex>
           </Card>
           <Card bgColor="var(--color-primary)" borderRadius={70} bodySize={'20dvw'}>
@@ -43,7 +48,7 @@ export const OurProjects = () => {
               <Title level={1}>Y ahora...</Title>
               <Title level={2}>Con su correspondiente subtitulo (o no)</Title>
               <Space>
-                <Button type="primary" shape="round" size="large" style={{ marginTop: '16px' }}>
+                <Button type="primary" shape="round" size="large" className="mt-16">
                   Descubre más
                 </Button>
               </Space>

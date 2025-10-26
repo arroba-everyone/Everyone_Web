@@ -6,23 +6,21 @@ import movilLanding from '@everyone-web/assets/movilLanding.png';
 
 export const Landing = () => {
   return (
-    <Flex justify="center">
-      <Flex className={styles.landing} justify="space-around" align="center">
-        <Flex vertical>
-          <Title level={1}>Aquí es donde va una frase pegadiza</Title>
-          <Title level={2}>Con su subtítulo correspondiente (o no)</Title>
+    <Flex fullScreen className={styles.landing} justify="space-around" align="center">
+      <Flex vertical>
+        <Title level={1}>Aquí es donde va una frase pegadiza</Title>
+        <Title level={2}>Con su subtítulo correspondiente (o no)</Title>
 
-          <Flex gap={8}>
-            <Button type="primary" shape="round" size="large">
-              Descubre más
-            </Button>
-            <Button shape="round" size="large" color="primary" variant="outlined" ghost>
-              Contacta con nosotros
-            </Button>
-          </Flex>
+        <Flex gap={8}>
+          <Button type="primary" shape="round" size="large">
+            Descubre más
+          </Button>
+          <Button shape="round" size="large" color="primary" variant="outlined" ghost>
+            Contacta con nosotros
+          </Button>
         </Flex>
-        <Image src={movilLanding} preview={false} />
       </Flex>
+      <Image src={movilLanding} preview={false} alt="Móvil landing page" />
     </Flex>
   );
 };

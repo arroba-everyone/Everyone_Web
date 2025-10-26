@@ -20,10 +20,10 @@ export const Message = ({ children, sender, gap, sent = false }: IMessageProps):
         color={sent ? '#84cc16' : '#a78bfa'}
         title={
           <Flex vertical gap={8} style={{ width: '25dvw' }}>
-            <Title level={4} style={{ margin: 0 }}>
+            <Title color="var(--color-bg)" level={4} style={{ margin: 0 }}>
               {sender}
             </Title>
-            <Text>{children}</Text>
+            <Text color="var(--color-bg)">{children}</Text>
           </Flex>
         }
       >

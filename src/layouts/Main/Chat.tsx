@@ -41,13 +41,13 @@ export const Chat = () => {
     },
   ];
   return (
-    <Flex style={{ height: '100dvh' }} align="center" justify="space-around">
+    <Flex fullScreen align="center" justify="space-around">
       <Flex vertical style={{ width: '45dvw' }}>
         {messages.map(({ key, ...message }) => (
           <Message key={key} {...message} />
         ))}
       </Flex>
-      <Image src={movilSeccion3} preview={false} />
+      <Image src={movilSeccion3} preview={false} alt="Móvil sección 3" />
     </Flex>
   );
 };

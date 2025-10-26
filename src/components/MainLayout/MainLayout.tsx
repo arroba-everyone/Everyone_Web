@@ -8,10 +8,11 @@ import { Footer } from './Footer';
 export const MainLayout: IBaseComponent = ({ children }) => {
   const { Header, Content, Footer: LayoutFooter } = Layout;
 
+  // TODO: Añadir consentimiento de cookies
   return (
     <Layout className={styles.layout}>
       <Header className={styles.navbar}>
-        <Flex justify="center">
+        <Flex fullWidth justify="center">
           <Navbar />
         </Flex>
       </Header>

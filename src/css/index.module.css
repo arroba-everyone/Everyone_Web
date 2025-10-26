@@ -1,7 +1,5 @@
 .landing {
   background: url('../assets/fondoLanding.png') no-repeat center center;
   background-size: calc(100dvw - 40px) calc(100dvh - 40px);
-  width: 100dvw;
-  height: 100dvh;
   border-radius: 50px;
 }

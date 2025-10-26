@@ -1,7 +1,7 @@
 import { theme as AntdTheme, type ThemeConfig } from 'antd';
 
 export const theme: ThemeConfig = {
-  algorithm: [AntdTheme.darkAlgorithm],
+  algorithm: AntdTheme.darkAlgorithm,
   token: {
     colorPrimary: '#87e300',
     colorInfo: '#87e300',
