@@ -26,7 +26,9 @@ function Contact() {
         <Flex vertical gap={48}>
           <Card bgColor="var(--color-secondary)" borderRadius={50}>
             <Flex style={{ width: '45dvw' }} justify="center">
-              <Title style={{ fontSize: 60 }}>contacto@everyone.com</Title>
+              <Title color="var(--color-bg)" style={{ fontSize: 60 }}>
+                contacto@everyone.com
+              </Title>
             </Flex>
           </Card>
           <Flex gap={32}>

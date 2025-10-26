@@ -19,7 +19,6 @@ export const OurProjects = () => {
           <Card bgColor="var(--color-secondary)" borderRadius={70} bodySize={'20dvw'}>
             <Flex vertical justify="space-between" style={{ height: '100%' }}>
               <Flex vertical>
-                {/* TODO: Hablar con Juan. Cambio de color de texto para aumentar contraste (Opción 2 es cambiar el color morado) */}
                 <Title color="var(--color-bg)" level={4}>
                   Tu chef personal en la palma de tu mano
                 </Title>

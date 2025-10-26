@@ -20,7 +20,7 @@ export const SecondPage = () => {
           adipisci, natus culpa, magnam doloremque quisquam nulla!
         </Title>
       </Flex>
-      <Image src={ordenador} />
+      <Image src={ordenador} preview={false} />
     </Flex>
   );
 };
