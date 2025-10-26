@@ -8,7 +8,7 @@ import {
 } from 'react-icons/ai';
 import type { IconBaseProps, IconType } from 'react-icons/lib';
 
-type IconNames = 'youtube' | 'instagram' | 'twitch' | 'github';
+export type IconNames = 'youtube' | 'instagram' | 'twitch' | 'github';
 
 interface IIcon extends IconBaseProps {
   name: IconNames;

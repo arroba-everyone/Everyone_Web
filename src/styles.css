@@ -13,3 +13,17 @@ body {
 .mt-16 {
   margin-top: 16px;
 }
+
+.profile-component {
+  max-width: 60dvw;
+}
+
+.profile-component {
+  &:nth-child(odd) {
+    align-self: flex-start;
+  }
+  &:nth-child(even) {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+  }
+}
