@@ -1,6 +1,6 @@
 import { FALLBACK_VIDEOS, useGetLatestVideos } from '@everyone-web/queries/useGetLatestVideos';
 import { Flex } from '@everyone-web/ui/Common/Flex';
-import { Card } from '@everyone-web/components/Card/Card';
+import { Card } from '@everyone-web/ui/Card/Card';
 import { Title } from '@everyone-web/ui/Common/Typography';
 import { Button } from '@everyone-web/ui/Common/Button';
 import { Space } from 'antd';
@@ -11,10 +11,7 @@ export const YouTube = () => {
 
   return (
     <Flex style={{ height: '100dvh' }} align="center" justify="space-around">
-      <Card
-        style={{ backgroundColor: 'var(--color-secondary)', borderRadius: '50px' }}
-        styles={{ body: { width: '97dvw', height: '97dvh' } }}
-      >
+      <Card bgColor="var(--color-secondary)" borderRadius={50} width={'97dvw'} height={'97dvh'}>
         <Flex gap={8} justify="center" align="center" style={{ width: '100%', height: '100%' }}>
           <Flex vertical gap={16} style={{ width: '45%' }}>
             <ReactPlayer
