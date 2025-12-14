@@ -7,37 +7,40 @@ export const Chat = () => {
   const messages = [
     {
       key: 1,
-      sender: 'Irene Corell - CM',
-      gap: 80,
+      sender: 'Irene - Marketing & CM',
+      gap: 140,
       children:
-        'Oye, todo esto está muy bien y todo, pero, ¿cuándo vamos a salir nosotros? Parece que estamos soltando la chapa del siglo aquí...',
+        'Si ves que todo lo que hacemos se ve bien, suena bien y da ganas de compartirlo… probablemente haya pasado por mis manos. 💅Campañas, redes y diseño con cerebro (y un poquito de perfume).',
     },
     {
       key: 2,
-      sender: 'Juan Ferrera - Developer',
+      sender: 'Juan - CEO & iOS Developer',
       sent: true,
-      gap: 60,
+      gap: 120,
       children:
-        '¿Nos estamos pegando el currazo con todo lo que tenemos entre manos y encima te quejas? Otro mes que no cobras...',
+        'Soy quien da forma a las interfaces y quien las convierte en apps para el ecosistema Apple 🍏. Me aseguro de que todo funcione con fluidez y tenga ese toque que hace que la tecnología se sienta cercana. Ah, y sí… en el setup de la oficina hay más LEGO del que admitiría en público 🧱😅.',
     },
     {
       key: 3,
-      sender: 'Irene Corell - CM',
-      gap: 80,
-      children: '🎙️QUIERO MI BO-CADILLO!! QUIERO MI BO-CADILLO!!',
+      sender: 'Pablo - CTO & Fullstack Developer',
+      gap: 100,
+      children:
+        'Yo soy el que se encarga de que todo lo que soñamos realmente funcione ⚙️. Desarrollo la parte web, las apps Android y toda la magia del backend. Y si algo explota, probablemente fue antes de mi tercer café ☕️😆.',
     },
     {
       key: 4,
-      sender: 'Juan Ferrera - Developer',
+      sender: 'Juan - CEO & iOS Developer',
       sent: true,
-      gap: 60,
-      children: 'Joder cómo está el personal... 🤦‍♂️ Bueno gente, ya nos conocéis algo más',
+      gap: 100,
+      children:
+        'Lo bueno es que aquí nadie trabaja solo 💪. Cada proyecto sale adelante porque mezclamos ideas, código y mucha cafeína. Y eso se nota en el resultado.',
     },
     {
       key: 5,
-      sender: 'Irene Corell - CM',
+      sender: 'Irene - Marketing & CM',
       gap: 0,
-      children: '¿A quién le hablas? ¿Estás bien? ¿Te has tomado las pastillas?',
+      children:
+        'Exacto 💬. Somos distintos, pero cuando juntamos diseño, desarrollo y creatividad, pasan cosas guays. Y eso, al final, es lo que nos encanta hacer todos los días 💛.',
     },
   ];
   return (

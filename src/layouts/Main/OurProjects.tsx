@@ -20,7 +20,7 @@ export const OurProjects = () => {
             <Flex vertical justify="space-between" style={{ height: '100%' }}>
               <Flex vertical>
                 <Title color="var(--color-bg)" level={4}>
-                  Tu chef personal en la palma de tu mano
+                  Una idea en evolución. Pronto entenderás por qué se llama así. 🦦
                 </Title>
               </Flex>
               <Title color="var(--color-bg)" level={1}>
@@ -32,7 +32,10 @@ export const OurProjects = () => {
             <Flex vertical justify="space-between" style={{ height: '100%' }}>
               <Flex vertical>
                 <Title level={4} color="var(--color-bg)">
-                  Compite con tus amigos en las cosas del día a día
+                  Convierte lo cotidiano en juego.
+                </Title>
+                <Title level={4} color="var(--color-bg)">
+                  Porque competir también puede ser sano (y divertido).
                 </Title>
               </Flex>
               <Title level={1} color="var(--color-bg)">
@@ -44,8 +47,8 @@ export const OurProjects = () => {
         <Card borderRadius={70} width={'40dvw'} height={'20dvw'}>
           <Flex vertical justify="space-between" style={{ height: '100%' }}>
             <Flex vertical>
-              <Title level={1}>Y ahora...</Title>
-              <Title level={2}>Con su correspondiente subtitulo (o no)</Title>
+              <Title level={1}>Y ahora... Toca crear</Title>
+              <Title level={2}>De hablar de tecnología a diseñarla.</Title>
               <Space>
                 <Button type="primary" shape="round" size="large" className="mt-16">
                   Descubre más

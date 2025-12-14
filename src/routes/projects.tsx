@@ -12,8 +12,8 @@ function Projects() {
   return (
     <MainLayout>
       <Flex vertical align="center">
-        <NutrIA />
         <EveryLog />
+        <NutrIA />
       </Flex>
     </MainLayout>
   );

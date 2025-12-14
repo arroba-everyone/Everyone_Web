@@ -8,17 +8,17 @@ export const SecondStep = () => {
   return (
     <Flex fullScreen justify="space-between" align="center">
       <Image src={movilesSeccion2} preview={false} alt="Móviles sección 2" />
-      <Flex vertical gap={8} style={{ width: '40dvw', marginRight: '100px' }}>
-        <Title level={1}>Aquí es donde va una frase pegadiza</Title>
-        <Text>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur repellat, reiciendis,
-          quidem laborum ducimus eos consectetur, ut itaque repellendus vero doloribus! Temporibus
-          ex quis, exercitationem incidunt quam eius corporis perspiciatis!
+      <Flex vertical gap={26} style={{ width: '40dvw', marginRight: '100px' }}>
+        <Title level={1}>Creamos tecnología que se siente humana.</Title>
+        <Text style={{ fontSize: '26px' }}>
+          En @Everyone creemos que la tecnología no tiene por qué ser complicada ni distante.
+          Creemos en crear cosas que sumen, que inspiren, que mejoren el día a día sin distraerte
+          del mundo real.
         </Text>
-        <Text>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur repellat, reiciendis,
-          quidem laborum ducimus eos consectetur, ut itaque repellendus vero doloribus! Temporibus
-          ex quis, exercitationem incidunt quam eius corporis perspiciatis!
+        <Text style={{ fontSize: '26px' }}>
+          Somos un equipo joven que diseña apps, proyectos y contenido con una idea clara: hacer que
+          la innovación se sienta humana, honesta y accesible. Sin tecnicismos. Sin filtros. Sin
+          postureo.
         </Text>
         <Space>
           <Button type="primary" shape="round" size="large" className="mt-16">

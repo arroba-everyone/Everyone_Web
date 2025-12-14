@@ -29,12 +29,11 @@ export const YouTube = () => {
           </Flex>
           <Flex vertical gap={16} style={{ width: '45%' }}>
             <Title color="var(--color-bg)" level={1} style={{ fontSize: 72 }}>
-              Entérate de las últimas novedades
+              Mantente al día con lo que hacemos
             </Title>
             <Title color="var(--color-bg)" level={3}>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repudiandae repellat minima,
-              quidem sed nulla, soluta ea amet voluptatem exercitationem consectetur, ad quas
-              temporibus reiciendis iusto. Sed optio esse soluta eum.
+              Nos gusta construir, probar, contar y volver a empezar. Si quieres saber en qué
+              estamos metidos ahora, este es tu sitio.
             </Title>
             <Space>
               <Button type="primary" shape="round" size="large" className="mt-16">
