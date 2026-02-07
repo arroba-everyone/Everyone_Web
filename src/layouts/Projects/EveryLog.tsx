@@ -11,7 +11,7 @@ export const EveryLog = () => {
         </h1>
         <p className="text-base tablet-lg:text-lg laptop:text-2xl laptop-lg:text-3xl desktop:text-4xl leading-relaxed">
           Hay cosas que hacemos todos los días sin pensarlo 📱: un paseo, una tarea, un logro
-          pequeño. Everilog las convierte en algo más, en una forma nueva de mirar lo cotidiano.
+          pequeño. EveryLog las convierte en algo más, en una forma nueva de mirar lo cotidiano.
         </p>
         <p className="text-base tablet-lg:text-lg laptop:text-2xl laptop-lg:text-3xl desktop:text-4xl leading-relaxed">
           No se trata de ganar, sino de compartir 💬. De disfrutar del progreso, de celebrar cada
@@ -31,7 +31,7 @@ export const EveryLog = () => {
       {/* Right text section */}
       <div className="flex flex-col gap-5 tablet-lg:gap-6 laptop:gap-7 laptop-lg:gap-8 justify-self-start max-w-xl">
         <p className="text-base tablet-lg:text-lg laptop:text-2xl laptop-lg:text-3xl desktop:text-4xl leading-relaxed">
-          Porque al final, las pequeñas cosas también cuentan. Y con Everylog, contarlas puede ser
+          Porque al final, las pequeñas cosas también cuentan. Y con EveryLog, contarlas puede ser
           parte del juego. 🎯
         </p>
         <div className="flex gap-5 tablet-lg:gap-5 laptop:gap-6">

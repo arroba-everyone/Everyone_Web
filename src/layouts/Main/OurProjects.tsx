@@ -40,7 +40,7 @@ export const OurProjects = () => {
         <Card className="bg-background rounded-[70px] col-span-2 aspect-square md:aspect-2/1">
           <div className="flex flex-col h-full justify-between p-5 md:p-5 laptop:p-6">
             <div className="flex flex-col gap-3 md:gap-4 laptop:gap-8 laptop-lg:gap-12 desktop:gap-15">
-              <span className="font-bold text-lg md:text-xl laptop:text-2xl laptop-lg:text-3xl desktop:text-4xl">
+              <span className="font-bold text-lg md:text-xl laptop:text-2xl laptop-lg:text-5xl">
                 Y ahora... Toca crear
               </span>
               <span className="font-bold text-lg md:text-xl laptop:text-2xl laptop-lg:text-3xl desktop:text-4xl">
