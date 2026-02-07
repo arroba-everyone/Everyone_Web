@@ -11,7 +11,7 @@ interface IMessageProps {
 export const Message = ({ children, sender, sent = false }: IMessageProps): JSX.Element => {
   return (
     <div className={cn('flex w-full items-end gap-3', sent ? 'flex-row-reverse' : 'flex-row')}>
-      <Avatar>
+      <Avatar className="size-10">
         <AvatarImage src="" />
         <AvatarFallback>{sender?.toString().at(0)}</AvatarFallback>
       </Avatar>

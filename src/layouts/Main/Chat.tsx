@@ -47,7 +47,11 @@ export const Chat = () => {
           ))}
         </div>
 
-        <img className="col-span-3 h-full" src={movilSeccion3} alt="Móvil sección 3" />
+        <img
+          className="col-span-3 h-full tablet-lg:scale-97 laptop:scale-95 laptop-lg:scale-98"
+          src={movilSeccion3}
+          alt="Móvil sección 3"
+        />
       </div>
     </div>
   );

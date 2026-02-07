@@ -4,35 +4,45 @@ import { cn } from '@everyone-web/libs/utils';
 
 export const SecondPage = () => {
   return (
-    <div className="w-full lg:h-screen py-10 lg:py-8 px-4">
+    <div className="w-full tablet-lg:h-[95vh] lg:h-screen py-10 lg:py-8 px-4">
       <div
         className={cn(
           'w-full h-full flex items-center justify-center',
           'rounded-4xl bg-cover',
-          'flex-col gap-12 px-10 py-20 md:px-12 md:py-8 lg:p-0',
+          'flex-col gap-12 px-10 py-20 md:px-12 md:py-8',
+          'tablet-lg:px-10 tablet-lg:py-12',
+          'laptop:px-14 laptop:py-16',
+          'laptop-lg:p-0',
           'lg:flex-row lg:gap-0',
           styles.landing
         )}
       >
         <div
           className={cn(
-            `flex flex-col gap-7 pt-8 lg:pt-0 lg:px-21 xs:text-center items-center lg:items-start`
+            'flex flex-col gap-5 tablet-lg:gap-6 laptop:gap-6 laptop-lg:gap-7',
+            'pt-8 lg:pt-0',
+            'lg:px-14 laptop:px-16 laptop-lg:px-18 desktop:px-21',
+            'xs:text-center items-center lg:items-start'
           )}
         >
-          <h1 className="text-5xl lg:text-7xl font-bold mt-8 lg:mt-0 mb-6">
+          <h1 className="text-4xl tablet-lg:text-5xl laptop:text-6xl laptop-lg:text-6xl desktop:text-7xl font-bold mt-8 lg:mt-0 mb-5 tablet-lg:mb-6">
             Comunicar también es crear 🎙️
           </h1>
-          <p className="text-lg lg:text-4xl mb-4">
+          <p className="text-base tablet-lg:text-lg laptop:text-2xl laptop-lg:text-3xl desktop:text-4xl mb-4">
             Nuestro canal de YouTube es el espacio donde la tecnología se convierte en conversación.
             Allí analizamos, probamos y compartimos ideas que despiertan curiosidad.
           </p>
-          <p className="text-lg lg:text-4xl">
+          <p className="text-base tablet-lg:text-lg laptop:text-2xl laptop-lg:text-3xl desktop:text-4xl">
             Hacemos apps, sí. Pero también encendemos la cámara. Nuestro canal de YouTube es donde
             la tecnología deja de ser un concepto y se convierte en charla, en reacción, en
             comunidad.
           </p>
         </div>
-        <img src={ordenador} className="w-3/4 lg:w-auto h-auto" alt="" />
+        <img
+          src={ordenador}
+          className="w-3/4 tablet-lg:w-4/5 laptop:w-3/4 laptop-lg:w-4/5 desktop:w-auto h-auto"
+          alt=""
+        />
       </div>
     </div>
   );

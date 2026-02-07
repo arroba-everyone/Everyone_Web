@@ -34,9 +34,9 @@ export const NewsItem: IBaseComponent<IPost> = ({
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 md:gap-8 w-full">
+    <div className="flex flex-col md:flex-row gap-6 md:gap-7 laptop:gap-8 w-full">
       {/* Image Container */}
-      <div className="w-full md:w-105 lg:w-120 shrink-0">
+      <div className="w-full md:w-105 tablet-lg:w-110 laptop:w-115 laptop-lg:w-120 shrink-0">
         <img
           src={thumbnailUrl}
           alt={title}
@@ -45,7 +45,7 @@ export const NewsItem: IBaseComponent<IPost> = ({
       </div>
 
       {/* Content Container */}
-      <div className="flex flex-col justify-between gap-4 md:gap-6 flex-1">
+      <div className="flex flex-col justify-between gap-4 md:gap-5 laptop:gap-6 flex-1">
         {/* Author and Date */}
         <div className="flex items-center gap-2 text-sm md:text-base">
           <span style={{ color: 'var(--color-primary)' }} className="font-medium">
@@ -63,7 +63,7 @@ export const NewsItem: IBaseComponent<IPost> = ({
           params={{ slug }}
           className="no-underline"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground hover:text-primary transition-colors m-0 leading-tight">
+          <h2 className="text-2xl md:text-3xl laptop:text-3xl laptop-lg:text-4xl font-bold text-foreground hover:text-primary transition-colors m-0 leading-tight">
             {title}
           </h2>
         </Link>

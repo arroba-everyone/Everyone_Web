@@ -19,10 +19,10 @@ function Blog() {
   return (
     <MainLayout>
       {isLoading ? (
-        <div className="pt-32 md:pt-40 px-4">Loading...</div>
+        <div className="pt-32 md:pt-36 laptop:pt-40 px-4">Loading...</div>
       ) : (
-        <div className="flex justify-center w-full pt-32 md:pt-40 px-4 pb-16">
-          <div className="flex flex-col gap-12 md:gap-16 max-w-7xl w-full">
+        <div className="flex justify-center w-full pt-32 md:pt-36 laptop:pt-40 px-4 pb-16">
+          <div className="flex flex-col gap-12 md:gap-14 laptop:gap-16 max-w-7xl w-full">
             {data?.map((news, index) => (
               <NewsItem key={index} {...news} />
             ))}

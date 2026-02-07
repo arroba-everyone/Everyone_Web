@@ -26,7 +26,7 @@ export const ThirdPage = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-16 md:gap-24 lg:gap-32 items-center py-12 px-6">
+    <div className="flex flex-col gap-16 md:gap-20 tablet-lg:gap-24 laptop:gap-26 laptop-lg:gap-29 desktop:gap-32 items-center py-10 tablet-lg:py-11 laptop:py-12 px-6">
       {profiles.map((profile, index) => (
         <Profile {...profile} key={index} reverse={index % 2 === 1} />
       ))}

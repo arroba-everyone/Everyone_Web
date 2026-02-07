@@ -8,9 +8,9 @@ export const YouTube = () => {
 
   return (
     <div className="h-screen">
-      <Card className="h-full bg-secondary mx-5">
-        <div className="h-full grid grid-cols-4 lg:grid-cols-24 gap-5 align-middle p-8">
-          <div className="grid order-3 lg:order-1 grid-rows-2 gap-8 col-span-4 lg:px-5">
+      <Card className="h-full bg-secondary mx-4 tablet-lg:mx-5">
+        <div className="h-full grid grid-cols-4 lg:grid-cols-24 gap-4 tablet-lg:gap-5 align-middle p-6 tablet-lg:p-7 laptop:p-8">
+          <div className="grid order-3 lg:order-1 grid-rows-2 gap-6 tablet-lg:gap-7 laptop:gap-8 col-span-4 lg:px-5">
             {data.map((videoId, index) => (
               <div key={index} className="row-span-1">
                 <ReactPlayer
@@ -25,15 +25,15 @@ export const YouTube = () => {
           </div>
 
           <span className="hidden lg:block order-2 col-span-8"></span>
-          <div className="col-span-12 order-1 lg:order-3 flex flex-col justify-center gap-8">
-            <p className="text-5xl lg:text-7xl font-bold">Mantente al día con lo que hacemos</p>
-            <p className="text-xl lg:text-4xl lg:me-50">
+          <div className="col-span-12 order-1 lg:order-3 flex flex-col justify-center gap-6 tablet-lg:gap-7 laptop:gap-8">
+            <p className="text-4xl tablet-lg:text-5xl laptop:text-6xl laptop-lg:text-6xl desktop:text-7xl font-bold">Mantente al día con lo que hacemos</p>
+            <p className="text-lg tablet-lg:text-xl laptop:text-2xl laptop-lg:text-3xl desktop:text-4xl lg:me-50">
               Nos gusta construir, probar, contar y volver a empezar.
               <br />
               Si quieres saber en qué estamos metidos ahora, este es tu sitio.
             </p>
-            <Button size={'lg'} className="rounded-full w-fit p-8">
-              <span className="text-lg font-bold">Descubre más</span>
+            <Button size={'lg'} className="rounded-full w-fit p-6 tablet-lg:p-7 laptop:p-8">
+              <span className="text-base tablet-lg:text-lg font-bold">Descubre más</span>
             </Button>
           </div>
         </div>

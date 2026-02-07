@@ -35,7 +35,7 @@ export function Navbar() {
         key={item.label}
         to={item.href}
         className={cn(
-          'relative px-8 py-3 rounded-4xl lg:rounded-full font-semibold text-base',
+          'relative px-6 tablet-lg:px-7 laptop:px-8 py-3 rounded-4xl lg:rounded-full font-semibold text-sm tablet-lg:text-base',
           activeItem === item.label ? 'bg-primary text-primary-foreground' : 'text-primary'
         )}
       >
@@ -45,10 +45,10 @@ export function Navbar() {
   };
 
   return (
-    <nav className="w-11/12 lg:w-fit rounded-4xl lg:rounded-full bg-background fixed top-10 left-0 right-0 z-1 mx-auto">
+    <nav className="w-11/12 tablet-lg:w-10/12 lg:w-fit rounded-4xl lg:rounded-full bg-background fixed top-6 tablet-lg:top-8 laptop:top-10 left-0 right-0 z-1 mx-auto">
       <div className="max-w-7xl mx-auto px-4 md:px-1">
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center justify-center h-15 gap-8">
+        <div className="hidden lg:flex items-center justify-center h-12 tablet-lg:h-13 laptop:h-14 laptop-lg:h-15 gap-4 tablet-lg:gap-6 laptop:gap-7 laptop-lg:gap-8">
           {renderNavItems()}
         </div>
 
