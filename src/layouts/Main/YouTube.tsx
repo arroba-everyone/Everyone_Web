@@ -25,8 +25,8 @@ export const YouTube = () => {
               'gap-6 tablet-lg:gap-7 laptop:gap-8'
             )}
           >
-            {data.map((videoId, index) => (
-              <div key={index} className="row-span-1">
+            {data.map((videoId) => (
+              <div key={videoId} className="row-span-1">
                 <ReactPlayer
                   src={`https://www.youtube.com/watch?v=${videoId}`}
                   className="aspect-video"

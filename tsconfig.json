@@ -6,7 +6,7 @@
     "module": "ESNext",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "types": ["react", "vite/client"],
-    "esModuleInterop": true,
+    // "esModuleInterop": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",

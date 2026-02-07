@@ -8,6 +8,7 @@ export const Route = createFileRoute('/')({
 });
 
 function App() {
+  // TODO: Convertir imágenes a WebP
   return (
     <MainLayout>
       <Landing />

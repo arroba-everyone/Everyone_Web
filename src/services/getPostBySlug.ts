@@ -21,7 +21,6 @@ export const useGetPostBySlug = (slug: string) => {
       if (fileError) throw fileError;
 
       const markdown = await file.text();
-      console.log(markdown);
 
       return markdown;
     },
