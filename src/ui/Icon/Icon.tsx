@@ -3,12 +3,13 @@ import {
   AiFillBug,
   AiOutlineGithub,
   AiOutlineInstagram,
+  AiOutlineMenu,
   AiOutlineTwitch,
   AiOutlineYoutube,
 } from 'react-icons/ai';
 import type { IconBaseProps, IconType } from 'react-icons/lib';
 
-export type IconNames = 'youtube' | 'instagram' | 'twitch' | 'github';
+export type IconNames = 'youtube' | 'instagram' | 'twitch' | 'github' | 'menu';
 
 interface IIcon extends IconBaseProps {
   name: IconNames;
@@ -19,6 +20,7 @@ const icons: Record<IconNames, IconType> = {
   instagram: AiOutlineInstagram,
   twitch: AiOutlineTwitch,
   github: AiOutlineGithub,
+  menu: AiOutlineMenu,
 };
 
 export const Icon: IBaseComponent<IIcon> = ({ name, cursor = 'currentColor', style, ...props }) => {

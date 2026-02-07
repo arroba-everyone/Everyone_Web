@@ -1,36 +1,35 @@
 import { Profile } from '@everyone-web/components/Profile/Profile';
-import { Flex } from '@everyone-web/ui/Common/Flex';
 
 export const ThirdPage = () => {
   const profiles = [
     {
       name: 'Juan Ferrera Sala',
       imageUrl: 'https://avatars.githubusercontent.com/u/52204238?v=4',
-      position: 'CEO · iOS Developer',
-      bio: 'Apasionado por la tecnología y el desarrollo web. Siempre en busca de nuevos desafíos y aprendizajes.',
+      position: 'CEO · Diseñador de Interfaces · Desarrollador iOS',
+      bio: 'Diseña cómo se ve y cómo se siente @Everyone. Se encarga de las interfaces, la experiencia y el desarrollo de las apps para el ecosistema Apple 🍏. También coordina el rumbo del equipo y da forma a la identidad visual de cada proyecto. Cree que la tecnología debe ser útil, bonita y, sobre todo, humana.',
       links: { github: '', instagram: '' },
     },
     {
       name: 'Pablo Enguix Llopis',
       imageUrl: 'https://avatars.githubusercontent.com/u/52204239?v=4',
-      position: 'CTO · Fullstack Developer',
-      bio: 'Desarrollador fullstack con experiencia en múltiples tecnologías. Me encanta crear soluciones innovadoras.',
+      position: 'CTO · Desarrollador Web · Backend & Android',
+      bio: 'Guardián del “que todo funcione”. Programa la base tecnológica de los proyectos: desde el backend hasta las aplicaciones Android y la web. Combina lógica, estructura y café ☕ para convertir las ideas en sistemas estables y elegantes.',
       links: { github: '', instagram: '' },
     },
     {
-      name: 'Irene Correll',
+      name: 'Irene Correll Canchal',
       imageUrl: 'https://avatars.githubusercontent.com/u/52204240?v=4',
-      position: 'Community Manager',
-      bio: 'Especialista en gestión de comunidades online. Me apasiona conectar personas y construir relaciones sólidas.',
+      position: 'Comunicación & Diseño Visual · Marketing Digital',
+      bio: 'Es la voz y la mirada de @Everyone. Se encarga de la identidad visual, las redes sociales y las campañas que hacen que cada proyecto respire coherencia y emoción. Tiene un ojo afinado para el detalle y un gusto impecable por la estética. Convierte ideas técnicas en historias que cualquiera puede disfrutar.',
       links: { instagram: '' },
     },
   ];
 
   return (
-    <Flex style={{ width: '90dvw' }} vertical gap={32} align="center">
+    <div className="flex flex-col gap-16 md:gap-24 lg:gap-32 items-center py-12 px-6">
       {profiles.map((profile, index) => (
-        <Profile {...profile} key={index} />
+        <Profile {...profile} key={index} reverse={index % 2 === 1} />
       ))}
-    </Flex>
+    </div>
   );
 };

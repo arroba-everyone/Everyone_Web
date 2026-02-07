@@ -1,7 +1,6 @@
 import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
 import { createFileRoute } from '@tanstack/react-router';
 import { NutrIA } from '@everyone-web/layouts/Projects/NutrIA';
-import { Flex } from '@everyone-web/ui/Common/Flex';
 import { EveryLog } from '@everyone-web/layouts/Projects/EveryLog';
 
 export const Route = createFileRoute('/projects')({
@@ -11,10 +10,10 @@ export const Route = createFileRoute('/projects')({
 function Projects() {
   return (
     <MainLayout>
-      <Flex vertical align="center">
+      <div className="flex flex-col items-center">
         <EveryLog />
         <NutrIA />
-      </Flex>
+      </div>
     </MainLayout>
   );
 }

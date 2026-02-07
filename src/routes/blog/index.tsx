@@ -2,7 +2,6 @@ import { NewsItem } from '@everyone-web/components/Blog/NewsItem';
 import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
 import { getFiles } from '@everyone-web/services/getFiles';
 import { useGetPosts } from '@everyone-web/services/getPosts';
-import { Flex } from '@everyone-web/ui/Common/Flex';
 import { createFileRoute } from '@tanstack/react-router';
 import { useEffect } from 'react';
 
@@ -20,19 +19,15 @@ function Blog() {
   return (
     <MainLayout>
       {isLoading ? (
-        <div>Loading...</div>
+        <div className="pt-32 md:pt-40 px-4">Loading...</div>
       ) : (
-        <Flex justify="center" fullWidth>
-          <Flex
-            vertical
-            gap={16}
-            style={{ width: '95dvw', minHeight: '100dvh', paddingTop: '130px' }}
-          >
+        <div className="flex justify-center w-full pt-32 md:pt-40 px-4 pb-16">
+          <div className="flex flex-col gap-12 md:gap-16 max-w-7xl w-full">
             {data?.map((news, index) => (
               <NewsItem key={index} {...news} />
             ))}
-          </Flex>
-        </Flex>
+          </div>
+        </div>
       )}
     </MainLayout>
   );

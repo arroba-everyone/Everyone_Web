@@ -1,9 +1,7 @@
 import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
 import { useGetPostBySlug } from '@everyone-web/services/getPostBySlug';
-import { Flex } from '@everyone-web/ui/Common/Flex';
-import { Text, Title } from '@everyone-web/ui/Common/Typography';
+import { Avatar, AvatarImage } from '@everyone-web/ui/avatar';
 import { createFileRoute } from '@tanstack/react-router';
-import { Avatar, Divider, Space } from 'antd';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
@@ -22,60 +20,114 @@ function BlogNew() {
 
   return (
     <MainLayout>
-      <Flex vertical style={{ marginTop: '110px' }} align="center" justify="center">
-        <Flex vertical style={{ width: '80dvw' }} align="center" justify="center" gap={16}>
+      <div className="flex flex-col justify-center items-center px-4 py-12 md:py-20 mt-20 lg:mt-12">
+        <div className="w-full max-w-4xl">
           <Markdown
             remarkPlugins={[[remarkGfm]]}
             components={{
-              h1: ({ node, ...props }) => <Title level={1} {...props} />,
-              h2: ({ node, ...props }) => <Title level={2} {...props} />,
+              h1: ({ node, ...props }) => (
+                <h1
+                  className="text-4xl md:text-5xl font-bold text-foreground text-center mb-6"
+                  {...props}
+                />
+              ),
+              h2: ({ node, ...props }) => (
+                <h2
+                  className="text-2xl md:text-3xl font-semibold text-foreground mt-8 mb-4"
+                  {...props}
+                />
+              ),
               h3: ({ node, ...props }) => {
                 return node?.children.length === 1 ? (
-                  <Title level={3} {...props} />
+                  <h3
+                    className="text-xl md:text-2xl font-medium text-foreground mt-6 mb-3"
+                    {...props}
+                  />
                 ) : (
-                  <Flex justify="center" align="center" gap={16} {...props}>
+                  <div className="flex justify-center items-center gap-4 mb-6" {...props}>
                     {Array.isArray(props.children) &&
                       props.children?.map((child, index) => {
                         return typeof child === 'string' ? (
-                          <Title key={index} level={3}>
+                          <h3 key={index} className="text-lg text-foreground">
                             {child}
-                          </Title>
+                          </h3>
                         ) : child.type === 'code' ? (
-                          <Space key={index} size="large">
+                          <div key={index} className="flex items-center gap-2">
                             {child.props.children
                               .split(/(·)/)
                               .map((p: string) => p.trim())
                               .filter((p: string) => p !== '')
-                              .map((c: string, i: string) => (
-                                <Title key={i} level={4} type="secondary">
+                              .map((c: string, i: number) => (
+                                <span key={i} className="text-sm text-muted">
                                   {c}
-                                </Title>
+                                </span>
                               ))}
-                          </Space>
+                          </div>
                         ) : child.props.src ? (
-                          <Avatar key={index} size={64} shape="circle" {...child.props} />
+                          <Avatar key={index} size={'lg'}>
+                            <AvatarImage {...child.props} />
+                          </Avatar>
                         ) : (
                           child
                         );
                       })}
-                  </Flex>
+                  </div>
                 );
               },
-              p: ({ node, ...props }) => {
-                return <Text {...props} />;
+              h4: ({ node, ...props }) => {
+                const text = props.children?.toString() || '';
+                // Detectar si es una sección especial (Timestamps o Tags)
+                if (text.includes('Timestamps:') || text.includes('Tags:')) {
+                  return (
+                    <h4
+                      className="text-lg md:text-xl font-semibold text-foreground mt-8 mb-4"
+                      {...props}
+                    />
+                  );
+                }
+                return <h4 className="text-lg font-medium text-foreground mt-4 mb-2" {...props} />;
               },
-              img: ({ node, ...props }) => <img style={{ maxWidth: '100%' }} {...props} />,
+              p: ({ node, ...props }) => {
+                const text = props.children?.toString() || '';
+                // Si el párrafo contiene timestamps (formato 00:00)
+                if (/\d{2}:\d{2}/.test(text)) {
+                  return <p className="text-sm text-foreground leading-relaxed mb-1" {...props} />;
+                }
+                return <p className="text-base text-foreground leading-relaxed mb-4" {...props} />;
+              },
+              a: ({ node, ...props }) => {
+                const text = props.children?.toString() || '';
+                // Si es un hashtag (empieza con #)
+                if (text.startsWith('#')) {
+                  return (
+                    <a
+                      className="text-sm text-primary font-medium mr-2 hover:underline"
+                      {...props}
+                    />
+                  );
+                }
+                return <a className="underline text-primary hover:no-underline" {...props} />;
+              },
+              ul: ({ node, ...props }) => <ul className="list-none space-y-1 mb-4" {...props} />,
+              li: ({ node, ...props }) => <li className="text-sm text-foreground" {...props} />,
+              img: ({ node, ...props }) => (
+                <div className="my-8">
+                  <img
+                    className="w-full h-auto rounded-lg"
+                    style={{ maxWidth: '100%', objectFit: 'cover' }}
+                    {...props}
+                  />
+                </div>
+              ),
               hr: ({ node, ...props }) => (
-                <Flex style={{ width: '80dvw' }}>
-                  <Divider style={{ borderColor: 'var(--text-color)' }} {...props} />
-                </Flex>
+                <hr className="border-t border-foreground w-full my-8" {...props} />
               ),
             }}
           >
             {data}
           </Markdown>
-        </Flex>
-      </Flex>
+        </div>
+      </div>
     </MainLayout>
   );
 }

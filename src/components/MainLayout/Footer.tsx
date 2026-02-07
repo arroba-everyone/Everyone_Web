@@ -1,32 +1,25 @@
-import { Flex } from '@everyone-web/ui/Common/Flex';
-import { Card } from '../../ui/Card/Card';
-import { Text, Title } from '@everyone-web/ui/Common/Typography';
-import styles from './MainLayout.module.css';
+import { Card } from '../../ui/card';
 import { Icon } from '@everyone-web/ui/Icon/Icon';
 
 export const Footer = () => {
   return (
-    <Card bgColor="var(--color-primary)" borderRadius={70} className={styles.footer}>
-      <Flex fullWidth justify="center">
-        <Flex vertical gap={50} justify="center" align="center">
-          <Title level={3} color="var(--color-bg)">
-            @everyone
-          </Title>
-          <Flex gap={96}>
-            <Icon name="instagram" className={styles.socialIcon} />
-            <Icon name="youtube" className={styles.socialIcon} />
-            <Icon name="twitch" className={styles.socialIcon} />
-            <Icon name="github" className={styles.socialIcon} />
-          </Flex>
-          <Flex vertical gap={8} justify="center" align="center">
-            <Text color="var(--color-bg)">Política de privacidad</Text>
-            <Text color="var(--color-bg)">Uso de cookies</Text>
-            <Text strong color="var(--color-bg)">
-              @everyone 2025 ©. Todos los derechos reservados
-            </Text>
-          </Flex>
-        </Flex>
-      </Flex>
-    </Card>
+    <footer className="mx-4 my-8">
+      <Card className="bg-primary text-primary-foreground w-full flex flex-col gap-13 justify-between items-center">
+        <p className="text-center font-bold text-2xl">@everyone</p>
+
+        <div className="flex items-center gap-16 lg:gap-24">
+          <Icon name="instagram" className={'size-8'} />
+          <Icon name="youtube" className={'size-8'} />
+          <Icon name="twitch" className={'size-8'} />
+          <Icon name="github" className={'size-8'} />
+        </div>
+
+        <div className="flex flex-col gap-2 items-center">
+          <p className="text-center">Política de privacidad</p>
+          <p className="text-center">Uso de cookies</p>
+          <p className="text-center font-bold">@everyone 2025 ©. Todos los derechos reservados</p>
+        </div>
+      </Card>
+    </footer>
   );
 };

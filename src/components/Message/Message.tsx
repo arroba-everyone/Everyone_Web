@@ -1,39 +1,32 @@
-import { Flex } from '@everyone-web/ui/Common/Flex';
-import { Text, Title } from '@everyone-web/ui/Common/Typography';
-import { Avatar, Popover } from 'antd';
+import { cn } from '@everyone-web/libs/utils';
+import { Avatar, AvatarFallback, AvatarImage } from '@everyone-web/ui/avatar';
 import type { JSX, ReactNode } from 'react';
 
 interface IMessageProps {
   children: ReactNode;
   sender: ReactNode;
-  gap: number;
   sent?: boolean;
 }
 
-export const Message = ({ children, sender, gap, sent = false }: IMessageProps): JSX.Element => {
+export const Message = ({ children, sender, sent = false }: IMessageProps): JSX.Element => {
   return (
-    <Flex justify={sent ? 'end' : 'start'} align="center" style={{ marginBottom: gap }}>
-      <Popover
-        open
-        zIndex={0}
-        placement={sent ? 'leftBottom' : 'rightBottom'}
-        color={sent ? '#84cc16' : '#a78bfa'}
-        title={
-          <Flex vertical gap={8} style={{ width: '25dvw' }}>
-            <Title color="var(--color-bg)" level={4} style={{ margin: 0 }}>
-              {sender}
-            </Title>
-            <Text color="var(--color-bg)">{children}</Text>
-          </Flex>
-        }
+    <div className={cn('flex w-full items-end gap-3', sent ? 'flex-row-reverse' : 'flex-row')}>
+      <Avatar>
+        <AvatarImage src="" />
+        <AvatarFallback>{sender?.toString().at(0)}</AvatarFallback>
+      </Avatar>
+      <div
+        className={cn(
+          'rounded-lg flex p-5 text-foreground',
+          sent ? 'bg-primary text-primary-foreground' : 'bg-secondary'
+        )}
       >
-        <Avatar
-          size={50}
-          style={{
-            backgroundColor: '#d9d9d9',
-          }}
-        />
-      </Popover>
-    </Flex>
+        <div className="text-base font-normal">
+          <p className="font-bold">{sender}</p>
+          <p>&nbsp;</p>
+          <p>{children}</p>
+        </div>
+      </div>
+    </div>
   );
 };

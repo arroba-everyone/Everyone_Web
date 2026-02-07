@@ -1,48 +1,43 @@
 import { FALLBACK_VIDEOS, useGetLatestVideos } from '@everyone-web/queries/useGetLatestVideos';
-import { Flex } from '@everyone-web/ui/Common/Flex';
-import { Card } from '@everyone-web/ui/Card/Card';
-import { Title } from '@everyone-web/ui/Common/Typography';
-import { Button } from '@everyone-web/ui/Common/Button';
-import { Space } from 'antd';
+import { Card } from '@everyone-web/ui/card';
 import ReactPlayer from 'react-player';
+import { Button } from '@everyone-web/ui/button';
 
 export const YouTube = () => {
   const { data = FALLBACK_VIDEOS } = useGetLatestVideos();
 
   return (
-    <Flex fullScreen align="center" justify="space-around">
-      <Card bgColor="var(--color-secondary)" borderRadius={50} width={'97dvw'} height={'97dvh'}>
-        <Flex gap={8} justify="center" align="center" style={{ width: '100%', height: '100%' }}>
-          <Flex vertical gap={16} style={{ width: '45%' }}>
-            <ReactPlayer
-              src={`https://www.youtube.com/watch?v=${data[0]}`}
-              width={654}
-              height={400}
-              style={{ borderRadius: '12px', overflow: 'hidden' }}
-            />
-            <ReactPlayer
-              src={`https://www.youtube.com/watch?v=${data[1]}`}
-              width={654}
-              height={400}
-              style={{ borderRadius: '12px', overflow: 'hidden' }}
-            />
-          </Flex>
-          <Flex vertical gap={16} style={{ width: '45%' }}>
-            <Title color="var(--color-bg)" level={1} style={{ fontSize: 72 }}>
-              Mantente al día con lo que hacemos
-            </Title>
-            <Title color="var(--color-bg)" level={3}>
-              Nos gusta construir, probar, contar y volver a empezar. Si quieres saber en qué
-              estamos metidos ahora, este es tu sitio.
-            </Title>
-            <Space>
-              <Button type="primary" shape="round" size="large" className="mt-16">
-                Descubre más
-              </Button>
-            </Space>
-          </Flex>
-        </Flex>
+    <div className="h-screen">
+      <Card className="h-full bg-secondary mx-5">
+        <div className="h-full grid grid-cols-4 lg:grid-cols-24 gap-5 align-middle p-8">
+          <div className="grid order-3 lg:order-1 grid-rows-2 gap-8 col-span-4 lg:px-5">
+            {data.map((videoId, index) => (
+              <div key={index} className="row-span-1">
+                <ReactPlayer
+                  src={`https://www.youtube.com/watch?v=${videoId}`}
+                  className="aspect-video"
+                  width={'100%'}
+                  height={'100%'}
+                  style={{ borderRadius: '12px', overflow: 'hidden' }}
+                />
+              </div>
+            ))}
+          </div>
+
+          <span className="hidden lg:block order-2 col-span-8"></span>
+          <div className="col-span-12 order-1 lg:order-3 flex flex-col justify-center gap-8">
+            <p className="text-5xl lg:text-7xl font-bold">Mantente al día con lo que hacemos</p>
+            <p className="text-xl lg:text-4xl lg:me-50">
+              Nos gusta construir, probar, contar y volver a empezar.
+              <br />
+              Si quieres saber en qué estamos metidos ahora, este es tu sitio.
+            </p>
+            <Button size={'lg'} className="rounded-full w-fit p-8">
+              <span className="text-lg font-bold">Descubre más</span>
+            </Button>
+          </div>
+        </div>
       </Card>
-    </Flex>
+    </div>
   );
 };

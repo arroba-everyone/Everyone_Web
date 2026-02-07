@@ -1,12 +1,10 @@
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider, createRouter } from '@tanstack/react-router';
-import { ConfigProvider } from 'antd';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // Import the generated route tree
 import { routeTree } from './routeTree.gen';
-import { theme } from '@everyone-web/ui/Theme/theme.ts';
 import reportWebVitals from './reportWebVitals.ts';
 import './styles.css';
 
@@ -46,11 +44,9 @@ const rootElement = document.getElementById('app')!;
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <StrictMode>
-    <ConfigProvider theme={theme}>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
-    </ConfigProvider>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </StrictMode>
 );
 
