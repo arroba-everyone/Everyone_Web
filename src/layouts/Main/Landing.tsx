@@ -1,5 +1,5 @@
 import styles from '@everyone-web/css/index.module.css';
-import movilLanding from '@everyone-web/assets/movilLanding.png';
+import landingPhone from '@everyone-web/assets/landingPhone.png';
 import { Link } from '@tanstack/react-router';
 import { cn } from '@everyone-web/libs/utils';
 import { Button } from '@everyone-web/ui/button';
@@ -29,7 +29,11 @@ export const Landing = () => {
             Innovar no es complicar. Es conectar.
           </h1>
 
-          <h2 className={cn('text-md md:text-lg tablet-lg:text-xl laptop:text-2xl laptop-lg:text-3xl desktop:text-4xl')}>
+          <h2
+            className={cn(
+              'text-md md:text-lg tablet-lg:text-xl laptop:text-2xl laptop-lg:text-3xl desktop:text-4xl'
+            )}
+          >
             En @Everyone hacemos apps y contenido tech para humanos normales. Sin humo. Sin
             postureo. Con mucho corazón.
           </h2>
@@ -52,7 +56,7 @@ export const Landing = () => {
         </div>
 
         <img
-          src={movilLanding}
+          src={landingPhone}
           alt="Móvil landing page"
           className="w-62.5 h-125 tablet-lg:w-70 tablet-lg:h-140 laptop:w-75 laptop:h-150 laptop-lg:w-80 laptop-lg:h-160 desktop:w-87.5 desktop:h-175 object-contain"
         />

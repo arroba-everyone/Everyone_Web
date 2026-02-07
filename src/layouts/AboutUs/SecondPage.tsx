@@ -1,5 +1,5 @@
 import styles from '@everyone-web/css/index.module.css';
-import ordenador from '@everyone-web/assets/ordenador.png';
+import aboutUsPhone from '@everyone-web/assets/aboutUsPhone.png';
 import { cn } from '@everyone-web/libs/utils';
 
 export const SecondPage = () => {
@@ -39,8 +39,8 @@ export const SecondPage = () => {
           </p>
         </div>
         <img
-          src={ordenador}
-          className="w-3/4 tablet-lg:w-4/5 laptop:w-3/4 laptop-lg:w-4/5 desktop:w-auto h-auto"
+          src={aboutUsPhone}
+          className="w-1/2 tablet-lg:w-1/3 laptop:w-1/4 laptop-lg:w-1/5 desktop:w-[15%] h-auto"
           alt=""
         />
       </div>

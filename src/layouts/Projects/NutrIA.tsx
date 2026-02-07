@@ -1,4 +1,4 @@
-import movilLanding from '@everyone-web/assets/movilLanding.png';
+import mysteryPhone from '@everyone-web/assets/mysteryPhone.png';
 import { Button } from '@everyone-web/ui/button';
 
 export const NutrIA = () => {
@@ -6,7 +6,9 @@ export const NutrIA = () => {
     <div className="w-full min-h-screen grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 tablet-lg:gap-10 laptop:gap-11 laptop-lg:gap-12 items-center justify-items-center px-6 tablet-lg:px-8 laptop:px-10 laptop-lg:px-12 pt-8 lg:py-16">
       {/* Right text section - main info (first on mobile) */}
       <div className="flex flex-col gap-5 tablet-lg:gap-6 laptop:gap-7 laptop-lg:gap-8 text-left justify-self-start max-w-xl order-1 lg:order-3">
-        <h1 className="text-3xl tablet-lg:text-4xl laptop:text-5xl laptop-lg:text-6xl font-bold">NutrIA</h1>
+        <h1 className="text-3xl tablet-lg:text-4xl laptop:text-5xl laptop-lg:text-6xl font-bold">
+          NutrIA
+        </h1>
         <p className="text-base tablet-lg:text-lg laptop:text-2xl laptop-lg:text-3xl desktop:text-4xl leading-relaxed">
           Estamos trabajando en algo nuevo 💡. Algo pequeño por fuera, pero con mucho detrás. Un
           proyecto que mezcla calma, curiosidad y tecnología con propósito.
@@ -20,7 +22,7 @@ export const NutrIA = () => {
       {/* Center phone image (second on mobile) */}
       <div className="flex items-center justify-center order-2">
         <img
-          src={movilLanding}
+          src={mysteryPhone}
           alt="NutrIA app"
           className="w-75 tablet-lg:w-82 laptop:w-90 laptop-lg:w-100 desktop:w-112.5 object-contain"
         />

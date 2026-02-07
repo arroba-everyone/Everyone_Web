@@ -1,7 +1,7 @@
 import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
 import { Card } from '@everyone-web/ui/card';
 import { createFileRoute } from '@tanstack/react-router';
-import movilesContacto from '@everyone-web/assets/movilesContacto.png';
+import contactPhone from '@everyone-web/assets/contactPhone.png';
 import { cn } from '@everyone-web/libs/utils';
 
 export const Route = createFileRoute('/contact')({
@@ -51,7 +51,7 @@ function Contact() {
 
         <Card className="bg-primary rounded-[2.5rem] md:rounded-[3rem] laptop:rounded-[3.5rem] xl:rounded-[4rem] overflow-hidden w-full aspect-square order-2 lg:order-1">
           <img
-            src={movilesContacto}
+            src={contactPhone}
             alt="Contact Us"
             className="w-full h-full object-contain p-8 md:p-10 laptop:p-12 laptop-lg:p-14 xl:p-16"
           />
