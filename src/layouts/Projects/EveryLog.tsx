@@ -1,9 +1,19 @@
 import everyLog from '@everyone-web/assets/everyLog.png';
+import { cn } from '@everyone-web/libs/utils';
 import { Button } from '@everyone-web/ui/button';
 
 export const EveryLog = () => {
   return (
-    <div className="w-full min-h-screen grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 tablet-lg:gap-10 laptop:gap-11 laptop-lg:gap-12 items-center justify-items-center px-6 tablet-lg:px-8 laptop:px-10 laptop-lg:px-12 pt-28 pb-8 lg:py-16">
+    <div
+      className={cn(
+        'w-full min-h-screen grid',
+        'grid-cols-1 lg:grid-cols-[1fr_auto_1fr]',
+        'gap-8 tablet-lg:gap-10 laptop:gap-11 laptop-lg:gap-12',
+        'items-center justify-items-center',
+        'px-6 tablet-lg:px-8 laptop:px-10 laptop-lg:px-12',
+        'pt-28 pb-8 lg:py-16'
+      )}
+    >
       {/* Left text section */}
       <div className="flex flex-col gap-5 tablet-lg:gap-6 laptop:gap-7 laptop-lg:gap-8">
         <h1 className="text-3xl tablet-lg:text-4xl laptop:text-5xl laptop-lg:text-6xl font-bold">

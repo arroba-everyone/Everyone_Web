@@ -25,7 +25,12 @@ export const Landing = () => {
             'xs:text-center items-center lg:items-start'
           )}
         >
-          <h1 className="font-bold text-xl md:text-3xl tablet-lg:text-4xl laptop:text-5xl laptop-lg:text-6xl desktop:text-7xl w-fit">
+          <h1
+            className={cn(
+              'font-bold w-fit',
+              'text-xl md:text-3xl tablet-lg:text-4xl laptop:text-5xl laptop-lg:text-6xl desktop:text-7xl'
+            )}
+          >
             Innovar no es complicar. Es conectar.
           </h1>
 
@@ -58,7 +63,11 @@ export const Landing = () => {
         <img
           src={landingPhone}
           alt="Móvil landing page"
-          className="w-62.5 h-125 tablet-lg:w-70 tablet-lg:h-140 laptop:w-75 laptop:h-150 laptop-lg:w-80 laptop-lg:h-160 desktop:w-87.5 desktop:h-175 object-contain"
+          className={cn(
+            'object-contain',
+            'w-62.5 tablet-lg:w-70 laptop:w-75 laptop-lg:w-80 desktop:w-87.5',
+            'h-125 tablet-lg:h-140 laptop:h-150 laptop-lg:h-160 desktop:h-175'
+          )}
         />
       </div>
     </div>

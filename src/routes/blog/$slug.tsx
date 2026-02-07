@@ -76,7 +76,6 @@ function BlogNew() {
               },
               h4: ({ node, ...props }) => {
                 const text = props.children?.toString() || '';
-                // Detectar si es una sección especial (Timestamps o Tags)
                 if (text.includes('Timestamps:') || text.includes('Tags:')) {
                   return (
                     <h4
@@ -89,7 +88,6 @@ function BlogNew() {
               },
               p: ({ node, ...props }) => {
                 const text = props.children?.toString() || '';
-                // Si el párrafo contiene timestamps (formato 00:00)
                 if (/\d{2}:\d{2}/.test(text)) {
                   return <p className="text-sm text-foreground leading-relaxed mb-1" {...props} />;
                 }
@@ -97,7 +95,6 @@ function BlogNew() {
               },
               a: ({ node, ...props }) => {
                 const text = props.children?.toString() || '';
-                // Si es un hashtag (empieza con #)
                 if (text.startsWith('#')) {
                   return (
                     <a

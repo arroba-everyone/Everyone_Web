@@ -67,7 +67,7 @@ export const NewsItem: IBaseComponent<IPost> = ({
           </h2>
         </Link>
 
-        {/* Ver más Link */}
+        {/* Link */}
         <Link
           to={`/blog/$slug`}
           params={{ slug }}

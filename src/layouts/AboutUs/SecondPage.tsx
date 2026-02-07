@@ -25,7 +25,7 @@ export const SecondPage = () => {
             'xs:text-center items-center lg:items-start'
           )}
         >
-          <h1 className="text-4xl tablet-lg:text-5xl laptop:text-6xl laptop-lg:text-6xl desktop:text-7xl font-bold mt-8 lg:mt-0 mb-5 tablet-lg:mb-6">
+          <h1 className="text-4xl tablet-lg:text-5xl laptop:text-6xl desktop:text-7xl font-bold mt-8 lg:mt-0 mb-5 tablet-lg:mb-6">
             Comunicar también es crear 🎙️
           </h1>
           <p className="text-base tablet-lg:text-lg laptop:text-2xl laptop-lg:text-3xl desktop:text-4xl mb-4">

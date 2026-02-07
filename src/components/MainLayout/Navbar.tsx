@@ -49,10 +49,23 @@ export function Navbar() {
   };
 
   return (
-    <nav className="w-11/12 tablet-lg:w-10/12 lg:w-fit rounded-4xl lg:rounded-full bg-background fixed top-6 tablet-lg:top-8 laptop:top-10 left-0 right-0 z-1 mx-auto">
+    <nav
+      className={cn(
+        'bg-background fixed left-0 right-0 z-1 mx-auto',
+        'w-11/12 tablet-lg:w-10/12 lg:w-fit',
+        'rounded-4xl lg:rounded-full',
+        'top-6 tablet-lg:top-8 laptop:top-10'
+      )}
+    >
       <div className="max-w-7xl mx-auto px-4 md:px-1">
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center justify-center h-12 tablet-lg:h-13 laptop:h-14 laptop-lg:h-15 gap-4 tablet-lg:gap-6 laptop:gap-7 laptop-lg:gap-8">
+        <div
+          className={cn(
+            'hidden lg:flex items-center justify-center',
+            'h-12 tablet-lg:h-13 laptop:h-14 laptop-lg:h-15',
+            'gap-4 tablet-lg:gap-6 laptop:gap-7 laptop-lg:gap-8'
+          )}
+        >
           {renderNavItems()}
         </div>
 
@@ -67,7 +80,7 @@ export function Navbar() {
                 <span className="sr-only">Toggle menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-background border-background p-4 w-[280px]">
+            <SheetContent side="right" className="bg-background border-background p-4 w-70">
               <div className="flex flex-col gap-4 mt-8">{renderNavItems()}</div>
             </SheetContent>
           </Sheet>

@@ -1,4 +1,5 @@
 import { Profile } from '@everyone-web/components/Profile/Profile';
+import { cn } from '@everyone-web/libs/utils';
 
 export const ThirdPage = () => {
   const profiles = [
@@ -26,7 +27,13 @@ export const ThirdPage = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-16 md:gap-20 tablet-lg:gap-24 laptop:gap-26 laptop-lg:gap-29 desktop:gap-32 items-center py-10 tablet-lg:py-11 laptop:py-12 px-6">
+    <div
+      className={cn(
+        'flex flex-col items-center',
+        'px-6 py-10 tablet-lg:py-11 laptop:py-12',
+        'gap-16 md:gap-20 tablet-lg:gap-24 laptop:gap-26 laptop-lg:gap-29 desktop:gap-32'
+      )}
+    >
       {profiles.map((profile, index) => (
         <Profile {...profile} key={index} reverse={index % 2 === 1} />
       ))}
