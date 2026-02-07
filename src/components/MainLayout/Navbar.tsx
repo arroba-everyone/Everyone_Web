@@ -35,8 +35,12 @@ export function Navbar() {
         key={item.label}
         to={item.href}
         className={cn(
-          'relative px-6 tablet-lg:px-7 laptop:px-8 py-3 rounded-4xl lg:rounded-full font-semibold text-sm tablet-lg:text-base',
-          activeItem === item.label ? 'bg-primary text-primary-foreground' : 'text-primary'
+          'font-semibold text-sm tablet-lg:text-base transition-colors',
+          'relative rounded-4xl lg:rounded-full',
+          'py-3 px-6 tablet-lg:px-7 laptop:px-8',
+          activeItem === item.label
+            ? 'bg-primary text-primary-foreground'
+            : 'text-primary hover:bg-primary/10'
         )}
       >
         {item.label}

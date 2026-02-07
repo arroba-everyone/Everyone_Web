@@ -39,7 +39,7 @@ export const Chat = () => {
   ];
 
   return (
-    <div className="w-full min-h-screen flex flex-col lg:flex-row items-center">
+    <div className="w-full min-h-screen flex flex-col lg:flex-row items-center my-8">
       <div className="flex flex-col lg:flex-row justify-around items-center h-fit gap-4">
         <div className="flex w-11/12 lg:w-5/12 flex-col gap-2">
           {messages.map(({ key, ...message }) => (

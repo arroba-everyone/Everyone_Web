@@ -1,3 +1,4 @@
+import { cn } from '@everyone-web/libs/utils';
 import type { IPost } from '@everyone-web/services/getPosts';
 import type { IBaseComponent } from '@everyone-web/types/global';
 import { Link } from '@tanstack/react-router';
@@ -37,11 +38,7 @@ export const NewsItem: IBaseComponent<IPost> = ({
     <div className="flex flex-col md:flex-row gap-6 md:gap-7 laptop:gap-8 w-full">
       {/* Image Container */}
       <div className="w-full md:w-105 tablet-lg:w-110 laptop:w-115 laptop-lg:w-120 shrink-0">
-        <img
-          src={thumbnailUrl}
-          alt={title}
-          className="w-full h-auto rounded-lg object-cover"
-        />
+        <img src={thumbnailUrl} alt={title} className="w-full h-auto rounded-lg object-cover" />
       </div>
 
       {/* Content Container */}
@@ -58,12 +55,14 @@ export const NewsItem: IBaseComponent<IPost> = ({
         </div>
 
         {/* Title */}
-        <Link
-          to={`/blog/$slug`}
-          params={{ slug }}
-          className="no-underline"
-        >
-          <h2 className="text-2xl md:text-3xl laptop:text-3xl laptop-lg:text-4xl font-bold text-foreground hover:text-primary transition-colors m-0 leading-tight">
+        <Link to={`/blog/$slug`} params={{ slug }} className="no-underline">
+          <h2
+            className={cn(
+              'transition-colors m-0 leading-tight',
+              'font-bold text-foreground hover:text-primary',
+              'text-2xl md:text-3xl laptop-lg:text-4xl'
+            )}
+          >
             {title}
           </h2>
         </Link>
@@ -72,8 +71,11 @@ export const NewsItem: IBaseComponent<IPost> = ({
         <Link
           to={`/blog/$slug`}
           params={{ slug }}
-          className="inline-flex items-center gap-2 text-base md:text-lg font-medium no-underline transition-colors"
-          style={{ color: 'var(--color-primary)' }}
+          className={cn(
+            'inline-flex items-center gap-2 transition-colors',
+            'text-base md:text-lg font-medium no-underline',
+            'text-primary hover:text-primary/80'
+          )}
         >
           Ver más →
         </Link>
