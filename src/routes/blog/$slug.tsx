@@ -1,22 +1,77 @@
 import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
-import { useGetPostBySlug } from '@everyone-web/services/getPostBySlug';
+import { getPostBySlugFn } from '@everyone-web/services/getPostBySlug';
 import { Avatar, AvatarImage } from '@everyone-web/ui/avatar';
 import { createFileRoute } from '@tanstack/react-router';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
+function stripMarkdown(md: string): string {
+  return md
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/[*_~`>]/g, '')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/!\[([^\]]*)\]\([^)]+\)/g, '')
+    .replace(/\n+/g, ' ')
+    .trim()
+    .slice(0, 155);
+}
+
 export const Route = createFileRoute('/blog/$slug')({
-  component: BlogNew,
+  loader: ({ params }) => getPostBySlugFn({ data: params.slug }),
+  head: ({ loaderData }) => {
+    const title = loaderData?.title ? `${loaderData.title} - @Everyone Blog` : 'Blog - @Everyone';
+    const description = loaderData?.markdown
+      ? stripMarkdown(loaderData.markdown)
+      : 'Artículos sobre tecnología, desarrollo de apps y contenido tech.';
+    const image = loaderData?.thumbnailUrl || 'https://everyone.com/logo512.png';
+    const url = `https://everyone.com/blog/${loaderData?.slug || ''}`;
+
+    return {
+      meta: [
+        { title },
+        { name: 'description', content: description },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: 'og:url', content: url },
+        { property: 'og:image', content: image },
+        { property: 'og:type', content: 'article' },
+
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:image', content: image },
+      ],
+      links: [{ rel: 'canonical', href: url }],
+      scripts: loaderData
+        ? [
+            {
+              type: 'application/ld+json',
+              children: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'BlogPosting',
+                headline: loaderData.title,
+                description,
+                image,
+                url,
+                author: {
+                  '@type': 'Person',
+                  name: loaderData.author,
+                },
+                datePublished: loaderData.publishedAt,
+                publisher: {
+                  '@type': 'Organization',
+                  name: '@Everyone',
+                },
+              }),
+            },
+          ]
+        : [],
+    };
+  },
+  component: BlogPost,
 });
 
-function BlogNew() {
-  const { slug } = Route.useParams();
-
-  const { data, isLoading } = useGetPostBySlug(slug);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+function BlogPost() {
+  const post = Route.useLoaderData();
 
   return (
     <MainLayout>
@@ -121,7 +176,7 @@ function BlogNew() {
               ),
             }}
           >
-            {data}
+            {post.markdown}
           </Markdown>
         </div>
       </div>

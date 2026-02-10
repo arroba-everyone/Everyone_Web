@@ -6,6 +6,33 @@ import { cn } from '@everyone-web/libs/utils';
 
 export const Route = createFileRoute('/contact')({
   component: Contact,
+  head: () => ({
+    meta: [
+      { title: 'Contacto - @Everyone' },
+      {
+        name: 'description',
+        content:
+          'Ponte en contacto con @Everyone. Escríbenos a contacto@everyone.com y hablemos de tu próximo proyecto.',
+      },
+      { property: 'og:title', content: 'Contacto - @Everyone' },
+      {
+        property: 'og:description',
+        content:
+          'Ponte en contacto con @Everyone. Escríbenos a contacto@everyone.com y hablemos de tu próximo proyecto.',
+      },
+      { property: 'og:url', content: 'https://everyone.com/contact' },
+      { property: 'og:image', content: 'https://everyone.com/logo512.png' },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:title', content: 'Contacto - @Everyone' },
+      {
+        name: 'twitter:description',
+        content:
+          'Ponte en contacto con @Everyone. Escríbenos a contacto@everyone.com y hablemos de tu próximo proyecto.',
+      },
+      { name: 'twitter:image', content: 'https://everyone.com/logo512.png' },
+    ],
+    links: [{ rel: 'canonical', href: 'https://everyone.com/contact' }],
+  }),
 });
 
 function Contact() {

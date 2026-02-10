@@ -7,6 +7,33 @@ import { useEffect } from 'react';
 
 export const Route = createFileRoute('/blog/')({
   component: Blog,
+  head: () => ({
+    meta: [
+      { title: 'Blog - @Everyone' },
+      {
+        name: 'description',
+        content:
+          'Artículos sobre tecnología, desarrollo de apps y contenido tech para humanos normales.',
+      },
+      { property: 'og:title', content: 'Blog - @Everyone' },
+      {
+        property: 'og:description',
+        content:
+          'Artículos sobre tecnología, desarrollo de apps y contenido tech para humanos normales.',
+      },
+      { property: 'og:url', content: 'https://everyone.com/blog' },
+      { property: 'og:image', content: 'https://everyone.com/logo512.png' },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:title', content: 'Blog - @Everyone' },
+      {
+        name: 'twitter:description',
+        content:
+          'Artículos sobre tecnología, desarrollo de apps y contenido tech para humanos normales.',
+      },
+      { name: 'twitter:image', content: 'https://everyone.com/logo512.png' },
+    ],
+    links: [{ rel: 'canonical', href: 'https://everyone.com/blog' }],
+  }),
 });
 
 function Blog() {

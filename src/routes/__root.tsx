@@ -15,22 +15,18 @@ interface MyRouterContext {
 export const Route = createRootRouteWithContext<MyRouterContext>()({
   head: () => ({
     meta: [
-      {
-        charSet: 'utf-8',
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
-      {
-        title: 'TanStack Start Starter',
-      },
+      { charSet: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { title: '@Everyone' },
+      { name: 'theme-color', content: '#000000' },
+      { property: 'og:site_name', content: '@Everyone' },
+      { property: 'og:locale', content: 'es_ES' },
+      { name: 'twitter:card', content: 'summary_large_image' },
     ],
     links: [
-      {
-        rel: 'stylesheet',
-        href: appCss,
-      },
+      { rel: 'stylesheet', href: appCss },
+      { rel: 'icon', href: '/favicon.ico', type: 'image/x-icon' },
+      { rel: 'apple-touch-icon', href: '/logo192.png' },
     ],
   }),
 
@@ -44,7 +40,7 @@ function RootComponent() {
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <HeadContent />
       </head>

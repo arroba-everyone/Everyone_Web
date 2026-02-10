@@ -5,6 +5,33 @@ import { EveryLog } from '@everyone-web/layouts/Projects/EveryLog';
 
 export const Route = createFileRoute('/projects')({
   component: Projects,
+  head: () => ({
+    meta: [
+      { title: 'Proyectos - @Everyone' },
+      {
+        name: 'description',
+        content:
+          'Descubre nuestros proyectos: EveryLog y NutrIA. Apps con propósito, diseño cuidado y tecnología que conecta personas.',
+      },
+      { property: 'og:title', content: 'Proyectos - @Everyone' },
+      {
+        property: 'og:description',
+        content:
+          'Descubre nuestros proyectos: EveryLog y NutrIA. Apps con propósito, diseño cuidado y tecnología que conecta personas.',
+      },
+      { property: 'og:url', content: 'https://everyone.com/projects' },
+      { property: 'og:image', content: 'https://everyone.com/logo512.png' },
+      { property: 'og:type', content: 'website' },
+      { name: 'twitter:title', content: 'Proyectos - @Everyone' },
+      {
+        name: 'twitter:description',
+        content:
+          'Descubre nuestros proyectos: EveryLog y NutrIA. Apps con propósito, diseño cuidado y tecnología que conecta personas.',
+      },
+      { name: 'twitter:image', content: 'https://everyone.com/logo512.png' },
+    ],
+    links: [{ rel: 'canonical', href: 'https://everyone.com/projects' }],
+  }),
 });
 
 function Projects() {
