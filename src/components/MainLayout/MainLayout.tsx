@@ -3,7 +3,6 @@ import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 
 export const MainLayout: IBaseComponent = ({ children }) => {
-  // TODO: Añadir consentimiento de cookies
   return (
     <div>
       <Navbar />

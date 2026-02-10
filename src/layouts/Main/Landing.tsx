@@ -39,8 +39,8 @@ export const Landing = () => {
               'text-md md:text-lg tablet-lg:text-xl laptop:text-2xl laptop-lg:text-3xl desktop:text-4xl'
             )}
           >
-            En @Everyone hacemos apps y contenido tech para humanos normales. Sin humo. Sin
-            postureo. Con mucho corazón.
+            En @Everyone hacemos apps y contenido tech para humanos normales. <br />
+            Sin humo. Sin postureo. Con mucho corazón.
           </h2>
 
           <div className={cn('flex flex-col gap-3 w-full', 'lg:flex-row lg:gap-2')}>
