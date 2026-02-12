@@ -38,27 +38,27 @@ export const NewsItem: IBaseComponent<IPost> = ({
     <div className="flex flex-col md:flex-row gap-6 md:gap-7 laptop:gap-8 w-full">
       {/* Image Container */}
       <div className="w-full md:w-105 tablet-lg:w-110 laptop:w-115 laptop-lg:w-120 shrink-0">
-        <img src={thumbnailUrl} alt={title} className="w-full h-auto rounded-lg object-cover" />
+        <img
+          src={thumbnailUrl}
+          alt={title}
+          className="w-full h-auto rounded-lg object-cover aspect-video"
+        />
       </div>
 
       {/* Content Container */}
       <div className="flex flex-col justify-between gap-4 md:gap-5 laptop:gap-6 flex-1">
         {/* Author and Date */}
         <div className="flex items-center gap-2 text-sm md:text-base">
-          <span style={{ color: 'var(--color-primary)' }} className="font-medium">
-            {author}
-          </span>
+          <span className="text-primary font-medium">{author}</span>
           <span className="text-muted-foreground">·</span>
-          <span style={{ color: 'var(--color-primary)' }} className="font-medium">
-            {formatDate(publishedAt)}
-          </span>
+          <span className="text-primary font-medium">{formatDate(publishedAt)}</span>
         </div>
 
         {/* Title */}
         <Link to={`/blog/$slug`} params={{ slug }} className="no-underline">
           <h2
             className={cn(
-              'transition-colors m-0 leading-tight',
+              'transition-colors m-0 p-0 leading-tight',
               'font-bold text-foreground hover:text-primary',
               'text-2xl md:text-3xl laptop-lg:text-4xl'
             )}
