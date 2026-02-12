@@ -1,6 +1,7 @@
 import movilesSeccion2 from '@everyone-web/assets/movilesSeccion2.png';
 import { cn } from '@everyone-web/libs/utils';
 import { Button } from '@everyone-web/ui/button';
+import { Link } from '@tanstack/react-router';
 
 export const SecondStep = () => {
   return (
@@ -51,9 +52,11 @@ export const SecondStep = () => {
           postureo.
         </p>
 
-        <Button size={'lg'} className="rounded-full w-fit">
-          Descubre más
-        </Button>
+        <Link to="/projects">
+          <Button size={'lg'} className="rounded-full w-fit">
+            Descubre más
+          </Button>
+        </Link>
       </div>
     </div>
   );

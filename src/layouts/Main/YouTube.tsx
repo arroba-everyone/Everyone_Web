@@ -3,6 +3,7 @@ import { Card } from '@everyone-web/ui/card';
 import ReactPlayer from 'react-player';
 import { Button } from '@everyone-web/ui/button';
 import { cn } from '@everyone-web/libs/utils';
+import { Link } from '@tanstack/react-router';
 
 export const YouTube = () => {
   const { data = FALLBACK_VIDEOS } = useGetLatestVideos();
@@ -25,7 +26,7 @@ export const YouTube = () => {
               'gap-6 tablet-lg:gap-7 laptop:gap-8'
             )}
           >
-            {data.map((videoId) => (
+            {data.map(videoId => (
               <div key={videoId} className="row-span-1">
                 <ReactPlayer
                   src={`https://www.youtube.com/watch?v=${videoId}`}
@@ -59,9 +60,11 @@ export const YouTube = () => {
               <br />
               Si quieres saber en qué estamos metidos ahora, este es tu sitio.
             </p>
-            <Button size={'lg'} className="rounded-full w-fit p-6 tablet-lg:p-7 laptop:p-8">
-              <span className="text-base tablet-lg:text-lg font-bold">Descubre más</span>
-            </Button>
+            <Link to="/blog">
+              <Button size={'lg'} className="rounded-full w-fit p-6 tablet-lg:p-7 laptop:p-8">
+                <span className="text-base tablet-lg:text-lg font-bold">Descubre más</span>
+              </Button>
+            </Link>
           </div>
         </div>
       </Card>

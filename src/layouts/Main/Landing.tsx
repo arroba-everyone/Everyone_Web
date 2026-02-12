@@ -44,19 +44,21 @@ export const Landing = () => {
           </h2>
 
           <div className={cn('flex flex-col gap-3 w-full', 'lg:flex-row lg:gap-2')}>
-            <Button className="rounded-full" size={'lg'}>
-              Explorar
-            </Button>
+            <Link to="/projects">
+              <Button className="rounded-full" size={'lg'}>
+                Explorar
+              </Button>
+            </Link>
 
-            <Button
-              className="rounded-full border border-primary text-primary"
-              size={'lg'}
-              variant="ghost"
-            >
-              <Link to="/contact" className={true ? 'w-full' : undefined}>
+            <Link to="/contact" className={true ? 'w-full' : undefined}>
+              <Button
+                className="rounded-full border border-primary text-primary"
+                size={'lg'}
+                variant="ghost"
+              >
                 Escríbenos
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </div>
         </div>
 

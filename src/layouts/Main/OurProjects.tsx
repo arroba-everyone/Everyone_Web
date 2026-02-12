@@ -1,6 +1,7 @@
 import { cn } from '@everyone-web/libs/utils';
 import { Button } from '@everyone-web/ui/button';
 import { Card } from '@everyone-web/ui/card';
+import { Link } from '@tanstack/react-router';
 
 export const OurProjects = () => {
   return (
@@ -105,12 +106,14 @@ export const OurProjects = () => {
                 De hablar de tecnología a diseñarla.
               </span>
             </div>
-            <Button
-              size={'lg'}
-              className="rounded-full w-fit md:p-6 laptop:p-7 laptop-lg:p-7 desktop:p-8"
-            >
-              <span className="text-base md:text-lg laptop:text-xl">Descubre más</span>
-            </Button>
+            <Link to="/projects">
+              <Button
+                size={'lg'}
+                className="rounded-full w-fit md:p-6 laptop:p-7 laptop-lg:p-7 desktop:p-8"
+              >
+                <span className="text-base md:text-lg laptop:text-xl">Descubre más</span>
+              </Button>
+            </Link>
           </div>
         </Card>
       </div>

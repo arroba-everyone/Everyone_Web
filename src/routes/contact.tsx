@@ -60,14 +60,16 @@ function Contact() {
               'rounded-[2.5rem] md:rounded-[3rem] laptop:rounded-[3.5rem] xl:rounded-[4rem]'
             )}
           >
-            <h1
-              className={cn(
-                'text-secondary-foreground font-bold text-center',
-                'text-2xl md:text-4xl laptop:text-5xl laptop-lg:text-6xl'
-              )}
-            >
-              contacto@everyone.com
-            </h1>
+            <a href="mailto:contacto@everyone.com">
+              <h1
+                className={cn(
+                  'text-secondary-foreground font-bold text-center',
+                  'text-2xl md:text-4xl laptop:text-5xl laptop-lg:text-6xl'
+                )}
+              >
+                contacto@everyone.com
+              </h1>
+            </a>
           </Card>
           <div className="grid grid-cols-3 gap-6 md:gap-7 laptop:gap-9 laptop-lg:gap-10 xl:gap-12 w-full max-w-md">
             <div className="aspect-square bg-foreground rounded-lg md:rounded-xl" />
