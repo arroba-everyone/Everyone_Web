@@ -4,6 +4,7 @@ import { Avatar, AvatarImage } from '@everyone-web/ui/avatar';
 import { createFileRoute } from '@tanstack/react-router';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 function stripMarkdown(md: string): string {
   return md
@@ -79,6 +80,7 @@ function BlogPost() {
         <div className="w-full max-w-4xl">
           <Markdown
             remarkPlugins={[[remarkGfm]]}
+            rehypePlugins={[rehypeRaw]}
             components={{
               h1: ({ node, ...props }) => (
                 <h1
@@ -169,6 +171,11 @@ function BlogPost() {
                     style={{ maxWidth: '100%', objectFit: 'cover' }}
                     {...props}
                   />
+                </div>
+              ),
+              iframe: ({ node, ...props }) => (
+                <div className="flex justify-center my-8">
+                  <iframe {...props} />
                 </div>
               ),
               hr: ({ node, ...props }) => (
