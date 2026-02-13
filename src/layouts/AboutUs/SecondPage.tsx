@@ -1,5 +1,5 @@
 import styles from '@everyone-web/css/index.module.css';
-import aboutUsPhone from '@everyone-web/assets/aboutUsPhone.png';
+import aboutUsPhone from '@everyone-web/assets/aboutUsPhone.webp';
 import { cn } from '@everyone-web/libs/utils';
 
 export const SecondPage = () => {

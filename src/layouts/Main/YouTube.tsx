@@ -10,7 +10,7 @@ export const YouTube = () => {
 
   return (
     <div className="h-screen">
-      <Card className="h-full bg-secondary mx-4 tablet-lg:mx-5">
+      <Card className="h-full bg-secondary text-background mx-4 tablet-lg:mx-5">
         <div
           className={cn(
             'grid h-full align-middle',

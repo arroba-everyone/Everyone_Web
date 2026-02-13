@@ -1,15 +1,20 @@
-import movilesSeccion2 from '@everyone-web/assets/movilesSeccion2.png';
+import creating from '@everyone-web/assets/creating.webp';
 import { cn } from '@everyone-web/libs/utils';
 import { Button } from '@everyone-web/ui/button';
 import { Link } from '@tanstack/react-router';
 
 export const SecondStep = () => {
   return (
-    <div className={cn('w-full h-full grid grid-cols-1 lg:grid-cols-2', 'xs:py-10 xs:px-5')}>
+    <div
+      className={cn('w-full h-screen grid grid-cols-1 lg:grid-cols-2', 'xs:py-10 xs:px-5 ps-10')}
+    >
       <img
-        src={movilesSeccion2}
+        src={creating}
         alt="Móviles sección 2"
-        className={cn('col-span-1 lg:col-span-1 order-1', 'w-fit h-fit')}
+        className={cn(
+          'col-span-1 lg:col-span-1 order-1 my-auto rounded-4xl laptop:rounded-[50px]',
+          'w-fit h-fit'
+        )}
       />
 
       <div
@@ -52,7 +57,7 @@ export const SecondStep = () => {
           postureo.
         </p>
 
-        <Link to="/projects">
+        <Link to="/aboutUs">
           <Button size={'lg'} className="rounded-full w-fit">
             Descubre más
           </Button>

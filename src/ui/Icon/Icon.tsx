@@ -1,15 +1,17 @@
 import type { IBaseComponent } from '@everyone-web/types/global';
+import { Building, BuildingIcon } from 'lucide-react';
 import {
   AiFillBug,
   AiOutlineGithub,
   AiOutlineInstagram,
+  AiOutlineLinkedin,
   AiOutlineMenu,
   AiOutlineTwitch,
   AiOutlineYoutube,
 } from 'react-icons/ai';
 import type { IconBaseProps, IconType } from 'react-icons/lib';
 
-export type IconNames = 'youtube' | 'instagram' | 'twitch' | 'github' | 'menu';
+export type IconNames = 'youtube' | 'instagram' | 'twitch' | 'github' | 'linkedin' | 'menu';
 
 interface IIcon extends IconBaseProps {
   name: IconNames;
@@ -21,6 +23,7 @@ const icons: Record<IconNames, IconType> = {
   twitch: AiOutlineTwitch,
   github: AiOutlineGithub,
   menu: AiOutlineMenu,
+  linkedin: AiOutlineLinkedin,
 };
 
 export const Icon: IBaseComponent<IIcon> = ({ name, cursor = 'currentColor', style, ...props }) => {

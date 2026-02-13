@@ -1,4 +1,4 @@
-import everyLog from '@everyone-web/assets/everyLog.png';
+import everyLog from '@everyone-web/assets/everyLog.webp';
 import { cn } from '@everyone-web/libs/utils';
 import { Button } from '@everyone-web/ui/button';
 
@@ -47,14 +47,18 @@ export const EveryLog = () => {
         <div className="flex gap-5 tablet-lg:gap-5 laptop:gap-6">
           <Button
             variant="outline"
-            className="w-20 h-20 tablet-lg:w-21 tablet-lg:h-21 laptop:w-22 laptop-lg:w-24 laptop-lg:h-24 bg-white hover:bg-gray-100 border-none rounded-xl"
+            className="w-20 h-20 text-6xl tablet-lg:w-21 tablet-lg:h-21 laptop:w-22 laptop-lg:w-24 laptop-lg:h-24 border-none rounded-xl bg-card!"
             aria-label="Download on App Store"
-          />
+          >
+            ⚒️
+          </Button>
           <Button
             variant="outline"
-            className="w-20 h-20 tablet-lg:w-21 tablet-lg:h-21 laptop:w-22 laptop-lg:w-24 laptop-lg:h-24 bg-white hover:bg-gray-100 border-none rounded-xl"
-            aria-label="Get it on Google Play"
-          />
+            className="w-20 h-20 text-6xl tablet-lg:w-21 tablet-lg:h-21 laptop:w-22 laptop-lg:w-24 laptop-lg:h-24 border-none rounded-xl bg-card!"
+            aria-label="Download on App Store"
+          >
+            ⚒️
+          </Button>
         </div>
       </div>
     </div>

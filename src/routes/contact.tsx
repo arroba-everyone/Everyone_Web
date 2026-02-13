@@ -1,8 +1,9 @@
 import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
 import { Card } from '@everyone-web/ui/card';
 import { createFileRoute } from '@tanstack/react-router';
-import contactPhone from '@everyone-web/assets/contactPhone.png';
+import contactPhone from '@everyone-web/assets/contactPhone.webp';
 import { cn } from '@everyone-web/libs/utils';
+import { Icon } from '@everyone-web/ui/Icon/Icon';
 
 export const Route = createFileRoute('/contact')({
   component: Contact,
@@ -72,9 +73,15 @@ function Contact() {
             </a>
           </Card>
           <div className="grid grid-cols-3 gap-6 md:gap-7 laptop:gap-9 laptop-lg:gap-10 xl:gap-12 w-full max-w-md">
-            <div className="aspect-square bg-foreground rounded-lg md:rounded-xl" />
-            <div className="aspect-square bg-foreground rounded-lg md:rounded-xl" />
-            <div className="aspect-square bg-foreground rounded-lg md:rounded-xl" />
+            <a href="https://www.youtube.com/@EveryoneChannel.oficial">
+              <Icon name="youtube" className="size-25" />
+            </a>
+            <a href="https://www.twitch.tv/arrobaeveryone">
+              <Icon name="twitch" className="size-25" />
+            </a>
+            <a href="https://github.com/arroba-everyone">
+              <Icon name="github" className="size-25" />
+            </a>
           </div>
         </div>
 

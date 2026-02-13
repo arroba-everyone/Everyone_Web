@@ -1,17 +1,22 @@
 import { Message } from '@everyone-web/components/Message/Message';
-import movilSeccion3 from '@everyone-web/assets/movilSeccion3.png';
+import juanAvatar from '@everyone-web/assets/juanAvatar.webp';
+import ireneAvatar from '@everyone-web/assets/ireneAvatar.webp';
+
+import everyoneStreet from '@everyone-web/assets/everyoneStreet.webp';
 
 export const Chat = () => {
   const messages = [
     {
       key: 1,
       sender: 'Irene - Marketing & CM',
+      imageUrl: ireneAvatar,
       children:
         'Si ves que todo lo que hacemos se ve bien, suena bien y da ganas de compartirlo… probablemente haya pasado por mis manos. 💅Campañas, redes y diseño con cerebro (y un poquito de perfume).',
     },
     {
       key: 2,
       sender: 'Juan - CEO & iOS Developer',
+      imageUrl: juanAvatar,
       sent: true,
       children:
         'Soy quien da forma a las interfaces y quien las convierte en apps para el ecosistema Apple 🍏. Me aseguro de que todo funcione con fluidez y tenga ese toque que hace que la tecnología se sienta cercana. Ah, y sí… en el setup de la oficina hay más LEGO del que admitiría en público 🧱😅.',
@@ -19,12 +24,14 @@ export const Chat = () => {
     {
       key: 3,
       sender: 'Pablo - CTO & Fullstack Developer',
+      imageUrl: 'https://avatars.githubusercontent.com/u/56578000?v=4',
       children:
         'Yo soy el que se encarga de que todo lo que soñamos realmente funcione ⚙️. Desarrollo la parte web, las apps Android y toda la magia del backend. Y si algo explota, probablemente fue antes de mi tercer café ☕️😆.',
     },
     {
       key: 4,
       sender: 'Juan - CEO & iOS Developer',
+      imageUrl: juanAvatar,
       sent: true,
       children:
         'Lo bueno es que aquí nadie trabaja solo 💪. Cada proyecto sale adelante porque mezclamos ideas, código y mucha cafeína. Y eso se nota en el resultado.',
@@ -32,7 +39,7 @@ export const Chat = () => {
     {
       key: 5,
       sender: 'Irene - Marketing & CM',
-      gap: 0,
+      imageUrl: ireneAvatar,
       children:
         'Exacto 💬. Somos distintos, pero cuando juntamos diseño, desarrollo y creatividad, pasan cosas guays. Y eso, al final, es lo que nos encanta hacer todos los días 💛.',
     },
@@ -47,11 +54,7 @@ export const Chat = () => {
           ))}
         </div>
 
-        <img
-          className="col-span-3 h-full tablet-lg:scale-97 laptop:scale-95 laptop-lg:scale-98"
-          src={movilSeccion3}
-          alt="Móvil sección 3"
-        />
+        {/*<img className="col-span-3 h-full" src={everyoneStreet} alt="Móvil sección 3" /> */}
       </div>
     </div>
   );

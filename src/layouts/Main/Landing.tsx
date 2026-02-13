@@ -1,5 +1,5 @@
 import styles from '@everyone-web/css/index.module.css';
-import landingPhone from '@everyone-web/assets/landingPhone.png';
+import landingPhone from '@everyone-web/assets/landingPhone.webp';
 import { Link } from '@tanstack/react-router';
 import { cn } from '@everyone-web/libs/utils';
 import { Button } from '@everyone-web/ui/button';

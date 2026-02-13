@@ -1,4 +1,4 @@
-import movilesContacto from '@everyone-web/assets/movilesContacto.png';
+import juanWorking from '@everyone-web/assets/juanWorking.webp';
 import { cn } from '@everyone-web/libs/utils';
 
 export const FirstPage = () => {
@@ -9,10 +9,10 @@ export const FirstPage = () => {
         'mt-28 tablet-lg:mt-32 laptop:mt-34 laptop-lg:mt-36 desktop:mt-38'
       )}
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="h-screen grid grid-cols-1 md:grid-cols-2 gap-4 px-10">
         <img
-          src={movilesContacto}
-          className="order-2 lg:order-1 tablet-lg:scale-96 laptop:scale-94 laptop-lg:scale-97"
+          src={juanWorking}
+          className="order-2 my-auto rounded-4xl laptop:rounded-[50px] lg:order-1 tablet-lg:scale-96 laptop:scale-94 laptop-lg:scale-97"
           alt=""
         />
         <div className="flex flex-col justify-center order-1 lg:order-2 px-4">
