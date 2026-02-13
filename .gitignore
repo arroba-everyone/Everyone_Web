@@ -9,3 +9,5 @@ count.txt
 .tanstack
 .vscode
 .unlighthouse
+# Local Netlify folder
+.netlify
