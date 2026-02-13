@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import { devtools } from '@tanstack/devtools-vite';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
+import netlify from '@netlify/vite-plugin-tanstack-start';
 import { fileURLToPath, URL } from 'url';
 
 import tailwindcss from '@tailwindcss/vite';
@@ -18,6 +19,7 @@ const config = defineConfig({
   },
   plugins: [
     devtools(),
+    netlify(),
     tanstackStart(),
     react(),
     // this is the plugin that enables path aliases

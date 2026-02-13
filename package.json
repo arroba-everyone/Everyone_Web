@@ -43,6 +43,7 @@
     "vite-tsconfig-paths": "^6.0.2"
   },
   "devDependencies": {
+    "@netlify/vite-plugin-tanstack-start": "^1.2.9",
     "@tanstack/devtools-vite": "^0.3.11",
     "@tanstack/eslint-config": "^0.3.0",
     "@tanstack/eslint-plugin-query": "5.91.2",

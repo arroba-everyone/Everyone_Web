@@ -2,7 +2,7 @@ import { Message } from '@everyone-web/components/Message/Message';
 import juanAvatar from '@everyone-web/assets/juanAvatar.webp';
 import ireneAvatar from '@everyone-web/assets/ireneAvatar.webp';
 
-import everyoneStreet from '@everyone-web/assets/everyoneStreet.webp';
+// import everyoneStreet from '@everyone-web/assets/everyoneStreet.webp';
 
 export const Chat = () => {
   const messages = [

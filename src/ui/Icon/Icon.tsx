@@ -1,5 +1,4 @@
 import type { IBaseComponent } from '@everyone-web/types/global';
-import { Building, BuildingIcon } from 'lucide-react';
 import {
   AiFillBug,
   AiOutlineGithub,
