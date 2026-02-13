@@ -21,8 +21,8 @@ export const Route = createFileRoute('/contact')({
         content:
           'Ponte en contacto con @Everyone. Escríbenos a contacto@everyone.com y hablemos de tu próximo proyecto.',
       },
-      { property: 'og:url', content: 'https://everyone.com/contact' },
-      { property: 'og:image', content: 'https://everyone.com/logo512.png' },
+      { property: 'og:url', content: 'https://arrobaeveryone.com/contact' },
+      { property: 'og:image', content: 'https://arrobaeveryone.com/logo512.png' },
       { property: 'og:type', content: 'website' },
       { name: 'twitter:title', content: 'Contacto - @Everyone' },
       {
@@ -30,9 +30,9 @@ export const Route = createFileRoute('/contact')({
         content:
           'Ponte en contacto con @Everyone. Escríbenos a contacto@everyone.com y hablemos de tu próximo proyecto.',
       },
-      { name: 'twitter:image', content: 'https://everyone.com/logo512.png' },
+      { name: 'twitter:image', content: 'https://arrobaeveryone.com/logo512.png' },
     ],
-    links: [{ rel: 'canonical', href: 'https://everyone.com/contact' }],
+    links: [{ rel: 'canonical', href: 'https://arrobaeveryone.com/contact' }],
   }),
 });
 

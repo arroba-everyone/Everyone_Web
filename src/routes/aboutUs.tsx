@@ -20,8 +20,8 @@ export const Route = createFileRoute('/aboutUs')({
         content:
           'Somos un estudio donde la creatividad y la tecnología trabajan codo con codo. Creamos apps, experiencias digitales y contenido con propósito.',
       },
-      { property: 'og:url', content: 'https://everyone.com/aboutUs' },
-      { property: 'og:image', content: 'https://everyone.com/logo512.png' },
+      { property: 'og:url', content: 'https://arrobaeveryone.com/aboutUs' },
+      { property: 'og:image', content: 'https://arrobaeveryone.com/logo512.png' },
       { property: 'og:type', content: 'website' },
       { name: 'twitter:title', content: 'Sobre Nosotros - @Everyone' },
       {
@@ -29,9 +29,9 @@ export const Route = createFileRoute('/aboutUs')({
         content:
           'Somos un estudio donde la creatividad y la tecnología trabajan codo con codo. Creamos apps, experiencias digitales y contenido con propósito.',
       },
-      { name: 'twitter:image', content: 'https://everyone.com/logo512.png' },
+      { name: 'twitter:image', content: 'https://arrobaeveryone.com/logo512.png' },
     ],
-    links: [{ rel: 'canonical', href: 'https://everyone.com/aboutUs' }],
+    links: [{ rel: 'canonical', href: 'https://arrobaeveryone.com/aboutUs' }],
   }),
 });
 

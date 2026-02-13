@@ -21,8 +21,8 @@ export const Route = createFileRoute('/blog/')({
         content:
           'Artículos sobre tecnología, desarrollo de apps y contenido tech para humanos normales.',
       },
-      { property: 'og:url', content: 'https://everyone.com/blog' },
-      { property: 'og:image', content: 'https://everyone.com/logo512.png' },
+      { property: 'og:url', content: 'https://arrobaeveryone.com/blog' },
+      { property: 'og:image', content: 'https://arrobaeveryone.com/logo512.png' },
       { property: 'og:type', content: 'website' },
       { name: 'twitter:title', content: 'Blog - @Everyone' },
       {
@@ -30,9 +30,9 @@ export const Route = createFileRoute('/blog/')({
         content:
           'Artículos sobre tecnología, desarrollo de apps y contenido tech para humanos normales.',
       },
-      { name: 'twitter:image', content: 'https://everyone.com/logo512.png' },
+      { name: 'twitter:image', content: 'https://arrobaeveryone.com/logo512.png' },
     ],
-    links: [{ rel: 'canonical', href: 'https://everyone.com/blog' }],
+    links: [{ rel: 'canonical', href: 'https://arrobaeveryone.com/blog' }],
   }),
 });
 

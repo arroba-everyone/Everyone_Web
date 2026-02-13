@@ -24,8 +24,8 @@ export const Route = createFileRoute('/blog/$slug')({
     const description = loaderData?.markdown
       ? stripMarkdown(loaderData.markdown)
       : 'Artículos sobre tecnología, desarrollo de apps y contenido tech.';
-    const image = loaderData?.thumbnailUrl || 'https://everyone.com/logo512.png';
-    const url = `https://everyone.com/blog/${loaderData?.slug || ''}`;
+    const image = loaderData?.thumbnailUrl || 'https://arrobaeveryone.com/logo512.png';
+    const url = `https://arrobaeveryone.com/blog/${loaderData?.slug || ''}`;
 
     return {
       meta: [

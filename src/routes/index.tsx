@@ -19,8 +19,8 @@ export const Route = createFileRoute('/')({
         content:
           'En @Everyone hacemos apps y contenido tech para humanos normales. Sin humo. Sin postureo. Con mucho corazón.',
       },
-      { property: 'og:url', content: 'https://everyone.com' },
-      { property: 'og:image', content: 'https://everyone.com/logo512.png' },
+      { property: 'og:url', content: 'https://arrobaeveryone.com' },
+      { property: 'og:image', content: 'https://arrobaeveryone.com/logo512.png' },
       { property: 'og:type', content: 'website' },
       { name: 'twitter:title', content: '@Everyone - Innovar no es complicar. Es conectar.' },
       {
@@ -28,9 +28,9 @@ export const Route = createFileRoute('/')({
         content:
           'En @Everyone hacemos apps y contenido tech para humanos normales. Sin humo. Sin postureo. Con mucho corazón.',
       },
-      { name: 'twitter:image', content: 'https://everyone.com/logo512.png' },
+      { name: 'twitter:image', content: 'https://arrobaeveryone.com/logo512.png' },
     ],
-    links: [{ rel: 'canonical', href: 'https://everyone.com' }],
+    links: [{ rel: 'canonical', href: 'https://arrobaeveryone.com' }],
   }),
 });
 

@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://everyone.com/sitemap.xml
+Sitemap: https://arrobaeveryone.com/sitemap.xml

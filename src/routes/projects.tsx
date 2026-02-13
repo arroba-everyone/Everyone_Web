@@ -19,8 +19,8 @@ export const Route = createFileRoute('/projects')({
         content:
           'Descubre nuestros proyectos: EveryLog y NutrIA. Apps con propósito, diseño cuidado y tecnología que conecta personas.',
       },
-      { property: 'og:url', content: 'https://everyone.com/projects' },
-      { property: 'og:image', content: 'https://everyone.com/logo512.png' },
+      { property: 'og:url', content: 'https://arrobaeveryone.com/projects' },
+      { property: 'og:image', content: 'https://arrobaeveryone.com/logo512.png' },
       { property: 'og:type', content: 'website' },
       { name: 'twitter:title', content: 'Proyectos - @Everyone' },
       {
@@ -28,9 +28,9 @@ export const Route = createFileRoute('/projects')({
         content:
           'Descubre nuestros proyectos: EveryLog y NutrIA. Apps con propósito, diseño cuidado y tecnología que conecta personas.',
       },
-      { name: 'twitter:image', content: 'https://everyone.com/logo512.png' },
+      { name: 'twitter:image', content: 'https://arrobaeveryone.com/logo512.png' },
     ],
-    links: [{ rel: 'canonical', href: 'https://everyone.com/projects' }],
+    links: [{ rel: 'canonical', href: 'https://arrobaeveryone.com/projects' }],
   }),
 });
 
