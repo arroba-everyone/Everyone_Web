@@ -1,6 +1,10 @@
 [build]
   command = "vite build"
   publish = "dist/client"
+
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "VITE_YOUTUBE_API_KEY,VITE_EVERYONE_YT_LINK,VITE_SUPABASE_ANON_KEY,VITE_SUPABASE_URL"
+
 [dev]
   command = "vite dev"
   port = 3000
