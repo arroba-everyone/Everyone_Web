@@ -2,6 +2,7 @@ import { Profile } from '@everyone-web/components/Profile/Profile';
 import { cn } from '@everyone-web/libs/utils';
 import juanAvatar from '@everyone-web/assets/juanAvatar.webp';
 import ireneAvatar from '@everyone-web/assets/ireneAvatar.webp';
+import pabloAvatar from '@everyone-web/assets/pabloAvatar.webp';
 
 export const ThirdPage = () => {
   const profiles = [
@@ -17,7 +18,7 @@ export const ThirdPage = () => {
     },
     {
       name: 'Pablo Enguix Llopis',
-      imageUrl: 'https://avatars.githubusercontent.com/u/56578000?v=4',
+      imageUrl: pabloAvatar,
       position: 'CTO · Desarrollador Web · Backend & Android',
       bio: 'Guardián del “que todo funcione”. Programa la base tecnológica de los proyectos: desde el backend hasta las aplicaciones Android y la web. Combina lógica, estructura y café ☕ para convertir las ideas en sistemas estables y elegantes.',
       links: {

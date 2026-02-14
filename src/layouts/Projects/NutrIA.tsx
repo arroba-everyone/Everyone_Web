@@ -1,4 +1,4 @@
-import mysteryPhone from '@everyone-web/assets/mysteryPhone.png';
+import mysteryPhone from '@everyone-web/assets/mysteryPhone.webp';
 import { cn } from '@everyone-web/libs/utils';
 import { Button } from '@everyone-web/ui/button';
 

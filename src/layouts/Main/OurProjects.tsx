@@ -2,7 +2,7 @@ import { cn } from '@everyone-web/libs/utils';
 import { Button } from '@everyone-web/ui/button';
 import { Card } from '@everyone-web/ui/card';
 import { Link } from '@tanstack/react-router';
-import youtubePhone from '@everyone-web/assets/youtubePhone.png';
+import youtubePhone from '@everyone-web/assets/youtubePhone.webp';
 
 export const OurProjects = () => {
   return (

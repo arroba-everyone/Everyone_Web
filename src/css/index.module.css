@@ -1,3 +1,4 @@
 .landing {
   background: url('../assets/fondoLanding.webp') no-repeat center center;
+  background-size: cover;
 }

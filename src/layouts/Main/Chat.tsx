@@ -1,6 +1,7 @@
 import { Message } from '@everyone-web/components/Message/Message';
 import juanAvatar from '@everyone-web/assets/juanAvatar.webp';
 import ireneAvatar from '@everyone-web/assets/ireneAvatar.webp';
+import pabloAvatar from '@everyone-web/assets/pabloAvatar.webp';
 
 // import everyoneStreet from '@everyone-web/assets/everyoneStreet.webp';
 
@@ -24,7 +25,7 @@ export const Chat = () => {
     {
       key: 3,
       sender: 'Pablo - CTO & Fullstack Developer',
-      imageUrl: 'https://avatars.githubusercontent.com/u/56578000?v=4',
+      imageUrl: pabloAvatar,
       children:
         'Yo soy el que se encarga de que todo lo que soñamos realmente funcione ⚙️. Desarrollo la parte web, las apps Android y toda la magia del backend. Y si algo explota, probablemente fue antes de mi tercer café ☕️😆.',
     },
