@@ -24,7 +24,7 @@ export const getRouter = () => {
     context: {
       queryClient,
     },
-
+    scrollRestoration: true,
     defaultPreload: 'intent',
   });
 

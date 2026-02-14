@@ -61,26 +61,26 @@ function Contact() {
               'rounded-[2.5rem] md:rounded-[3rem] laptop:rounded-[3.5rem] xl:rounded-[4rem]'
             )}
           >
-            <a href="mailto:contacto@everyone.com">
+            <a href="mailto:contacto@arrobaeveryone.com">
               <h1
                 className={cn(
                   'text-secondary-foreground font-bold text-center',
-                  'text-2xl md:text-4xl laptop:text-5xl laptop-lg:text-6xl'
+                  'text-xl md:text-3xl laptop:text-4xl laptop-lg:text-5xl desktop:text-8xl'
                 )}
               >
-                contacto@everyone.com
+                contacto@arrobaeveryone.com
               </h1>
             </a>
           </Card>
-          <div className="grid grid-cols-3 gap-6 md:gap-7 laptop:gap-9 laptop-lg:gap-10 xl:gap-12 w-full max-w-md">
+          <div className="grid grid-cols-3 gap-6 md:gap-7 laptop:gap-9 laptop-lg:gap-10 xl:gap-12 desktop:gap-50 w-full max-w-md desktop:max-w-4xl">
             <a href="https://www.youtube.com/@EveryoneChannel.oficial">
-              <Icon name="youtube" className="size-25" />
+              <Icon name="youtube" className="size-25 desktop:size-50" />
             </a>
             <a href="https://www.twitch.tv/arrobaeveryone">
-              <Icon name="twitch" className="size-25" />
+              <Icon name="twitch" className="size-25 desktop:size-50" />
             </a>
             <a href="https://github.com/arroba-everyone">
-              <Icon name="github" className="size-25" />
+              <Icon name="github" className="size-25 desktop:size-50" />
             </a>
           </div>
         </div>
