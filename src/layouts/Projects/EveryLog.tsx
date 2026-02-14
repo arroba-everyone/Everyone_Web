@@ -7,7 +7,7 @@ export const EveryLog = () => {
     <div
       className={cn(
         'w-full min-h-screen grid',
-        'grid-cols-1 lg:grid-cols-[1fr_auto_1fr]',
+        'grid-cols-1 lg:grid-cols-[1fr_auto_1fr] desktop:grid-cols-[3fr_auto_2fr]',
         'gap-8 tablet-lg:gap-10 laptop:gap-11 laptop-lg:gap-12',
         'items-center justify-items-center',
         'px-6 tablet-lg:px-8 laptop:px-10 laptop-lg:px-12',

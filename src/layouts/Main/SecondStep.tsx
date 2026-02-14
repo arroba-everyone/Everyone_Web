@@ -8,7 +8,7 @@ export const SecondStep = () => {
     <div className={cn('w-full h-screen grid grid-cols-1 lg:grid-cols-2', 'xs:py-10 px-5')}>
       <img
         src={creating}
-        alt="Móviles sección 2"
+        alt="Creamos tecnología que se siente humana"
         className={cn(
           'col-span-1 lg:col-span-1 order-1 my-auto rounded-4xl laptop:rounded-[50px]',
           'max-w-full max-h-full object-contain mx-auto'

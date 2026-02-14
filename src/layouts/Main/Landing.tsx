@@ -28,7 +28,7 @@ export const Landing = () => {
           <h1
             className={cn(
               'font-bold w-fit',
-              'text-xl md:text-3xl tablet-lg:text-4xl laptop:text-5xl laptop-lg:text-6xl desktop:text-7xl'
+              'text-xl md:text-3xl tablet-lg:text-4xl laptop:text-5xl laptop-lg:text-6xl desktop:text-8xl'
             )}
           >
             Innovar no es complicar. Es conectar.
@@ -36,7 +36,7 @@ export const Landing = () => {
 
           <h2
             className={cn(
-              'text-md md:text-lg tablet-lg:text-xl laptop:text-2xl laptop-lg:text-3xl desktop:text-4xl'
+              'text-md md:text-lg tablet-lg:text-xl laptop:text-2xl laptop-lg:text-3xl desktop:text-5xl'
             )}
           >
             En @Everyone hacemos apps y contenido tech para humanos normales. <br />
@@ -45,14 +45,14 @@ export const Landing = () => {
 
           <div className={cn('flex flex-col gap-3 w-full', 'lg:flex-row lg:gap-2')}>
             <Link to="/projects">
-              <Button className="rounded-full" size={'lg'}>
+              <Button className="rounded-full text-lg desktop:text-2xl" size={'lg'}>
                 Explorar
               </Button>
             </Link>
 
             <Link to="/contact" className={true ? 'w-full' : undefined}>
               <Button
-                className="rounded-full border border-primary text-primary"
+                className="rounded-full border border-primary text-primary text-lg desktop:text-2xl"
                 size={'lg'}
                 variant="ghost"
               >
@@ -67,8 +67,8 @@ export const Landing = () => {
           alt="Móvil landing page"
           className={cn(
             'object-contain',
-            'w-62.5 tablet-lg:w-70 laptop:w-75 laptop-lg:w-80 desktop:w-87.5',
-            'h-125 tablet-lg:h-140 laptop:h-150 laptop-lg:h-160 desktop:h-175'
+            'w-62.5 tablet-lg:w-70 laptop:w-75 laptop-lg:w-80 desktop:w-200',
+            'h-125 tablet-lg:h-140 laptop:h-150 laptop-lg:h-160 desktop:h-250'
           )}
         />
       </div>

@@ -65,7 +65,7 @@ function Contact() {
               <h1
                 className={cn(
                   'text-secondary-foreground font-bold text-center',
-                  'text-xl md:text-3xl laptop:text-4xl laptop-lg:text-5xl desktop:text-8xl'
+                  'text-xl md:text-3xl laptop:text-4xl laptop-lg:text-5xl desktop:text-7xl'
                 )}
               >
                 contacto@arrobaeveryone.com
