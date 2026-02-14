@@ -3,7 +3,7 @@ import juanAvatar from '@everyone-web/assets/juanAvatar.webp';
 import ireneAvatar from '@everyone-web/assets/ireneAvatar.webp';
 import pabloAvatar from '@everyone-web/assets/pabloAvatar.webp';
 
-// import everyoneStreet from '@everyone-web/assets/everyoneStreet.webp';
+import gato from '@everyone-web/assets/gato.webp';
 
 export const Chat = () => {
   const messages = [
@@ -55,7 +55,7 @@ export const Chat = () => {
           ))}
         </div>
 
-        {/*<img className="col-span-3 h-full" src={everyoneStreet} alt="Móvil sección 3" /> */}
+        <img className="col-span-3 h-full lg:w-5/12" src={gato} alt="Móvil sección 3" />
       </div>
     </div>
   );
