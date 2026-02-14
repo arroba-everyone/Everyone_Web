@@ -56,7 +56,10 @@ export const SecondStep = () => {
         </p>
 
         <Link to="/aboutUs">
-          <Button size={'lg'} className="rounded-full w-fit">
+          <Button
+            size={'lg'}
+            className="rounded-full transition-all hover:scale-110 cursor-pointer w-fit"
+          >
             Descubre más
           </Button>
         </Link>

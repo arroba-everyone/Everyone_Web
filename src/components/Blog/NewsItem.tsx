@@ -60,7 +60,8 @@ export const NewsItem: IBaseComponent<IPost> = ({
             className={cn(
               'transition-colors m-0 p-0 leading-tight',
               'font-bold text-foreground hover:text-primary',
-              'text-2xl md:text-3xl laptop-lg:text-4xl'
+              'text-2xl md:text-3xl laptop-lg:text-4xl',
+              'transition-all cursor-pointer'
             )}
           >
             {title}
@@ -72,9 +73,10 @@ export const NewsItem: IBaseComponent<IPost> = ({
           to={`/blog/$slug`}
           params={{ slug }}
           className={cn(
-            'inline-flex items-center gap-2 transition-colors',
+            'inline-flex w-fit items-center gap-2 transition-colors',
             'text-base md:text-lg font-medium no-underline',
-            'text-primary hover:text-primary/80'
+            'text-primary hover:text-primary/80',
+            'transition-all cursor-pointer hover:scale-110'
           )}
         >
           Ver más →

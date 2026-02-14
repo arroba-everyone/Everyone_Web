@@ -43,16 +43,19 @@ export const Landing = () => {
             Sin humo. Sin postureo. Con mucho corazón.
           </h2>
 
-          <div className={cn('flex flex-col gap-3 w-full', 'lg:flex-row lg:gap-2')}>
+          <div className={cn('flex flex-col gap-3 w-full', 'lg:flex-row lg:gap-4')}>
             <Link to="/projects">
-              <Button className="rounded-full text-lg desktop:text-2xl" size={'lg'}>
+              <Button
+                className="rounded-full transition-all hover:scale-110 cursor-pointer text-lg desktop:text-2xl"
+                size={'lg'}
+              >
                 Explorar
               </Button>
             </Link>
 
             <Link to="/contact" className={true ? 'w-full' : undefined}>
               <Button
-                className="rounded-full border border-primary text-primary text-lg desktop:text-2xl"
+                className="rounded-full transition-all hover:scale-110 cursor-pointer border border-primary text-primary text-lg desktop:text-2xl"
                 size={'lg'}
                 variant="ghost"
               >

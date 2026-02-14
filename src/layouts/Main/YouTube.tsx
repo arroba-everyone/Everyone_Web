@@ -61,7 +61,10 @@ export const YouTube = () => {
               Si quieres saber en qué estamos metidos ahora, este es tu sitio.
             </p>
             <Link to="/blog">
-              <Button size={'lg'} className="rounded-full w-fit p-6 tablet-lg:p-7 laptop:p-8">
+              <Button
+                size={'lg'}
+                className="rounded-full transition-all hover:scale-110 cursor-pointer w-fit p-6 tablet-lg:p-7 laptop:p-8"
+              >
                 <span className="text-base tablet-lg:text-lg font-bold">Descubre más</span>
               </Button>
             </Link>

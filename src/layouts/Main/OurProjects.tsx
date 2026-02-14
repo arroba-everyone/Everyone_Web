@@ -75,7 +75,7 @@ export const OurProjects = () => {
             <Link to="/projects">
               <Button
                 size={'lg'}
-                className="rounded-full w-fit md:p-6 laptop:p-7 laptop-lg:p-7 desktop:p-8"
+                className="rounded-full transition-all hover:scale-110 cursor-pointer w-fit md:p-6 laptop:p-7 laptop-lg:p-7 desktop:p-8"
               >
                 <span className="text-base md:text-lg laptop:text-xl">Descubre más</span>
               </Button>

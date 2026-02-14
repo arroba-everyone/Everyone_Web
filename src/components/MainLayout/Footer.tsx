@@ -20,19 +20,19 @@ export const Footer = () => {
           <a href="https://www.youtube.com/@EveryoneChannel.oficial">
             <Icon
               name="youtube"
-              className="size-6 tablet-lg:size-7 laptop:size-7 laptop-lg:size-8 desktop:size-10"
+              className="size-6 tablet-lg:size-7 laptop:size-7 laptop-lg:size-8 desktop:size-10 transition-all hover:scale-110"
             />
           </a>
           <a href="https://www.twitch.tv/arrobaeveryone">
             <Icon
               name="twitch"
-              className="size-6 tablet-lg:size-7 laptop:size-7 laptop-lg:size-8 desktop:size-10"
+              className="size-6 tablet-lg:size-7 laptop:size-7 laptop-lg:size-8 desktop:size-10 transition-all hover:scale-110"
             />
           </a>
           <a href="https://github.com/arroba-everyone">
             <Icon
               name="github"
-              className="size-6 tablet-lg:size-7 laptop:size-7 laptop-lg:size-8 desktop:size-10"
+              className="size-6 tablet-lg:size-7 laptop:size-7 laptop-lg:size-8 desktop:size-10 transition-all hover:scale-110"
             />
           </a>
         </div>
