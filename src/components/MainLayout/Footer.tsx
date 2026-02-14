@@ -12,7 +12,7 @@ export const Footer = () => {
           'bg-primary text-primary-foreground'
         )}
       >
-        <p className="text-center font-bold text-lg tablet-lg:text-xl laptop:text-xl laptop-lg:text-2xl">
+        <p className="text-center font-bold text-lg tablet-lg:text-xl laptop:text-xl laptop-lg:text-2xl desktop:text-3xl">
           @everyone
         </p>
 
@@ -20,25 +20,25 @@ export const Footer = () => {
           <a href="https://www.youtube.com/@EveryoneChannel.oficial">
             <Icon
               name="youtube"
-              className="size-6 tablet-lg:size-7 laptop:size-7 laptop-lg:size-8"
+              className="size-6 tablet-lg:size-7 laptop:size-7 laptop-lg:size-8 desktop:size-10"
             />
           </a>
           <a href="https://www.twitch.tv/arrobaeveryone">
             <Icon
               name="twitch"
-              className="size-6 tablet-lg:size-7 laptop:size-7 laptop-lg:size-8"
+              className="size-6 tablet-lg:size-7 laptop:size-7 laptop-lg:size-8 desktop:size-10"
             />
           </a>
           <a href="https://github.com/arroba-everyone">
             <Icon
               name="github"
-              className="size-6 tablet-lg:size-7 laptop:size-7 laptop-lg:size-8"
+              className="size-6 tablet-lg:size-7 laptop:size-7 laptop-lg:size-8 desktop:size-10"
             />
           </a>
         </div>
 
         <div className="flex flex-col gap-2 items-center">
-          <p className="text-center font-bold text-sm tablet-lg:text-sm laptop:text-base">
+          <p className="text-center font-bold text-sm tablet-lg:text-sm laptop:text-base desktop:text-lg">
             @everyone 2026 ©. Todos los derechos reservados
           </p>
         </div>
