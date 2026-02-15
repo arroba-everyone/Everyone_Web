@@ -4,8 +4,11 @@ import ireneAvatar from '@everyone-web/assets/ireneAvatar.webp';
 import pabloAvatar from '@everyone-web/assets/pabloAvatar.webp';
 
 import gato from '@everyone-web/assets/gato.webp';
+import { motion } from 'motion/react';
+import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const Chat = () => {
+  const { ref, smoothY } = useParallax(80);
   const messages = [
     {
       key: 1,
@@ -55,7 +58,9 @@ export const Chat = () => {
           ))}
         </div>
 
-        <img className="col-span-3 h-full lg:w-5/12" src={gato} alt="Móvil sección 3" />
+        <div ref={ref} className="col-span-3 h-full lg:w-5/12">
+          <motion.img style={{ y: smoothY }} className="w-full h-full" src={gato} alt="Móvil sección 3" />
+        </div>
       </div>
     </div>
   );

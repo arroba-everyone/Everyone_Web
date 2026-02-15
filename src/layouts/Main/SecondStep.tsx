@@ -2,18 +2,22 @@ import creating from '@everyone-web/assets/creating.webp';
 import { cn } from '@everyone-web/libs/utils';
 import { Button } from '@everyone-web/ui/button';
 import { Link } from '@tanstack/react-router';
+import { motion } from 'motion/react';
+import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const SecondStep = () => {
+  const { ref, smoothY } = useParallax(80);
+
   return (
     <div className={cn('w-full h-screen grid grid-cols-1 lg:grid-cols-2', 'xs:py-10 px-5')}>
-      <img
-        src={creating}
-        alt="Creamos tecnología que se siente humana"
-        className={cn(
-          'col-span-1 lg:col-span-1 order-1 my-auto rounded-4xl laptop:rounded-[50px]',
-          'max-w-full max-h-full object-contain mx-auto'
-        )}
-      />
+      <div ref={ref} className="col-span-1 order-1 my-auto rounded-4xl laptop:rounded-[50px]">
+        <motion.img
+          style={{ y: smoothY }}
+          src={creating}
+          alt="Creamos tecnología que se siente humana"
+          className="max-w-full max-h-full rounded-4xl object-contain mx-auto"
+        />
+      </div>
 
       <div
         className={cn(

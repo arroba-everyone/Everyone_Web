@@ -2,6 +2,7 @@ import { cn } from '@everyone-web/libs/utils';
 import type { IBaseComponent } from '@everyone-web/types/global';
 import { Avatar, AvatarImage } from '@everyone-web/ui/avatar';
 import { Icon, type IconNames } from '@everyone-web/ui/Icon/Icon';
+import { motion } from 'motion/react';
 
 interface IProfile {
   name: string;
@@ -23,7 +24,11 @@ export const Profile: IBaseComponent<IProfile> = ({
   const socials = Object.entries(links);
 
   return (
-    <div
+    <motion.div
+      initial={{ scale: 1 }}
+      whileInView={{ scale: 1.05 }}
+      viewport={{ amount: 0.9, margin: '-25% 0px -25% 0px' }}
+      transition={{ duration: 0.3 }}
       className={cn(
         'flex',
         'flex-col md:flex-row items-center',
@@ -71,6 +76,6 @@ export const Profile: IBaseComponent<IProfile> = ({
           })}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

@@ -5,6 +5,7 @@ import { createFileRoute } from '@tanstack/react-router';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import { motion, useScroll } from 'motion/react';
 
 function stripMarkdown(md: string): string {
   return md
@@ -71,11 +72,23 @@ export const Route = createFileRoute('/blog/$slug')({
   component: BlogPost,
 });
 
+function Progress() {
+  const { scrollYProgress } = useScroll();
+
+  return (
+    <motion.div
+      className="bg-primary fixed top-0 left-0 right-0 origin-left h-1"
+      style={{ scaleX: scrollYProgress }}
+    />
+  );
+}
+
 function BlogPost() {
   const post = Route.useLoaderData();
 
   return (
     <MainLayout>
+      <Progress />
       <div className="flex flex-col justify-center items-center px-4 py-12 md:py-20 mt-20 lg:mt-12">
         <div className="w-full max-w-4xl">
           <Markdown

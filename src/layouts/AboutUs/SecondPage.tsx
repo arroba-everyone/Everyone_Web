@@ -1,8 +1,12 @@
 import styles from '@everyone-web/css/index.module.css';
 import aboutUsPhone from '@everyone-web/assets/aboutUsPhone.webp';
 import { cn } from '@everyone-web/libs/utils';
+import { motion } from 'motion/react';
+import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const SecondPage = () => {
+  const { ref, smoothY } = useParallax(80);
+
   return (
     <div className="rotate-180 w-full tablet-lg:h-[95vh] lg:h-screen py-10 lg:py-8 px-4">
       <div className={cn(styles.landing, 'w-full h-full rounded-4xl bg-cover')}>
@@ -38,11 +42,14 @@ export const SecondPage = () => {
               comunidad.
             </p>
           </div>
-          <img
-            src={aboutUsPhone}
-            className="w-1/2 tablet-lg:w-1/3 laptop:w-1/4 laptop-lg:w-1/5 desktop:w-[15%] h-auto"
-            alt=""
-          />
+          <div ref={ref} className="w-1/2 tablet-lg:w-1/3 laptop:w-1/4 laptop-lg:w-1/5 desktop:w-[15%]">
+            <motion.img
+              style={{ y: smoothY }}
+              src={aboutUsPhone}
+              className="w-full h-auto"
+              alt=""
+            />
+          </div>
         </div>
       </div>
     </div>

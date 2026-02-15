@@ -1,15 +1,20 @@
 import juanWorking from '@everyone-web/assets/juanWorking.webp';
 import { cn } from '@everyone-web/libs/utils';
+import { motion } from 'motion/react';
+import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const FirstPage = () => {
+  const { ref, smoothY } = useParallax(80);
+
   return (
     <div className={cn('flex justify-center items-center')}>
       <div className="h-screen grid grid-cols-1 md:grid-cols-2 gap-4 px-10">
-        <img
-          src={juanWorking}
+        <div
+          ref={ref}
           className="order-2 m-auto rounded-4xl laptop:rounded-[50px] lg:order-1 desktop:scale-150"
-          alt=""
-        />
+        >
+          <motion.img style={{ y: smoothY }} src={juanWorking} className="rounded-4xl" alt="" />
+        </div>
         <div className="flex flex-col justify-center order-1 lg:order-2 px-4">
           <h1
             className={cn(

@@ -1,8 +1,12 @@
 import everyLog from '@everyone-web/assets/everyLog.webp';
 import { cn } from '@everyone-web/libs/utils';
 import { Button } from '@everyone-web/ui/button';
+import { motion } from 'motion/react';
+import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const EveryLog = () => {
+  const { ref, smoothY } = useParallax(80);
+
   return (
     <div
       className={cn(
@@ -30,8 +34,9 @@ export const EveryLog = () => {
       </div>
 
       {/* Center phone image */}
-      <div className="flex items-center justify-center">
-        <img
+      <div ref={ref} className="flex items-center justify-center">
+        <motion.img
+          style={{ y: smoothY }}
           src={everyLog}
           alt="EveryLog app"
           className="w-75 tablet-lg:w-82 laptop:w-90 laptop-lg:w-100 desktop:w-112.5 object-contain"

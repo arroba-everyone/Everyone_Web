@@ -1,5 +1,6 @@
 import { cn } from '@everyone-web/libs/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '@everyone-web/ui/avatar';
+import { motion } from 'motion/react';
 import type { JSX, ReactNode } from 'react';
 
 interface IMessageProps {
@@ -8,15 +9,23 @@ interface IMessageProps {
   sender: ReactNode;
   sent?: boolean;
 }
-// TODO un piquito?
+
 export const Message = ({
   children,
   sender,
   sent = false,
   imageUrl,
 }: IMessageProps): JSX.Element => {
+  const xOffset = sent ? 50 : -50;
+
   return (
-    <div className={cn('flex w-full items-start gap-3', sent ? 'flex-row-reverse' : 'flex-row')}>
+    <motion.div
+      className={cn('flex w-full items-start gap-3', sent ? 'flex-row-reverse' : 'flex-row')}
+      initial={{ opacity: 0, x: xOffset }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: false, amount: 0.1, margin: '0px 0px -50px 0px' }}
+      transition={{ duration: 0.4, ease: 'easeInOut' }}
+    >
       <Avatar className="size-10 mt-3">
         <AvatarImage src={imageUrl} />
         <AvatarFallback>{sender?.toString().at(0)}</AvatarFallback>
@@ -33,6 +42,6 @@ export const Message = ({
           <p>{children}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };

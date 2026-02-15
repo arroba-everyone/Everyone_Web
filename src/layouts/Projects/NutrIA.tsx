@@ -1,8 +1,12 @@
 import mysteryPhone from '@everyone-web/assets/mysteryPhone.webp';
 import { cn } from '@everyone-web/libs/utils';
 import { Button } from '@everyone-web/ui/button';
+import { motion } from 'motion/react';
+import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const NutrIA = () => {
+  const { ref, smoothY } = useParallax(80);
+
   return (
     <div
       className={cn(
@@ -36,8 +40,9 @@ export const NutrIA = () => {
       </div>
 
       {/* Center phone image (second on mobile) */}
-      <div className="flex items-center justify-center order-2">
-        <img
+      <div ref={ref} className="flex items-center justify-center order-2">
+        <motion.img
+          style={{ y: smoothY }}
           src={mysteryPhone}
           alt="NutrIA app"
           className="w-75 tablet-lg:w-82 laptop:w-90 laptop-lg:w-100 desktop:w-112.5 object-contain"
