@@ -17,6 +17,12 @@ export const Footer = () => {
         </p>
 
         <div className="flex items-center gap-10 tablet-lg:gap-12 laptop:gap-14 laptop-lg:gap-18 desktop:gap-24">
+          <a href="https://www.instagram.com/arroba_everyone">
+            <Icon
+              name="instagram"
+              className="size-6 tablet-lg:size-7 laptop:size-7 laptop-lg:size-8 desktop:size-10 transition-all hover:scale-110"
+            />
+          </a>
           <a href="https://www.youtube.com/@EveryoneChannel.oficial">
             <Icon
               name="youtube"
