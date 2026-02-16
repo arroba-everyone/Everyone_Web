@@ -22,12 +22,12 @@ export const OurProjects = () => {
       >
         <img
           src={youtubePhone}
-          className="z-0 tablet-lg:w-160 mx-auto laptop:w-11/12 hidden md:block"
+          className="z-0 tablet-lg:w-160 mx-auto mt-auto laptop:w-11/12 hidden md:block"
           alt="YouTube phone"
         />
         <div
           className={cn(
-            'flex flex-col items-start gap-4 mt-6 md:mt-auto',
+            'flex flex-col items-start gap-4 mt-6 md:mt-0',
             'ps-8 md:ps-9 laptop:ps-10',
             'pb-4 md:pb-12'
           )}
@@ -43,11 +43,11 @@ export const OurProjects = () => {
       <div
         className={cn(
           'grid col-span-1 size-full',
-          'grid-cols-1 md:grid-cols-2',
+          'grid-cols-1 md:grid-cols-2 laptop:grid-rows-2',
           'gap-5 md:gap-6 laptop:gap-8 laptop-lg:gap-9 desktop:gap-10'
         )}
       >
-        <Card className="bg-secondary text-background rounded-4xl laptop:rounded-[50px] col-span-1 laptop:col-span-2 aspect-2/1">
+        <Card className="bg-secondary text-background rounded-4xl laptop:rounded-[50px] col-span-1 laptop:col-span-2 aspect-2/1 laptop:aspect-auto">
           <div className="flex flex-col h-full p-5 md:p-5 laptop:p-6 gap-2 sm:gap-4 laptop:gap-8">
             <span className={cn('font-bold', 'text-4xl md:text-7xl laptop:text-9xl')}>
               EveryLog
@@ -62,7 +62,7 @@ export const OurProjects = () => {
             </div>
           </div>
         </Card>
-        <Card className="bg-card rounded-4xl laptop:rounded-[50px] col-span-1 laptop:col-span-2 aspect-square md:aspect-2/1">
+        <Card className="bg-card rounded-4xl laptop:rounded-[50px] col-span-1 laptop:col-span-2 aspect-square md:aspect-2/1 laptop:aspect-auto">
           <div className="flex flex-col h-full justify-between p-5 md:p-5 laptop:p-6">
             <div className="flex flex-col gap-3 md:gap-4 laptop:gap-8 laptop-lg:gap-12 desktop:gap-15">
               <span className="font-bold text-3xl md:text-5xl laptop:text-7xl">
