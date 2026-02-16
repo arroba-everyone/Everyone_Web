@@ -4,9 +4,12 @@ import ReactPlayer from 'react-player';
 import { Button } from '@everyone-web/ui/button';
 import { cn } from '@everyone-web/libs/utils';
 import { Link } from '@tanstack/react-router';
+import { motion } from 'motion/react';
+import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const YouTube = () => {
   const { data = FALLBACK_VIDEOS } = useGetLatestVideos();
+  const { ref, smoothY } = useParallax();
 
   return (
     <div className="h-screen">
@@ -40,7 +43,9 @@ export const YouTube = () => {
           </div>
 
           <span className="hidden lg:block order-2 col-span-8"></span>
-          <div
+          <motion.div
+            ref={ref}
+            style={{ y: smoothY }}
             className={cn(
               'col-span-12 flex flex-col justify-center',
               'order-1 lg:order-3',
@@ -68,7 +73,7 @@ export const YouTube = () => {
                 <span className="text-base tablet-lg:text-lg font-bold">Descubre más</span>
               </Button>
             </Link>
-          </div>
+          </motion.div>
         </div>
       </Card>
     </div>

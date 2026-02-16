@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const FirstPage = () => {
-  const { ref, smoothY } = useParallax(80);
+  const { ref, smoothY } = useParallax();
 
   return (
     <div className={cn('flex justify-center items-center')}>
@@ -13,9 +13,17 @@ export const FirstPage = () => {
           ref={ref}
           className="order-2 m-auto rounded-4xl laptop:rounded-[50px] lg:order-1 desktop:scale-150"
         >
-          <motion.img style={{ y: smoothY }} src={juanWorking} className="rounded-4xl" alt="Equipo @Everyone trabajando en el estudio" />
+          <img
+            src={juanWorking}
+            className="rounded-4xl"
+            alt="Equipo @Everyone trabajando en el estudio"
+          />
         </div>
-        <div className="flex flex-col justify-center order-1 lg:order-2 px-4">
+        <motion.div
+          ref={ref}
+          style={{ y: smoothY }}
+          className="flex flex-col justify-center order-1 lg:order-2 px-4"
+        >
           <h1
             className={cn(
               'text-foreground font-bold',
@@ -34,7 +42,7 @@ export const FirstPage = () => {
             Nos gusta pensar que lo que hacemos va más allá de lo técnico. Queremos demostrar que
             detrás de cada proyecto hay personas con ideas, valores y una buena playlist de fondo.
           </p>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

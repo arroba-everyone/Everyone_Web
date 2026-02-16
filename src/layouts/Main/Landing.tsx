@@ -7,7 +7,7 @@ import { motion } from 'motion/react';
 import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const Landing = () => {
-  const { ref, smoothY } = useParallax(80);
+  const { ref, smoothY } = useParallax();
 
   return (
     <div className="w-full tablet-lg:h-[95vh] lg:h-screen py-10 tablet-lg:py-8 px-4">
@@ -21,7 +21,9 @@ export const Landing = () => {
           styles.landing
         )}
       >
-        <div
+        <motion.div
+          ref={ref}
+          style={{ y: smoothY }}
           className={cn(
             'flex flex-col gap-5 tablet-lg:gap-6 laptop:gap-7',
             'pt-8 lg:pt-0',
@@ -67,20 +69,17 @@ export const Landing = () => {
               </Button>
             </Link>
           </div>
-        </div>
+        </motion.div>
 
-        <div ref={ref}>
-          <motion.img
-            style={{ y: smoothY }}
-            src={landingPhone}
-            alt="Móvil landing page"
-            className={cn(
-              'object-contain',
-              'w-62.5 tablet-lg:w-70 laptop:w-75 laptop-lg:w-80 desktop:w-200',
-              'h-125 tablet-lg:h-140 laptop:h-150 laptop-lg:h-160 desktop:h-250'
-            )}
-          />
-        </div>
+        <img
+          src={landingPhone}
+          alt="Móvil landing page"
+          className={cn(
+            'object-contain',
+            'w-62.5 tablet-lg:w-70 laptop:w-75 laptop-lg:w-80 desktop:w-200',
+            'h-125 tablet-lg:h-140 laptop:h-150 laptop-lg:h-160 desktop:h-250'
+          )}
+        />
       </div>
     </div>
   );

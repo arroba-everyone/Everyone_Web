@@ -39,7 +39,9 @@ export const Footer = () => {
 
         <div className="flex flex-col gap-2 items-center">
           <p className="text-center font-bold text-sm tablet-lg:text-sm laptop:text-base desktop:text-lg">
-            @everyone 2026 ©. Todos los derechos reservados
+            @everyone 2026 &copy;
+            <br />
+            Todos los derechos reservados
           </p>
         </div>
       </Card>

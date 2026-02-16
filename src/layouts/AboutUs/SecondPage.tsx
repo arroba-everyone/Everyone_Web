@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const SecondPage = () => {
-  const { ref, smoothY } = useParallax(80);
+  const { ref, smoothY } = useParallax();
 
   return (
     <div className="rotate-180 w-full tablet-lg:h-[95vh] lg:h-screen py-10 lg:py-8 px-4">
@@ -21,7 +21,9 @@ export const SecondPage = () => {
             'lg:flex-row lg:gap-0 rotate-180'
           )}
         >
-          <div
+          <motion.div
+            ref={ref}
+            style={{ y: smoothY }}
             className={cn(
               'flex flex-col gap-5 tablet-lg:gap-6 laptop:gap-6 laptop-lg:gap-7',
               'pt-8 lg:pt-0',
@@ -41,10 +43,9 @@ export const SecondPage = () => {
               la tecnología deja de ser un concepto y se convierte en charla, en reacción, en
               comunidad.
             </p>
-          </div>
-          <div ref={ref} className="w-1/2 tablet-lg:w-1/3 laptop:w-1/4 laptop-lg:w-1/5 desktop:w-[15%]">
-            <motion.img
-              style={{ y: smoothY }}
+          </motion.div>
+          <div className="w-1/2 tablet-lg:w-1/3 laptop:w-1/4 laptop-lg:w-1/5 desktop:w-[15%]">
+            <img
               src={aboutUsPhone}
               className="w-full h-auto"
               alt="Canal de YouTube de @Everyone - contenido tech y tecnología"

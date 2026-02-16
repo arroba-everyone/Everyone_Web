@@ -6,20 +6,21 @@ import { motion } from 'motion/react';
 import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const SecondStep = () => {
-  const { ref, smoothY } = useParallax(80);
+  const { ref, smoothY } = useParallax();
 
   return (
     <div className={cn('w-full h-screen grid grid-cols-1 lg:grid-cols-2', 'xs:py-10 px-5')}>
-      <div ref={ref} className="col-span-1 order-1 my-auto rounded-4xl laptop:rounded-[50px]">
-        <motion.img
-          style={{ y: smoothY }}
+      <div className="col-span-1 order-1 my-auto rounded-4xl laptop:rounded-[50px]">
+        <img
           src={creating}
           alt="Creamos tecnología que se siente humana"
           className="max-w-full max-h-full rounded-4xl object-contain mx-auto"
         />
       </div>
 
-      <div
+      <motion.div
+        ref={ref}
+        style={{ y: smoothY }}
         className={cn(
           'col-span-1 mx-8 tablet-lg:mx-8 laptop:mx-10',
           'justify-center items-center lg:items-start',
@@ -67,7 +68,7 @@ export const SecondStep = () => {
             Descubre más
           </Button>
         </Link>
-      </div>
+      </motion.div>
     </div>
   );
 };
