@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const SecondPage = () => {
-  const { ref, smoothY } = useParallax();
+  const { ref, smoothY } = useParallax(150, 40);
 
   return (
     <div className="rotate-180 w-full tablet-lg:h-[95vh] lg:h-screen py-10 lg:py-8 px-4">

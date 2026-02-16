@@ -4,7 +4,7 @@ import { motion } from 'motion/react';
 import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const FirstPage = () => {
-  const { ref, smoothY } = useParallax();
+  const { ref, smoothY } = useParallax(150, 30);
 
   return (
     <div className={cn('flex justify-center items-center')}>
@@ -27,18 +27,18 @@ export const FirstPage = () => {
           <h1
             className={cn(
               'text-foreground font-bold',
-              'text-4xl tablet-lg:text-5xl laptop:text-6xl laptop-lg:text-6xl desktop:text-7xl',
-              'mt-8 lg:mt-0 mb-5 tablet-lg:mb-6'
+              'text-3xl tablet-lg:text-5xl laptop:text-6xl laptop-lg:text-6xl desktop:text-7xl',
+              'mt-20 lg:mt-0 mb-5 tablet-lg:mb-6'
             )}
           >
             Creamos experiencias que conectan personas
           </h1>
-          <p className="text-xl tablet-lg:text-2xl laptop:text-3xl laptop-lg:text-3xl desktop:text-4xl mb-4">
+          <p className="text-md tablet-lg:text-2xl laptop:text-3xl laptop-lg:text-3xl desktop:text-4xl mb-4">
             Somos un estudio donde la creatividad y la tecnología trabajan codo con codo. Creamos
             apps, experiencias digitales y contenido que reflejan cómo entendemos el futuro:
             funcional, humano y con diseño en cada línea de código.
           </p>
-          <p className="text-xl tablet-lg:text-2xl laptop:text-3xl laptop-lg:text-3xl desktop:text-4xl">
+          <p className="text-md tablet-lg:text-2xl laptop:text-3xl laptop-lg:text-3xl desktop:text-4xl">
             Nos gusta pensar que lo que hacemos va más allá de lo técnico. Queremos demostrar que
             detrás de cada proyecto hay personas con ideas, valores y una buena playlist de fondo.
           </p>

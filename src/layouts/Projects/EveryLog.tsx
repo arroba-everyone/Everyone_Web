@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const EveryLog = () => {
-  const { ref, smoothY } = useParallax();
+  const { ref, smoothY } = useParallax(150, 50);
 
   return (
     <div

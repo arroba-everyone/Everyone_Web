@@ -6,7 +6,7 @@ import { motion } from 'motion/react';
 import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const SecondStep = () => {
-  const { ref, smoothY } = useParallax();
+  const { ref, smoothY } = useParallax(150, 70);
 
   return (
     <div className={cn('w-full h-screen grid grid-cols-1 lg:grid-cols-2', 'xs:py-10 px-5')}>

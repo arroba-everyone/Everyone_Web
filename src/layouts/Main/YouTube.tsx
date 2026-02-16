@@ -9,7 +9,7 @@ import { useParallax } from '@everyone-web/hooks/useParallax';
 
 export const YouTube = () => {
   const { data = FALLBACK_VIDEOS } = useGetLatestVideos();
-  const { ref, smoothY } = useParallax();
+  const { ref, smoothY } = useParallax(150, 10);
 
   return (
     <div className="h-screen">
