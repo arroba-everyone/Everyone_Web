@@ -41,6 +41,11 @@ export const Route = createFileRoute('/blog/$slug')({
         { name: 'twitter:title', content: title },
         { name: 'twitter:description', content: description },
         { name: 'twitter:image', content: image },
+        {
+          name: 'keywords',
+          content:
+            'blog tecnología, artículo tech, desarrollo, programación, @Everyone, contenido tecnológico',
+        },
       ],
       links: [{ rel: 'canonical', href: url }],
       scripts: loaderData

@@ -30,6 +30,11 @@ export const Route = createFileRoute('/aboutUs')({
           'Somos un estudio donde la creatividad y la tecnología trabajan codo con codo. Creamos apps, experiencias digitales y contenido con propósito.',
       },
       { name: 'twitter:image', content: 'https://arrobaeveryone.com/logo512.png' },
+      {
+        name: 'keywords',
+        content:
+          'equipo @Everyone, estudio creativo, desarrollo iOS, desarrollo web, diseño de interfaces, marketing digital, contenido YouTube, experiencias digitales, tecnología humana',
+      },
     ],
     links: [{ rel: 'canonical', href: 'https://arrobaeveryone.com/aboutUs' }],
   }),

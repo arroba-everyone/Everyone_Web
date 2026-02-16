@@ -29,8 +29,33 @@ export const Route = createFileRoute('/')({
           'En @Everyone hacemos apps y contenido tech para humanos normales. Sin humo. Sin postureo. Con mucho corazón.',
       },
       { name: 'twitter:image', content: 'https://arrobaeveryone.com/logo512.png' },
+      {
+        name: 'keywords',
+        content:
+          'apps, tecnología, innovación, contenido tech, desarrollo de apps, aplicaciones móviles, estudio tecnológico, diseño de apps, tecnología humana, @Everyone',
+      },
     ],
     links: [{ rel: 'canonical', href: 'https://arrobaeveryone.com' }],
+    scripts: [
+      {
+        type: 'application/ld+json',
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          name: '@Everyone',
+          url: 'https://arrobaeveryone.com',
+          logo: 'https://arrobaeveryone.com/logo512.png',
+          description:
+            'Estudio tecnológico que crea apps, experiencias digitales y contenido tech para humanos normales.',
+          email: 'contacto@arrobaeveryone.com',
+          sameAs: [
+            'https://www.youtube.com/@EveryoneChannel.oficial',
+            'https://www.twitch.tv/arrobaeveryone',
+            'https://github.com/arroba-everyone',
+          ],
+        }),
+      },
+    ],
   }),
 });
 

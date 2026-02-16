@@ -13,13 +13,13 @@ export const Route = createFileRoute('/contact')({
       {
         name: 'description',
         content:
-          'Ponte en contacto con @Everyone. Escríbenos a contacto@everyone.com y hablemos de tu próximo proyecto.',
+          'Ponte en contacto con @Everyone. Escríbenos a contacto@arrobaeveryone.com y hablemos de tu próximo proyecto.',
       },
       { property: 'og:title', content: 'Contacto - @Everyone' },
       {
         property: 'og:description',
         content:
-          'Ponte en contacto con @Everyone. Escríbenos a contacto@everyone.com y hablemos de tu próximo proyecto.',
+          'Ponte en contacto con @Everyone. Escríbenos a contacto@arrobaeveryone.com y hablemos de tu próximo proyecto.',
       },
       { property: 'og:url', content: 'https://arrobaeveryone.com/contact' },
       { property: 'og:image', content: 'https://arrobaeveryone.com/logo512.png' },
@@ -28,9 +28,14 @@ export const Route = createFileRoute('/contact')({
       {
         name: 'twitter:description',
         content:
-          'Ponte en contacto con @Everyone. Escríbenos a contacto@everyone.com y hablemos de tu próximo proyecto.',
+          'Ponte en contacto con @Everyone. Escríbenos a contacto@arrobaeveryone.com y hablemos de tu próximo proyecto.',
       },
       { name: 'twitter:image', content: 'https://arrobaeveryone.com/logo512.png' },
+      {
+        name: 'keywords',
+        content:
+          'contacto @Everyone, email, redes sociales, YouTube tech, Twitch tecnología, GitHub, colaboración, proyectos tecnológicos',
+      },
     ],
     links: [{ rel: 'canonical', href: 'https://arrobaeveryone.com/contact' }],
   }),

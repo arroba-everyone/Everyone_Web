@@ -13,7 +13,7 @@ export const FirstPage = () => {
           ref={ref}
           className="order-2 m-auto rounded-4xl laptop:rounded-[50px] lg:order-1 desktop:scale-150"
         >
-          <motion.img style={{ y: smoothY }} src={juanWorking} className="rounded-4xl" alt="" />
+          <motion.img style={{ y: smoothY }} src={juanWorking} className="rounded-4xl" alt="Equipo @Everyone trabajando en el estudio" />
         </div>
         <div className="flex flex-col justify-center order-1 lg:order-2 px-4">
           <h1

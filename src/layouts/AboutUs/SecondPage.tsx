@@ -47,7 +47,7 @@ export const SecondPage = () => {
               style={{ y: smoothY }}
               src={aboutUsPhone}
               className="w-full h-auto"
-              alt=""
+              alt="Canal de YouTube de @Everyone - contenido tech y tecnología"
             />
           </div>
         </div>

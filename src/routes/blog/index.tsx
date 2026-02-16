@@ -32,6 +32,11 @@ export const Route = createFileRoute('/blog/')({
           'Artículos sobre tecnología, desarrollo de apps y contenido tech para humanos normales.',
       },
       { name: 'twitter:image', content: 'https://arrobaeveryone.com/logo512.png' },
+      {
+        name: 'keywords',
+        content:
+          'blog tecnología, artículos tech, desarrollo de apps, contenido tecnológico, noticias tech, programación, diseño digital, @Everyone blog',
+      },
     ],
     links: [{ rel: 'canonical', href: 'https://arrobaeveryone.com/blog' }],
   }),
