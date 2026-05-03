@@ -1,51 +1,127 @@
-import { useEffect, useState } from 'react';
-import { Menu } from 'lucide-react';
+import { useState } from 'react';
+import { ChevronDown, Menu } from 'lucide-react';
 import { Button } from '@everyone-web/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@everyone-web/ui/sheet';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@everyone-web/ui/dropdown-menu';
 import { cn } from '@everyone-web/libs/utils';
-import { Link } from '@tanstack/react-router';
+import { Link, useRouterState } from '@tanstack/react-router';
+import { useSession } from '@everyone-web/hooks/useSession';
+import { UserMenu } from './UserMenu';
 
 interface NavItem {
   label: string;
   href: string;
 }
 
-const navItems: NavItem[] = [
-  { label: 'Sobre nosotros', href: '/aboutUs' },
+// Top-level pills: the four primary destinations of the site.
+const primaryItems: NavItem[] = [
   { label: 'Blog', href: '/blog' },
+  { label: 'Ofertas', href: '/deals' },
   { label: '@everyone', href: '/' },
-  { label: 'Proyectos', href: '/projects' },
   { label: 'Contacto', href: '/contact' },
 ];
 
+// Secondary items collapsed under "Más".
+const moreItems: NavItem[] = [
+  { label: 'Sobre nosotros', href: '/aboutUs' },
+  { label: 'Proyectos', href: '/projects' },
+];
+
+const allNavItems: NavItem[] = [...primaryItems, ...moreItems];
+
 export function Navbar() {
-  const [activeItem, setActiveItem] = useState('');
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = useRouterState({ select: s => s.location.pathname });
+  const session = useSession();
 
-  useEffect(() => {
-    const currentPath = window.location.pathname;
+  const activeLabel = allNavItems.find(item => item.href === pathname)?.label ?? '@everyone';
+  const isMoreActive = moreItems.some(item => item.href === pathname);
 
-    const currentItem = navItems.find(item => item.href === currentPath);
-    setActiveItem(currentItem ? currentItem.label : '@everyone');
-  }, []);
+  const pillClass = (active: boolean) =>
+    cn(
+      'font-semibold text-sm tablet-lg:text-base transition-colors',
+      'relative rounded-4xl lg:rounded-full',
+      'py-3 px-6 tablet-lg:px-7 laptop:px-8',
+      active ? 'bg-primary text-primary-foreground' : 'text-primary hover:bg-primary/10'
+    );
 
-  const renderNavItems = () => {
-    return navItems.map(item => (
+  const renderPrimaryPills = () =>
+    primaryItems.map(item => (
+      <Link key={item.label} to={item.href} className={pillClass(activeLabel === item.label)}>
+        {item.label}
+      </Link>
+    ));
+
+  const renderMoreDropdown = () => (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button
+          type="button"
+          className={cn(pillClass(isMoreActive), 'flex items-center gap-1 cursor-pointer')}
+          aria-label="Más opciones"
+        >
+          Más
+          <ChevronDown className="h-4 w-4" />
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        align="end"
+        sideOffset={12}
+        className={cn(
+          'rounded-3xl bg-background border-primary/20 p-2',
+          'min-w-[12rem] shadow-lg'
+        )}
+      >
+        {moreItems.map(item => {
+          const isActive = activeLabel === item.label;
+          return (
+            <DropdownMenuItem
+              key={item.label}
+              asChild
+              className={cn(
+                'rounded-full px-5 py-2.5 cursor-pointer text-sm font-semibold',
+                'focus:bg-primary/10 focus:text-primary',
+                isActive
+                  ? 'bg-primary text-primary-foreground focus:bg-primary focus:text-primary-foreground'
+                  : 'text-primary'
+              )}
+            >
+              <Link to={item.href} className="w-full">
+                {item.label}
+              </Link>
+            </DropdownMenuItem>
+          );
+        })}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+
+  const renderMobileItems = () =>
+    allNavItems.map(item => (
       <Link
         key={item.label}
         to={item.href}
-        className={cn(
-          'font-semibold text-sm tablet-lg:text-base transition-colors',
-          'relative rounded-4xl lg:rounded-full',
-          'py-3 px-6 tablet-lg:px-7 laptop:px-8',
-          activeItem === item.label
-            ? 'bg-primary text-primary-foreground'
-            : 'text-primary hover:bg-primary/10'
-        )}
+        onClick={() => setIsOpen(false)}
+        className={pillClass(activeLabel === item.label)}
       >
         {item.label}
       </Link>
     ));
+
+  const renderAuthSection = () => {
+    if (session) {
+      return <UserMenu session={session} />;
+    }
+    return (
+      <Link to="/login" className="font-semibold text-sm text-primary hover:underline px-3 py-2">
+        Iniciar sesión
+      </Link>
+    );
   };
 
   return (
@@ -63,27 +139,33 @@ export function Navbar() {
           className={cn(
             'hidden lg:flex items-center justify-center',
             'h-12 tablet-lg:h-13 laptop:h-14 laptop-lg:h-15',
-            'gap-4 tablet-lg:gap-6 laptop:gap-7 laptop-lg:gap-8'
+            'gap-3 tablet-lg:gap-4 laptop:gap-5 laptop-lg:gap-6'
           )}
         >
-          {renderNavItems()}
+          {renderPrimaryPills()}
+          {renderMoreDropdown()}
+          {renderAuthSection()}
         </div>
 
         {/* Mobile Navigation */}
         <div className="lg:hidden flex items-center justify-between h-16">
-          <div className="text-primary font-bold text-xl">{activeItem}</div>
+          <div className="text-primary font-bold text-xl">{activeLabel}</div>
 
-          <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="bg-background border-background p-4 w-70">
-              <div className="flex flex-col gap-4 mt-8">{renderNavItems()}</div>
-            </SheetContent>
-          </Sheet>
+          <div className="flex items-center gap-2">
+            {renderAuthSection()}
+
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10">
+                  <Menu className="h-6 w-6" />
+                  <span className="sr-only">Toggle menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="bg-background border-background p-4 w-70">
+                <div className="flex flex-col gap-4 mt-8">{renderMobileItems()}</div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </div>
     </nav>

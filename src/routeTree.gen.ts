@@ -9,16 +9,47 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as DealsRouteImport } from './routes/deals'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutUsRouteImport } from './routes/aboutUs'
+import { Route as AdminRouteImport } from './routes/_admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
+import { Route as AuthResetRouteImport } from './routes/auth/reset'
+import { Route as AuthCallbackRouteImport } from './routes/auth/callback'
+import { Route as AdminDealsManageRouteImport } from './routes/_admin/deals.manage'
+import { Route as AdminBlogNewRouteImport } from './routes/_admin/blog.new'
+import { Route as AdminBlogManageRouteImport } from './routes/_admin/blog.manage'
+import { Route as AdminBlogEditIdRouteImport } from './routes/_admin/blog.edit.$id'
 
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DealsRoute = DealsRouteImport.update({
+  id: '/deals',
+  path: '/deals',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -29,6 +60,10 @@ const ContactRoute = ContactRouteImport.update({
 const AboutUsRoute = AboutUsRouteImport.update({
   id: '/aboutUs',
   path: '/aboutUs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/_admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -46,31 +81,92 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthResetRoute = AuthResetRouteImport.update({
+  id: '/auth/reset',
+  path: '/auth/reset',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthCallbackRoute = AuthCallbackRouteImport.update({
+  id: '/auth/callback',
+  path: '/auth/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDealsManageRoute = AdminDealsManageRouteImport.update({
+  id: '/deals/manage',
+  path: '/deals/manage',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBlogNewRoute = AdminBlogNewRouteImport.update({
+  id: '/blog/new',
+  path: '/blog/new',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBlogManageRoute = AdminBlogManageRouteImport.update({
+  id: '/blog/manage',
+  path: '/blog/manage',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminBlogEditIdRoute = AdminBlogEditIdRouteImport.update({
+  id: '/blog/edit/$id',
+  path: '/blog/edit/$id',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/aboutUs': typeof AboutUsRoute
   '/contact': typeof ContactRoute
+  '/deals': typeof DealsRoute
+  '/login': typeof LoginRoute
   '/projects': typeof ProjectsRoute
+  '/settings': typeof SettingsRoute
+  '/signup': typeof SignupRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/auth/reset': typeof AuthResetRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/blog/manage': typeof AdminBlogManageRoute
+  '/blog/new': typeof AdminBlogNewRoute
+  '/deals/manage': typeof AdminDealsManageRoute
+  '/blog/edit/$id': typeof AdminBlogEditIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/aboutUs': typeof AboutUsRoute
   '/contact': typeof ContactRoute
+  '/deals': typeof DealsRoute
+  '/login': typeof LoginRoute
   '/projects': typeof ProjectsRoute
+  '/settings': typeof SettingsRoute
+  '/signup': typeof SignupRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/auth/reset': typeof AuthResetRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog': typeof BlogIndexRoute
+  '/blog/manage': typeof AdminBlogManageRoute
+  '/blog/new': typeof AdminBlogNewRoute
+  '/deals/manage': typeof AdminDealsManageRoute
+  '/blog/edit/$id': typeof AdminBlogEditIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_admin': typeof AdminRouteWithChildren
   '/aboutUs': typeof AboutUsRoute
   '/contact': typeof ContactRoute
+  '/deals': typeof DealsRoute
+  '/login': typeof LoginRoute
   '/projects': typeof ProjectsRoute
+  '/settings': typeof SettingsRoute
+  '/signup': typeof SignupRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/auth/reset': typeof AuthResetRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/_admin/blog/manage': typeof AdminBlogManageRoute
+  '/_admin/blog/new': typeof AdminBlogNewRoute
+  '/_admin/deals/manage': typeof AdminDealsManageRoute
+  '/_admin/blog/edit/$id': typeof AdminBlogEditIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -78,37 +174,109 @@ export interface FileRouteTypes {
     | '/'
     | '/aboutUs'
     | '/contact'
+    | '/deals'
+    | '/login'
     | '/projects'
+    | '/settings'
+    | '/signup'
+    | '/auth/callback'
+    | '/auth/reset'
     | '/blog/$slug'
     | '/blog/'
+    | '/blog/manage'
+    | '/blog/new'
+    | '/deals/manage'
+    | '/blog/edit/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/aboutUs' | '/contact' | '/projects' | '/blog/$slug' | '/blog'
-  id:
-    | '__root__'
+  to:
     | '/'
     | '/aboutUs'
     | '/contact'
+    | '/deals'
+    | '/login'
     | '/projects'
+    | '/settings'
+    | '/signup'
+    | '/auth/callback'
+    | '/auth/reset'
+    | '/blog/$slug'
+    | '/blog'
+    | '/blog/manage'
+    | '/blog/new'
+    | '/deals/manage'
+    | '/blog/edit/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/_admin'
+    | '/aboutUs'
+    | '/contact'
+    | '/deals'
+    | '/login'
+    | '/projects'
+    | '/settings'
+    | '/signup'
+    | '/auth/callback'
+    | '/auth/reset'
     | '/blog/$slug'
     | '/blog/'
+    | '/_admin/blog/manage'
+    | '/_admin/blog/new'
+    | '/_admin/deals/manage'
+    | '/_admin/blog/edit/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
   AboutUsRoute: typeof AboutUsRoute
   ContactRoute: typeof ContactRoute
+  DealsRoute: typeof DealsRoute
+  LoginRoute: typeof LoginRoute
   ProjectsRoute: typeof ProjectsRoute
+  SettingsRoute: typeof SettingsRoute
+  SignupRoute: typeof SignupRoute
+  AuthCallbackRoute: typeof AuthCallbackRoute
+  AuthResetRoute: typeof AuthResetRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects': {
       id: '/projects'
       path: '/projects'
       fullPath: '/projects'
       preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deals': {
+      id: '/deals'
+      path: '/deals'
+      fullPath: '/deals'
+      preLoaderRoute: typeof DealsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -123,6 +291,13 @@ declare module '@tanstack/react-router' {
       path: '/aboutUs'
       fullPath: '/aboutUs'
       preLoaderRoute: typeof AboutUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_admin': {
+      id: '/_admin'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -146,14 +321,79 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth/reset': {
+      id: '/auth/reset'
+      path: '/auth/reset'
+      fullPath: '/auth/reset'
+      preLoaderRoute: typeof AuthResetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/callback': {
+      id: '/auth/callback'
+      path: '/auth/callback'
+      fullPath: '/auth/callback'
+      preLoaderRoute: typeof AuthCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_admin/deals/manage': {
+      id: '/_admin/deals/manage'
+      path: '/deals/manage'
+      fullPath: '/deals/manage'
+      preLoaderRoute: typeof AdminDealsManageRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/blog/new': {
+      id: '/_admin/blog/new'
+      path: '/blog/new'
+      fullPath: '/blog/new'
+      preLoaderRoute: typeof AdminBlogNewRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/blog/manage': {
+      id: '/_admin/blog/manage'
+      path: '/blog/manage'
+      fullPath: '/blog/manage'
+      preLoaderRoute: typeof AdminBlogManageRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/_admin/blog/edit/$id': {
+      id: '/_admin/blog/edit/$id'
+      path: '/blog/edit/$id'
+      fullPath: '/blog/edit/$id'
+      preLoaderRoute: typeof AdminBlogEditIdRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminBlogManageRoute: typeof AdminBlogManageRoute
+  AdminBlogNewRoute: typeof AdminBlogNewRoute
+  AdminDealsManageRoute: typeof AdminDealsManageRoute
+  AdminBlogEditIdRoute: typeof AdminBlogEditIdRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminBlogManageRoute: AdminBlogManageRoute,
+  AdminBlogNewRoute: AdminBlogNewRoute,
+  AdminDealsManageRoute: AdminDealsManageRoute,
+  AdminBlogEditIdRoute: AdminBlogEditIdRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
   AboutUsRoute: AboutUsRoute,
   ContactRoute: ContactRoute,
+  DealsRoute: DealsRoute,
+  LoginRoute: LoginRoute,
   ProjectsRoute: ProjectsRoute,
+  SettingsRoute: SettingsRoute,
+  SignupRoute: SignupRoute,
+  AuthCallbackRoute: AuthCallbackRoute,
+  AuthResetRoute: AuthResetRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
 }

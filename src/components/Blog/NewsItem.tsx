@@ -1,7 +1,15 @@
 import { cn } from '@everyone-web/libs/utils';
-import type { IPost } from '@everyone-web/services/getPosts';
 import type { IBaseComponent } from '@everyone-web/types/global';
 import { Link } from '@tanstack/react-router';
+
+export interface IPost {
+  id: string;
+  author: string;
+  publishedAt: string;
+  title: string;
+  slug: string;
+  thumbnailUrl: string;
+}
 
 export const NewsItem: IBaseComponent<IPost> = ({
   slug,

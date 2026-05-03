@@ -20,7 +20,13 @@ const config = defineConfig({
   plugins: [
     devtools(),
     netlify(),
-    tanstackStart(),
+    tanstackStart({
+      // Tests live next to their target route file. Ignore them when
+      // generating the route tree.
+      router: {
+        routeFileIgnorePattern: '\\.test\\.[tj]sx?$',
+      },
+    }),
     react(),
     // this is the plugin that enables path aliases
     viteTsConfigPaths({
