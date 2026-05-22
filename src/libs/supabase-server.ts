@@ -22,7 +22,7 @@ import type { Database } from '@everyone-web/types/supabase';
 function assertServerOnly(): void {
   if (typeof window !== 'undefined') {
     throw new Error(
-      'supabase.server.ts must NEVER execute in the browser. ' +
+      'supabase-server.ts must NEVER execute in the browser. ' +
         'A server-only function was called from client code. See REQ-SERVER-CLIENT-1.'
     );
   }

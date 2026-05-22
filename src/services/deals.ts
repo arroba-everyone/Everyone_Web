@@ -8,8 +8,8 @@
 import { createServerFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
 import { z } from 'zod';
-import { getServerClient, getServiceClient } from '@everyone-web/libs/supabase.server';
-import { getSession, requireAdmin } from '@everyone-web/server/auth.server';
+import { getServerClient, getServiceClient } from '@everyone-web/libs/supabase-server';
+import { getSession, requireAdmin } from '@everyone-web/server/auth';
 import { dealCreateSchema } from '@everyone-web/lib/validators/deal';
 import { calculateDiscount } from '@everyone-web/lib/deals/calculate-discount';
 import type { DealRow, DealUpdate, DealInsert } from '@everyone-web/types/supabase';

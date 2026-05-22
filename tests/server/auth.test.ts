@@ -2,8 +2,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import type { Session } from '@everyone-web/types/session';
 
-// Mock supabase.server so the browser guard doesn't fire in jsdom
-vi.mock('@everyone-web/libs/supabase.server', () => ({
+// Mock supabase-server so the browser guard doesn't fire in jsdom
+vi.mock('@everyone-web/libs/supabase-server', () => ({
   getServerClient: vi.fn(),
   getServiceClient: vi.fn(),
 }));
@@ -66,14 +66,14 @@ describe('getSession()', () => {
 
   beforeEach(async () => {
     vi.resetModules();
-    const mod = await import('@everyone-web/libs/supabase.server');
+    const mod = await import('@everyone-web/libs/supabase-server');
     getServerClientMock = vi.mocked(mod.getServerClient);
   });
 
   it('returns null when there is no authenticated user (no cookie)', async () => {
     getServerClientMock.mockReturnValue(makeSupabaseClientMock({ user: null }));
 
-    const { getSession } = await import('@everyone-web/server/auth.server');
+    const { getSession } = await import('@everyone-web/server/auth');
     const result = await getSession(makeRequest());
     expect(result).toBeNull();
   });
@@ -86,7 +86,7 @@ describe('getSession()', () => {
       })
     );
 
-    const { getSession } = await import('@everyone-web/server/auth.server');
+    const { getSession } = await import('@everyone-web/server/auth');
     const result: Session | null = await getSession(makeRequest('sb-token=abc'));
     expect(result).not.toBeNull();
     expect(result?.role).toBe('admin');
@@ -102,7 +102,7 @@ describe('getSession()', () => {
       })
     );
 
-    const { getSession } = await import('@everyone-web/server/auth.server');
+    const { getSession } = await import('@everyone-web/server/auth');
     const result: Session | null = await getSession(makeRequest('sb-token=xyz'));
     expect(result).not.toBeNull();
     expect(result?.role).toBe('user');
@@ -116,7 +116,7 @@ describe('getSession()', () => {
       })
     );
 
-    const { getSession } = await import('@everyone-web/server/auth.server');
+    const { getSession } = await import('@everyone-web/server/auth');
     const result: Session | null = await getSession(makeRequest('sb-token=xyz'));
     expect(result).not.toBeNull();
     expect(result?.role).toBe('user');
@@ -128,14 +128,14 @@ describe('requireAdmin()', () => {
 
   beforeEach(async () => {
     vi.resetModules();
-    const mod = await import('@everyone-web/libs/supabase.server');
+    const mod = await import('@everyone-web/libs/supabase-server');
     getServerClientMock = vi.mocked(mod.getServerClient);
   });
 
   it('throws a redirect to /login?redirect=... when session is null (anon)', async () => {
     getServerClientMock.mockReturnValue(makeSupabaseClientMock({ user: null }));
 
-    const { requireAdmin } = await import('@everyone-web/server/auth.server');
+    const { requireAdmin } = await import('@everyone-web/server/auth');
     const request = makeRequest();
 
     await expect(requireAdmin(request)).rejects.toMatchObject({
@@ -152,7 +152,7 @@ describe('requireAdmin()', () => {
       })
     );
 
-    const { requireAdmin } = await import('@everyone-web/server/auth.server');
+    const { requireAdmin } = await import('@everyone-web/server/auth');
 
     await expect(requireAdmin(makeRequest('sb=tok'))).rejects.toMatchObject({
       isRedirect: true,
@@ -168,7 +168,7 @@ describe('requireAdmin()', () => {
       })
     );
 
-    const { requireAdmin } = await import('@everyone-web/server/auth.server');
+    const { requireAdmin } = await import('@everyone-web/server/auth');
     const session = await requireAdmin(makeRequest('sb=admintok'));
     expect(session.role).toBe('admin');
     expect(session.userId).toBe('admin-1');

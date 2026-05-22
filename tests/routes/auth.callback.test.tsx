@@ -14,11 +14,11 @@ vi.mock('@tanstack/react-router', () => ({
 }));
 
 // Mock the server fn (we don't actually exchange anything in tests).
-vi.mock('@everyone-web/server/auth.server', () => ({
+vi.mock('@everyone-web/server/auth', () => ({
   exchangeCodeFn: vi.fn(),
 }));
 
-// Mock @tanstack/react-start (used transitively by auth.server) so the route
+// Mock @tanstack/react-start (used transitively by auth) so the route
 // file can be imported in jsdom without resolving the start-server-core chain.
 vi.mock('@tanstack/react-start', () => ({
   createServerFn: vi.fn(() => ({ handler: vi.fn((fn: unknown) => fn) })),
@@ -29,7 +29,7 @@ vi.mock('@tanstack/react-start/server', () => ({
   setCookie: vi.fn(),
 }));
 
-vi.mock('@everyone-web/libs/supabase.server', () => ({
+vi.mock('@everyone-web/libs/supabase-server', () => ({
   getServerClient: vi.fn(),
   getServiceClient: vi.fn(),
 }));
@@ -74,7 +74,7 @@ describe('/auth/callback loader', () => {
   });
 
   it('redirects to /login?error=oauth when exchangeCodeFn returns ok:false', async () => {
-    const { exchangeCodeFn } = await import('@everyone-web/server/auth.server');
+    const { exchangeCodeFn } = await import('@everyone-web/server/auth');
     vi.mocked(exchangeCodeFn).mockResolvedValue({ ok: false, error: 'bad code' });
 
     const loader = await importLoader();
@@ -87,7 +87,7 @@ describe('/auth/callback loader', () => {
   });
 
   it('redirects to /auth/reset when type=recovery and exchange succeeds', async () => {
-    const { exchangeCodeFn } = await import('@everyone-web/server/auth.server');
+    const { exchangeCodeFn } = await import('@everyone-web/server/auth');
     vi.mocked(exchangeCodeFn).mockResolvedValue({ ok: true });
 
     const loader = await importLoader();
@@ -100,7 +100,7 @@ describe('/auth/callback loader', () => {
   });
 
   it('redirects to "/" on a successful exchange with no redirect target', async () => {
-    const { exchangeCodeFn } = await import('@everyone-web/server/auth.server');
+    const { exchangeCodeFn } = await import('@everyone-web/server/auth');
     vi.mocked(exchangeCodeFn).mockResolvedValue({ ok: true });
 
     const loader = await importLoader();

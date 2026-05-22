@@ -1,5 +1,5 @@
 import { createFileRoute, Outlet } from '@tanstack/react-router';
-import { requireAdminFn } from '@everyone-web/server/auth.server';
+import { requireAdminFn } from '@everyone-web/server/auth';
 import { AdminLayout } from '@everyone-web/components/admin/AdminLayout';
 
 export const Route = createFileRoute('/_admin')({

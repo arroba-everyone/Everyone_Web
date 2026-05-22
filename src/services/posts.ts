@@ -15,8 +15,8 @@
 
 import { createServerFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
-import { getServerClient, getServiceClient } from '@everyone-web/libs/supabase.server';
-import { requireAdmin } from '@everyone-web/server/auth.server';
+import { getServerClient, getServiceClient } from '@everyone-web/libs/supabase-server';
+import { requireAdmin } from '@everyone-web/server/auth';
 import type { Post, PostInsert, PostStatus } from '@everyone-web/types/supabase';
 import type { PostCreateInput, PostUpdateInput } from '@everyone-web/lib/validators/post';
 

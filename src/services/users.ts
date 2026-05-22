@@ -4,7 +4,7 @@
 
 import { createServerFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
-import { getServerClient } from '@everyone-web/libs/supabase.server';
+import { getServerClient } from '@everyone-web/libs/supabase-server';
 import type { UserRecord } from '@everyone-web/types/supabase';
 
 export interface UpdateProfileInput {

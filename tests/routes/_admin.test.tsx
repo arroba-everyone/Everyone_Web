@@ -14,7 +14,7 @@ vi.mock('@tanstack/react-router', () => ({
   Outlet: () => null,
 }));
 
-vi.mock('@everyone-web/libs/supabase.server', () => ({
+vi.mock('@everyone-web/libs/supabase-server', () => ({
   getServerClient: vi.fn(),
   getServiceClient: vi.fn(),
 }));
@@ -60,7 +60,7 @@ describe('_admin route guard (requireAdmin)', () => {
   });
 
   it('throws redirect to /login when session is null (anon)', async () => {
-    const { getServerClient } = await import('@everyone-web/libs/supabase.server');
+    const { getServerClient } = await import('@everyone-web/libs/supabase-server');
     vi.mocked(getServerClient).mockReturnValue(
       makeClientMock({ user: null }) as unknown as ReturnType<typeof getServerClient>
     );
@@ -70,7 +70,7 @@ describe('_admin route guard (requireAdmin)', () => {
       new Request('https://example.com/deals/manage') as Request
     );
 
-    const { requireAdmin } = await import('@everyone-web/server/auth.server');
+    const { requireAdmin } = await import('@everyone-web/server/auth');
 
     await expect(
       requireAdmin(new Request('https://example.com/deals/manage'))
@@ -81,7 +81,7 @@ describe('_admin route guard (requireAdmin)', () => {
   });
 
   it('throws redirect to / with error=forbidden for non-admin user', async () => {
-    const { getServerClient } = await import('@everyone-web/libs/supabase.server');
+    const { getServerClient } = await import('@everyone-web/libs/supabase-server');
     vi.mocked(getServerClient).mockReturnValue(
       makeClientMock({
         user: { id: 'user-1', email: 'user@test.com' },
@@ -89,7 +89,7 @@ describe('_admin route guard (requireAdmin)', () => {
       }) as unknown as ReturnType<typeof getServerClient>
     );
 
-    const { requireAdmin } = await import('@everyone-web/server/auth.server');
+    const { requireAdmin } = await import('@everyone-web/server/auth');
 
     await expect(
       requireAdmin(new Request('https://example.com/deals/manage'))
@@ -100,7 +100,7 @@ describe('_admin route guard (requireAdmin)', () => {
   });
 
   it('returns the session for an admin user', async () => {
-    const { getServerClient } = await import('@everyone-web/libs/supabase.server');
+    const { getServerClient } = await import('@everyone-web/libs/supabase-server');
     vi.mocked(getServerClient).mockReturnValue(
       makeClientMock({
         user: { id: 'admin-1', email: 'admin@test.com' },
@@ -108,7 +108,7 @@ describe('_admin route guard (requireAdmin)', () => {
       }) as unknown as ReturnType<typeof getServerClient>
     );
 
-    const { requireAdmin } = await import('@everyone-web/server/auth.server');
+    const { requireAdmin } = await import('@everyone-web/server/auth');
     const session = await requireAdmin(new Request('https://example.com/deals/manage'));
 
     expect(session.role).toBe('admin');
