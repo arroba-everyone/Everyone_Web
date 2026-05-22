@@ -14,6 +14,9 @@ body {
 :root {
   --radius: 0.625rem;
   --background: #0a0a0a;
+  /* Glow effects — primary (lime green #87e300) */
+  --glow-primary: 0 0 10px rgba(135, 227, 0, 0.45);
+  --glow-primary-strong: 0 0 16px rgba(135, 227, 0, 0.65);
   --foreground: #fafafa;
   --card: #212121;
   --card-foreground: #fafafa;
@@ -109,5 +112,19 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Literal utility classes for glow effects — defined here (not as arbitrary values)
+     so Tailwind v4 JIT always includes them in the CSS bundle. */
+  .glow-primary {
+    text-shadow: var(--glow-primary);
+  }
+  .glow-primary-strong {
+    text-shadow: var(--glow-primary-strong);
+  }
+  .glow-primary-box {
+    box-shadow: var(--glow-primary), inset 0 0 12px rgba(135, 227, 0, 0.12);
   }
 }

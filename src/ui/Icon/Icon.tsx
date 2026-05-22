@@ -8,9 +8,17 @@ import {
   AiOutlineTwitch,
   AiOutlineYoutube,
 } from 'react-icons/ai';
+import { FaTelegramPlane } from 'react-icons/fa';
 import type { IconBaseProps, IconType } from 'react-icons/lib';
 
-export type IconNames = 'youtube' | 'instagram' | 'twitch' | 'github' | 'linkedin' | 'menu';
+export type IconNames =
+  | 'youtube'
+  | 'instagram'
+  | 'twitch'
+  | 'github'
+  | 'linkedin'
+  | 'telegram'
+  | 'menu';
 
 interface IIcon extends IconBaseProps {
   name: IconNames;
@@ -23,6 +31,7 @@ const icons: Record<IconNames, IconType> = {
   github: AiOutlineGithub,
   menu: AiOutlineMenu,
   linkedin: AiOutlineLinkedin,
+  telegram: FaTelegramPlane,
 };
 
 export const Icon: IBaseComponent<IIcon> = ({ name, cursor = 'currentColor', style, ...props }) => {

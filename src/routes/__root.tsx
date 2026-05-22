@@ -3,13 +3,26 @@ import { HeadContent, Scripts, createRootRouteWithContext, Outlet } from '@tanst
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import { TanStackDevtools } from '@tanstack/react-devtools';
 import { ReactQueryDevtoolsPanel } from '@tanstack/react-query-devtools';
+import { getSessionFn } from '@everyone-web/server/auth.server';
 
 import appCss from '../styles.css?url';
 
 import type { QueryClient } from '@tanstack/react-query';
+import type { Session } from '@everyone-web/types/session';
 
 interface MyRouterContext {
   queryClient: QueryClient;
+  session: Session | null;
+}
+
+/**
+ * Exported for testing. Called as `beforeLoad` on the root route.
+ * Returns `{ session }` so TanStack Router merges it into the route context.
+ * (Mutating `context.session` directly does NOT propagate.)
+ */
+export async function beforeLoadHandler(): Promise<{ session: Session | null }> {
+  const session = await getSessionFn();
+  return { session };
 }
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
@@ -29,6 +42,8 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       { rel: 'apple-touch-icon', href: '/logo192.png' },
     ],
   }),
+
+  beforeLoad: beforeLoadHandler,
 
   component: RootComponent,
   shellComponent: RootDocument,

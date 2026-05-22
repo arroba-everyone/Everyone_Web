@@ -23,6 +23,7 @@ export const getRouter = () => {
     routeTree,
     context: {
       queryClient,
+      session: null,
     },
     scrollRestoration: true,
     defaultPreload: 'intent',

@@ -2,6 +2,8 @@ import { cn } from '@everyone-web/libs/utils';
 import { Card } from '../../ui/card';
 import { Icon } from '@everyone-web/ui/Icon/Icon';
 
+const telegramUrl = import.meta.env['VITE_TELEGRAM_CHANNEL_URL'] as string | undefined;
+
 export const Footer = () => {
   return (
     <footer className="mx-4 my-6 tablet-lg:my-7 laptop:my-8">
@@ -41,6 +43,19 @@ export const Footer = () => {
               className="size-6 tablet-lg:size-7 laptop:size-7 laptop-lg:size-8 desktop:size-10 transition-all hover:scale-110"
             />
           </a>
+          {telegramUrl && (
+            <a
+              href={telegramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Únete al canal de Telegram"
+            >
+              <Icon
+                name="telegram"
+                className="size-6 tablet-lg:size-7 laptop:size-7 laptop-lg:size-8 desktop:size-10 transition-all hover:scale-110"
+              />
+            </a>
+          )}
         </div>
 
         <div className="flex flex-col gap-2 items-center">
