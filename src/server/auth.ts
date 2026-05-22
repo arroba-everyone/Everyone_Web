@@ -7,7 +7,7 @@
 import { createServerFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
 import { redirect } from '@tanstack/react-router';
-import { getServerClient } from '@everyone-web/libs/supabase.server';
+import { getServerClient } from '@everyone-web/libs/supabase-server';
 import type { Role, Session } from '@everyone-web/types/session';
 
 // ---------------------------------------------------------------------------
@@ -122,7 +122,7 @@ export const requireAdminFn = createServerFn({ method: 'GET' }).handler(async ()
 /**
  * Exchanges an OAuth or PKCE recovery code for a Supabase session. Lives
  * here (not in the route file) so the route doesn't need to import
- * `@tanstack/react-start/server` or `supabase.server` at module level.
+ * `@tanstack/react-start/server` or `supabase-server` at module level.
  */
 export const exchangeCodeFn = createServerFn({ method: 'GET' })
   .inputValidator((input: { code: string }) => input)

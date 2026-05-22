@@ -8,8 +8,8 @@
 import { createServerFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
 import { z } from 'zod';
-import { getServerClient, getServiceClient } from '@everyone-web/libs/supabase.server';
-import { getSession, requireAdmin } from '@everyone-web/server/auth.server';
+import { getServerClient, getServiceClient } from '@everyone-web/libs/supabase-server';
+import { getSession, requireAdmin } from '@everyone-web/server/auth';
 import { dealCreateSchema } from '@everyone-web/lib/validators/deal';
 import { calculateDiscount } from '@everyone-web/lib/deals/calculate-discount';
 import type { DealRow, DealUpdate, DealInsert } from '@everyone-web/types/supabase';
@@ -228,70 +228,71 @@ const publishInputSchema = z.object({
 export const publishDealWithEditsFn = createServerFn({ method: 'POST' })
   .inputValidator((input: unknown) => publishInputSchema.parse(input))
   .handler(
-    async ({
-      data: { id, title, hashtags, youtube_review_url, previous_price, image_url },
-    }) => {
-    const request = getRequest();
-    await requireAdmin(request);
-    const svc = getServiceClient();
+    async ({ data: { id, title, hashtags, youtube_review_url, previous_price, image_url } }) => {
+      const request = getRequest();
+      await requireAdmin(request);
+      const svc = getServiceClient();
 
-    const supabaseUrl = process.env['VITE_SUPABASE_URL'];
-    const botSecret = process.env['BOT_INVOKE_SECRET'];
-    if (!supabaseUrl) {
-      throw new Error('VITE_SUPABASE_URL is not set in the server environment.');
+      const supabaseUrl = process.env['VITE_SUPABASE_URL'];
+      const botSecret = process.env['BOT_INVOKE_SECRET'];
+      if (!supabaseUrl) {
+        throw new Error('VITE_SUPABASE_URL is not set in the server environment.');
+      }
+      if (!botSecret) {
+        throw new Error('BOT_INVOKE_SECRET is not set in the server environment.');
+      }
+
+      // Step 1: Read current_price and published_at from DB (source of truth for discount calc)
+      const { data: currentRow, error: selectError } = await svc
+        .from('deals')
+        .select('current_price, published_at')
+        .eq('id', id)
+        .single();
+      if (selectError) throw selectError;
+      if (!currentRow) throw new Error(`Deal ${id} not found`);
+
+      const discount_percent = calculateDiscount(currentRow.current_price, previous_price);
+
+      // Step 2: Determine published_at (preserve existing or set now)
+      const published_at = currentRow.published_at ?? new Date().toISOString();
+
+      // Step 3: UPDATE (must succeed before invoking EF)
+      const editPayload: DealUpdate = {
+        title,
+        hashtags,
+        youtube_review_url,
+        previous_price,
+        discount_percent,
+        image_url,
+        status: 'published',
+        published_at,
+      };
+      const { error: updateError } = await svc.from('deals').update(editPayload).eq('id', id);
+      if (updateError) throw updateError;
+
+      // Step 4: Invoke Edge Function (reads fresh data from DB)
+      const efResponse = await fetch(`${supabaseUrl}/functions/v1/publish-to-telegram`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${botSecret}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ deal_id: id }),
+      });
+
+      if (!efResponse.ok) {
+        const detail = await efResponse.text();
+        throw new Error(
+          `publish-to-telegram failed (${efResponse.status}): ${detail || 'no body'}`
+        );
+      }
+
+      // Step 5: Re-read final state
+      const { data, error } = await svc.from('deals').select('*').eq('id', id).single();
+      if (error) throw error;
+      return data;
     }
-    if (!botSecret) {
-      throw new Error('BOT_INVOKE_SECRET is not set in the server environment.');
-    }
-
-    // Step 1: Read current_price and published_at from DB (source of truth for discount calc)
-    const { data: currentRow, error: selectError } = await svc
-      .from('deals')
-      .select('current_price, published_at')
-      .eq('id', id)
-      .single();
-    if (selectError) throw selectError;
-    if (!currentRow) throw new Error(`Deal ${id} not found`);
-
-    const discount_percent = calculateDiscount(currentRow.current_price, previous_price);
-
-    // Step 2: Determine published_at (preserve existing or set now)
-    const published_at = currentRow.published_at ?? new Date().toISOString();
-
-    // Step 3: UPDATE (must succeed before invoking EF)
-    const editPayload: DealUpdate = {
-      title,
-      hashtags,
-      youtube_review_url,
-      previous_price,
-      discount_percent,
-      image_url,
-      status: 'published',
-      published_at,
-    };
-    const { error: updateError } = await svc.from('deals').update(editPayload).eq('id', id);
-    if (updateError) throw updateError;
-
-    // Step 4: Invoke Edge Function (reads fresh data from DB)
-    const efResponse = await fetch(`${supabaseUrl}/functions/v1/publish-to-telegram`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${botSecret}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ deal_id: id }),
-    });
-
-    if (!efResponse.ok) {
-      const detail = await efResponse.text();
-      throw new Error(`publish-to-telegram failed (${efResponse.status}): ${detail || 'no body'}`);
-    }
-
-    // Step 5: Re-read final state
-    const { data, error } = await svc.from('deals').select('*').eq('id', id).single();
-    if (error) throw error;
-    return data;
-  });
+  );
 
 /**
  * Creates a new deal with status='pending'. Validates input against

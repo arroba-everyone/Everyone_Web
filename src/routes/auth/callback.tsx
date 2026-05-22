@@ -7,11 +7,11 @@
 // On success: redirects to sanitised `?redirect=` param or `/`.
 // On failure: redirects to `/login?error=oauth`.
 //
-// Note: the actual code exchange lives in `auth.server.ts` so we don't pull
-// `@tanstack/react-start/server` or `supabase.server` into this route module.
+// Note: the actual code exchange lives in `auth.ts` so we don't pull
+// `@tanstack/react-start/server` or `supabase-server` into this route module.
 
 import { createFileRoute, redirect } from '@tanstack/react-router';
-import { exchangeCodeFn } from '@everyone-web/server/auth.server';
+import { exchangeCodeFn } from '@everyone-web/server/auth';
 import { sanitiseRedirect } from '@everyone-web/server/redirect-sanitiser';
 
 type CallbackSearch = {

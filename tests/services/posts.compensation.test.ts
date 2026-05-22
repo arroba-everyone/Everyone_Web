@@ -1,14 +1,14 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import type { Mock } from 'vitest';
 
-vi.mock('@everyone-web/libs/supabase.server', () => ({
+vi.mock('@everyone-web/libs/supabase-server', () => ({
   getServerClient: vi.fn(),
   getServiceClient: vi.fn(),
 }));
 vi.mock('@tanstack/react-start/server', () => ({
   getRequest: vi.fn(),
 }));
-vi.mock('@everyone-web/server/auth.server', () => ({
+vi.mock('@everyone-web/server/auth', () => ({
   getSession: vi.fn(),
   requireAdmin: vi.fn(),
 }));
@@ -20,9 +20,9 @@ vi.mock('@tanstack/react-start', () => ({
 }));
 
 import { createPostFn } from '@everyone-web/services/posts';
-import { getServiceClient } from '@everyone-web/libs/supabase.server';
+import { getServiceClient } from '@everyone-web/libs/supabase-server';
 import { getRequest } from '@tanstack/react-start/server';
-import { requireAdmin } from '@everyone-web/server/auth.server';
+import { requireAdmin } from '@everyone-web/server/auth';
 import type { PostCreateInput } from '@everyone-web/lib/validators/post';
 
 const mockRequest = {} as Request;

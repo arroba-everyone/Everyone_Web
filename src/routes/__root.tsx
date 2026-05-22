@@ -3,7 +3,7 @@ import { HeadContent, Scripts, createRootRouteWithContext, Outlet } from '@tanst
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
 import { TanStackDevtools } from '@tanstack/react-devtools';
 import { ReactQueryDevtoolsPanel } from '@tanstack/react-query-devtools';
-import { getSessionFn } from '@everyone-web/server/auth.server';
+import { getSessionFn } from '@everyone-web/server/auth';
 
 import appCss from '../styles.css?url';
 

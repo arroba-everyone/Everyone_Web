@@ -1,11 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
 
 // Mock server-only modules before importing deals.ts
-vi.mock('@everyone-web/libs/supabase.server', () => ({
+vi.mock('@everyone-web/libs/supabase-server', () => ({
   getServerClient: vi.fn(),
   getServiceClient: vi.fn(),
 }));
-vi.mock('@everyone-web/server/auth.server', () => ({
+vi.mock('@everyone-web/server/auth', () => ({
   getSession: vi.fn(),
   requireAdmin: vi.fn(),
 }));

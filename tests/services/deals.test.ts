@@ -2,14 +2,14 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import type { Mock } from 'vitest';
 
 // Mock server-only modules BEFORE importing deals
-vi.mock('@everyone-web/libs/supabase.server', () => ({
+vi.mock('@everyone-web/libs/supabase-server', () => ({
   getServerClient: vi.fn(),
   getServiceClient: vi.fn(),
 }));
 vi.mock('@tanstack/react-start/server', () => ({
   getRequest: vi.fn(),
 }));
-vi.mock('@everyone-web/server/auth.server', () => ({
+vi.mock('@everyone-web/server/auth', () => ({
   getSession: vi.fn(),
   requireAdmin: vi.fn(),
 }));
@@ -22,9 +22,9 @@ vi.mock('@tanstack/react-start', () => ({
 }));
 
 import { getPublicDealsFn, getAllDealsForAdminFn } from '@everyone-web/services/deals';
-import { getServerClient, getServiceClient } from '@everyone-web/libs/supabase.server';
+import { getServerClient, getServiceClient } from '@everyone-web/libs/supabase-server';
 import { getRequest } from '@tanstack/react-start/server';
-import { getSession, requireAdmin } from '@everyone-web/server/auth.server';
+import { getSession, requireAdmin } from '@everyone-web/server/auth';
 import type { DealRow } from '@everyone-web/types/supabase';
 
 // Helpers
