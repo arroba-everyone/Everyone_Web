@@ -52,6 +52,7 @@ export function TelegramPreviewDialog({
 }: TelegramPreviewDialogProps) {
   const router = useRouter();
   const [title, setTitle] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [hashtags, setHashtags] = useState<string[]>([]);
   const [youtubeReviewUrl, setYoutubeReviewUrl] = useState('');
   const [previousPrice, setPreviousPrice] = useState<number | null>(null);
@@ -63,6 +64,7 @@ export function TelegramPreviewDialog({
   useEffect(() => {
     if (deal) {
       setTitle(deal.title);
+      setImageUrl(deal.image_url ?? '');
       // Defensive strip of leading '#' — the bot may write hashtags with or without prefix
       setHashtags((deal.hashtags ?? []).map(t => (t.startsWith('#') ? t.slice(1) : t)));
       setYoutubeReviewUrl(deal.youtube_review_url ?? '');
@@ -100,6 +102,7 @@ export function TelegramPreviewDialog({
           hashtags,
           youtube_review_url: youtubeReviewUrl || null,
           previous_price: previousPrice ?? 0,
+          image_url: imageUrl || null,
         },
       });
 
@@ -142,7 +145,7 @@ export function TelegramPreviewDialog({
             </p>
             <div className="bg-[#1a1a1a] rounded-2xl p-4 shadow-lg flex flex-col gap-3">
               {/* Image */}
-              <DealImage src={deal.image_url} alt={deal.title} className="rounded-xl max-h-48" />
+              <DealImage src={imageUrl || null} alt={title} className="rounded-xl max-h-48" />
 
               {/* Message body */}
               <div className="text-sm leading-relaxed space-y-1">
@@ -209,6 +212,17 @@ export function TelegramPreviewDialog({
                 placeholder="Título de la oferta"
                 value={title}
                 onChange={e => setTitle(e.target.value)}
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <Label htmlFor="image-url-input">URL de la imagen</Label>
+              <Input
+                id="image-url-input"
+                type="url"
+                placeholder="https://..."
+                value={imageUrl}
+                onChange={e => setImageUrl(e.target.value)}
               />
             </div>
 

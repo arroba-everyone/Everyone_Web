@@ -366,6 +366,69 @@ describe('TelegramPreviewDialog — previous_price mandatory (A2)', () => {
   });
 });
 
+describe('TelegramPreviewDialog — image_url override (A7)', () => {
+  it('(z3) image URL input is rendered and prefilled with deal.image_url', () => {
+    const deal = makeDeal({ image_url: 'https://cdn.example.com/photo.jpg' });
+    render(<TelegramPreviewDialog deal={deal} open={true} onOpenChange={vi.fn()} />);
+
+    const input = screen.getByLabelText(/url de la imagen/i) as HTMLInputElement;
+    expect(input).toBeInTheDocument();
+    expect(input.value).toBe('https://cdn.example.com/photo.jpg');
+  });
+
+  it('(z4) image URL input is empty when deal.image_url is null', () => {
+    const deal = makeDeal({ image_url: null });
+    render(<TelegramPreviewDialog deal={deal} open={true} onOpenChange={vi.fn()} />);
+
+    const input = screen.getByLabelText(/url de la imagen/i) as HTMLInputElement;
+    expect(input.value).toBe('');
+  });
+
+  it('(z5) submit sends image_url in publishDealWithEditsFn payload', async () => {
+    const user = userEvent.setup();
+    publishDealWithEditsFn.mockResolvedValue({});
+    const deal = makeDeal({
+      image_url: 'https://old.example.com/a.jpg',
+      previous_price: 100,
+      title: 'Deal',
+    });
+    render(<TelegramPreviewDialog deal={deal} open={true} onOpenChange={vi.fn()} />);
+
+    const input = screen.getByLabelText(/url de la imagen/i);
+    await user.clear(input);
+    await user.type(input, 'https://new.example.com/b.jpg');
+
+    await user.click(screen.getByRole('button', { name: /publicar/i }));
+
+    await waitFor(() => {
+      expect(publishDealWithEditsFn).toHaveBeenCalled();
+    });
+    expect(publishDealWithEditsFn.mock.calls[0][0].data.image_url).toBe(
+      'https://new.example.com/b.jpg'
+    );
+  });
+
+  it('(z6) empty image URL is sent as null in payload', async () => {
+    const user = userEvent.setup();
+    publishDealWithEditsFn.mockResolvedValue({});
+    const deal = makeDeal({
+      image_url: 'https://old.example.com/a.jpg',
+      previous_price: 100,
+      title: 'Deal',
+    });
+    render(<TelegramPreviewDialog deal={deal} open={true} onOpenChange={vi.fn()} />);
+
+    await user.clear(screen.getByLabelText(/url de la imagen/i));
+
+    await user.click(screen.getByRole('button', { name: /publicar/i }));
+
+    await waitFor(() => {
+      expect(publishDealWithEditsFn).toHaveBeenCalled();
+    });
+    expect(publishDealWithEditsFn.mock.calls[0][0].data.image_url).toBeNull();
+  });
+});
+
 describe('TelegramPreviewDialog — "Ver en Amazon" link (A6)', () => {
   it('(z1) renders link "Ver en Amazon" with correct href, target and rel', () => {
     const deal = makeDeal({ original_url: 'https://www.amazon.es/dp/B123456' });

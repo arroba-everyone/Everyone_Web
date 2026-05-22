@@ -222,11 +222,15 @@ const publishInputSchema = z.object({
   hashtags: z.array(z.string()),
   youtube_review_url: z.string().nullable(),
   previous_price: z.number().positive(),
+  image_url: z.string().nullable(),
 });
 
 export const publishDealWithEditsFn = createServerFn({ method: 'POST' })
   .inputValidator((input: unknown) => publishInputSchema.parse(input))
-  .handler(async ({ data: { id, title, hashtags, youtube_review_url, previous_price } }) => {
+  .handler(
+    async ({
+      data: { id, title, hashtags, youtube_review_url, previous_price, image_url },
+    }) => {
     const request = getRequest();
     await requireAdmin(request);
     const svc = getServiceClient();
@@ -261,6 +265,7 @@ export const publishDealWithEditsFn = createServerFn({ method: 'POST' })
       youtube_review_url,
       previous_price,
       discount_percent,
+      image_url,
       status: 'published',
       published_at,
     };
