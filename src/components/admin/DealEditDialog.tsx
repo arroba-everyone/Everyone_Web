@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ExternalLink } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@everyone-web/ui/dialog';
 import {
   Form,
@@ -58,14 +59,11 @@ export function DealEditDialog({ deal, open, onOpenChange }: DealEditDialogProps
   const onSubmit = async (values: DealEditInput) => {
     if (!deal) return;
     try {
-      await (
-        updateDealFn as unknown as (input: {
-          id: string;
-          fields: DealEditInput;
-        }) => Promise<unknown>
-      )({
-        id: deal.id,
-        fields: values,
+      await updateDealFn({
+        data: {
+          id: deal.id,
+          fields: values,
+        },
       });
       router.invalidate();
       onOpenChange(false);
@@ -185,6 +183,36 @@ export function DealEditDialog({ deal, open, onOpenChange }: DealEditDialogProps
                 )}
               />
             </div>
+
+            <FormField
+              control={form.control}
+              name="original_url"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="flex items-center justify-between">
+                    <span>URL original</span>
+                    <a
+                      href={form.watch('original_url') || undefined}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Ver en Amazon"
+                      className="text-xs text-primary inline-flex gap-1 items-center hover:underline"
+                    >
+                      <ExternalLink className="h-3 w-3" />
+                      Ver en Amazon
+                    </a>
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      {...field}
+                      value={field.value ?? ''}
+                      placeholder="https://amazon.es/..."
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
             <FormField
               control={form.control}

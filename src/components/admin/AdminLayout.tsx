@@ -1,5 +1,6 @@
 import { Link, useRouterState } from '@tanstack/react-router';
 import { cn } from '@everyone-web/libs/utils';
+import { Separator } from '@everyone-web/ui/separator';
 import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
 
 interface AdminTab {
@@ -29,8 +30,16 @@ export function AdminLayout({ children }: AdminLayoutProps) {
           'pb-16'
         )}
       >
-        <div className="max-w-7xl mx-auto flex flex-col gap-8 tablet-lg:gap-10 laptop:gap-12">
-          {/* Admin tab pills — same language as Navbar */}
+        <div className="max-w-7xl mx-auto flex flex-col gap-6 tablet-lg:gap-8 laptop:gap-10">
+          {/* Branding header */}
+          <div className="flex items-center gap-3">
+            <span className="font-bold text-xl text-primary glow-primary">@EveryoneOfertas</span>
+          </div>
+
+          {/* Visual separator between branding and nav */}
+          <Separator />
+
+          {/* Admin tab pills */}
           <nav className="flex flex-wrap gap-2 tablet-lg:gap-3">
             {adminTabs.map(tab => {
               const isActive = pathname.startsWith(tab.href);
@@ -42,7 +51,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
                     'font-semibold text-sm tablet-lg:text-base transition-colors',
                     'rounded-full py-3 px-6 tablet-lg:px-7 laptop:px-8',
                     isActive
-                      ? 'bg-primary text-primary-foreground'
+                      ? 'bg-primary text-primary-foreground glow-primary'
                       : 'text-primary hover:bg-primary/10'
                   )}
                 >

@@ -1,4 +1,21 @@
 import { z } from 'zod';
+import { isAmazonUrl } from '@everyone-web/lib/deals/amazon-url';
+
+// ---------------------------------------------------------------------------
+// Hashtag validation constants (exported — used by HashtagsInput and server fns)
+// ---------------------------------------------------------------------------
+
+/**
+ * Valid hashtag: alphanumeric + underscore + Spanish accented chars, 1–30 chars.
+ * No spaces, hyphens, or emojis. Telegram parses hashtags up to the first
+ * non-alphanumeric separator, so we keep it safe.
+ */
+export const HASHTAG_REGEX = /^[A-Za-z0-9_áéíóúüñÁÉÍÓÚÜÑ]{1,30}$/;
+
+/**
+ * Maximum number of hashtags per deal. 15 is generous but prevents abuse.
+ */
+export const MAX_HASHTAGS = 15;
 
 // ---------------------------------------------------------------------------
 // Subschemas
@@ -24,12 +41,26 @@ export const dealEditSchema = z.object({
   average_price: z.number().positive().nullable().optional(),
   discount_percent: z.number().min(0).max(100).nullable().optional(),
   image_url: z.string().url().nullable().optional(),
-  original_url: z.string().url('La URL original no es válida'),
+  original_url: z
+    .string()
+    .url('La URL original no es válida')
+    .refine(
+      isAmazonUrl,
+      'La URL original debe ser de Amazon (amazon.* o amzn.to / a.co / amzn.eu)'
+    ),
   affiliate_url: z.string().url().nullable().optional(),
   source: z.string().min(1),
   status: dealStatusEnum.optional(),
   youtube_review_url: z.string().url().nullable().optional(),
-  hashtags: z.array(z.string()).nullable().optional(),
+  hashtags: z
+    .array(
+      z
+        .string()
+        .regex(HASHTAG_REGEX, 'Hashtag inválido: solo letras, números, _ y acentos (máx. 30 chars)')
+    )
+    .max(MAX_HASHTAGS, `Máximo ${MAX_HASHTAGS} hashtags`)
+    .nullable()
+    .optional(),
 });
 
 /**
