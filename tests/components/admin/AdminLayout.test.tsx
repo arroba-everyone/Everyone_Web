@@ -27,31 +27,29 @@ function setPathname(path: string) {
 }
 
 describe('AdminLayout', () => {
-  it('(a) renders @EveryoneOfertas text with class glow-primary', () => {
+  it('(a) renders the "Panel de equipo" branding header', () => {
     setPathname('/deals/manage');
     render(<AdminLayout>content</AdminLayout>);
-    const brand = screen.getByText('@EveryoneOfertas');
-    expect(brand).toBeInTheDocument();
-    expect(brand).toHaveClass('glow-primary');
+    expect(screen.getByText('Panel de equipo')).toBeInTheDocument();
   });
 
-  it('(b) nav link for active path has glow-primary class; others do not', () => {
+  it('(b) nav link for active path gets the active pill classes; others do not', () => {
     setPathname('/deals/manage');
     render(<AdminLayout>content</AdminLayout>);
 
     const ofertasLink = screen.getByRole('link', { name: /ofertas/i });
     const blogLink = screen.getByRole('link', { name: /blog/i });
 
-    expect(ofertasLink.className).toContain('glow-primary');
-    expect(blogLink.className).not.toContain('glow-primary');
+    expect(ofertasLink.classList.contains('bg-ink')).toBe(true);
+    expect(blogLink.classList.contains('bg-ink')).toBe(false);
   });
 
-  it('(c) <Separator /> renders between branding and nav tabs', () => {
+  it('(c) toggles the light token scope class on <body> while mounted', () => {
     setPathname('/deals/manage');
-    const { container } = render(<AdminLayout>content</AdminLayout>);
-    // Separator renders with data-slot="separator" (decorative=true → role="none")
-    const separator = container.querySelector('[data-slot="separator"]');
-    expect(separator).toBeInTheDocument();
+    const { unmount } = render(<AdminLayout>content</AdminLayout>);
+    expect(document.body.classList.contains('theme-light')).toBe(true);
+    unmount();
+    expect(document.body.classList.contains('theme-light')).toBe(false);
   });
 
   it('(d) children content renders', () => {

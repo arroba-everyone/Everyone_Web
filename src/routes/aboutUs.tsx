@@ -9,7 +9,7 @@ import pabloAvatar from '@everyone-web/assets/pabloAvatar.webp';
 import ireneAvatar from '@everyone-web/assets/ireneAvatar.webp';
 import juanWorking from '@everyone-web/assets/juanWorking.webp';
 
-const title = 'Sobre nosotros — @everyone';
+const title = 'Sobre nosotros · @everyone';
 const description =
   'Somos un equipo multidisciplinar de diseño, desarrollo y comunicación. Pequeño a propósito: hablas directamente con quien construye tu producto.';
 
@@ -153,7 +153,7 @@ function AboutUs() {
             </h1>
             <p className="text-lg tablet-lg:text-xl text-ink-soft leading-relaxed">
               Somos un equipo multidisciplinar: diseño, desarrollo y comunicación bajo el mismo
-              techo. Pequeño a propósito — así cada proyecto lo llevan las mismas manos de
+              techo. Pequeño a propósito, para que cada proyecto lo lleven las mismas manos de
               principio a fin, sin intermediarios.
             </p>
           </Reveal>

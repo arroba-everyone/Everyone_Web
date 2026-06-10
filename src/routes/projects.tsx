@@ -6,9 +6,9 @@ import { cn } from '@everyone-web/libs/utils';
 import everyLog from '@everyone-web/assets/everyLog.webp';
 import mysteryPhone from '@everyone-web/assets/mysteryPhone.webp';
 
-const title = 'Proyectos — @everyone';
+const title = 'Proyectos · @everyone';
 const description =
-  'Productos que diseñamos, desarrollamos y lanzamos de principio a fin. EveryLog, NutrIA y los proyectos que están por venir — quizá el tuyo.';
+  'Productos que diseñamos, desarrollamos y lanzamos de principio a fin. EveryLog, NutrIA y los proyectos que están por venir. Quizá el tuyo.';
 
 export const Route = createFileRoute('/projects')({
   component: Projects,
@@ -101,7 +101,7 @@ function Projects() {
             </h2>
             <p className="text-lg text-ink-soft leading-relaxed">
               Hay cosas que hacemos todos los días sin pensarlo: un paseo, una tarea, un logro
-              pequeño. EveryLog las convierte en juego — retos cotidianos para compartir,
+              pequeño. EveryLog las convierte en juego, con retos cotidianos para compartir,
               celebrar el progreso y descubrir que competir también puede ser sano y divertido.
             </p>
             <p className="text-base text-ink-soft leading-relaxed">

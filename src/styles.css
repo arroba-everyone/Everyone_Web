@@ -53,6 +53,29 @@ html {
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+/* Light override for the legacy shadcn tokens, used by the redesigned
+   login and admin areas. Radix portals (dialogs, dropdowns) attach to
+   <body>, so this class is also toggled on <body> from those layouts. */
+.theme-light {
+  --background: #f7f6f1;
+  --foreground: #101013;
+  --card: #ffffff;
+  --card-foreground: #101013;
+  --popover: #ffffff;
+  --popover-foreground: #101013;
+  --primary: #87e300;
+  --primary-foreground: #101013;
+  --secondary: #b185fc;
+  --secondary-foreground: #ffffff;
+  --muted: #eceae2;
+  --muted-foreground: #5b5b64;
+  --accent: #edfad6;
+  --accent-foreground: #101013;
+  --border: rgba(16, 16, 19, 0.1);
+  --input: rgba(16, 16, 19, 0.16);
+  --ring: #4c8f00;
+}
+
 @theme inline {
   /* ============================================================
      V2 redesign palette — landing & public pages.

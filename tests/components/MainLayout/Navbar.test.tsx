@@ -63,15 +63,17 @@ beforeEach(() => {
 });
 
 describe('Navbar', () => {
-  it('shows "Entrar" link when session is null (anon)', () => {
+  it('does NOT show any login link when session is null (team access lives in the footer)', () => {
     (useSession as Mock).mockReturnValue(null);
 
     render(<Navbar />);
 
-    // Should have at least one "Entrar" (login) link
-    const loginLinks = screen.getAllByRole('link', { name: /^entrar$/i });
-    expect(loginLinks.length).toBeGreaterThan(0);
-    expect(loginLinks[0].getAttribute('href')).toBe('/login');
+    expect(screen.queryByRole('link', { name: /entrar|iniciar sesión/i })).toBeNull();
+
+    // The public CTA should be there instead
+    const ctaLinks = screen.getAllByRole('link', { name: /empezar un proyecto/i });
+    expect(ctaLinks.length).toBeGreaterThan(0);
+    expect(ctaLinks[0].getAttribute('href')).toBe('/contact');
   });
 
   it('does NOT access window.location.pathname for active route (uses useRouterState)', () => {
@@ -107,8 +109,8 @@ describe('Navbar', () => {
 
     render(<Navbar />);
 
-    // "Entrar" (login) link should NOT appear
-    expect(screen.queryByRole('link', { name: /^entrar$/i })).toBeNull();
+    // No login link should appear either way
+    expect(screen.queryByRole('link', { name: /entrar|iniciar sesión/i })).toBeNull();
 
     // The avatar button should appear (aria-label contains the display name)
     const avatarBtn = screen

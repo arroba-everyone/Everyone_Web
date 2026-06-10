@@ -10,7 +10,7 @@ import {
   FinalCTA,
 } from '@everyone-web/layouts/Home';
 
-const title = '@everyone — Diseño y desarrollo de productos digitales';
+const title = '@everyone · Diseño y desarrollo de productos digitales';
 const description =
   'Webs, apps móviles, realidad aumentada y sistemas a medida para empresas y pymes. Un equipo multidisciplinar que diseña, desarrolla y lanza tu producto digital.';
 

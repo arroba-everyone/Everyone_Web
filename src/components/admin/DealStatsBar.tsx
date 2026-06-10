@@ -36,8 +36,8 @@ function StatCard({ label, value, colorClasses, numberClasses, testId }: StatCar
 }
 
 /**
- * Displays three stat cards: pending (amber), published (primary/glow), rejected (rose).
- * Pure component — no internal state.
+ * Displays three stat cards: pending (amber), published (lime), rejected (rose).
+ * Pure component, no internal state.
  */
 export function DealStatsBar({ counts }: DealStatsBarProps) {
   return (
@@ -45,21 +45,21 @@ export function DealStatsBar({ counts }: DealStatsBarProps) {
       <StatCard
         label="Pendientes"
         value={counts.pending}
-        colorClasses="border-amber-500/30 bg-amber-500/5"
-        numberClasses="text-amber-300"
+        colorClasses="border-amber-500/30 bg-amber-500/10"
+        numberClasses="text-amber-600"
       />
       <StatCard
         label="Publicadas"
         value={counts.published}
-        colorClasses="border-primary/30 bg-primary/5"
-        numberClasses="text-primary glow-primary"
+        colorClasses="border-lime-deep/30 bg-lime-tint"
+        numberClasses="text-lime-deep"
         testId="published-count"
       />
       <StatCard
         label="Rechazadas"
         value={counts.rejected}
-        colorClasses="border-rose-500/30 bg-rose-500/5"
-        numberClasses="text-rose-300"
+        colorClasses="border-rose-500/30 bg-rose-500/10"
+        numberClasses="text-rose-600"
       />
     </div>
   );

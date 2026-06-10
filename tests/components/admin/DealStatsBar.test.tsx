@@ -10,11 +10,10 @@ describe('DealStatsBar', () => {
     expect(screen.getByText('2')).toBeInTheDocument();
   });
 
-  it('(b) published count element has class glow-primary', () => {
+  it('(b) published count element uses the brand lime color', () => {
     render(<DealStatsBar counts={{ pending: 3, published: 7, rejected: 2 }} />);
-    // The published number element should have glow-primary class
     const publishedNumber = screen.getByTestId('published-count');
-    expect(publishedNumber).toHaveClass('glow-primary');
+    expect(publishedNumber).toHaveClass('text-lime-deep');
   });
 
   it('(c) renders zeros correctly when all counts are 0', () => {

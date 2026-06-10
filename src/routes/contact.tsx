@@ -5,7 +5,7 @@ import { Reveal } from '@everyone-web/layouts/Home';
 import { Icon } from '@everyone-web/ui/Icon/Icon';
 import { cn } from '@everyone-web/libs/utils';
 
-const title = 'Contacto — @everyone';
+const title = 'Contacto · @everyone';
 const description =
   'Cuéntanos tu proyecto sin compromiso. Escríbenos a contacto@arrobaeveryone.com y te respondemos en menos de 48 horas con una propuesta clara.';
 

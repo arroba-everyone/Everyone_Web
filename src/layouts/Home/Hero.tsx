@@ -4,10 +4,11 @@ import { motion } from 'motion/react';
 import { cn } from '@everyone-web/libs/utils';
 
 const floatingChips = [
-  { label: 'Webs & e-commerce', tint: 'bg-lime-tint text-lime-deep', delay: 0 },
-  { label: 'Apps iOS & Android', tint: 'bg-grape-tint text-grape-deep', delay: 0.12 },
-  { label: 'Realidad aumentada', tint: 'bg-peach-tint text-ink', delay: 0.24 },
-  { label: 'Sistemas de reservas', tint: 'bg-paper text-ink', delay: 0.36 },
+  { label: 'Webs', tint: 'bg-lime-tint text-lime-deep' },
+  { label: 'E-commerce', tint: 'bg-paper text-ink' },
+  { label: 'Apps iOS & Android', tint: 'bg-grape-tint text-grape-deep' },
+  { label: 'Realidad aumentada', tint: 'bg-peach-tint text-ink' },
+  { label: 'Sistemas a medida', tint: 'bg-ink text-cream' },
 ];
 
 /** Circular rotating sticker — pure decoration, hidden on small screens. */
@@ -88,15 +89,15 @@ export const Hero = () => {
             'text-4xl md:text-6xl laptop:text-7xl leading-[1.05]'
           )}
         >
-          Diseñamos y construimos{' '}
+          Somos{' '}
           <span className="relative inline-block whitespace-nowrap">
             <span
               aria-hidden
               className="absolute inset-x-[-2%] bottom-[6%] h-[42%] -rotate-1 rounded-md bg-lime/50"
             />
-            <span className="relative">productos digitales</span>
+            <span className="relative">el puente</span>
           </span>{' '}
-          que hacen crecer tu negocio.
+          entre tu negocio y la tecnología.
         </motion.h1>
 
         <motion.p
@@ -105,9 +106,8 @@ export const Hero = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-2xl text-lg tablet-lg:text-xl text-ink-soft text-balance leading-relaxed"
         >
-          Webs, apps móviles, realidad aumentada y sistemas a medida. Somos un equipo
-          multidisciplinar que convierte tu idea en algo real — de la primera conversación al
-          lanzamiento.
+          Tú nos cuentas el problema y nosotros diseñamos, construimos y lanzamos la solución.
+          Sin jerga, sin complicaciones y contigo en cada paso.
         </motion.p>
 
         <motion.div
@@ -141,15 +141,15 @@ export const Hero = () => {
 
         {/* Floating service chips */}
         <div className="mt-6 flex flex-wrap justify-center gap-3 tablet-lg:gap-4">
-          {floatingChips.map(chip => (
+          {floatingChips.map((chip, i) => (
             <motion.span
               key={chip.label}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.45, delay: 0.45 + chip.delay }}
+              transition={{ duration: 0.45, delay: 0.45 + i * 0.1 }}
               className={cn(
                 'rounded-full px-5 py-2.5 text-sm font-bold ring-1 ring-ink/5 shadow-sm',
-                chip.delay % 0.24 === 0 ? 'animate-float-slow' : 'animate-float-slower',
+                i % 2 === 0 ? 'animate-float-slow' : 'animate-float-slower',
                 chip.tint
               )}
             >

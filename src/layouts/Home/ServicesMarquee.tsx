@@ -6,7 +6,7 @@ const services = [
   'AR / VR',
   'UX / UI',
   'E-commerce',
-  'Reservas online',
+  'Automatización',
   'Sistemas a medida',
   'Branding',
 ];

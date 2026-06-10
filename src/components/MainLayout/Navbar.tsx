@@ -72,16 +72,9 @@ export function Navbar() {
           <div className="flex items-center gap-1">{navItems.map(desktopLink)}</div>
 
           <div className="flex items-center gap-3">
-            {session ? (
-              <UserMenu session={session} />
-            ) : (
-              <Link
-                to="/login"
-                className="text-xs font-semibold text-ink-soft/70 hover:text-ink transition-colors"
-              >
-                Entrar
-              </Link>
-            )}
+            {/* Login is intentionally NOT in the navbar: this site is not meant
+                for visitors to sign in. Team access lives in the footer. */}
+            {session && <UserMenu session={session} />}
             <Button
               asChild
               className={cn(
@@ -139,16 +132,6 @@ export function Navbar() {
                       <ArrowUpRight className="size-5" />
                     </Link>
                   </Button>
-
-                  {!session && (
-                    <Link
-                      to="/login"
-                      onClick={() => setIsOpen(false)}
-                      className="mt-2 text-center text-sm font-semibold text-ink-soft/70 hover:text-ink"
-                    >
-                      Entrar
-                    </Link>
-                  )}
                 </div>
               </SheetContent>
             </Sheet>

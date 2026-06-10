@@ -22,8 +22,8 @@ export const Lab = () => (
         </h2>
         <p className="text-lg text-ink-soft leading-relaxed">
           EveryLog es nuestra app de retos cotidianos: la diseñamos, la desarrollamos y la
-          lanzamos nosotros, de cero a la App Store. Es nuestra mejor carta de presentación —
-          sabemos lo que cuesta llevar un producto al mundo real porque lo hacemos también con
+          lanzamos nosotros, de cero a la App Store. Es nuestra mejor carta de presentación.
+          Sabemos lo que cuesta llevar un producto al mundo real porque lo hacemos también con
           los nuestros.
         </p>
         <Link
