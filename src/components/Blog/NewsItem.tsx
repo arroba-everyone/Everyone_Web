@@ -57,9 +57,9 @@ export const NewsItem: IBaseComponent<IPost> = ({
       <div className="flex flex-col justify-between gap-4 md:gap-5 laptop:gap-6 flex-1">
         {/* Author and Date */}
         <div className="flex items-center gap-2 text-sm md:text-base">
-          <span className="text-primary font-medium">{author}</span>
+          <span className="text-lime-deep font-semibold">{author}</span>
           <span className="text-muted-foreground">·</span>
-          <span className="text-primary font-medium">{formatDate(publishedAt)}</span>
+          <span className="text-lime-deep font-semibold">{formatDate(publishedAt)}</span>
         </div>
 
         {/* Title */}
@@ -67,7 +67,7 @@ export const NewsItem: IBaseComponent<IPost> = ({
           <h2
             className={cn(
               'transition-colors m-0 p-0 leading-tight',
-              'font-bold text-foreground hover:text-primary',
+              'font-bold text-foreground hover:text-lime-deep',
               'text-2xl md:text-3xl laptop-lg:text-4xl',
               'transition-all cursor-pointer'
             )}
@@ -83,7 +83,7 @@ export const NewsItem: IBaseComponent<IPost> = ({
           className={cn(
             'inline-flex w-fit items-center gap-2 transition-colors',
             'text-base md:text-lg font-medium no-underline',
-            'text-primary hover:text-primary/80',
+            'text-lime-deep hover:text-lime-deep/80',
             'transition-all cursor-pointer hover:scale-110'
           )}
         >

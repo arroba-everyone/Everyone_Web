@@ -59,9 +59,17 @@ function Blog() {
   const posts = Route.useLoaderData();
 
   return (
-    <MainLayout>
-      <div className="flex justify-center w-full pt-32 md:pt-36 laptop:pt-40 px-4 pb-16">
+    <MainLayout tone="light">
+      <div className="theme-light bg-cream flex justify-center w-full pt-32 md:pt-36 laptop:pt-40 px-4 pb-16 min-h-screen">
         <div className="flex flex-col gap-12 md:gap-14 laptop:gap-16 max-w-7xl w-full">
+          <div className="flex flex-col items-start gap-3">
+            <span className="rounded-full bg-grape-tint text-grape-deep px-4 py-1.5 text-sm font-bold">
+              Blog
+            </span>
+            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-ink">
+              Lo que contamos
+            </h1>
+          </div>
           {posts.length === 0 ? (
             // Skeleton placeholder while posts load (SSR provides them immediately,
             // this only shows during client-side navigation before data resolves)
@@ -93,3 +101,4 @@ function Blog() {
     </MainLayout>
   );
 }
+

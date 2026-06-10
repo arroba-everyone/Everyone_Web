@@ -89,9 +89,9 @@ function BlogPost() {
   const post = Route.useLoaderData();
 
   return (
-    <MainLayout>
+    <MainLayout tone="light">
       <Progress />
-      <div className="flex flex-col justify-center items-center px-4 py-12 md:py-20 mt-20 lg:mt-12">
+      <div className="theme-light bg-cream flex flex-col justify-center items-center px-4 py-12 md:py-20 pt-32 md:pt-36 min-h-screen">
         <div className="w-full max-w-4xl">
           <MarkdownPreview content={post.markdown} />
         </div>

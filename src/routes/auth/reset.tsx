@@ -59,9 +59,11 @@ function ResetPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
-      <div className="w-full max-w-sm">
-        <h1 className="mb-6 text-center text-2xl font-bold">Nueva contraseña</h1>
+    <div className="theme-light flex min-h-screen items-center justify-center px-4 bg-cream text-ink">
+      <div className="w-full max-w-sm rounded-[2.5rem] bg-paper p-8 ring-1 ring-ink/5 shadow-xl shadow-ink/5">
+        <h1 className="mb-6 text-center text-2xl font-extrabold tracking-tight">
+          Nueva contraseña
+        </h1>
         <p className="mb-4 text-center text-sm text-muted-foreground">
           Introduce tu nueva contraseña para completar el restablecimiento.
         </p>
