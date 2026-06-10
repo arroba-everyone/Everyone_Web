@@ -6,9 +6,13 @@ body {
   margin: 0;
   padding: 0;
   font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 :root {
@@ -50,6 +54,30 @@ body {
 }
 
 @theme inline {
+  /* ============================================================
+     V2 redesign palette — landing & public pages.
+     Independent from the legacy dark tokens above so the
+     admin/auth/deals areas keep working untouched.
+     ============================================================ */
+  --color-ink: #101013; /* near-black text & dark surfaces */
+  --color-ink-soft: #5b5b64; /* secondary text on light */
+  --color-cream: #f7f6f1; /* warm off-white page background */
+  --color-paper: #ffffff; /* pure white cards */
+  --color-lime: #87e300; /* brand lime (surfaces, accents) */
+  --color-lime-deep: #4c8f00; /* text-safe lime on light bg */
+  --color-lime-tint: #edfad6; /* soft lime card background */
+  --color-grape: #b185fc; /* brand purple */
+  --color-grape-deep: #7a4fd6; /* text-safe purple on light bg */
+  --color-grape-tint: #f2ecfe; /* soft purple card background */
+  --color-peach: #ffc89e; /* warm accent */
+  --color-peach-tint: #fff0e2; /* soft warm card background */
+
+  /* V2 animations */
+  --animate-marquee: marquee 36s linear infinite;
+  --animate-spin-slow: spin-slow 18s linear infinite;
+  --animate-float-slow: float-slow 9s ease-in-out infinite;
+  --animate-float-slower: float-slow 13s ease-in-out infinite reverse;
+
   /* Custom Breakpoints for Responsive Design */
   /* Mobile: default (< 768px) */
   /* Tablet: md (768px - 1024px) */
@@ -112,6 +140,31 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(2deg);
   }
 }
 

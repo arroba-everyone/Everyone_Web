@@ -1,13 +1,7 @@
 import { useState } from 'react';
-import { ChevronDown, Menu } from 'lucide-react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { Button } from '@everyone-web/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@everyone-web/ui/sheet';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@everyone-web/ui/dropdown-menu';
 import { cn } from '@everyone-web/libs/utils';
 import { Link, useRouterState } from '@tanstack/react-router';
 import { useSession } from '@everyone-web/hooks/useSession';
@@ -16,158 +10,151 @@ import { UserMenu } from './UserMenu';
 interface NavItem {
   label: string;
   href: string;
+  hash?: string;
 }
 
-// Top-level pills: the four primary destinations of the site.
-const primaryItems: NavItem[] = [
-  { label: 'Blog', href: '/blog' },
-  { label: 'Ofertas', href: '/deals' },
-  { label: '@everyone', href: '/' },
+const navItems: NavItem[] = [
+  { label: 'Servicios', href: '/', hash: 'servicios' },
+  { label: 'Proyectos', href: '/projects' },
+  { label: 'Nosotros', href: '/aboutUs' },
   { label: 'Contacto', href: '/contact' },
 ];
 
-// Secondary items collapsed under "Más".
-const moreItems: NavItem[] = [
-  { label: 'Sobre nosotros', href: '/aboutUs' },
-  { label: 'Proyectos', href: '/projects' },
-];
-
-const allNavItems: NavItem[] = [...primaryItems, ...moreItems];
+const Wordmark = () => (
+  <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="Ir al inicio">
+    <span
+      className={cn(
+        'grid place-items-center size-9 rounded-xl bg-lime text-ink',
+        'font-extrabold text-lg leading-none rotate-[-6deg]',
+        'transition-transform duration-300 hover:rotate-6'
+      )}
+    >
+      @
+    </span>
+    <span className="font-bold text-lg tracking-tight text-ink">everyone</span>
+  </Link>
+);
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = useRouterState({ select: s => s.location.pathname });
   const session = useSession();
 
-  const activeLabel = allNavItems.find(item => item.href === pathname)?.label ?? '@everyone';
-  const isMoreActive = moreItems.some(item => item.href === pathname);
+  const isActive = (item: NavItem) => !item.hash && item.href === pathname;
 
-  const pillClass = (active: boolean) =>
-    cn(
-      'font-semibold text-sm tablet-lg:text-base transition-colors',
-      'relative rounded-4xl lg:rounded-full',
-      'py-3 px-6 tablet-lg:px-7 laptop:px-8',
-      active ? 'bg-primary text-primary-foreground' : 'text-primary hover:bg-primary/10'
-    );
-
-  const renderPrimaryPills = () =>
-    primaryItems.map(item => (
-      <Link key={item.label} to={item.href} className={pillClass(activeLabel === item.label)}>
-        {item.label}
-      </Link>
-    ));
-
-  const renderMoreDropdown = () => (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button
-          type="button"
-          className={cn(pillClass(isMoreActive), 'flex items-center gap-1 cursor-pointer')}
-          aria-label="Más opciones"
-        >
-          Más
-          <ChevronDown className="h-4 w-4" />
-        </button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="end"
-        sideOffset={12}
-        className={cn(
-          'rounded-3xl bg-background border-primary/20 p-2',
-          'min-w-[12rem] shadow-lg'
-        )}
-      >
-        {moreItems.map(item => {
-          const isActive = activeLabel === item.label;
-          return (
-            <DropdownMenuItem
-              key={item.label}
-              asChild
-              className={cn(
-                'rounded-full px-5 py-2.5 cursor-pointer text-sm font-semibold',
-                'focus:bg-primary/10 focus:text-primary',
-                isActive
-                  ? 'bg-primary text-primary-foreground focus:bg-primary focus:text-primary-foreground'
-                  : 'text-primary'
-              )}
-            >
-              <Link to={item.href} className="w-full">
-                {item.label}
-              </Link>
-            </DropdownMenuItem>
-          );
-        })}
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-
-  const renderMobileItems = () =>
-    allNavItems.map(item => (
-      <Link
-        key={item.label}
-        to={item.href}
-        onClick={() => setIsOpen(false)}
-        className={pillClass(activeLabel === item.label)}
-      >
-        {item.label}
-      </Link>
-    ));
-
-  const renderAuthSection = () => {
-    if (session) {
-      return <UserMenu session={session} />;
-    }
-    return (
-      <Link to="/login" className="font-semibold text-sm text-primary hover:underline px-3 py-2">
-        Iniciar sesión
-      </Link>
-    );
-  };
-
-  return (
-    <nav
+  const desktopLink = (item: NavItem) => (
+    <Link
+      key={item.label}
+      to={item.href}
+      hash={item.hash}
       className={cn(
-        'bg-background fixed left-0 right-0 z-1 mx-auto',
-        'w-11/12 tablet-lg:w-10/12 lg:w-fit',
-        'rounded-4xl lg:rounded-full',
-        'top-6 tablet-lg:top-8 laptop:top-10'
+        'rounded-full px-4 py-2 text-sm font-semibold transition-colors',
+        isActive(item) ? 'bg-ink text-paper' : 'text-ink-soft hover:text-ink hover:bg-ink/5'
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-1">
-        {/* Desktop Navigation */}
-        <div
-          className={cn(
-            'hidden lg:flex items-center justify-center',
-            'h-12 tablet-lg:h-13 laptop:h-14 laptop-lg:h-15',
-            'gap-3 tablet-lg:gap-4 laptop:gap-5 laptop-lg:gap-6'
-          )}
-        >
-          {renderPrimaryPills()}
-          {renderMoreDropdown()}
-          {renderAuthSection()}
+      {item.label}
+    </Link>
+  );
+
+  return (
+    <header className="fixed inset-x-0 top-4 tablet-lg:top-6 z-50 px-4">
+      <nav
+        className={cn(
+          'mx-auto max-w-5xl rounded-full',
+          'bg-paper/85 backdrop-blur-xl',
+          'ring-1 ring-ink/8 shadow-lg shadow-ink/5'
+        )}
+      >
+        {/* Desktop */}
+        <div className="hidden lg:flex items-center justify-between gap-6 h-16 pl-5 pr-3">
+          <Wordmark />
+
+          <div className="flex items-center gap-1">{navItems.map(desktopLink)}</div>
+
+          <div className="flex items-center gap-3">
+            {session ? (
+              <UserMenu session={session} />
+            ) : (
+              <Link
+                to="/login"
+                className="text-xs font-semibold text-ink-soft/70 hover:text-ink transition-colors"
+              >
+                Entrar
+              </Link>
+            )}
+            <Button
+              asChild
+              className={cn(
+                'bg-lime text-ink hover:bg-lime/85 rounded-full h-11 px-5',
+                'font-bold text-sm shadow-md shadow-lime/30'
+              )}
+            >
+              <Link to="/contact">
+                Empezar un proyecto
+                <ArrowUpRight className="size-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
 
-        {/* Mobile Navigation */}
-        <div className="lg:hidden flex items-center justify-between h-16">
-          <div className="text-primary font-bold text-xl">{activeLabel}</div>
+        {/* Mobile */}
+        <div className="lg:hidden flex items-center justify-between h-14 pl-4 pr-2">
+          <Wordmark />
 
-          <div className="flex items-center gap-2">
-            {renderAuthSection()}
-
+          <div className="flex items-center gap-1">
+            {session && <UserMenu session={session} />}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10">
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Toggle menu</span>
+                <Button variant="ghost" size="icon" className="text-ink hover:bg-ink/5 rounded-full">
+                  {isOpen ? <X className="size-6" /> : <Menu className="size-6" />}
+                  <span className="sr-only">Abrir menú</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="bg-background border-background p-4 w-70">
-                <div className="flex flex-col gap-4 mt-8">{renderMobileItems()}</div>
+              <SheetContent side="right" className="bg-cream border-none p-6 w-[19rem]">
+                <div className="flex flex-col gap-2 mt-10">
+                  {navItems.map(item => (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      hash={item.hash}
+                      onClick={() => setIsOpen(false)}
+                      className={cn(
+                        'rounded-2xl px-5 py-3.5 text-lg font-bold transition-colors',
+                        isActive(item) ? 'bg-ink text-paper' : 'text-ink hover:bg-ink/5'
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+
+                  <Button
+                    asChild
+                    className={cn(
+                      'mt-4 bg-lime text-ink hover:bg-lime/85 rounded-2xl h-13',
+                      'font-bold text-base'
+                    )}
+                  >
+                    <Link to="/contact" onClick={() => setIsOpen(false)}>
+                      Empezar un proyecto
+                      <ArrowUpRight className="size-5" />
+                    </Link>
+                  </Button>
+
+                  {!session && (
+                    <Link
+                      to="/login"
+                      onClick={() => setIsOpen(false)}
+                      className="mt-2 text-center text-sm font-semibold text-ink-soft/70 hover:text-ink"
+                    >
+                      Entrar
+                    </Link>
+                  )}
+                </div>
               </SheetContent>
             </Sheet>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }

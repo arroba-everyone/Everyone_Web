@@ -11,3 +11,7 @@ count.txt
 .unlighthouse
 # Local Netlify folder
 .netlify
+
+# macOS AppleDouble metadata (external SSD)
+._*
+**/._*
