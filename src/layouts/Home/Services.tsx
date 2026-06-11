@@ -67,7 +67,7 @@ const ServiceCard = ({
 );
 
 export const Services = () => (
-  <section id="servicios" className="bg-cream scroll-mt-28">
+  <section id="services" className="bg-cream scroll-mt-28">
     <div className="mx-auto max-w-6xl px-6 py-20 tablet-lg:py-28 flex flex-col gap-12">
       <Reveal className="flex flex-col items-start gap-4 max-w-2xl">
         <span className="rounded-full bg-lime-tint text-lime-deep px-4 py-1.5 text-sm font-bold">

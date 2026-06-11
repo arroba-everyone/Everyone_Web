@@ -8,7 +8,7 @@ import mysteryPhone from '@everyone-web/assets/mysteryPhone.webp';
 
 const title = 'Proyectos · @everyone';
 const description =
-  'Productos que diseñamos, desarrollamos y lanzamos de principio a fin. EveryLog, NutrIA y los proyectos que están por venir. Quizá el tuyo.';
+  'Productos que diseñamos, desarrollamos y lanzamos de principio a fin. Loop, NutrIA y los proyectos que están por venir. Quizá el tuyo.';
 
 export const Route = createFileRoute('/projects')({
   component: Projects,
@@ -27,7 +27,7 @@ export const Route = createFileRoute('/projects')({
       {
         name: 'keywords',
         content:
-          'proyectos @everyone, EveryLog, NutrIA, desarrollo de aplicaciones, apps móviles, productos digitales, porfolio',
+          'proyectos @everyone, Loop, NutrIA, desarrollo de aplicaciones, apps móviles, productos digitales, porfolio',
       },
     ],
     links: [{ rel: 'canonical', href: 'https://arrobaeveryone.com/projects' }],
@@ -60,7 +60,7 @@ function Projects() {
         </div>
       </section>
 
-      {/* EveryLog */}
+      {/* Loop */}
       <section className="bg-cream">
         <div
           className={cn(
@@ -81,7 +81,7 @@ function Projects() {
               />
               <img
                 src={everyLog}
-                alt="EveryLog, app de retos cotidianos"
+                alt="Loop, app de retos cotidianos"
                 className="relative w-full max-h-[26rem] object-contain drop-shadow-2xl"
               />
             </div>
@@ -97,11 +97,11 @@ function Projects() {
               </span>
             </div>
             <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-ink">
-              EveryLog
+              Loop
             </h2>
             <p className="text-lg text-ink-soft leading-relaxed">
               Hay cosas que hacemos todos los días sin pensarlo: un paseo, una tarea, un logro
-              pequeño. EveryLog las convierte en juego, con retos cotidianos para compartir,
+              pequeño. Loop las convierte en juego, con retos cotidianos para compartir,
               celebrar el progreso y descubrir que competir también puede ser sano y divertido.
             </p>
             <p className="text-base text-ink-soft leading-relaxed">

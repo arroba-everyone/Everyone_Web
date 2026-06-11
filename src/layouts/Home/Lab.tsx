@@ -21,7 +21,7 @@ export const Lab = () => (
           También construimos productos propios.
         </h2>
         <p className="text-lg text-ink-soft leading-relaxed">
-          EveryLog es nuestra app de retos cotidianos: la diseñamos, la desarrollamos y la
+          Loop es nuestra app de retos cotidianos: la diseñamos, la desarrollamos y la
           lanzamos nosotros, de cero a la App Store. Es nuestra mejor carta de presentación.
           Sabemos lo que cuesta llevar un producto al mundo real porque lo hacemos también con
           los nuestros.
@@ -51,7 +51,7 @@ export const Lab = () => (
           />
           <img
             src={everyLog}
-            alt="EveryLog, nuestra app de retos cotidianos"
+            alt="Loop, nuestra app de retos cotidianos"
             className="relative w-full max-h-[26rem] object-contain drop-shadow-2xl"
             loading="lazy"
           />

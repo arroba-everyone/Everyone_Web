@@ -4,7 +4,7 @@ import { cn } from '@everyone-web/libs/utils';
 import { Icon } from '@everyone-web/ui/Icon/Icon';
 
 const navLinks = [
-  { label: 'Servicios', href: '/', hash: 'servicios' },
+  { label: 'Servicios', href: '/', hash: 'services' },
   { label: 'Proyectos', href: '/projects' },
   { label: 'Nosotros', href: '/aboutUs' },
   { label: 'Contacto', href: '/contact' },

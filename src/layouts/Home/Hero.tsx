@@ -128,7 +128,7 @@ export const Hero = () => {
             <ArrowRight className="size-5 transition-transform group-hover:translate-x-1" />
           </Link>
           <a
-            href="#servicios"
+            href="#services"
             className={cn(
               'inline-flex items-center gap-2 rounded-full bg-transparent text-ink',
               'ring-1 ring-ink/15 px-7 py-4 font-bold text-base transition-all',
