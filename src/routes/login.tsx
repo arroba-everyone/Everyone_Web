@@ -10,6 +10,7 @@ import { LoginForm } from '@everyone-web/components/auth/LoginForm';
 import { sanitiseRedirect } from '@everyone-web/server/redirect-sanitiser';
 import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
 import { cn } from '@everyone-web/libs/utils';
+import type { Session } from '@everyone-web/types/session';
 
 type LoginSearch = {
   redirect?: string;
@@ -26,7 +27,9 @@ export const Route = createFileRoute('/login')({
 
   beforeLoad: ({ context }) => {
     if (context.session !== null && context.session !== undefined) {
-      throw redirect({ to: '/' });
+      throw redirect({
+        to: context.session.role === 'admin' ? '/contacts/manage' : '/',
+      });
     }
   },
 
@@ -38,11 +41,11 @@ function LoginPage() {
   const router = useRouter();
   const search = useSearch({ from: '/login' });
 
-  const handleSuccess = async () => {
+  const handleSuccess = async (session: Session) => {
     await router.invalidate();
     const origin = typeof window !== 'undefined' ? window.location.origin : '';
     const safe = sanitiseRedirect(search.redirect, origin);
-    await navigate({ to: safe ?? '/' });
+    await navigate({ to: safe ?? (session.role === 'admin' ? '/contacts/manage' : '/') });
   };
 
   return (

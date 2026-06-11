@@ -76,24 +76,74 @@ html {
   --ring: #4c8f00;
 }
 
+/* ============================================================
+   V2 redesign palette — landing & public pages.
+   Raw values live on :root so `.theme-dark` (toggled on <html>
+   by the navbar ThemeToggle) can flip the whole site at runtime.
+   ============================================================ */
+:root {
+  --v2-ink: #101013; /* near-black text & dark surfaces */
+  --v2-ink-soft: #5b5b64; /* secondary text on light */
+  --v2-cream: #f7f6f1; /* warm off-white page background */
+  --v2-paper: #ffffff; /* pure white cards */
+  --v2-lime: #87e300; /* brand lime (surfaces, accents) */
+  --v2-lime-deep: #4c8f00; /* text-safe lime on light bg */
+  --v2-lime-tint: #edfad6; /* soft lime card background */
+  --v2-grape: #b185fc; /* brand purple */
+  --v2-grape-deep: #7a4fd6; /* text-safe purple on light bg */
+  --v2-grape-tint: #f2ecfe; /* soft purple card background */
+  --v2-peach: #ffc89e; /* warm accent */
+  --v2-peach-tint: #fff0e2; /* soft warm card background */
+}
+
+/* Dark mode — inverts the neutral surfaces and brightens the
+   "deep" text accents so they stay readable on dark backgrounds.
+   Brand accents (lime, grape, peach) keep their identity. */
+.theme-dark {
+  --v2-ink: #f4f4f6;
+  --v2-ink-soft: #a6a6b0;
+  --v2-cream: #101013;
+  --v2-paper: #1b1b20;
+  --v2-lime-deep: #a5e83c;
+  --v2-lime-tint: rgba(135, 227, 0, 0.13);
+  --v2-grape-deep: #c9a9ff;
+  --v2-grape-tint: rgba(177, 133, 252, 0.15);
+  --v2-peach-tint: rgba(255, 200, 158, 0.13);
+}
+
+/* When dark mode is active, nested .theme-light scopes (forms, admin,
+   dialogs) must follow it — the closer selector would otherwise win. */
+.theme-dark .theme-light {
+  --background: #101013;
+  --foreground: #f4f4f6;
+  --card: #1b1b20;
+  --card-foreground: #f4f4f6;
+  --popover: #1b1b20;
+  --popover-foreground: #f4f4f6;
+  --muted: #26262c;
+  --muted-foreground: #a6a6b0;
+  --accent: rgba(135, 227, 0, 0.13);
+  --accent-foreground: #f4f4f6;
+  --border: rgba(244, 244, 246, 0.12);
+  --input: rgba(244, 244, 246, 0.2);
+  --ring: #87e300;
+}
+
 @theme inline {
-  /* ============================================================
-     V2 redesign palette — landing & public pages.
-     Independent from the legacy dark tokens above so the
-     admin/auth/deals areas keep working untouched.
-     ============================================================ */
-  --color-ink: #101013; /* near-black text & dark surfaces */
-  --color-ink-soft: #5b5b64; /* secondary text on light */
-  --color-cream: #f7f6f1; /* warm off-white page background */
-  --color-paper: #ffffff; /* pure white cards */
-  --color-lime: #87e300; /* brand lime (surfaces, accents) */
-  --color-lime-deep: #4c8f00; /* text-safe lime on light bg */
-  --color-lime-tint: #edfad6; /* soft lime card background */
-  --color-grape: #b185fc; /* brand purple */
-  --color-grape-deep: #7a4fd6; /* text-safe purple on light bg */
-  --color-grape-tint: #f2ecfe; /* soft purple card background */
-  --color-peach: #ffc89e; /* warm accent */
-  --color-peach-tint: #fff0e2; /* soft warm card background */
+  /* Utilities reference the :root vars above so they can be
+     overridden at runtime by `.theme-dark`. */
+  --color-ink: var(--v2-ink);
+  --color-ink-soft: var(--v2-ink-soft);
+  --color-cream: var(--v2-cream);
+  --color-paper: var(--v2-paper);
+  --color-lime: var(--v2-lime);
+  --color-lime-deep: var(--v2-lime-deep);
+  --color-lime-tint: var(--v2-lime-tint);
+  --color-grape: var(--v2-grape);
+  --color-grape-deep: var(--v2-grape-deep);
+  --color-grape-tint: var(--v2-grape-tint);
+  --color-peach: var(--v2-peach);
+  --color-peach-tint: var(--v2-peach-tint);
 
   /* V2 animations */
   --animate-marquee: marquee 36s linear infinite;

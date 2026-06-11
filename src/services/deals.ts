@@ -113,12 +113,27 @@ export const getPublicDealsFn = createServerFn({ method: 'GET' }).handler(async 
 // ---------------------------------------------------------------------------
 
 /**
+ * Pending deals expire after 48h: real-world offers rarely outlive two days,
+ * so anything older is stale noise in the review queue.
+ */
+const PENDING_MAX_AGE_MS = 48 * 60 * 60 * 1000;
+
+/**
  * Returns ALL deals regardless of status. Admin-gated.
+ * Purges expired pending deals first so the queue self-cleans on every visit.
  */
 export const getAllDealsForAdminFn = createServerFn({ method: 'GET' }).handler(async () => {
   const request = getRequest();
   await requireAdmin(request);
   const svc = getServiceClient();
+
+  const cutoff = new Date(Date.now() - PENDING_MAX_AGE_MS).toISOString();
+  const { error: purgeError } = await svc
+    .from('deals')
+    .delete()
+    .eq('status', 'pending')
+    .lt('created_at', cutoff);
+  if (purgeError) throw purgeError;
 
   const { data, error } = await svc
     .from('deals')
@@ -128,6 +143,21 @@ export const getAllDealsForAdminFn = createServerFn({ method: 'GET' }).handler(a
   if (error) throw error;
   return data ?? [];
 });
+
+/**
+ * Deletes several deals at once. Admin-gated.
+ */
+export const deleteDealsBulkFn = createServerFn({ method: 'POST' })
+  .inputValidator((input: { ids: string[] }) => input)
+  .handler(async ({ data: { ids } }) => {
+    const request = getRequest();
+    await requireAdmin(request);
+    if (ids.length === 0) return;
+    const svc = getServiceClient();
+
+    const { error } = await svc.from('deals').delete().in('id', ids);
+    if (error) throw error;
+  });
 
 /**
  * Updates a deal's editable fields. Admin-gated.

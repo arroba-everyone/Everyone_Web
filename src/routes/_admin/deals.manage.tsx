@@ -1,7 +1,12 @@
 import { useMemo, useState } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 import { useRouter } from '@tanstack/react-router';
-import { getAllDealsForAdminFn, setDealStatusFn, deleteDealFn } from '@everyone-web/services/deals';
+import {
+  getAllDealsForAdminFn,
+  setDealStatusFn,
+  deleteDealFn,
+  deleteDealsBulkFn,
+} from '@everyone-web/services/deals';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@everyone-web/ui/tabs';
 import { Button } from '@everyone-web/ui/button';
 import { DealStatsBar } from '@everyone-web/components/admin/DealStatsBar';
@@ -32,6 +37,10 @@ export function DealsManagePage({ deals }: { deals: DealRow[] }) {
   const [previewingDeal, setPreviewingDeal] = useState<DealRow | null>(null);
   const [addOpen, setAddOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+
+  // Bulk selection (pending tab only)
+  const [selectedIds, setSelectedIds] = useState<ReadonlySet<string>>(new Set());
+  const [bulkConfirmOpen, setBulkConfirmOpen] = useState(false);
 
   // Split deals by status
   const byStatus = useMemo(
@@ -91,6 +100,32 @@ export function DealsManagePage({ deals }: { deals: DealRow[] }) {
     }
   };
 
+  const toggleSelect = (id: string) => {
+    setSelectedIds(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
+
+  const handleBulkDelete = async () => {
+    setIsDeleting(true);
+    try {
+      await deleteDealsBulkFn({ data: { ids: [...selectedIds] } });
+      setSelectedIds(new Set());
+      setBulkConfirmOpen(false);
+      router.invalidate();
+    } catch (err) {
+      console.error('Error al eliminar ofertas seleccionadas:', err);
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
   const deletingDeal = deletingId ? deals.find(d => d.id === deletingId) : null;
 
   const sharedCallbacks = {
@@ -136,12 +171,49 @@ export function DealsManagePage({ deals }: { deals: DealRow[] }) {
           </TabsTrigger>
         </TabsList>
 
-        <TabsContent value="pending" className="mt-4">
+        <TabsContent value="pending" className="mt-4 flex flex-col gap-4">
+          {/* Bulk selection bar */}
+          {byStatus.pending.length > 0 && (
+            <div className="flex flex-wrap items-center gap-3">
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() =>
+                  setSelectedIds(prev =>
+                    prev.size === byStatus.pending.length
+                      ? new Set()
+                      : new Set(byStatus.pending.map(d => d.id))
+                  )
+                }
+              >
+                {selectedIds.size === byStatus.pending.length
+                  ? 'Deseleccionar todas'
+                  : 'Seleccionar todas'}
+              </Button>
+              {selectedIds.size > 0 && (
+                <>
+                  <span className="text-sm text-foreground/60">
+                    {selectedIds.size} seleccionada{selectedIds.size === 1 ? '' : 's'}
+                  </span>
+                  <Button
+                    size="sm"
+                    variant="destructive"
+                    onClick={() => setBulkConfirmOpen(true)}
+                  >
+                    Eliminar seleccionadas
+                  </Button>
+                </>
+              )}
+            </div>
+          )}
+
           <DealsCardGrid
             deals={byStatus.pending}
             emptyMessage="No hay ofertas pendientes de revisión"
             {...sharedCallbacks}
             onRestore={handleRestore}
+            onToggleSelect={toggleSelect}
+            selectedIds={selectedIds}
           />
         </TabsContent>
 
@@ -196,6 +268,17 @@ export function DealsManagePage({ deals }: { deals: DealRow[] }) {
             : '¿Seguro que quieres eliminar esta oferta? Esta acción no se puede deshacer.'
         }
         onConfirm={handleDelete}
+        isPending={isDeleting}
+      />
+
+      <DeleteConfirmDialog
+        open={bulkConfirmOpen}
+        onOpenChange={setBulkConfirmOpen}
+        title="Eliminar ofertas seleccionadas"
+        description={`¿Seguro que quieres eliminar ${selectedIds.size} oferta${
+          selectedIds.size === 1 ? '' : 's'
+        }? Esta acción no se puede deshacer.`}
+        onConfirm={handleBulkDelete}
         isPending={isDeleting}
       />
     </div>

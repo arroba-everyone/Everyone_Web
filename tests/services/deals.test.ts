@@ -82,11 +82,15 @@ function makeAuthClientMock(rows: DealRow[]) {
 /**
  * Creates a minimal Supabase mock for admin path:
  * from().select().order() → { data, error }
+ * from().delete().eq().lt() → { error } (stale-pending purge)
  */
 function makeAdminClientMock(rows: DealRow[]) {
   const orderMock = vi.fn().mockResolvedValue({ data: rows, error: null });
   const selectMock = vi.fn().mockReturnValue({ order: orderMock });
-  const fromMock = vi.fn().mockReturnValue({ select: selectMock });
+  const ltMock = vi.fn().mockResolvedValue({ error: null });
+  const deleteEqMock = vi.fn().mockReturnValue({ lt: ltMock });
+  const deleteMock = vi.fn().mockReturnValue({ eq: deleteEqMock });
+  const fromMock = vi.fn().mockReturnValue({ select: selectMock, delete: deleteMock });
   return { from: fromMock };
 }
 

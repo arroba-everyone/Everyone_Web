@@ -6,6 +6,7 @@ import { cn } from '@everyone-web/libs/utils';
 import { Link, useRouterState } from '@tanstack/react-router';
 import { useSession } from '@everyone-web/hooks/useSession';
 import { UserMenu } from './UserMenu';
+import { ThemeToggle } from './ThemeToggle';
 
 interface NavItem {
   label: string;
@@ -72,6 +73,7 @@ export function Navbar() {
           <div className="flex items-center gap-1">{navItems.map(desktopLink)}</div>
 
           <div className="flex items-center gap-3">
+            <ThemeToggle />
             {/* Login is intentionally NOT in the navbar: this site is not meant
                 for visitors to sign in. Team access lives in the footer. */}
             {session && <UserMenu session={session} />}
@@ -94,7 +96,8 @@ export function Navbar() {
         <div className="lg:hidden flex items-center justify-between h-14 pl-4 pr-2">
           <Wordmark />
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
             {session && <UserMenu session={session} />}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>

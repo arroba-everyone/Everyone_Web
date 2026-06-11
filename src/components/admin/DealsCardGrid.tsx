@@ -10,6 +10,9 @@ interface DealsCardGridProps {
   onEdit: (deal: DealRow) => void;
   onDelete: (id: string) => void;
   emptyMessage?: string;
+  /** Enables per-card selection checkboxes (bulk actions). */
+  onToggleSelect?: (id: string) => void;
+  selectedIds?: ReadonlySet<string>;
 }
 
 /**
@@ -26,6 +29,8 @@ export function DealsCardGrid({
   onEdit,
   onDelete,
   emptyMessage = 'No hay ofertas en esta categoría',
+  onToggleSelect,
+  selectedIds,
 }: DealsCardGridProps) {
   if (deals.length === 0) {
     return (
@@ -50,6 +55,8 @@ export function DealsCardGrid({
           onRestore={onRestore}
           onEdit={onEdit}
           onDelete={onDelete}
+          onToggleSelect={onToggleSelect}
+          selected={selectedIds?.has(deal.id) ?? false}
         />
       ))}
     </div>
