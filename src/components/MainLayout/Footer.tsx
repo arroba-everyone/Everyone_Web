@@ -2,13 +2,7 @@ import { Link } from '@tanstack/react-router';
 import { ArrowUpRight } from 'lucide-react';
 import { cn } from '@everyone-web/libs/utils';
 import { Icon } from '@everyone-web/ui/Icon/Icon';
-
-const navLinks = [
-  { label: 'Servicios', href: '/', hash: 'services' },
-  { label: 'Proyectos', href: '/projects' },
-  { label: 'Nosotros', href: '/aboutUs' },
-  { label: 'Contacto', href: '/contact' },
-];
+import { NAV_ITEMS } from '@everyone-web/constants/nav';
 
 export const Footer = () => {
   return (
@@ -62,7 +56,7 @@ export const Footer = () => {
           {/* Middle: nav + socials */}
           <div className="flex flex-col tablet-lg:flex-row justify-between gap-8">
             <nav className="flex flex-wrap gap-x-8 gap-y-3">
-              {navLinks.map(link => (
+              {NAV_ITEMS.map(link => (
                 <Link
                   key={link.label}
                   to={link.href}

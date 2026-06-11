@@ -163,6 +163,8 @@ function AboutUs() {
               <img
                 src={juanWorking}
                 alt="El equipo de @everyone trabajando"
+                width={794}
+                height={596}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -226,6 +228,8 @@ function AboutUs() {
                     src={member.avatar}
                     alt={member.name}
                     loading="lazy"
+                    width={144}
+                    height={144}
                     className={cn(
                       'size-28 tablet-lg:size-36 shrink-0 rounded-[2rem] object-cover ring-4 ring-cream',
                       'transition-transform duration-300 group-hover:rotate-[-3deg] group-hover:scale-105'

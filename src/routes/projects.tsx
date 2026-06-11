@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
 import { Reveal } from '@everyone-web/layouts/Home';
 import { cn } from '@everyone-web/libs/utils';
-import loopMockup from '@everyone-web/assets/mockUpLoop.png';
+import loopMockup from '@everyone-web/assets/mockUpLoop.webp';
 import mysteryPhone from '@everyone-web/assets/mysteryPhone.webp';
 
 const title = 'Proyectos · @everyone';
@@ -82,6 +82,8 @@ function Projects() {
               <img
                 src={loopMockup}
                 alt="Loop, app de retos cotidianos"
+                width={600}
+                height={1000}
                 className="relative w-full max-h-[26rem] object-contain drop-shadow-2xl"
               />
             </div>
@@ -129,6 +131,8 @@ function Projects() {
                 src={mysteryPhone}
                 alt="NutrIA, próximamente"
                 loading="lazy"
+                width={508}
+                height={886}
                 className="relative w-full max-h-60 object-contain drop-shadow-xl"
               />
               <div className="relative flex flex-col gap-3">

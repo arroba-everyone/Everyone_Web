@@ -39,9 +39,11 @@ export const Icon: IBaseComponent<IIcon> = ({ name, cursor = 'currentColor', sty
 
   return (
     <>
-      {IconComponent
-        ? IconComponent({ ...props, cursor, style: { ...style, margin: 'auto 0' } })
-        : AiFillBug({ color: 'red' })}
+      {IconComponent ? (
+        <IconComponent {...props} cursor={cursor} style={{ ...style, margin: 'auto 0' }} />
+      ) : (
+        <AiFillBug color="red" />
+      )}
     </>
   );
 };

@@ -1,4 +1,10 @@
-import { useRouter, useNavigate, useRouterState, Link } from '@tanstack/react-router';
+import {
+  useRouter,
+  useNavigate,
+  useRouterState,
+  useMatchRoute,
+  Link,
+} from '@tanstack/react-router';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,12 +21,11 @@ interface UserMenuProps {
   session: Session;
 }
 
-const ADMIN_PATHS = ['/contacts/manage', '/deals/manage', '/blog/manage'];
-
 export function UserMenu({ session }: UserMenuProps) {
   const router = useRouter();
   const navigate = useNavigate();
   const pathname = useRouterState({ select: s => s.location.pathname });
+  const matchRoute = useMatchRoute();
 
   const handleSignOut = async () => {
     await signOut();
@@ -33,7 +38,11 @@ export function UserMenu({ session }: UserMenuProps) {
 
   const initials = (session.displayName || session.email).slice(0, 2).toUpperCase();
 
-  const inAdminPanel = ADMIN_PATHS.some(p => pathname.startsWith(p));
+  const inAdminPanel = !!(
+    matchRoute({ to: '/contacts/manage', fuzzy: true }) ||
+    matchRoute({ to: '/deals/manage', fuzzy: true }) ||
+    matchRoute({ to: '/blog/manage', fuzzy: true })
+  );
   const inSettings = pathname.startsWith('/settings');
 
   const itemClass = (active: boolean) =>

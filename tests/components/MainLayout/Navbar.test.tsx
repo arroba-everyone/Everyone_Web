@@ -14,6 +14,8 @@ vi.mock('@tanstack/react-router', async importOriginal => {
       }
     ),
     useRouter: vi.fn().mockReturnValue({ invalidate: vi.fn() }),
+    useMatchRoute: vi.fn().mockReturnValue(() => false),
+    useNavigate: vi.fn().mockReturnValue(vi.fn()),
     Link: ({ children, to }: { children: React.ReactNode; to?: string }) => (
       // eslint-disable-next-line jsx-a11y/anchor-is-valid
       <a href={typeof to === 'string' ? to : undefined}>{children}</a>

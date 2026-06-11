@@ -5,21 +5,11 @@ import { Sheet, SheetContent, SheetTrigger } from '@everyone-web/ui/sheet';
 import { cn } from '@everyone-web/libs/utils';
 import { Link, useRouterState } from '@tanstack/react-router';
 import { useSession } from '@everyone-web/hooks/useSession';
+import { NAV_ITEMS } from '@everyone-web/constants/nav';
 import { UserMenu } from './UserMenu';
 import { ThemeToggle } from './ThemeToggle';
 
-interface NavItem {
-  label: string;
-  href: string;
-  hash?: string;
-}
-
-const navItems: NavItem[] = [
-  { label: 'Servicios', href: '/', hash: 'services' },
-  { label: 'Proyectos', href: '/projects' },
-  { label: 'Nosotros', href: '/aboutUs' },
-  { label: 'Contacto', href: '/contact' },
-];
+type NavItem = (typeof NAV_ITEMS)[number];
 
 const Wordmark = () => (
   <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="Ir al inicio">
@@ -70,7 +60,7 @@ export function Navbar() {
         <div className="hidden lg:flex items-center justify-between gap-6 h-16 pl-5 pr-3">
           <Wordmark />
 
-          <div className="flex items-center gap-1">{navItems.map(desktopLink)}</div>
+          <div className="flex items-center gap-1">{NAV_ITEMS.map(desktopLink)}</div>
 
           <div className="flex items-center gap-3">
             <ThemeToggle />
@@ -108,7 +98,7 @@ export function Navbar() {
               </SheetTrigger>
               <SheetContent side="right" className="bg-cream border-none p-6 w-[19rem]">
                 <div className="flex flex-col gap-2 mt-10">
-                  {navItems.map(item => (
+                  {NAV_ITEMS.map(item => (
                     <Link
                       key={item.label}
                       to={item.href}

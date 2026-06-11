@@ -65,8 +65,9 @@ function SettingsPage() {
     }
   });
 
-  const watchedAvatar = form.watch('avatarUrl') ?? '';
-  const watchedName = form.watch('displayName') ?? session.displayName;
+  const [watchedAvatarRaw, watchedNameRaw] = form.watch(['avatarUrl', 'displayName']);
+  const watchedAvatar = watchedAvatarRaw ?? '';
+  const watchedName = watchedNameRaw ?? session.displayName;
   const initials = (watchedName || session.email).slice(0, 2).toUpperCase();
 
   return (

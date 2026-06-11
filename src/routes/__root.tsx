@@ -39,6 +39,13 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
     links: [
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
+      // REQ-FONT-1: A <link rel="preload"> for Outfit woff2 is intentionally omitted.
+      // Google Fonts serves different woff2 URLs depending on User-Agent (browsers get woff2,
+      // other UA types get ttf/woff). Hardcoding any specific gstatic.com URL would be brittle
+      // (URL changes on font version bumps, and it would only preload for the UA that generated
+      // the URL). The preconnect hints above ensure the DNS + TLS handshake is done early,
+      // which covers the main latency. Self-hosting Outfit would be the correct solution for
+      // a stable preload, but that is out of scope for this workstream (WS1 deferred).
       {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Outfit:wght@300..800&display=swap',

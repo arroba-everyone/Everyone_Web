@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 import { useRouter } from '@tanstack/react-router';
 import {
@@ -58,35 +58,45 @@ export function DealsManagePage({ deals }: { deals: DealRow[] }) {
     rejected: byStatus.rejected.length,
   };
 
-  // Handlers
-  const handleReject = async (id: string) => {
-    try {
-      await setDealStatusFn({ data: { id, status: 'rejected' } });
-      router.invalidate();
-    } catch (err) {
-      console.error('Error al rechazar oferta:', err);
-    }
-  };
+  // Handlers — wrapped in useCallback to ensure referential stability across renders.
+  // Deps: only `router` (stable from useRouter) and state setters (stable from useState).
+  const handleReject = useCallback(
+    async (id: string) => {
+      try {
+        await setDealStatusFn({ data: { id, status: 'rejected' } });
+        router.invalidate();
+      } catch (err) {
+        console.error('Error al rechazar oferta:', err);
+      }
+    },
+    [router]
+  );
 
-  const handleRestore = async (id: string) => {
-    try {
-      await setDealStatusFn({ data: { id, status: 'pending' } });
-      router.invalidate();
-    } catch (err) {
-      console.error('Error al restaurar oferta:', err);
-    }
-  };
+  const handleRestore = useCallback(
+    async (id: string) => {
+      try {
+        await setDealStatusFn({ data: { id, status: 'pending' } });
+        router.invalidate();
+      } catch (err) {
+        console.error('Error al restaurar oferta:', err);
+      }
+    },
+    [router]
+  );
 
-  const handleUnpublish = async (id: string) => {
-    try {
-      await setDealStatusFn({ data: { id, status: 'pending' } });
-      router.invalidate();
-    } catch (err) {
-      console.error('Error al despublicar oferta:', err);
-    }
-  };
+  const handleUnpublish = useCallback(
+    async (id: string) => {
+      try {
+        await setDealStatusFn({ data: { id, status: 'pending' } });
+        router.invalidate();
+      } catch (err) {
+        console.error('Error al despublicar oferta:', err);
+      }
+    },
+    [router]
+  );
 
-  const handleDelete = async () => {
+  const handleDelete = useCallback(async () => {
     if (!deletingId) return;
     setIsDeleting(true);
     try {
@@ -98,9 +108,9 @@ export function DealsManagePage({ deals }: { deals: DealRow[] }) {
     } finally {
       setIsDeleting(false);
     }
-  };
+  }, [deletingId, router]);
 
-  const toggleSelect = (id: string) => {
+  const toggleSelect = useCallback((id: string) => {
     setSelectedIds(prev => {
       const next = new Set(prev);
       if (next.has(id)) {
@@ -110,9 +120,9 @@ export function DealsManagePage({ deals }: { deals: DealRow[] }) {
       }
       return next;
     });
-  };
+  }, []);
 
-  const handleBulkDelete = async () => {
+  const handleBulkDelete = useCallback(async () => {
     setIsDeleting(true);
     try {
       await deleteDealsBulkFn({ data: { ids: [...selectedIds] } });
@@ -124,17 +134,22 @@ export function DealsManagePage({ deals }: { deals: DealRow[] }) {
     } finally {
       setIsDeleting(false);
     }
-  };
+  }, [selectedIds, router]);
 
   const deletingDeal = deletingId ? deals.find(d => d.id === deletingId) : null;
 
-  const sharedCallbacks = {
-    onEdit: setEditingDeal,
-    onDelete: setDeletingId,
-    onReject: handleReject,
-    onRestore: handleUnpublish, // published → pending (Despublicar)
-    onPublishPreview: setPreviewingDeal,
-  };
+  // sharedCallbacks wrapped in useMemo so the object reference is stable when
+  // none of its constituent callbacks have changed.
+  const sharedCallbacks = useMemo(
+    () => ({
+      onEdit: setEditingDeal,
+      onDelete: setDeletingId,
+      onReject: handleReject,
+      onRestore: handleUnpublish, // published → pending (Despublicar)
+      onPublishPreview: setPreviewingDeal,
+    }),
+    [handleReject, handleUnpublish]
+  );
 
   return (
     <div className="flex flex-col gap-8 tablet-lg:gap-10 laptop:gap-12">
