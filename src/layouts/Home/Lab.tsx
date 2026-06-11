@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@everyone-web/libs/utils';
-import everyLog from '@everyone-web/assets/everyLog.webp';
+import loopMockup from '@everyone-web/assets/mockUpLoop.png';
 import { Reveal } from './Reveal';
 
 /** Featured own product — proof that we ship real products end to end. */
@@ -50,7 +50,7 @@ export const Lab = () => (
             className="absolute -top-10 -right-10 size-40 rounded-full bg-lime/30 blur-2xl pointer-events-none"
           />
           <img
-            src={everyLog}
+            src={loopMockup}
             alt="Loop, nuestra app de retos cotidianos"
             className="relative w-full max-h-[26rem] object-contain drop-shadow-2xl"
             loading="lazy"

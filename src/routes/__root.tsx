@@ -47,6 +47,13 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       { rel: 'icon', href: '/favicon.ico', type: 'image/x-icon' },
       { rel: 'apple-touch-icon', href: '/logo192.png' },
     ],
+    scripts: [
+      {
+        // Re-apply the saved theme before paint to avoid a light flash.
+        children:
+          "(function(){try{if(localStorage.getItem('everyone-theme')==='dark'){document.documentElement.classList.add('theme-dark')}}catch(e){}})()",
+      },
+    ],
   }),
 
   beforeLoad: beforeLoadHandler,

@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
 import { Reveal } from '@everyone-web/layouts/Home';
 import { cn } from '@everyone-web/libs/utils';
-import everyLog from '@everyone-web/assets/everyLog.webp';
+import loopMockup from '@everyone-web/assets/mockUpLoop.png';
 import mysteryPhone from '@everyone-web/assets/mysteryPhone.webp';
 
 const title = 'Proyectos · @everyone';
@@ -80,7 +80,7 @@ function Projects() {
                 className="absolute -top-10 -right-10 size-40 rounded-full bg-lime/30 blur-2xl pointer-events-none"
               />
               <img
-                src={everyLog}
+                src={loopMockup}
                 alt="Loop, app de retos cotidianos"
                 className="relative w-full max-h-[26rem] object-contain drop-shadow-2xl"
               />

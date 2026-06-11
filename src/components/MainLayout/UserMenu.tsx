@@ -1,4 +1,4 @@
-import { useRouter, useNavigate, Link } from '@tanstack/react-router';
+import { useRouter, useNavigate, useRouterState, Link } from '@tanstack/react-router';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,9 +15,12 @@ interface UserMenuProps {
   session: Session;
 }
 
+const ADMIN_PATHS = ['/contacts/manage', '/deals/manage', '/blog/manage'];
+
 export function UserMenu({ session }: UserMenuProps) {
   const router = useRouter();
   const navigate = useNavigate();
+  const pathname = useRouterState({ select: s => s.location.pathname });
 
   const handleSignOut = async () => {
     await signOut();
@@ -27,68 +30,67 @@ export function UserMenu({ session }: UserMenuProps) {
 
   const initials = (session.displayName || session.email).slice(0, 2).toUpperCase();
 
+  const inAdminPanel = ADMIN_PATHS.some(p => pathname.startsWith(p));
+  const inSettings = pathname.startsWith('/settings');
+
+  const itemClass = (active: boolean) =>
+    cn(
+      'rounded-full px-5 py-2.5 cursor-pointer text-sm font-semibold',
+      active
+        ? 'text-lime-deep bg-lime-tint focus:bg-lime-tint focus:text-lime-deep'
+        : 'text-ink focus:bg-ink/5 focus:text-ink'
+    );
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button
-          className="rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
+          className="rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-lime-deep cursor-pointer"
           aria-label={`Menú de usuario: ${session.displayName || session.email}`}
         >
           <Avatar className="h-9 w-9">
             {session.avatarUrl && <AvatarImage src={session.avatarUrl} alt={session.displayName} />}
-            <AvatarFallback className="bg-primary text-primary-foreground text-xs font-bold">
+            <AvatarFallback className="bg-lime text-ink text-xs font-bold">
               {initials}
             </AvatarFallback>
           </Avatar>
         </button>
       </DropdownMenuTrigger>
 
+      {/* Styled with v2 tokens (not shadcn vars) so it looks identical no matter
+          which page the portal mounts on — admin, settings or public. */}
       <DropdownMenuContent
         align="end"
         sideOffset={12}
         className={cn(
-          'rounded-3xl bg-background border-primary/20 p-2',
-          'min-w-[14rem] shadow-lg'
+          'rounded-3xl bg-paper text-ink border-ink/10 p-2',
+          'min-w-[14rem] shadow-lg shadow-ink/10'
         )}
       >
         {/* Identity header (non-clickable) */}
         <div className="px-3 py-2 flex flex-col gap-0.5">
-          <p className="font-semibold text-sm truncate">{session.displayName}</p>
-          <p className="text-xs text-foreground/60 truncate">{session.email}</p>
+          <p className="font-semibold text-sm truncate text-ink">{session.displayName}</p>
+          <p className="text-xs text-ink-soft truncate">{session.email}</p>
         </div>
 
-        <DropdownMenuSeparator className="bg-foreground/10" />
+        <DropdownMenuSeparator className="bg-ink/10" />
 
         {/* Panel admin — only for admins */}
         {session.role === 'admin' && (
-          <>
-            <DropdownMenuItem
-              asChild
-              className={cn(
-                'rounded-full px-5 py-2.5 cursor-pointer text-sm font-semibold',
-                'text-primary focus:bg-primary/10 focus:text-primary'
-              )}
-            >
-              <Link to="/deals/manage" className="w-full">
-                Panel admin
-              </Link>
-            </DropdownMenuItem>
-          </>
+          <DropdownMenuItem asChild className={itemClass(inAdminPanel)}>
+            <Link to="/contacts/manage" className="w-full">
+              Panel admin
+            </Link>
+          </DropdownMenuItem>
         )}
 
-        <DropdownMenuItem
-          asChild
-          className={cn(
-            'rounded-full px-5 py-2.5 cursor-pointer text-sm font-semibold',
-            'text-foreground focus:bg-foreground/5 focus:text-primary'
-          )}
-        >
+        <DropdownMenuItem asChild className={itemClass(inSettings)}>
           <Link to="/settings" className="w-full">
             Ajustes
           </Link>
         </DropdownMenuItem>
 
-        <DropdownMenuSeparator className="bg-foreground/10" />
+        <DropdownMenuSeparator className="bg-ink/10" />
 
         <DropdownMenuItem
           onClick={() => void handleSignOut()}

@@ -7,7 +7,12 @@ vi.mock('@tanstack/react-router', async importOriginal => {
   const actual = await importOriginal<typeof import('@tanstack/react-router')>();
   return {
     ...actual,
-    useRouterState: vi.fn().mockReturnValue({ location: { pathname: '/' } }),
+    useRouterState: vi.fn(
+      (opts?: { select?: (s: { location: { pathname: string } }) => unknown }) => {
+        const state = { location: { pathname: '/' } };
+        return opts?.select ? opts.select(state) : state;
+      }
+    ),
     useRouter: vi.fn().mockReturnValue({ invalidate: vi.fn() }),
     Link: ({ children, to }: { children: React.ReactNode; to?: string }) => (
       // eslint-disable-next-line jsx-a11y/anchor-is-valid

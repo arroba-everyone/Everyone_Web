@@ -1,4 +1,4 @@
-import { MoreHorizontal, ExternalLink } from 'lucide-react';
+import { MoreHorizontal, ExternalLink, Check } from 'lucide-react';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { Card } from '@everyone-web/ui/card';
@@ -22,6 +22,9 @@ interface DealCardProps {
   onRestore: (id: string) => void;
   onEdit: (deal: DealRow) => void;
   onDelete: (id: string) => void;
+  /** When provided, the card shows a selection checkbox (bulk actions). */
+  onToggleSelect?: (id: string) => void;
+  selected?: boolean;
 }
 
 const STATUS_LABEL: Record<DealRow['status'], string> = {
@@ -50,6 +53,8 @@ export function DealCard({
   onRestore,
   onEdit,
   onDelete,
+  onToggleSelect,
+  selected = false,
 }: DealCardProps) {
   const historicalLow = isHistoricalLow(deal);
   const foundAtFormatted = deal.found_at
@@ -61,7 +66,8 @@ export function DealCard({
       <Card
         className={cn(
           'overflow-hidden flex flex-col rounded-2xl bg-card border border-foreground/10',
-          'hover:border-primary/30 transition-colors h-full'
+          'hover:border-primary/30 transition-colors h-full',
+          selected && 'border-lime-deep ring-2 ring-lime-deep/40'
         )}
       >
         {/* Image section */}
@@ -69,7 +75,24 @@ export function DealCard({
           <DealImage src={deal.image_url} alt={deal.title} />
 
           {/* Overlaid badges — top-left */}
-          <div className="absolute top-2 left-2 flex flex-col gap-1">
+          <div className="absolute top-2 left-2 flex flex-col items-start gap-1">
+            {onToggleSelect && (
+              <button
+                type="button"
+                role="checkbox"
+                aria-checked={selected}
+                aria-label={selected ? 'Quitar de la selección' : 'Seleccionar oferta'}
+                onClick={() => onToggleSelect(deal.id)}
+                className={cn(
+                  'grid place-items-center size-6 rounded-md border-2 transition-colors cursor-pointer',
+                  selected
+                    ? 'bg-lime border-lime text-ink'
+                    : 'bg-white/80 border-foreground/30 hover:border-lime-deep'
+                )}
+              >
+                {selected && <Check className="h-4 w-4" strokeWidth={3} />}
+              </button>
+            )}
             {deal.discount_percent != null && deal.discount_percent > 0 && (
               <Badge variant="destructive">-{deal.discount_percent}%</Badge>
             )}

@@ -9,9 +9,9 @@ interface AdminTab {
 }
 
 const adminTabs: AdminTab[] = [
+  { label: 'Contactos', href: '/contacts/manage' },
   { label: 'Ofertas', href: '/deals/manage' },
   { label: 'Blog', href: '/blog/manage' },
-  { label: 'Contactos', href: '/contacts/manage' },
 ];
 
 interface AdminLayoutProps {
