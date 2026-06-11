@@ -9,7 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SignupRouteImport } from './routes/signup'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as LoginRouteImport } from './routes/login'
@@ -28,11 +27,6 @@ import { Route as AdminBlogNewRouteImport } from './routes/_admin/blog.new'
 import { Route as AdminBlogManageRouteImport } from './routes/_admin/blog.manage'
 import { Route as AdminBlogEditIdRouteImport } from './routes/_admin/blog.edit.$id'
 
-const SignupRoute = SignupRouteImport.update({
-  id: '/signup',
-  path: '/signup',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -126,7 +120,6 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/projects': typeof ProjectsRoute
   '/settings': typeof SettingsRoute
-  '/signup': typeof SignupRoute
   '/auth/callback': typeof AuthCallbackRoute
   '/auth/reset': typeof AuthResetRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -145,7 +138,6 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/projects': typeof ProjectsRoute
   '/settings': typeof SettingsRoute
-  '/signup': typeof SignupRoute
   '/auth/callback': typeof AuthCallbackRoute
   '/auth/reset': typeof AuthResetRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -166,7 +158,6 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/projects': typeof ProjectsRoute
   '/settings': typeof SettingsRoute
-  '/signup': typeof SignupRoute
   '/auth/callback': typeof AuthCallbackRoute
   '/auth/reset': typeof AuthResetRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -187,7 +178,6 @@ export interface FileRouteTypes {
     | '/login'
     | '/projects'
     | '/settings'
-    | '/signup'
     | '/auth/callback'
     | '/auth/reset'
     | '/blog/$slug'
@@ -206,7 +196,6 @@ export interface FileRouteTypes {
     | '/login'
     | '/projects'
     | '/settings'
-    | '/signup'
     | '/auth/callback'
     | '/auth/reset'
     | '/blog/$slug'
@@ -226,7 +215,6 @@ export interface FileRouteTypes {
     | '/login'
     | '/projects'
     | '/settings'
-    | '/signup'
     | '/auth/callback'
     | '/auth/reset'
     | '/blog/$slug'
@@ -247,7 +235,6 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   ProjectsRoute: typeof ProjectsRoute
   SettingsRoute: typeof SettingsRoute
-  SignupRoute: typeof SignupRoute
   AuthCallbackRoute: typeof AuthCallbackRoute
   AuthResetRoute: typeof AuthResetRoute
   BlogSlugRoute: typeof BlogSlugRoute
@@ -256,13 +243,6 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/signup': {
-      id: '/signup'
-      path: '/signup'
-      fullPath: '/signup'
-      preLoaderRoute: typeof SignupRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -412,7 +392,6 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   ProjectsRoute: ProjectsRoute,
   SettingsRoute: SettingsRoute,
-  SignupRoute: SignupRoute,
   AuthCallbackRoute: AuthCallbackRoute,
   AuthResetRoute: AuthResetRoute,
   BlogSlugRoute: BlogSlugRoute,

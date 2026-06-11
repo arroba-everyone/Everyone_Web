@@ -41,7 +41,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
         <div className="max-w-7xl mx-auto flex flex-col gap-6 tablet-lg:gap-8">
           {/* Branding header */}
           <div className="flex items-center gap-3">
-            <span className="grid place-items-center size-9 rounded-xl bg-lime text-ink font-extrabold text-lg rotate-[-6deg]">
+            <span className="grid place-items-center size-9 rounded-xl bg-lime text-ink-solid font-extrabold text-lg rotate-[-6deg]">
               @
             </span>
             <span className="font-bold text-xl tracking-tight">Panel de equipo</span>

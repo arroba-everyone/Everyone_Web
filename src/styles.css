@@ -145,6 +145,12 @@ html {
   --color-peach: var(--v2-peach);
   --color-peach-tint: var(--v2-peach-tint);
 
+  /* Constant variants — do NOT flip in dark mode. For content sitting on
+     brand-lime surfaces, which stay bright in both themes and always need
+     dark text for contrast. */
+  --color-ink-solid: #101013;
+  --color-paper-solid: #ffffff;
+
   /* V2 animations */
   --animate-marquee: marquee 36s linear infinite;
   --animate-spin-slow: spin-slow 18s linear infinite;

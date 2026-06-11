@@ -108,14 +108,14 @@ function Contact() {
                     className="absolute -top-10 -right-8 size-32 rounded-full bg-paper/40 blur-2xl pointer-events-none"
                   />
                   <div className="relative flex flex-col">
-                    <span className="text-xs font-bold text-ink/60 uppercase tracking-wide">
+                    <span className="text-xs font-bold text-ink-solid/60 uppercase tracking-wide">
                       ¿Prefieres el email de toda la vida?
                     </span>
-                    <span className="text-base md:text-lg font-extrabold tracking-tight text-ink break-all">
+                    <span className="text-base md:text-lg font-extrabold tracking-tight text-ink-solid break-all">
                       contacto@arrobaeveryone.com
                     </span>
                   </div>
-                  <ArrowUpRight className="relative size-6 shrink-0 text-ink transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  <ArrowUpRight className="relative size-6 shrink-0 text-ink-solid transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </a>
               </Reveal>
 

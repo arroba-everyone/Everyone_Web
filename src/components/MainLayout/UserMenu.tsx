@@ -24,8 +24,11 @@ export function UserMenu({ session }: UserMenuProps) {
 
   const handleSignOut = async () => {
     await signOut();
-    await router.invalidate();
+    // Navigate BEFORE invalidating: if we are on an admin route, re-running
+    // its beforeLoad without a session would bounce us to /login instead of
+    // the landing page.
     await navigate({ to: '/' });
+    await router.invalidate();
   };
 
   const initials = (session.displayName || session.email).slice(0, 2).toUpperCase();
@@ -50,7 +53,7 @@ export function UserMenu({ session }: UserMenuProps) {
         >
           <Avatar className="h-9 w-9">
             {session.avatarUrl && <AvatarImage src={session.avatarUrl} alt={session.displayName} />}
-            <AvatarFallback className="bg-lime text-ink text-xs font-bold">
+            <AvatarFallback className="bg-lime text-ink-solid text-xs font-bold">
               {initials}
             </AvatarFallback>
           </Avatar>

@@ -22,14 +22,14 @@ const Sticker = () => (
         <path id="sticker-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
       </defs>
       <circle cx="100" cy="100" r="98" className="fill-lime" />
-      <text className="fill-ink font-bold uppercase" style={{ fontSize: '20.5px', letterSpacing: '2.5px' }}>
+      <text className="fill-ink-solid font-bold uppercase" style={{ fontSize: '20.5px', letterSpacing: '2.5px' }}>
         <textPath href="#sticker-circle">diseño · código · producto · @everyone ·</textPath>
       </text>
       <text
         x="100"
         y="112"
         textAnchor="middle"
-        className="fill-ink font-extrabold"
+        className="fill-ink-solid font-extrabold"
         style={{ fontSize: '38px' }}
       >
         @

@@ -10,7 +10,6 @@ import { LoginForm } from '@everyone-web/components/auth/LoginForm';
 import { sanitiseRedirect } from '@everyone-web/server/redirect-sanitiser';
 import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
 import { cn } from '@everyone-web/libs/utils';
-import type { Session } from '@everyone-web/types/session';
 
 type LoginSearch = {
   redirect?: string;
@@ -26,10 +25,10 @@ export const Route = createFileRoute('/login')({
   }),
 
   beforeLoad: ({ context }) => {
+    // Public signup is gone: every account is a team account, so a live
+    // session always belongs in the admin panel.
     if (context.session !== null && context.session !== undefined) {
-      throw redirect({
-        to: context.session.role === 'admin' ? '/contacts/manage' : '/',
-      });
+      throw redirect({ to: '/contacts/manage' });
     }
   },
 
@@ -41,11 +40,11 @@ function LoginPage() {
   const router = useRouter();
   const search = useSearch({ from: '/login' });
 
-  const handleSuccess = async (session: Session) => {
+  const handleSuccess = async () => {
     await router.invalidate();
     const origin = typeof window !== 'undefined' ? window.location.origin : '';
     const safe = sanitiseRedirect(search.redirect, origin);
-    await navigate({ to: safe ?? (session.role === 'admin' ? '/contacts/manage' : '/') });
+    await navigate({ to: safe ?? '/contacts/manage' });
   };
 
   return (
@@ -71,7 +70,7 @@ function LoginPage() {
             <div className="flex flex-col items-center gap-3 text-center">
               <span
                 className={cn(
-                  'grid place-items-center size-12 rounded-2xl bg-lime text-ink',
+                  'grid place-items-center size-12 rounded-2xl bg-lime text-ink-solid',
                   'font-extrabold text-2xl leading-none rotate-[-6deg]'
                 )}
               >

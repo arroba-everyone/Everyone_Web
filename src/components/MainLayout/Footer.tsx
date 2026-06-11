@@ -34,7 +34,7 @@ export const Footer = () => {
           <div className="flex flex-col tablet-lg:flex-row tablet-lg:items-end justify-between gap-8">
             <div className="flex flex-col gap-4 max-w-xl">
               <div className="flex items-center gap-2">
-                <span className="grid place-items-center size-9 rounded-xl bg-lime text-ink font-extrabold text-lg rotate-[-6deg]">
+                <span className="grid place-items-center size-9 rounded-xl bg-lime text-ink-solid font-extrabold text-lg rotate-[-6deg]">
                   @
                 </span>
                 <span className="font-bold text-xl tracking-tight">everyone</span>
@@ -48,7 +48,7 @@ export const Footer = () => {
               href="mailto:contacto@arrobaeveryone.com"
               className={cn(
                 'group inline-flex items-center gap-2 self-start tablet-lg:self-auto',
-                'rounded-full bg-lime text-ink font-bold px-6 py-3.5',
+                'rounded-full bg-lime text-ink-solid font-bold px-6 py-3.5',
                 'transition-transform hover:-translate-y-0.5'
               )}
             >

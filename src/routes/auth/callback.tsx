@@ -4,7 +4,7 @@
 // 1. OAuth code exchange (Google OAuth flow)
 // 2. PKCE recovery code exchange (password reset)
 //
-// On success: redirects to sanitised `?redirect=` param or `/`.
+// On success: redirects to sanitised `?redirect=` param or the admin panel.
 // On failure: redirects to `/login?error=oauth`.
 //
 // Note: the actual code exchange lives in `auth.ts` so we don't pull
@@ -57,7 +57,8 @@ export const Route = createFileRoute('/auth/callback')({
 
     const origin = typeof globalThis.location !== 'undefined' ? globalThis.location.origin : '';
     const safe = sanitiseRedirect(search.redirect, origin);
-    throw redirect({ to: safe ?? '/' });
+    // Every account is a team account, so default to the admin panel.
+    throw redirect({ to: safe ?? '/contacts/manage' });
   },
 
   component: () => null,
