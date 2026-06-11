@@ -156,13 +156,13 @@ function Projects() {
                 className="absolute -top-16 -right-16 size-56 rounded-full bg-paper/40 blur-2xl pointer-events-none"
               />
               <div className="relative flex flex-col gap-3">
-                <span className="self-start rounded-full bg-ink/10 text-ink px-3.5 py-1.5 text-xs font-bold">
+                <span className="self-start rounded-full bg-ink-solid/10 text-ink-solid px-3.5 py-1.5 text-xs font-bold">
                   Hueco libre
                 </span>
-                <h3 className="text-3xl tablet-lg:text-4xl font-extrabold tracking-tight text-ink text-balance">
+                <h3 className="text-3xl tablet-lg:text-4xl font-extrabold tracking-tight text-ink-solid text-balance">
                   ¿El siguiente proyecto? El tuyo.
                 </h3>
-                <p className="text-ink/70 font-medium leading-relaxed">
+                <p className="text-ink-solid/70 font-medium leading-relaxed">
                   Ponemos el mismo cariño en los proyectos de nuestros clientes que en los
                   nuestros. Cuéntanos qué necesitas y lo construimos juntos.
                 </p>
@@ -171,8 +171,8 @@ function Projects() {
                 to="/contact"
                 className={cn(
                   'group relative inline-flex items-center gap-2 self-start rounded-full',
-                  'bg-ink text-paper px-6 py-3.5 font-bold transition-all',
-                  'hover:-translate-y-0.5 hover:shadow-xl hover:shadow-ink/25'
+                  'bg-ink-solid text-paper-solid px-6 py-3.5 font-bold transition-all',
+                  'hover:-translate-y-0.5 hover:shadow-xl hover:shadow-ink-solid/25'
                 )}
               >
                 Empezar un proyecto

@@ -39,7 +39,7 @@ const ServiceCard = ({
     <div
       className={cn(
         'grid place-items-center size-12 rounded-2xl transition-transform duration-300 group-hover:rotate-[-8deg]',
-        dark ? 'bg-lime text-ink' : 'bg-ink text-cream'
+        dark ? 'bg-lime text-ink-solid' : 'bg-ink text-cream'
       )}
     >
       <IconCmp className="size-6" />

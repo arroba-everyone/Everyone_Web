@@ -67,7 +67,7 @@ export function ContactForm() {
         role="status"
         className="flex flex-col items-center text-center gap-4 py-12 tablet-lg:py-16"
       >
-        <div className="grid place-items-center size-16 rounded-3xl bg-lime text-ink rotate-[-6deg]">
+        <div className="grid place-items-center size-16 rounded-3xl bg-lime text-ink-solid rotate-[-6deg]">
           <PartyPopper className="size-8" />
         </div>
         <h3 className="text-2xl font-extrabold tracking-tight text-ink">¡Recibido!</h3>

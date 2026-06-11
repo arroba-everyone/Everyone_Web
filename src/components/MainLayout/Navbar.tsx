@@ -25,7 +25,7 @@ const Wordmark = () => (
   <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="Ir al inicio">
     <span
       className={cn(
-        'grid place-items-center size-9 rounded-xl bg-lime text-ink',
+        'grid place-items-center size-9 rounded-xl bg-lime text-ink-solid',
         'font-extrabold text-lg leading-none rotate-[-6deg]',
         'transition-transform duration-300 hover:rotate-6'
       )}
@@ -80,7 +80,7 @@ export function Navbar() {
             <Button
               asChild
               className={cn(
-                'bg-lime text-ink hover:bg-lime/85 rounded-full h-11 px-5',
+                'bg-lime text-ink-solid hover:bg-lime/85 rounded-full h-11 px-5',
                 'font-bold text-sm shadow-md shadow-lime/30'
               )}
             >
@@ -126,7 +126,7 @@ export function Navbar() {
                   <Button
                     asChild
                     className={cn(
-                      'mt-4 bg-lime text-ink hover:bg-lime/85 rounded-2xl h-13',
+                      'mt-4 bg-lime text-ink-solid hover:bg-lime/85 rounded-2xl h-13',
                       'font-bold text-base'
                     )}
                   >

@@ -27,10 +27,10 @@ export const FinalCTA = () => (
             'flex flex-col items-center text-center gap-6'
           )}
         >
-          <h2 className="max-w-3xl text-3xl md:text-5xl laptop:text-6xl font-extrabold tracking-tight text-ink text-balance">
+          <h2 className="max-w-3xl text-3xl md:text-5xl laptop:text-6xl font-extrabold tracking-tight text-ink-solid text-balance">
             ¿Tienes un proyecto en mente?
           </h2>
-          <p className="max-w-xl text-lg text-ink/70 font-medium leading-relaxed">
+          <p className="max-w-xl text-lg text-ink-solid/70 font-medium leading-relaxed">
             Cuéntanoslo sin compromiso. Te respondemos en menos de 48 horas con una propuesta
             clara y un precio honesto.
           </p>
@@ -38,9 +38,9 @@ export const FinalCTA = () => (
             <Link
               to="/contact"
               className={cn(
-                'group inline-flex items-center gap-2 rounded-full bg-ink text-paper',
+                'group inline-flex items-center gap-2 rounded-full bg-ink-solid text-paper-solid',
                 'px-7 py-4 font-bold text-base transition-all',
-                'hover:-translate-y-0.5 hover:shadow-xl hover:shadow-ink/25'
+                'hover:-translate-y-0.5 hover:shadow-xl hover:shadow-ink-solid/25'
               )}
             >
               Escríbenos
@@ -48,7 +48,7 @@ export const FinalCTA = () => (
             </Link>
             <a
               href="mailto:contacto@arrobaeveryone.com"
-              className="font-bold text-ink underline underline-offset-4 decoration-2 hover:opacity-70 transition-opacity"
+              className="font-bold text-ink-solid underline underline-offset-4 decoration-2 hover:opacity-70 transition-opacity"
             >
               contacto@arrobaeveryone.com
             </a>

@@ -99,7 +99,7 @@ describe('/auth/callback loader', () => {
     });
   });
 
-  it('redirects to "/" on a successful exchange with no redirect target', async () => {
+  it('redirects to the admin panel on a successful exchange with no redirect target', async () => {
     const { exchangeCodeFn } = await import('@everyone-web/server/auth');
     vi.mocked(exchangeCodeFn).mockResolvedValue({ ok: true });
 
@@ -108,7 +108,7 @@ describe('/auth/callback loader', () => {
       loader({ location: { search: { code: 'abc' } } })
     ).rejects.toMatchObject({
       isRedirect: true,
-      redirectOpts: { to: '/' },
+      redirectOpts: { to: '/contacts/manage' },
     });
   });
 });

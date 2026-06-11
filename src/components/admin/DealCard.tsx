@@ -86,7 +86,7 @@ export function DealCard({
                 className={cn(
                   'grid place-items-center size-6 rounded-md border-2 transition-colors cursor-pointer',
                   selected
-                    ? 'bg-lime border-lime text-ink'
+                    ? 'bg-lime border-lime text-ink-solid'
                     : 'bg-white/80 border-foreground/30 hover:border-lime-deep'
                 )}
               >
