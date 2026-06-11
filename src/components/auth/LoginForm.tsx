@@ -36,7 +36,6 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
   const [showResetForm, setShowResetForm] = useState(false);
   const [resetEmail, setResetEmail] = useState('');
   const [resetSent, setResetSent] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<LoginInput>({
     resolver: zodResolver(loginSchema),
@@ -45,17 +44,12 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
 
   const handleSubmit = async (data: LoginInput) => {
     setServerError(null);
-    setIsSubmitting(true);
-    try {
-      const result = await signInWithPassword(data.email, data.password);
-      if (!result.ok) {
-        setServerError(result.error.message);
-        return;
-      }
-      onSuccess(result.data.session);
-    } finally {
-      setIsSubmitting(false);
+    const result = await signInWithPassword(data.email, data.password);
+    if (!result.ok) {
+      setServerError(result.error.message);
+      return;
     }
+    onSuccess(result.data.session);
   };
 
   const handleGoogle = async () => {
@@ -171,8 +165,8 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
           ¿Olvidaste tu contraseña?
         </button>
 
-        <Button type="submit" className="w-full" disabled={isSubmitting}>
-          {isSubmitting ? 'Iniciando sesión...' : 'Iniciar sesión'}
+        <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+          {form.formState.isSubmitting ? 'Iniciando sesión...' : 'Iniciar sesión'}
         </Button>
       </form>
     </Form>

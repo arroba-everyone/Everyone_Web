@@ -2,13 +2,7 @@ import { Link } from '@tanstack/react-router';
 import { ArrowUpRight } from 'lucide-react';
 import { cn } from '@everyone-web/libs/utils';
 import { Icon } from '@everyone-web/ui/Icon/Icon';
-
-const navLinks = [
-  { label: 'Servicios', href: '/', hash: 'services' },
-  { label: 'Proyectos', href: '/projects' },
-  { label: 'Nosotros', href: '/aboutUs' },
-  { label: 'Contacto', href: '/contact' },
-];
+import { NAV_ITEMS } from '@everyone-web/constants/nav';
 
 export const Footer = () => {
   return (
@@ -62,12 +56,12 @@ export const Footer = () => {
           {/* Middle: nav + socials */}
           <div className="flex flex-col tablet-lg:flex-row justify-between gap-8">
             <nav className="flex flex-wrap gap-x-8 gap-y-3">
-              {navLinks.map(link => (
+              {NAV_ITEMS.map(link => (
                 <Link
                   key={link.label}
                   to={link.href}
                   hash={link.hash}
-                  className="text-sm font-semibold text-cream/70 hover:text-lime transition-colors"
+                  className="text-sm font-semibold text-cream-soft hover:text-lime-ink transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -80,7 +74,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="text-cream/70 hover:text-lime transition-colors"
+                className="text-cream-soft hover:text-lime-ink transition-colors"
               >
                 <Icon name="instagram" className="size-6" />
               </a>
@@ -89,7 +83,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="text-cream/70 hover:text-lime transition-colors"
+                className="text-cream-soft hover:text-lime-ink transition-colors"
               >
                 <Icon name="github" className="size-6" />
               </a>
@@ -97,7 +91,7 @@ export const Footer = () => {
           </div>
 
           {/* Bottom: legal */}
-          <div className="flex flex-col tablet-lg:flex-row justify-between gap-3 text-xs text-cream/40">
+          <div className="flex flex-col tablet-lg:flex-row justify-between gap-3 text-xs text-cream-soft">
             <p>© {new Date().getFullYear()} @everyone · Todos los derechos reservados</p>
             <Link to="/login" className="hover:text-cream/70 transition-colors">
               Acceso equipo

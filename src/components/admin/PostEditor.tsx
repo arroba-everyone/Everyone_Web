@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useDeferredValue, useEffect, useMemo, useState } from 'react';
 import slugify from 'slugify';
 import { Link, useNavigate, useRouter } from '@tanstack/react-router';
 import { ArrowLeft } from 'lucide-react';
@@ -116,6 +116,10 @@ export function PostEditor({ mode, post }: PostEditorProps) {
   }, [title, thumbnailUrl, readingTime, dateLabel]);
 
   const markdown = useMemo(() => serializePost(header, blocks), [header, blocks]);
+
+  // Deferred value for the preview tab — lets the edit tab remain responsive while
+  // the markdown parse+render pipeline (inside React.memo'd MarkdownPreview) catches up.
+  const deferredMarkdown = useDeferredValue(markdown);
 
   // ---------- Persistence ----------
 
@@ -516,8 +520,8 @@ export function PostEditor({ mode, post }: PostEditorProps) {
           >
             <div className="flex flex-col justify-center items-center px-4 py-12 md:py-20">
               <div className="w-full max-w-4xl" data-testid="post-preview">
-                {markdown.trim().length > 0 && title.trim().length > 0 ? (
-                  <MarkdownPreview content={markdown} />
+                {deferredMarkdown.trim().length > 0 && title.trim().length > 0 ? (
+                  <MarkdownPreview content={deferredMarkdown} />
                 ) : (
                   <p className="text-foreground/50 text-sm italic text-center py-20">
                     Rellena la cabecera y añade bloques en la pestaña{' '}

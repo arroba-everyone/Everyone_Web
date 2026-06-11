@@ -94,7 +94,7 @@ function Blog() {
               ))}
             </div>
           ) : (
-            posts.map((post, index) => <NewsItem key={index} {...post} />)
+            posts.map(post => <NewsItem key={post.id} {...post} />)
           )}
         </div>
       </div>

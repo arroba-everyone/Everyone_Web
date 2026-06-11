@@ -43,7 +43,7 @@ export const Process = () => (
 
       <div className="relative px-8 py-16 tablet-lg:px-14 tablet-lg:py-24 flex flex-col gap-14">
         <Reveal className="flex flex-col gap-4 max-w-2xl">
-          <span className="self-start rounded-full bg-cream/10 text-lime px-4 py-1.5 text-sm font-bold">
+          <span className="self-start rounded-full bg-lime-chip-bg text-lime-chip-text px-4 py-1.5 text-sm font-bold">
             Cómo trabajamos
           </span>
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-balance">
@@ -54,11 +54,12 @@ export const Process = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 laptop:grid-cols-4 gap-10 tablet-lg:gap-8">
           {steps.map((step, i) => (
             <Reveal key={step.number} delay={i * 0.1} className="flex flex-col gap-3">
-              <span className="text-5xl font-extrabold text-lime tracking-tight">
+              {/* Decorative ordinal — sequence is conveyed by document order */}
+              <span aria-hidden="true" className="text-5xl font-extrabold text-lime tracking-tight">
                 {step.number}
               </span>
               <h3 className="text-xl font-bold">{step.title}</h3>
-              <p className="text-cream/65 leading-relaxed text-base">{step.description}</p>
+              <p className="text-cream-soft leading-relaxed text-base">{step.description}</p>
             </Reveal>
           ))}
         </div>

@@ -74,6 +74,8 @@ export const Team = () => (
                 src={member.avatar}
                 alt={member.name}
                 loading="lazy"
+                width={80}
+                height={80}
                 className={cn(
                   'size-20 rounded-3xl object-cover ring-4 ring-cream',
                   'transition-transform duration-300 group-hover:rotate-[-4deg] group-hover:scale-105'

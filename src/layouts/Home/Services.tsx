@@ -45,7 +45,7 @@ const ServiceCard = ({
       <IconCmp className="size-6" />
     </div>
     <h3 className="text-xl tablet-lg:text-2xl font-bold tracking-tight">{title}</h3>
-    <p className={cn('text-base leading-relaxed', dark ? 'text-cream/70' : 'text-ink-soft')}>
+    <p className={cn('text-base leading-relaxed', dark ? 'text-cream-soft' : 'text-ink-soft')}>
       {description}
     </p>
     {tags && (

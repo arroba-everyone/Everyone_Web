@@ -24,7 +24,9 @@ const MarqueeContent = ({ ariaHidden = false }: { ariaHidden?: boolean }) => (
         >
           {service}
         </span>
-        <span className={cn('text-xl', i % 2 === 0 ? 'text-lime' : 'text-grape')}>✦</span>
+        <span aria-hidden className={cn('text-xl', i % 2 === 0 ? 'text-lime' : 'text-grape')}>
+          ✦
+        </span>
       </span>
     ))}
   </div>
