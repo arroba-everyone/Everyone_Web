@@ -29,12 +29,17 @@ function DealsPage() {
   const { deals, lockedDeal } = Route.useLoaderData();
 
   return (
-    <MainLayout>
-      <div className="flex justify-center w-full pt-32 md:pt-36 laptop:pt-40 px-4 pb-16">
+    <MainLayout tone="light">
+      <div className="theme-light bg-cream flex justify-center w-full pt-32 md:pt-36 laptop:pt-40 px-4 pb-16 min-h-screen">
         <div className="flex flex-col gap-8 max-w-7xl w-full">
-          <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground">Ofertas</h1>
-            <p className="text-muted-foreground mt-2">
+          <div className="flex flex-col items-start gap-3">
+            <span className="rounded-full bg-lime-tint text-lime-deep px-4 py-1.5 text-sm font-bold">
+              Comunidad
+            </span>
+            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-ink">
+              Ofertas
+            </h1>
+            <p className="text-ink-soft text-lg">
               Los mejores chollos seleccionados para vosotros.
             </p>
           </div>

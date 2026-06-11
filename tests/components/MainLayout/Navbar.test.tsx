@@ -63,15 +63,17 @@ beforeEach(() => {
 });
 
 describe('Navbar', () => {
-  it('shows "Iniciar sesión" link when session is null (anon)', () => {
+  it('does NOT show any login link when session is null (team access lives in the footer)', () => {
     (useSession as Mock).mockReturnValue(null);
 
     render(<Navbar />);
 
-    // Should have at least one "Iniciar sesión" link
-    const loginLinks = screen.getAllByRole('link', { name: /iniciar sesión/i });
-    expect(loginLinks.length).toBeGreaterThan(0);
-    expect(loginLinks[0].getAttribute('href')).toBe('/login');
+    expect(screen.queryByRole('link', { name: /entrar|iniciar sesión/i })).toBeNull();
+
+    // The public CTA should be there instead
+    const ctaLinks = screen.getAllByRole('link', { name: /empezar un proyecto/i });
+    expect(ctaLinks.length).toBeGreaterThan(0);
+    expect(ctaLinks[0].getAttribute('href')).toBe('/contact');
   });
 
   it('does NOT access window.location.pathname for active route (uses useRouterState)', () => {
@@ -101,14 +103,14 @@ describe('Navbar', () => {
     expect(locationAccessed).toBe(false);
   });
 
-  it('shows UserMenu (avatar button) and not "Iniciar sesión" when session is present', () => {
+  it('shows UserMenu (avatar button) and not "Entrar" when session is present', () => {
     const session: Session = { userId: 'u1', email: 'user@test.com', displayName: 'Usuario', avatarUrl: null, role: 'user' };
     (useSession as Mock).mockReturnValue(session);
 
     render(<Navbar />);
 
-    // "Iniciar sesión" link should NOT appear
-    expect(screen.queryByRole('link', { name: /iniciar sesión/i })).toBeNull();
+    // No login link should appear either way
+    expect(screen.queryByRole('link', { name: /entrar|iniciar sesión/i })).toBeNull();
 
     // The avatar button should appear (aria-label contains the display name)
     const avatarBtn = screen

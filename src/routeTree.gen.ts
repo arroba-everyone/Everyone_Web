@@ -23,6 +23,7 @@ import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as AuthResetRouteImport } from './routes/auth/reset'
 import { Route as AuthCallbackRouteImport } from './routes/auth/callback'
 import { Route as AdminDealsManageRouteImport } from './routes/_admin/deals.manage'
+import { Route as AdminContactsManageRouteImport } from './routes/_admin/contacts.manage'
 import { Route as AdminBlogNewRouteImport } from './routes/_admin/blog.new'
 import { Route as AdminBlogManageRouteImport } from './routes/_admin/blog.manage'
 import { Route as AdminBlogEditIdRouteImport } from './routes/_admin/blog.edit.$id'
@@ -96,6 +97,11 @@ const AdminDealsManageRoute = AdminDealsManageRouteImport.update({
   path: '/deals/manage',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminContactsManageRoute = AdminContactsManageRouteImport.update({
+  id: '/contacts/manage',
+  path: '/contacts/manage',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminBlogNewRoute = AdminBlogNewRouteImport.update({
   id: '/blog/new',
   path: '/blog/new',
@@ -127,6 +133,7 @@ export interface FileRoutesByFullPath {
   '/blog/': typeof BlogIndexRoute
   '/blog/manage': typeof AdminBlogManageRoute
   '/blog/new': typeof AdminBlogNewRoute
+  '/contacts/manage': typeof AdminContactsManageRoute
   '/deals/manage': typeof AdminDealsManageRoute
   '/blog/edit/$id': typeof AdminBlogEditIdRoute
 }
@@ -145,6 +152,7 @@ export interface FileRoutesByTo {
   '/blog': typeof BlogIndexRoute
   '/blog/manage': typeof AdminBlogManageRoute
   '/blog/new': typeof AdminBlogNewRoute
+  '/contacts/manage': typeof AdminContactsManageRoute
   '/deals/manage': typeof AdminDealsManageRoute
   '/blog/edit/$id': typeof AdminBlogEditIdRoute
 }
@@ -165,6 +173,7 @@ export interface FileRoutesById {
   '/blog/': typeof BlogIndexRoute
   '/_admin/blog/manage': typeof AdminBlogManageRoute
   '/_admin/blog/new': typeof AdminBlogNewRoute
+  '/_admin/contacts/manage': typeof AdminContactsManageRoute
   '/_admin/deals/manage': typeof AdminDealsManageRoute
   '/_admin/blog/edit/$id': typeof AdminBlogEditIdRoute
 }
@@ -185,6 +194,7 @@ export interface FileRouteTypes {
     | '/blog/'
     | '/blog/manage'
     | '/blog/new'
+    | '/contacts/manage'
     | '/deals/manage'
     | '/blog/edit/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -203,6 +213,7 @@ export interface FileRouteTypes {
     | '/blog'
     | '/blog/manage'
     | '/blog/new'
+    | '/contacts/manage'
     | '/deals/manage'
     | '/blog/edit/$id'
   id:
@@ -222,6 +233,7 @@ export interface FileRouteTypes {
     | '/blog/'
     | '/_admin/blog/manage'
     | '/_admin/blog/new'
+    | '/_admin/contacts/manage'
     | '/_admin/deals/manage'
     | '/_admin/blog/edit/$id'
   fileRoutesById: FileRoutesById
@@ -342,6 +354,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDealsManageRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/_admin/contacts/manage': {
+      id: '/_admin/contacts/manage'
+      path: '/contacts/manage'
+      fullPath: '/contacts/manage'
+      preLoaderRoute: typeof AdminContactsManageRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/_admin/blog/new': {
       id: '/_admin/blog/new'
       path: '/blog/new'
@@ -369,6 +388,7 @@ declare module '@tanstack/react-router' {
 interface AdminRouteChildren {
   AdminBlogManageRoute: typeof AdminBlogManageRoute
   AdminBlogNewRoute: typeof AdminBlogNewRoute
+  AdminContactsManageRoute: typeof AdminContactsManageRoute
   AdminDealsManageRoute: typeof AdminDealsManageRoute
   AdminBlogEditIdRoute: typeof AdminBlogEditIdRoute
 }
@@ -376,6 +396,7 @@ interface AdminRouteChildren {
 const AdminRouteChildren: AdminRouteChildren = {
   AdminBlogManageRoute: AdminBlogManageRoute,
   AdminBlogNewRoute: AdminBlogNewRoute,
+  AdminContactsManageRoute: AdminContactsManageRoute,
   AdminDealsManageRoute: AdminDealsManageRoute,
   AdminBlogEditIdRoute: AdminBlogEditIdRoute,
 }

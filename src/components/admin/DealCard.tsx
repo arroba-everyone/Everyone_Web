@@ -31,9 +31,9 @@ const STATUS_LABEL: Record<DealRow['status'], string> = {
 };
 
 const STATUS_BADGE_CLASS: Record<DealRow['status'], string> = {
-  pending: 'bg-amber-500/10 text-amber-300 border-amber-500/30',
-  published: 'bg-primary/10 text-primary border-primary/30',
-  rejected: 'bg-rose-500/10 text-rose-300 border-rose-500/30',
+  pending: 'bg-amber-100 text-amber-700 border-amber-500/30',
+  published: 'bg-lime-tint text-lime-deep border-lime-deep/30',
+  rejected: 'bg-rose-100 text-rose-700 border-rose-500/30',
 };
 
 /**
@@ -74,7 +74,7 @@ export function DealCard({
               <Badge variant="destructive">-{deal.discount_percent}%</Badge>
             )}
             {historicalLow && (
-              <Badge className="bg-emerald-950 text-emerald-300 border border-emerald-800">
+              <Badge className="bg-emerald-100 text-emerald-700 border border-emerald-300">
                 Mínimo histórico
               </Badge>
             )}
@@ -104,7 +104,7 @@ export function DealCard({
 
           {/* Price section */}
           <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-primary glow-primary">
+            <span className="text-2xl font-bold text-lime-deep">
               {deal.current_price.toFixed(2)} €
             </span>
             {deal.previous_price != null && (

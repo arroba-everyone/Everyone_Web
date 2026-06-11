@@ -9,9 +9,7 @@ import {
 import { LoginForm } from '@everyone-web/components/auth/LoginForm';
 import { sanitiseRedirect } from '@everyone-web/server/redirect-sanitiser';
 import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
-import { Card } from '@everyone-web/ui/card';
 import { cn } from '@everyone-web/libs/utils';
-import everyLog from '@everyone-web/assets/everyLog.webp';
 
 type LoginSearch = {
   redirect?: string;
@@ -48,88 +46,70 @@ function LoginPage() {
   };
 
   return (
-    <MainLayout>
-      <div
-        className={cn(
-          'min-h-screen bg-background items-stretch',
-          'grid grid-cols-1 lg:grid-cols-2',
-          'gap-8 md:gap-10 tablet-lg:gap-12 laptop:gap-14 laptop-lg:gap-18 xl:gap-24',
-          'p-6 md:p-10 tablet-lg:p-12 laptop:p-14 laptop-lg:p-20 xl:p-30',
-          'pt-28 md:pt-24 tablet-lg:pt-32 laptop:pt-34 laptop-lg:pt-36 desktop:pt-38'
-        )}
-      >
-        {/* Brand panel — desktop left, mobile hidden */}
-        <Card
-          className={cn(
-            'bg-primary overflow-hidden hidden lg:flex flex-col items-center justify-center gap-8',
-            'rounded-[2.5rem] md:rounded-[3rem] laptop:rounded-[3.5rem] xl:rounded-[4rem]',
-            'p-10 laptop:p-14 laptop-lg:p-18 xl:p-20',
-            'order-1'
-          )}
-        >
-          <img
-            src={everyLog}
-            alt="@everyone"
-            className="w-2/3 max-w-md object-contain"
-          />
-          <div className="text-center text-primary-foreground">
-            <p className="font-bold text-3xl laptop:text-4xl laptop-lg:text-5xl">
-              Bienvenido de vuelta.
-            </p>
-            <p className="mt-4 text-lg laptop:text-xl laptop-lg:text-2xl opacity-90">
-              Entra para acceder a las ofertas y al blog.
-            </p>
-          </div>
-        </Card>
+    <MainLayout tone="light">
+      <div className="theme-light relative overflow-hidden bg-cream min-h-screen">
+        {/* Soft gradient blobs */}
+        <div
+          aria-hidden
+          className="absolute -top-32 -left-32 size-[26rem] rounded-full bg-lime/20 blur-3xl pointer-events-none"
+        />
+        <div
+          aria-hidden
+          className="absolute bottom-0 -right-32 size-[24rem] rounded-full bg-grape/20 blur-3xl pointer-events-none"
+        />
 
-        {/* Form panel */}
-        <Card
-          className={cn(
-            'bg-card w-full flex flex-col justify-center gap-8',
-            'rounded-[2.5rem] md:rounded-[3rem] laptop:rounded-[3.5rem] xl:rounded-[4rem]',
-            'p-8 md:p-10 tablet-lg:p-12 laptop:p-14 xl:p-16',
-            'order-2'
-          )}
-        >
-          <div className="flex flex-col items-center gap-3 text-center">
-            <p className="font-bold text-3xl tablet-lg:text-4xl text-primary lg:hidden">
-              @everyone
-            </p>
-            <h1 className="font-bold text-2xl md:text-3xl laptop:text-4xl laptop-lg:text-5xl">
-              Iniciar sesión
-            </h1>
-          </div>
-
-          {search.message && (
-            <div
-              role="status"
-              className="rounded-2xl border border-primary/30 bg-primary/5 p-4 text-sm text-foreground"
-            >
-              {search.message}
+        <div className="relative mx-auto max-w-md px-6 pt-36 pb-20 tablet-lg:pt-44">
+          <div
+            className={cn(
+              'flex flex-col gap-6 rounded-[2.5rem] bg-paper p-8 md:p-10',
+              'ring-1 ring-ink/5 shadow-xl shadow-ink/5'
+            )}
+          >
+            <div className="flex flex-col items-center gap-3 text-center">
+              <span
+                className={cn(
+                  'grid place-items-center size-12 rounded-2xl bg-lime text-ink',
+                  'font-extrabold text-2xl leading-none rotate-[-6deg]'
+                )}
+              >
+                @
+              </span>
+              <h1 className="font-extrabold tracking-tight text-2xl md:text-3xl text-ink">
+                Acceso equipo
+              </h1>
+              <p className="text-sm text-ink-soft leading-relaxed">
+                Zona privada de @everyone para gestionar las ofertas y el contenido.
+              </p>
             </div>
-          )}
 
-          {search.error === 'oauth' && (
-            <div
-              role="alert"
-              className="rounded-2xl border border-destructive/50 bg-destructive/10 p-4 text-sm text-destructive"
-            >
-              Ha ocurrido un error al iniciar sesión con Google. Inténtalo de nuevo.
-            </div>
-          )}
+            {search.message && (
+              <div
+                role="status"
+                className="rounded-2xl bg-lime-tint ring-1 ring-lime-deep/20 p-4 text-sm text-ink"
+              >
+                {search.message}
+              </div>
+            )}
 
-          <LoginForm onSuccess={handleSuccess} />
+            {search.error === 'oauth' && (
+              <div
+                role="alert"
+                className="rounded-2xl bg-destructive/10 ring-1 ring-destructive/30 p-4 text-sm text-destructive"
+              >
+                Ha ocurrido un error al iniciar sesión con Google. Inténtalo de nuevo.
+              </div>
+            )}
 
-          <p className="text-center text-base text-muted-foreground">
-            ¿No tienes cuenta?{' '}
-            <Link
-              to="/signup"
-              className="text-primary font-semibold hover:underline transition-all"
-            >
-              Crear cuenta
+            <LoginForm onSuccess={handleSuccess} />
+          </div>
+
+          <p className="mt-6 text-center text-xs text-ink-soft/80">
+            ¿Has llegado aquí por error?{' '}
+            <Link to="/" className="font-semibold underline underline-offset-2 hover:text-ink">
+              Volver a la web
             </Link>
           </p>
-        </Card>
+        </div>
       </div>
     </MainLayout>
   );

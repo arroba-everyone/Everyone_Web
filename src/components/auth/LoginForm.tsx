@@ -103,7 +103,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
         <button
           type="button"
           onClick={() => setShowResetForm(false)}
-          className="text-sm text-primary hover:underline self-start"
+          className="text-sm font-semibold text-lime-deep hover:underline self-start"
         >
           Volver al inicio de sesión
         </button>
@@ -166,7 +166,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
         <button
           type="button"
           onClick={() => setShowResetForm(true)}
-          className="text-sm text-primary hover:underline self-start"
+          className="text-sm font-semibold text-lime-deep hover:underline self-start"
         >
           ¿Olvidaste tu contraseña?
         </button>

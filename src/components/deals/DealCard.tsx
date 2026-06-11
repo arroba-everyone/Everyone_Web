@@ -48,7 +48,7 @@ export function DealCard({ deal }: DealCardProps) {
             href={deal.affiliate_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+            className="flex items-center gap-1 text-sm font-semibold text-lime-deep hover:underline"
           >
             Ver oferta
             <ExternalLink className="h-3 w-3" />

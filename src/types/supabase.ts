@@ -123,6 +123,39 @@ export interface Database {
           },
         ];
       };
+      contact_requests: {
+        Row: {
+          id: string;
+          name: string;
+          email: string;
+          company: string | null;
+          project_type: 'web' | 'ecommerce' | 'app' | 'arvr' | 'sistema' | 'otro';
+          message: string;
+          status: 'new' | 'replied' | 'archived';
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          name: string;
+          email: string;
+          company?: string | null;
+          project_type?: 'web' | 'ecommerce' | 'app' | 'arvr' | 'sistema' | 'otro';
+          message: string;
+          status?: 'new' | 'replied' | 'archived';
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          email?: string;
+          company?: string | null;
+          project_type?: 'web' | 'ecommerce' | 'app' | 'arvr' | 'sistema' | 'otro';
+          message?: string;
+          status?: 'new' | 'replied' | 'archived';
+          created_at?: string;
+        };
+        Relationships: [];
+      };
       posts: {
         Row: {
           id: string;
@@ -193,6 +226,11 @@ export type DealStatus = DealRow['status'];
 export type UserRecord = Database['public']['Tables']['users']['Row'];
 export type UserInsert = Database['public']['Tables']['users']['Insert'];
 export type UserUpdate = Database['public']['Tables']['users']['Update'];
+
+export type ContactRequestRow = Database['public']['Tables']['contact_requests']['Row'];
+export type ContactRequestInsert = Database['public']['Tables']['contact_requests']['Insert'];
+export type ContactRequestStatus = ContactRequestRow['status'];
+export type ContactProjectType = ContactRequestRow['project_type'];
 
 export type Post = Database['public']['Tables']['posts']['Row'];
 export type PostInsert = Database['public']['Tables']['posts']['Insert'];

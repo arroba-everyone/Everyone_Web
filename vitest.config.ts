@@ -15,6 +15,9 @@ export default defineConfig({
     setupFiles: ['./tests/setup.ts'],
     // Tests live under `tests/`, mirroring the `src/` structure.
     include: ['tests/**/*.test.{ts,tsx}'],
+    // macOS creates AppleDouble metadata files (`._foo.test.ts`) on non-HFS
+    // volumes (external SSD); they are binary junk, not tests.
+    exclude: ['**/._*', '**/node_modules/**'],
     // 15s test timeout (default 5s is too tight when many parallel workers
     // load heavy module trees — userEvent + jsdom + Supabase deps).
     testTimeout: 15000,

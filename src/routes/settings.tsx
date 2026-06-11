@@ -70,10 +70,10 @@ function SettingsPage() {
   const initials = (watchedName || session.email).slice(0, 2).toUpperCase();
 
   return (
-    <MainLayout>
+    <MainLayout tone="light">
       <div
         className={cn(
-          'min-h-screen w-full',
+          'theme-light min-h-screen w-full bg-cream text-ink',
           'px-4 md:px-8 tablet-lg:px-10 laptop:px-14 laptop-lg:px-20',
           'pt-28 md:pt-24 tablet-lg:pt-32 laptop:pt-34',
           'pb-16'
@@ -160,7 +160,7 @@ function SettingsPage() {
                 {savedAt !== null && !serverError && (
                   <div
                     role="status"
-                    className="rounded-2xl border border-primary/30 bg-primary/10 p-3 text-sm text-primary"
+                    className="rounded-2xl bg-lime-tint ring-1 ring-lime-deep/20 p-3 text-sm text-lime-deep font-semibold"
                   >
                     Cambios guardados.
                   </div>

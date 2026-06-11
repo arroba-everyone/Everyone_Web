@@ -77,19 +77,19 @@ export const markdownComponents: Components = {
   a: ({ node: _node, ...props }) => {
     const text = props.children?.toString() || '';
     if (text.startsWith('#')) {
-      return <a className="text-sm text-primary font-medium mr-2 hover:underline" {...props} />;
+      return <a className="text-sm text-lime-deep font-medium mr-2 hover:underline" {...props} />;
     }
-    return <a className="underline text-primary hover:no-underline" {...props} />;
+    return <a className="underline text-lime-deep hover:no-underline" {...props} />;
   },
   ul: ({ node: _node, ...props }) => (
     <ul
-      className="list-disc pl-6 space-y-1 mb-4 marker:text-primary"
+      className="list-disc pl-6 space-y-1 mb-4 marker:text-lime-deep"
       {...props}
     />
   ),
   ol: ({ node: _node, ...props }) => (
     <ol
-      className="list-decimal pl-6 space-y-1 mb-4 marker:text-primary marker:font-semibold"
+      className="list-decimal pl-6 space-y-1 mb-4 marker:text-lime-deep marker:font-semibold"
       {...props}
     />
   ),

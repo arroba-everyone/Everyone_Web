@@ -143,7 +143,9 @@ export function TelegramPreviewDialog({
             <p className="text-xs font-medium text-foreground/60 uppercase tracking-wide">
               Preview del mensaje
             </p>
-            <div className="bg-[#1a1a1a] rounded-2xl p-4 shadow-lg flex flex-col gap-3">
+            {/* Dark on purpose: emulates the Telegram dark-mode bubble, so its
+                text colors are hardcoded instead of inheriting theme tokens. */}
+            <div className="bg-[#1a1a1a] text-neutral-100 rounded-2xl p-4 shadow-lg flex flex-col gap-3">
               {/* Image */}
               <DealImage src={imageUrl || null} alt={title} className="rounded-xl max-h-48" />
 
@@ -157,7 +159,7 @@ export function TelegramPreviewDialog({
                     💶 {deal.current_price.toFixed(2)} €
                   </span>
                   {previousPrice != null && (
-                    <span className="text-foreground/50 line-through ml-2 text-xs">
+                    <span className="text-neutral-400 line-through ml-2 text-xs">
                       {previousPrice.toFixed(2)} €
                     </span>
                   )}
@@ -180,7 +182,7 @@ export function TelegramPreviewDialog({
 
                 {/* YouTube review link */}
                 {youtubeReviewUrl && isValidUrl(youtubeReviewUrl) && (
-                  <p className="text-xs text-foreground/60">
+                  <p className="text-xs text-neutral-400">
                     📹 <span className="underline">{youtubeReviewUrl}</span>
                   </p>
                 )}
