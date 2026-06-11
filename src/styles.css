@@ -30,7 +30,7 @@ html {
   --primary-foreground: #0a0a0a;
   --secondary: #b185fc;
   --secondary-foreground: #fafafa;
-  --muted: #aaa;
+  --muted: #26262c;
   --muted-foreground: #fafafa;
   --accent: #87e300;
   --accent-foreground: #fafafa;
@@ -94,6 +94,11 @@ html {
   --v2-grape-tint: #f2ecfe; /* soft purple card background */
   --v2-peach: #ffc89e; /* warm accent */
   --v2-peach-tint: #fff0e2; /* soft warm card background */
+  --v2-cream-soft: #d9d8d2; /* muted light text for dark surfaces (light theme) */
+  --v2-lime-ink: #87e300; /* lime accent on inverting dark slabs — vivid on dark (light theme) — used for footer hover links */
+  /* ADR-8: accent chip tokens */
+  --v2-lime-chip-bg: color-mix(in srgb, var(--v2-cream) 10%, transparent); /* light: glass bg-cream/10 */
+  --v2-lime-chip-text: #87e300; /* light: vivid lime text on dark slab */
 }
 
 /* Dark mode — inverts the neutral surfaces and brightens the
@@ -109,6 +114,11 @@ html {
   --v2-grape-deep: #c9a9ff;
   --v2-grape-tint: rgba(177, 133, 252, 0.15);
   --v2-peach-tint: rgba(255, 200, 158, 0.13);
+  --v2-cream-soft: #5b5b64; /* muted dark text for the now-light surface (dark theme) */
+  --v2-lime-ink: #4d7c0f; /* dark lime for normal-text hovers — 4.57:1 on slab (ADR-8: #446b0c→#4d7c0f; pills no longer use lime-ink) */
+  /* ADR-8 rev2: translucent lime chip, matching the grape/peach tint pills */
+  --v2-lime-chip-bg: var(--v2-lime-tint); /* dark: lime glass over the inverted slab */
+  --v2-lime-chip-text: #446b0c; /* dark: deep lime on the tint blend — 5.3:1 */
 }
 
 /* When dark mode is active, nested .theme-light scopes (forms, admin,
@@ -144,6 +154,18 @@ html {
   --color-grape-tint: var(--v2-grape-tint);
   --color-peach: var(--v2-peach);
   --color-peach-tint: var(--v2-peach-tint);
+  --color-cream-soft: var(--v2-cream-soft);
+
+  /* Counter-flipping brand accents for the intentional dark→light slab
+     inversion (Process, Footer, ServicesMarquee, NutrIA card). The slabs
+     KEEP inverting (brand design); these accents flip the OPPOSITE way so the
+     lime/grape stay legible on whichever surface tone is active. */
+  --color-lime-ink: var(--v2-lime-ink);
+
+  /* ADR-8 rev2: accent chip — glass pill in light (bg-cream/10 + vivid lime
+     text) → lime-tint glass with deep lime text in dark (5.3:1). */
+  --color-lime-chip-bg: var(--v2-lime-chip-bg);
+  --color-lime-chip-text: var(--v2-lime-chip-text);
 
   /* Constant variants — do NOT flip in dark mode. For content sitting on
      brand-lime surfaces, which stay bright in both themes and always need
@@ -219,6 +241,14 @@ html {
   }
   body {
     @apply bg-background text-foreground;
+  }
+  a:focus-visible,
+  button:focus-visible,
+  [role='button']:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--color-lime-deep);
+    outline-offset: 2px;
+    border-radius: var(--radius-md);
   }
 }
 

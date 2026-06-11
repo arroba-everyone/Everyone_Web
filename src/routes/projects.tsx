@@ -132,11 +132,11 @@ function Projects() {
                 className="relative w-full max-h-60 object-contain drop-shadow-xl"
               />
               <div className="relative flex flex-col gap-3">
-                <span className="self-start rounded-full bg-cream/10 text-lime px-3.5 py-1.5 text-xs font-bold">
+                <span className="self-start rounded-full bg-lime-chip-bg text-lime-chip-text px-3.5 py-1.5 text-xs font-bold">
                   En el horno 🤫
                 </span>
                 <h3 className="text-2xl font-bold">NutrIA</h3>
-                <p className="text-cream/70 leading-relaxed">
+                <p className="text-cream-soft leading-relaxed">
                   Lo siguiente que sale de nuestro laboratorio. Aún no podemos contar mucho,
                   pero el nombre no es casualidad… y si te intriga, es buena señal.
                 </p>

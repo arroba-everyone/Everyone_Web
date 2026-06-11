@@ -63,7 +63,7 @@ export function Navbar() {
         className={cn(
           'mx-auto max-w-5xl rounded-full',
           'bg-paper/85 backdrop-blur-xl',
-          'ring-1 ring-ink/8 shadow-lg shadow-ink/5'
+          'ring-1 ring-ink/12 shadow-lg shadow-ink/5'
         )}
       >
         {/* Desktop */}
