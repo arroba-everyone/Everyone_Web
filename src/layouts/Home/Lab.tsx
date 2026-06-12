@@ -16,6 +16,8 @@ const LoopShowcase = () => {
   const rotateY = useSpring(useTransform(posX, v => v * 12), springCfg);
   const phoneX = useSpring(useTransform(posX, v => v * 26), springCfg);
   const phoneY = useSpring(useTransform(posY, v => v * 20), springCfg);
+  // The phone overflows the card slightly at rest and pops out on hover
+  const phoneScale = useSpring(1.08, { stiffness: 180, damping: 17 });
 
   return (
     <div className="[perspective:1200px]">
@@ -26,9 +28,11 @@ const LoopShowcase = () => {
           posX.set((e.clientX - rect.left) / rect.width - 0.5);
           posY.set((e.clientY - rect.top) / rect.height - 0.5);
         }}
+        onMouseEnter={() => phoneScale.set(1.25)}
         onMouseLeave={() => {
           posX.set(0);
           posY.set(0);
+          phoneScale.set(1.08);
         }}
         className={cn(
           'relative rounded-[2.5rem] bg-gradient-to-br from-grape to-grape-deep',
@@ -42,7 +46,7 @@ const LoopShowcase = () => {
         <motion.img
           src={loopMockup}
           alt="Loop, nuestra app de retos cotidianos"
-          style={{ x: phoneX, y: phoneY, z: 50 }}
+          style={{ x: phoneX, y: phoneY, z: 50, scale: phoneScale }}
           className="relative w-full max-h-[32rem] object-contain drop-shadow-2xl pointer-events-none"
           loading="lazy"
         />

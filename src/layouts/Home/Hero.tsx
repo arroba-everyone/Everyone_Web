@@ -158,6 +158,13 @@ export const Hero = () => {
         style={{ backgroundImage: GRAIN_URI }}
       />
 
+      {/* Fade the blobs and texture into flat cream so the section
+          blends into the next one instead of cutting off */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-56 pointer-events-none bg-gradient-to-b from-transparent to-cream"
+      />
+
       <div
         className={cn(
           'relative mx-auto max-w-6xl px-6',
@@ -199,14 +206,12 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-balance"
+          className="text-lg tablet-lg:text-xl font-medium text-ink-soft leading-relaxed"
         >
-          <span className="block text-2xl tablet-lg:text-[1.75rem] font-bold text-ink">
-            Lo que imaginas, funcionando de verdad.
-          </span>
-          <span className="mt-2 block text-base tablet-lg:text-lg font-medium text-ink-soft">
+          <span className="block">
             Diseño, código y lanzamiento, sin jerga y contigo en cada paso.
           </span>
+          <span className="block">Tú traes la idea; nosotros, el resto.</span>
         </motion.p>
 
         <motion.div
