@@ -158,11 +158,16 @@ export const Hero = () => {
         style={{ backgroundImage: GRAIN_URI }}
       />
 
-      {/* Fade the blobs and texture into flat cream so the section
-          blends into the next one instead of cutting off */}
+      {/* Fade the blobs and texture into flat cream well above the section
+          edge — the bottom stretch must be 100% flat so there is no visible
+          step against the next section. from-cream/0 (not `transparent`)
+          keeps the interpolation inside the cream hue. */}
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 h-56 pointer-events-none bg-gradient-to-b from-transparent to-cream"
+        className={cn(
+          'absolute inset-x-0 bottom-0 h-96 pointer-events-none',
+          'bg-gradient-to-b from-cream/0 via-cream to-cream'
+        )}
       />
 
       <div
@@ -209,7 +214,7 @@ export const Hero = () => {
           className="text-lg tablet-lg:text-xl font-medium text-ink-soft leading-relaxed"
         >
           <span className="block">
-            Diseño, código y lanzamiento, sin jerga y contigo en cada paso.
+            Diseño, código y lanzamiento, contigo de principio a fin.
           </span>
           <span className="block">Tú traes la idea; nosotros, el resto.</span>
         </motion.p>
