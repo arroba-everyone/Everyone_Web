@@ -94,6 +94,12 @@ html {
   --v2-grape-tint: #f2ecfe; /* soft purple card background */
   --v2-peach: #ffc89e; /* warm accent */
   --v2-peach-tint: #fff0e2; /* soft warm card background */
+
+  /* Hero mesh-gradient blobs — dimmed separately in dark mode so the
+     warm tones don't turn muddy on the near-black background. */
+  --v2-hero-blob-lime: rgba(135, 227, 0, 0.4);
+  --v2-hero-blob-grape: rgba(177, 133, 252, 0.35);
+  --v2-hero-blob-peach: rgba(255, 200, 158, 0.5);
 }
 
 /* Dark mode — inverts the neutral surfaces and brightens the
@@ -109,6 +115,9 @@ html {
   --v2-grape-deep: #c9a9ff;
   --v2-grape-tint: rgba(177, 133, 252, 0.15);
   --v2-peach-tint: rgba(255, 200, 158, 0.13);
+  --v2-hero-blob-lime: rgba(135, 227, 0, 0.22);
+  --v2-hero-blob-grape: rgba(177, 133, 252, 0.22);
+  --v2-hero-blob-peach: rgba(255, 200, 158, 0.12);
 }
 
 /* When dark mode is active, nested .theme-light scopes (forms, admin,
@@ -156,6 +165,8 @@ html {
   --animate-spin-slow: spin-slow 18s linear infinite;
   --animate-float-slow: float-slow 9s ease-in-out infinite;
   --animate-float-slower: float-slow 13s ease-in-out infinite reverse;
+  --animate-blob-drift: blob-drift 18s ease-in-out infinite;
+  --animate-blob-drift-slow: blob-drift 26s ease-in-out infinite reverse;
 
   /* Custom Breakpoints for Responsive Design */
   /* Mobile: default (< 768px) */
@@ -234,6 +245,19 @@ html {
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes blob-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(50px, -35px) scale(1.1);
+  }
+  66% {
+    transform: translate(-35px, 30px) scale(0.94);
   }
 }
 

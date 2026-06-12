@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from '@tanstack/react-router';
-import { ArrowRight } from 'lucide-react';
+import { ArrowDown, ArrowRight } from 'lucide-react';
 import {
   AnimatePresence,
   motion,
@@ -18,15 +18,10 @@ const rotatingWords = [
   { label: 'software a medida', tint: 'bg-lime text-ink-solid' },
 ];
 
-const stickerChips = [
-  { label: 'Webs', tint: 'bg-lime-tint text-lime-deep', rotate: -4 },
-  { label: 'E-commerce', tint: 'bg-paper text-ink', rotate: 3 },
-  { label: 'Apps iOS & Android', tint: 'bg-grape-tint text-grape-deep', rotate: -2 },
-  { label: 'Realidad aumentada', tint: 'bg-peach-tint text-ink', rotate: 4 },
-  { label: 'Sistemas a medida', tint: 'bg-ink text-cream', rotate: -3 },
-];
-
 const WORD_INTERVAL_MS = 2600;
+
+/** Fine monochrome noise, tiled — gives the hero a tactile, printed feel. */
+const GRAIN_URI = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")`;
 
 /** Word that cycles through what we build, flipping up inside a tinted pill. */
 const RotatingWord = () => {
@@ -71,12 +66,12 @@ export const Hero = () => {
   const springX = useSpring(mouseX, { stiffness: 50, damping: 20 });
   const springY = useSpring(mouseY, { stiffness: 50, damping: 20 });
 
-  const blobAx = useTransform(springX, v => v * 60);
-  const blobAy = useTransform(springY, v => v * 40);
-  const blobBx = useTransform(springX, v => v * -45);
-  const blobBy = useTransform(springY, v => v * -30);
-  const blobCx = useTransform(springX, v => v * 30);
-  const blobCy = useTransform(springY, v => v * -50);
+  const blobAx = useTransform(springX, v => v * 70);
+  const blobAy = useTransform(springY, v => v * 50);
+  const blobBx = useTransform(springX, v => v * -55);
+  const blobBy = useTransform(springY, v => v * -35);
+  const blobCx = useTransform(springX, v => v * 40);
+  const blobCy = useTransform(springY, v => v * -60);
 
   return (
     <section
@@ -87,28 +82,64 @@ export const Hero = () => {
         mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
       }}
     >
-      {/* Soft gradient blobs with cursor parallax */}
+      {/* Mesh gradient — parallax wrapper outside, slow autonomous drift inside */}
       <motion.div
         aria-hidden
         style={{ x: blobAx, y: blobAy }}
-        className="absolute -top-40 -left-32 size-[34rem] rounded-full bg-lime/25 blur-3xl pointer-events-none"
-      />
+        className="absolute -top-44 -left-36 pointer-events-none"
+      >
+        <div
+          className="size-[40rem] rounded-full blur-3xl animate-blob-drift"
+          style={{ backgroundColor: 'var(--v2-hero-blob-lime)' }}
+        />
+      </motion.div>
       <motion.div
         aria-hidden
         style={{ x: blobBx, y: blobBy }}
-        className="absolute top-24 -right-40 size-[30rem] rounded-full bg-grape/25 blur-3xl pointer-events-none"
-      />
+        className="absolute top-16 -right-44 pointer-events-none"
+      >
+        <div
+          className="size-[36rem] rounded-full blur-3xl animate-blob-drift-slow"
+          style={{ backgroundColor: 'var(--v2-hero-blob-grape)' }}
+        />
+      </motion.div>
       <motion.div
         aria-hidden
         style={{ x: blobCx, y: blobCy }}
-        className="absolute bottom-0 left-1/3 size-[26rem] rounded-full bg-peach/30 blur-3xl pointer-events-none"
+        className="absolute -bottom-24 left-1/4 pointer-events-none"
+      >
+        <div
+          className="size-[32rem] rounded-full blur-3xl animate-blob-drift"
+          style={{ backgroundColor: 'var(--v2-hero-blob-peach)' }}
+        />
+      </motion.div>
+
+      {/* Faint dot grid, fading out toward the edges */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            'radial-gradient(color-mix(in srgb, var(--v2-ink) 22%, transparent) 1.5px, transparent 1.5px)',
+          backgroundSize: '26px 26px',
+          maskImage: 'radial-gradient(ellipse 75% 65% at 50% 40%, black, transparent 78%)',
+          WebkitMaskImage:
+            'radial-gradient(ellipse 75% 65% at 50% 40%, black, transparent 78%)',
+        }}
+      />
+
+      {/* Film grain on top of everything */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none opacity-[0.05]"
+        style={{ backgroundImage: GRAIN_URI }}
       />
 
       <div
         className={cn(
           'relative mx-auto max-w-6xl px-6',
-          'pt-36 pb-20 tablet-lg:pt-44 tablet-lg:pb-28 laptop:pt-48 laptop:pb-32',
-          'flex flex-col items-center text-center gap-8'
+          'min-h-[calc(100svh-10rem)] pt-32 pb-16 tablet-lg:pt-36 tablet-lg:pb-20',
+          'flex flex-col items-center justify-center text-center gap-9'
         )}
       >
         <motion.div
@@ -133,7 +164,7 @@ export const Hero = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className={cn(
             'max-w-5xl text-balance font-extrabold tracking-tight text-ink',
-            'text-[2.6rem] md:text-6xl laptop:text-[5rem] leading-[1.04]'
+            'text-[2.6rem] md:text-6xl laptop:text-[5.5rem] leading-[1.04]'
           )}
         >
           Convertimos ideas
@@ -145,24 +176,23 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-2xl text-lg tablet-lg:text-xl text-ink-soft text-balance leading-relaxed"
+          className="text-xl tablet-lg:text-2xl font-medium text-ink-soft text-balance"
         >
-          Nos cuentas la idea y nosotros diseñamos, construimos y lanzamos la solución. Sin
-          jerga, sin complicaciones y contigo en cada paso.
+          Tú pones la idea. Nosotros, el resto.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex flex-col sm:flex-row items-center gap-4"
+          className="mt-2 flex flex-col sm:flex-row items-center gap-7"
         >
           <Link
             to="/contact"
             className={cn(
-              'group inline-flex items-center gap-2 rounded-full bg-ink text-paper',
-              'px-7 py-4 font-bold text-base transition-all',
-              'hover:-translate-y-0.5 hover:shadow-xl hover:shadow-ink/20'
+              'group inline-flex items-center gap-2.5 rounded-full bg-lime text-ink-solid',
+              'px-9 py-5 font-extrabold text-lg transition-all',
+              'shadow-lg shadow-lime/30 hover:shadow-xl hover:shadow-lime/50 hover:-translate-y-0.5'
             )}
           >
             Cuéntanos tu idea
@@ -170,39 +200,19 @@ export const Hero = () => {
           </Link>
           <a
             href="#services"
-            className={cn(
-              'inline-flex items-center gap-2 rounded-full bg-transparent text-ink',
-              'ring-1 ring-ink/15 px-7 py-4 font-bold text-base transition-all',
-              'hover:bg-ink/5 hover:ring-ink/30'
-            )}
+            className="group inline-flex items-center gap-3 font-bold text-base text-ink"
           >
             Ver qué hacemos
-          </a>
-        </motion.div>
-
-        {/* Sticker-style service chips */}
-        <div className="mt-6 flex flex-wrap justify-center gap-3 tablet-lg:gap-4">
-          {stickerChips.map((chip, i) => (
-            <motion.span
-              key={chip.label}
-              initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
-              animate={{ opacity: 1, scale: 1, rotate: chip.rotate }}
-              whileHover={{ scale: 1.1, rotate: 0, y: -4 }}
-              transition={{
-                duration: 0.45,
-                delay: 0.45 + i * 0.1,
-                scale: { type: 'spring', stiffness: 300, damping: 18 },
-                rotate: { type: 'spring', stiffness: 300, damping: 18 },
-              }}
+            <span
               className={cn(
-                'cursor-default rounded-full px-5 py-2.5 text-sm font-bold ring-1 ring-ink/5 shadow-md',
-                chip.tint
+                'grid place-items-center size-10 rounded-full ring-1 ring-ink/15 transition-all',
+                'group-hover:bg-ink group-hover:text-paper group-hover:ring-ink'
               )}
             >
-              {chip.label}
-            </motion.span>
-          ))}
-        </div>
+              <ArrowDown className="size-4 transition-transform group-hover:translate-y-0.5" />
+            </span>
+          </a>
+        </motion.div>
       </div>
     </section>
   );
