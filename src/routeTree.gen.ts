@@ -25,6 +25,7 @@ import { Route as AdminDealsManageRouteImport } from './routes/_admin/deals.mana
 import { Route as AdminContactsManageRouteImport } from './routes/_admin/contacts.manage'
 import { Route as AdminBlogNewRouteImport } from './routes/_admin/blog.new'
 import { Route as AdminBlogManageRouteImport } from './routes/_admin/blog.manage'
+import { Route as AdminAvailabilityManageRouteImport } from './routes/_admin/availability.manage'
 import { Route as AdminBlogEditIdRouteImport } from './routes/_admin/blog.edit.$id'
 
 const SettingsRoute = SettingsRouteImport.update({
@@ -106,6 +107,11 @@ const AdminBlogManageRoute = AdminBlogManageRouteImport.update({
   path: '/blog/manage',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminAvailabilityManageRoute = AdminAvailabilityManageRouteImport.update({
+  id: '/availability/manage',
+  path: '/availability/manage',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminBlogEditIdRoute = AdminBlogEditIdRouteImport.update({
   id: '/blog/edit/$id',
   path: '/blog/edit/$id',
@@ -124,6 +130,7 @@ export interface FileRoutesByFullPath {
   '/auth/reset': typeof AuthResetRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/availability/manage': typeof AdminAvailabilityManageRoute
   '/blog/manage': typeof AdminBlogManageRoute
   '/blog/new': typeof AdminBlogNewRoute
   '/contacts/manage': typeof AdminContactsManageRoute
@@ -142,6 +149,7 @@ export interface FileRoutesByTo {
   '/auth/reset': typeof AuthResetRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog': typeof BlogIndexRoute
+  '/availability/manage': typeof AdminAvailabilityManageRoute
   '/blog/manage': typeof AdminBlogManageRoute
   '/blog/new': typeof AdminBlogNewRoute
   '/contacts/manage': typeof AdminContactsManageRoute
@@ -162,6 +170,7 @@ export interface FileRoutesById {
   '/auth/reset': typeof AuthResetRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/_admin/availability/manage': typeof AdminAvailabilityManageRoute
   '/_admin/blog/manage': typeof AdminBlogManageRoute
   '/_admin/blog/new': typeof AdminBlogNewRoute
   '/_admin/contacts/manage': typeof AdminContactsManageRoute
@@ -182,6 +191,7 @@ export interface FileRouteTypes {
     | '/auth/reset'
     | '/blog/$slug'
     | '/blog/'
+    | '/availability/manage'
     | '/blog/manage'
     | '/blog/new'
     | '/contacts/manage'
@@ -200,6 +210,7 @@ export interface FileRouteTypes {
     | '/auth/reset'
     | '/blog/$slug'
     | '/blog'
+    | '/availability/manage'
     | '/blog/manage'
     | '/blog/new'
     | '/contacts/manage'
@@ -219,6 +230,7 @@ export interface FileRouteTypes {
     | '/auth/reset'
     | '/blog/$slug'
     | '/blog/'
+    | '/_admin/availability/manage'
     | '/_admin/blog/manage'
     | '/_admin/blog/new'
     | '/_admin/contacts/manage'
@@ -355,6 +367,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminBlogManageRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/_admin/availability/manage': {
+      id: '/_admin/availability/manage'
+      path: '/availability/manage'
+      fullPath: '/availability/manage'
+      preLoaderRoute: typeof AdminAvailabilityManageRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/_admin/blog/edit/$id': {
       id: '/_admin/blog/edit/$id'
       path: '/blog/edit/$id'
@@ -366,6 +385,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminRouteChildren {
+  AdminAvailabilityManageRoute: typeof AdminAvailabilityManageRoute
   AdminBlogManageRoute: typeof AdminBlogManageRoute
   AdminBlogNewRoute: typeof AdminBlogNewRoute
   AdminContactsManageRoute: typeof AdminContactsManageRoute
@@ -374,6 +394,7 @@ interface AdminRouteChildren {
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminAvailabilityManageRoute: AdminAvailabilityManageRoute,
   AdminBlogManageRoute: AdminBlogManageRoute,
   AdminBlogNewRoute: AdminBlogNewRoute,
   AdminContactsManageRoute: AdminContactsManageRoute,

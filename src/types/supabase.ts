@@ -156,6 +156,27 @@ export interface Database {
         };
         Relationships: [];
       };
+      site_settings: {
+        Row: {
+          id: number;
+          accepting_projects: boolean;
+          closed_message: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: number;
+          accepting_projects?: boolean;
+          closed_message?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: number;
+          accepting_projects?: boolean;
+          closed_message?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
       posts: {
         Row: {
           id: string;
@@ -231,6 +252,9 @@ export type ContactRequestRow = Database['public']['Tables']['contact_requests']
 export type ContactRequestInsert = Database['public']['Tables']['contact_requests']['Insert'];
 export type ContactRequestStatus = ContactRequestRow['status'];
 export type ContactProjectType = ContactRequestRow['project_type'];
+
+export type SiteSettingsRow = Database['public']['Tables']['site_settings']['Row'];
+export type SiteSettingsUpdate = Database['public']['Tables']['site_settings']['Update'];
 
 export type Post = Database['public']['Tables']['posts']['Row'];
 export type PostInsert = Database['public']['Tables']['posts']['Insert'];

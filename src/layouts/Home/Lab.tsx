@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@everyone-web/libs/utils';
 import loopMockup from '@everyone-web/assets/mockUpLoop.png';
+import { TiltShowcase } from '@everyone-web/components/TiltShowcase';
 import { Reveal } from './Reveal';
 
 /** Featured own product — proof that we ship real products end to end. */
@@ -39,23 +40,21 @@ export const Lab = () => (
       </Reveal>
 
       <Reveal delay={0.15}>
-        <div
+        <TiltShowcase
           className={cn(
-            'relative rounded-[2.5rem] bg-gradient-to-br from-grape to-grape-deep',
-            'p-10 tablet-lg:p-14 rotate-2 transition-transform duration-500 hover:rotate-0'
+            'rounded-[2.5rem] bg-gradient-to-br from-grape to-grape-deep',
+            'p-6 tablet-lg:p-8 rotate-2'
           )}
-        >
-          <div
-            aria-hidden
-            className="absolute -top-10 -right-10 size-40 rounded-full bg-lime/30 blur-2xl pointer-events-none"
-          />
-          <img
-            src={loopMockup}
-            alt="Loop, nuestra app de retos cotidianos"
-            className="relative w-full max-h-[26rem] object-contain drop-shadow-2xl"
-            loading="lazy"
-          />
-        </div>
+          imgSrc={loopMockup}
+          imgAlt="Loop, nuestra app de retos cotidianos"
+          imgClassName="max-h-[32rem] drop-shadow-2xl"
+          decor={
+            <div
+              aria-hidden
+              className="absolute -top-10 -right-10 size-40 rounded-full bg-lime/30 blur-2xl pointer-events-none"
+            />
+          }
+        />
       </Reveal>
     </div>
   </section>

@@ -6,7 +6,7 @@ const steps = [
     number: '01',
     title: 'Escuchamos',
     description:
-      'Una primera conversación para entender tu negocio y lo que necesitas de verdad. Sin compromiso y sin jerga técnica.',
+      'Una primera conversación para entender tu proyecto y lo que necesitas de verdad. Sin compromiso y sin jerga técnica.',
   },
   {
     number: '02',
@@ -33,7 +33,10 @@ export const Process = () => (
     <div
       className={cn(
         'relative mx-auto max-w-7xl overflow-hidden',
-        'rounded-[2.5rem] tablet-lg:rounded-[3rem] bg-ink text-cream'
+        'rounded-[2.5rem] tablet-lg:rounded-[3rem] bg-ink text-cream',
+        // In dark mode bg-ink would flip to a glaring light panel; use the
+        // dark card surface with light text instead.
+        'dark:bg-paper dark:text-ink dark:ring-1 dark:ring-ink/10'
       )}
     >
       <div
@@ -43,7 +46,7 @@ export const Process = () => (
 
       <div className="relative px-8 py-16 tablet-lg:px-14 tablet-lg:py-24 flex flex-col gap-14">
         <Reveal className="flex flex-col gap-4 max-w-2xl">
-          <span className="self-start rounded-full bg-cream/10 text-lime px-4 py-1.5 text-sm font-bold">
+          <span className="self-start rounded-full bg-cream/10 text-lime dark:bg-lime/10 px-4 py-1.5 text-sm font-bold">
             Cómo trabajamos
           </span>
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-balance">
@@ -58,7 +61,9 @@ export const Process = () => (
                 {step.number}
               </span>
               <h3 className="text-xl font-bold">{step.title}</h3>
-              <p className="text-cream/65 leading-relaxed text-base">{step.description}</p>
+              <p className="text-cream/65 dark:text-ink-soft leading-relaxed text-base">
+                {step.description}
+              </p>
             </Reveal>
           ))}
         </div>

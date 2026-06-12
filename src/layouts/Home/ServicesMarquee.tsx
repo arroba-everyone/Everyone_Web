@@ -30,14 +30,18 @@ const MarqueeContent = ({ ariaHidden = false }: { ariaHidden?: boolean }) => (
   </div>
 );
 
-/** Slanted dark band with an infinite scroll of what we do. */
+/** Slanted dark band with an infinite scroll of what we do.
+ *  Transparent wrapper: it renders inside the Hero so the band sits on the
+ *  textured hero background without a flat seam around the rotation. */
 export const ServicesMarquee = () => (
-  <section className="relative bg-cream py-10 overflow-hidden">
-    <div className="-rotate-1 scale-105 bg-ink py-5 shadow-xl shadow-ink/10 overflow-hidden">
+  <div className="relative py-8">
+    {/* No shadow here: it would get clipped at the section edge and show
+        up as a straight line on the flat cream below. */}
+    <div className="-rotate-1 scale-105 bg-ink py-5 overflow-hidden">
       <div className="flex w-max animate-marquee">
         <MarqueeContent />
         <MarqueeContent ariaHidden />
       </div>
     </div>
-  </section>
+  </div>
 );
