@@ -12,6 +12,7 @@ const adminTabs: AdminTab[] = [
   { label: 'Contactos', href: '/contacts/manage' },
   { label: 'Ofertas', href: '/deals/manage' },
   { label: 'Blog', href: '/blog/manage' },
+  { label: 'Disponibilidad', href: '/availability/manage' },
 ];
 
 interface AdminLayoutProps {

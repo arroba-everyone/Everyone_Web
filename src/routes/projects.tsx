@@ -5,6 +5,7 @@ import { Reveal } from '@everyone-web/layouts/Home';
 import { cn } from '@everyone-web/libs/utils';
 import loopMockup from '@everyone-web/assets/mockUpLoop.png';
 import mysteryPhone from '@everyone-web/assets/mysteryPhone.webp';
+import { TiltShowcase } from '@everyone-web/components/TiltShowcase';
 
 const title = 'Proyectos · @everyone';
 const description =
@@ -69,22 +70,21 @@ function Projects() {
           )}
         >
           <Reveal>
-            <div
+            <TiltShowcase
               className={cn(
-                'relative rounded-[2.5rem] bg-gradient-to-br from-grape to-grape-deep',
-                'p-10 tablet-lg:p-14 -rotate-2 transition-transform duration-500 hover:rotate-0'
+                'rounded-[2.5rem] bg-gradient-to-br from-grape to-grape-deep',
+                'p-6 tablet-lg:p-10 -rotate-2'
               )}
-            >
-              <div
-                aria-hidden
-                className="absolute -top-10 -right-10 size-40 rounded-full bg-lime/30 blur-2xl pointer-events-none"
-              />
-              <img
-                src={loopMockup}
-                alt="Loop, app de retos cotidianos"
-                className="relative w-full max-h-[26rem] object-contain drop-shadow-2xl"
-              />
-            </div>
+              imgSrc={loopMockup}
+              imgAlt="Loop, app de retos cotidianos"
+              imgClassName="max-h-[28rem] drop-shadow-2xl"
+              decor={
+                <div
+                  aria-hidden
+                  className="absolute -top-10 -right-10 size-40 rounded-full bg-lime/30 blur-2xl pointer-events-none"
+                />
+              }
+            />
           </Reveal>
 
           <Reveal delay={0.15} className="flex flex-col items-start gap-5">
@@ -115,33 +115,33 @@ function Projects() {
       <section className="bg-cream">
         <div className="mx-auto max-w-6xl px-6 py-12 tablet-lg:py-16 grid grid-cols-1 tablet-lg:grid-cols-2 gap-6">
           <Reveal>
-            <div
+            <TiltShowcase
               className={cn(
-                'relative flex flex-col gap-5 rounded-[2.5rem] bg-ink text-cream',
+                'flex flex-col gap-5 rounded-[2.5rem] bg-ink text-cream',
+                'dark:bg-paper dark:text-ink dark:ring-1 dark:ring-ink/10',
                 'p-10 tablet-lg:p-12 h-full overflow-hidden'
               )}
+              imgSrc={mysteryPhone}
+              imgAlt="NutrIA, próximamente"
+              imgClassName="max-h-60 drop-shadow-xl"
+              decor={
+                <div
+                  aria-hidden
+                  className="absolute -bottom-20 -right-16 size-64 rounded-full bg-grape/25 blur-3xl pointer-events-none"
+                />
+              }
             >
-              <div
-                aria-hidden
-                className="absolute -bottom-20 -right-16 size-64 rounded-full bg-grape/25 blur-3xl pointer-events-none"
-              />
-              <img
-                src={mysteryPhone}
-                alt="NutrIA, próximamente"
-                loading="lazy"
-                className="relative w-full max-h-60 object-contain drop-shadow-xl"
-              />
               <div className="relative flex flex-col gap-3">
-                <span className="self-start rounded-full bg-cream/10 text-lime px-3.5 py-1.5 text-xs font-bold">
+                <span className="self-start rounded-full bg-cream/10 text-lime dark:bg-lime/10 px-3.5 py-1.5 text-xs font-bold">
                   En el horno 🤫
                 </span>
                 <h3 className="text-2xl font-bold">NutrIA</h3>
-                <p className="text-cream/70 leading-relaxed">
+                <p className="text-cream/70 dark:text-ink-soft leading-relaxed">
                   Lo siguiente que sale de nuestro laboratorio. Aún no podemos contar mucho,
                   pero el nombre no es casualidad… y si te intriga, es buena señal.
                 </p>
               </div>
-            </div>
+            </TiltShowcase>
           </Reveal>
 
           <Reveal delay={0.1}>

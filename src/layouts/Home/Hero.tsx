@@ -60,7 +60,18 @@ const RotatingWord = () => {
   );
 };
 
-export const Hero = () => {
+export interface IHeroAvailability {
+  acceptingProjects: boolean;
+  closedMessage: string;
+}
+
+interface IHero {
+  /** Availability state from site_settings; defaults to "open" if absent. */
+  availability?: IHeroAvailability;
+}
+
+export const Hero = ({ availability }: IHero) => {
+  const isOpen = availability?.acceptingProjects ?? true;
   // Normalized cursor position (-0.5 … 0.5) drives a soft parallax on the blobs.
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -186,11 +197,24 @@ export const Hero = () => {
             'ring-1 ring-ink/8 px-4 py-2 text-sm font-semibold text-ink-soft'
           )}
         >
-          <span className="relative flex size-2.5">
-            <span className="absolute inline-flex size-full rounded-full bg-lime opacity-75 animate-ping" />
-            <span className="relative inline-flex size-2.5 rounded-full bg-lime-deep" />
-          </span>
-          Aceptamos nuevos proyectos
+          {isOpen ? (
+            <>
+              <span className="relative flex size-2.5">
+                <span className="absolute inline-flex size-full rounded-full bg-lime opacity-75 animate-ping" />
+                <span className="relative inline-flex size-2.5 rounded-full bg-lime-deep" />
+              </span>
+              Aceptamos nuevos proyectos
+            </>
+          ) : (
+            <>
+              <span className="relative flex size-2.5">
+                <span className="relative inline-flex size-2.5 rounded-full bg-red-500" />
+              </span>
+              <span className="text-red-600 dark:text-red-400">
+                {availability?.closedMessage}
+              </span>
+            </>
+          )}
         </motion.div>
 
         <motion.h1

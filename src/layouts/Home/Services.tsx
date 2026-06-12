@@ -17,6 +17,9 @@ interface IServiceCard {
   tags?: string[];
   className?: string;
   dark?: boolean;
+  /** Extra classes for the icon chip — used to keep the card's accent
+   *  color visible in dark mode, where the tinted backgrounds flatten. */
+  iconAccent?: string;
 }
 
 const ServiceCard = ({
@@ -26,6 +29,7 @@ const ServiceCard = ({
   tags,
   className,
   dark = false,
+  iconAccent,
 }: IServiceCard) => (
   <div
     className={cn(
@@ -39,7 +43,8 @@ const ServiceCard = ({
     <div
       className={cn(
         'grid place-items-center size-12 rounded-2xl transition-transform duration-300 group-hover:rotate-[-8deg]',
-        dark ? 'bg-lime text-ink-solid' : 'bg-ink text-cream'
+        dark ? 'bg-lime text-ink-solid' : 'bg-ink text-cream',
+        iconAccent
       )}
     >
       <IconCmp className="size-6" />
@@ -89,7 +94,8 @@ export const Services = () => (
             title="Webs que convierten"
             description="Páginas rápidas, bonitas y pensadas para que las visitas se conviertan en clientes. Desde tu primera web corporativa hasta una tienda online completa."
             tags={['Landing pages', 'Webs corporativas', 'E-commerce']}
-            className="bg-lime-tint h-full"
+            className="bg-lime-tint dark:bg-paper dark:ring-lime/30 h-full"
+            iconAccent="dark:bg-lime dark:text-ink-solid"
           />
         </Reveal>
         <Reveal delay={0.1} className="tablet-lg:col-span-5">
@@ -109,7 +115,8 @@ export const Services = () => (
             title="Realidad aumentada y virtual"
             description="Experiencias inmersivas para marcas, eventos y formación que tus clientes no van a olvidar."
             tags={['AR', 'VR', 'Experiencias 3D']}
-            className="bg-grape-tint h-full"
+            className="bg-grape-tint dark:bg-paper dark:ring-grape/30 h-full"
+            iconAccent="dark:bg-grape dark:text-ink-solid"
           />
         </Reveal>
         <Reveal delay={0.1} className="tablet-lg:col-span-7">
@@ -128,7 +135,8 @@ export const Services = () => (
             title="Soluciones para pymes e instituciones"
             description="Comercios, ayuntamientos, museos, proyectos personales… Te ayudamos a dar el salto a lo digital con un trato cercano y sin tecnicismos."
             tags={['Digitalización', 'Trato cercano']}
-            className="bg-peach-tint h-full"
+            className="bg-peach-tint dark:bg-paper dark:ring-peach/30 h-full"
+            iconAccent="dark:bg-peach dark:text-ink-solid"
           />
         </Reveal>
         <Reveal delay={0.1} className="tablet-lg:col-span-5">

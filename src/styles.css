@@ -138,6 +138,10 @@ html {
   --ring: #87e300;
 }
 
+/* Tailwind `dark:` variant driven by the runtime `.theme-dark` class
+   (toggled on <html> by the navbar ThemeToggle), not by the OS scheme. */
+@custom-variant dark (&:where(.theme-dark, .theme-dark *));
+
 @theme inline {
   /* Utilities reference the :root vars above so they can be
      overridden at runtime by `.theme-dark`. */

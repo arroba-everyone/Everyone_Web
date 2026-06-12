@@ -1,6 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
 import { Hero, Services, Process, Lab, Team, FinalCTA } from '@everyone-web/layouts/Home';
+import { getSiteSettingsFn } from '@everyone-web/services/settings';
+import type { SiteSettingsRow } from '@everyone-web/types/supabase';
 
 const title = '@everyone · Diseño y desarrollo de productos digitales';
 const description =
@@ -8,6 +10,7 @@ const description =
 
 export const Route = createFileRoute('/')({
   component: App,
+  loader: () => (getSiteSettingsFn as unknown as () => Promise<SiteSettingsRow>)(),
   head: () => ({
     meta: [
       { title },
@@ -50,9 +53,15 @@ export const Route = createFileRoute('/')({
 });
 
 function App() {
+  const settings = Route.useLoaderData() as SiteSettingsRow;
   return (
     <MainLayout tone="light">
-      <Hero />
+      <Hero
+        availability={{
+          acceptingProjects: settings.accepting_projects,
+          closedMessage: settings.closed_message,
+        }}
+      />
       <Services />
       <Process />
       <Lab />
