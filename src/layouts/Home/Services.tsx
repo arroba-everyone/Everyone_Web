@@ -74,7 +74,7 @@ export const Services = () => (
           Servicios
         </span>
         <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-ink text-balance">
-          Todo lo que tu negocio necesita para vivir en digital.
+          Todo lo que tu proyecto necesita para vivir en digital.
         </h2>
         <p className="text-lg text-ink-soft leading-relaxed">
           Sin paquetes cerrados ni soluciones de plantilla: escuchamos lo que necesitas y lo
@@ -116,7 +116,7 @@ export const Services = () => (
           <ServiceCard
             icon={CalendarCheck2}
             title="Sistemas a medida"
-            description="Reservas para tu restaurante, gestión interna, paneles de control… Si tu negocio lo necesita, lo diseñamos y lo construimos para ti."
+            description="Reservas para tu restaurante, gestión interna, paneles de control… Si tu proyecto lo necesita, lo diseñamos y lo construimos para ti."
             tags={['Reservas', 'Paneles de gestión', 'Automatización']}
             className="bg-paper h-full"
           />
@@ -125,9 +125,9 @@ export const Services = () => (
         <Reveal className="tablet-lg:col-span-7">
           <ServiceCard
             icon={Store}
-            title="Soluciones para pymes y comercios"
-            description="Digitalizamos negocios locales: presencia online, herramientas que ahorran tiempo y un trato cercano, sin tecnicismos."
-            tags={['Digitalización', 'Negocios locales']}
+            title="Soluciones para pymes e instituciones"
+            description="Comercios, ayuntamientos, museos, proyectos personales… Te ayudamos a dar el salto a lo digital con un trato cercano y sin tecnicismos."
+            tags={['Digitalización', 'Trato cercano']}
             className="bg-peach-tint h-full"
           />
         </Reveal>

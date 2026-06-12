@@ -28,11 +28,11 @@ export const FinalCTA = () => (
           )}
         >
           <h2 className="max-w-3xl text-3xl md:text-5xl laptop:text-6xl font-extrabold tracking-tight text-ink-solid text-balance">
-            ¿Tienes un proyecto en mente?
+            ¿Hablamos?
           </h2>
           <p className="max-w-xl text-lg text-ink-solid/70 font-medium leading-relaxed">
-            Cuéntanoslo sin compromiso. Te respondemos en menos de 48 horas con una propuesta
-            clara y un precio honesto.
+            Cuéntanos qué tienes en la cabeza, sin compromiso. Te respondemos en menos de 48
+            horas con una propuesta clara y un precio honesto.
           </p>
           <div className="mt-2 flex flex-col sm:flex-row items-center gap-4">
             <Link

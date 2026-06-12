@@ -127,11 +127,11 @@ export function ContactForm() {
             name="company"
             render={({ field }) => (
               <FormItem>
-                <FormLabel htmlFor="contact-company">Empresa (opcional)</FormLabel>
+                <FormLabel htmlFor="contact-company">Empresa u organización (opcional)</FormLabel>
                 <FormControl>
                   <Input
                     id="contact-company"
-                    placeholder="Tu negocio"
+                    placeholder="Tu empresa, institución o proyecto"
                     autoComplete="organization"
                     {...field}
                   />

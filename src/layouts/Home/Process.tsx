@@ -6,7 +6,7 @@ const steps = [
     number: '01',
     title: 'Escuchamos',
     description:
-      'Una primera conversación para entender tu negocio y lo que necesitas de verdad. Sin compromiso y sin jerga técnica.',
+      'Una primera conversación para entender tu proyecto y lo que necesitas de verdad. Sin compromiso y sin jerga técnica.',
   },
   {
     number: '02',
