@@ -9,6 +9,7 @@ import {
   useTransform,
 } from 'motion/react';
 import { cn } from '@everyone-web/libs/utils';
+import { ServicesMarquee } from './ServicesMarquee';
 
 const rotatingWords = [
   { label: 'webs', tint: 'bg-lime text-ink-solid' },
@@ -82,36 +83,58 @@ export const Hero = () => {
         mouseY.set((e.clientY - rect.top) / rect.height - 0.5);
       }}
     >
-      {/* Mesh gradient — parallax wrapper outside, slow autonomous drift inside */}
+      {/* Mesh gradient — three layers per blob: entrance from the center,
+          cursor parallax, then slow autonomous drift */}
       <motion.div
         aria-hidden
-        style={{ x: blobAx, y: blobAy }}
+        initial={{ x: '42vw', y: '42vh', scale: 0.5, opacity: 0 }}
+        animate={{ x: '0vw', y: '0vh', scale: 1, opacity: 1 }}
+        transition={{
+          opacity: { duration: 0.6 },
+          default: { duration: 1.7, delay: 0.7, ease: [0.22, 1, 0.36, 1] },
+        }}
         className="absolute -top-44 -left-36 pointer-events-none"
       >
-        <div
-          className="size-[40rem] rounded-full blur-3xl animate-blob-drift"
-          style={{ backgroundColor: 'var(--v2-hero-blob-lime)' }}
-        />
+        <motion.div style={{ x: blobAx, y: blobAy }}>
+          <div
+            className="size-[40rem] rounded-full blur-3xl animate-blob-drift"
+            style={{ backgroundColor: 'var(--v2-hero-blob-lime)' }}
+          />
+        </motion.div>
       </motion.div>
       <motion.div
         aria-hidden
-        style={{ x: blobBx, y: blobBy }}
+        initial={{ x: '-42vw', y: '35vh', scale: 0.5, opacity: 0 }}
+        animate={{ x: '0vw', y: '0vh', scale: 1, opacity: 1 }}
+        transition={{
+          opacity: { duration: 0.6 },
+          default: { duration: 1.9, delay: 0.8, ease: [0.22, 1, 0.36, 1] },
+        }}
         className="absolute top-16 -right-44 pointer-events-none"
       >
-        <div
-          className="size-[36rem] rounded-full blur-3xl animate-blob-drift-slow"
-          style={{ backgroundColor: 'var(--v2-hero-blob-grape)' }}
-        />
+        <motion.div style={{ x: blobBx, y: blobBy }}>
+          <div
+            className="size-[36rem] rounded-full blur-3xl animate-blob-drift-slow"
+            style={{ backgroundColor: 'var(--v2-hero-blob-grape)' }}
+          />
+        </motion.div>
       </motion.div>
       <motion.div
         aria-hidden
-        style={{ x: blobCx, y: blobCy }}
+        initial={{ x: '18vw', y: '-35vh', scale: 0.5, opacity: 0 }}
+        animate={{ x: '0vw', y: '0vh', scale: 1, opacity: 1 }}
+        transition={{
+          opacity: { duration: 0.6 },
+          default: { duration: 1.8, delay: 0.75, ease: [0.22, 1, 0.36, 1] },
+        }}
         className="absolute -bottom-24 left-1/4 pointer-events-none"
       >
-        <div
-          className="size-[32rem] rounded-full blur-3xl animate-blob-drift"
-          style={{ backgroundColor: 'var(--v2-hero-blob-peach)' }}
-        />
+        <motion.div style={{ x: blobCx, y: blobCy }}>
+          <div
+            className="size-[32rem] rounded-full blur-3xl animate-blob-drift"
+            style={{ backgroundColor: 'var(--v2-hero-blob-peach)' }}
+          />
+        </motion.div>
       </motion.div>
 
       {/* Faint dot grid, fading out toward the edges */}
@@ -138,7 +161,7 @@ export const Hero = () => {
       <div
         className={cn(
           'relative mx-auto max-w-6xl px-6',
-          'min-h-[calc(100svh-10rem)] pt-32 pb-16 tablet-lg:pt-36 tablet-lg:pb-20',
+          'min-h-[calc(100svh-12rem)] pt-32 pb-12 tablet-lg:pt-36 tablet-lg:pb-14',
           'flex flex-col items-center justify-center text-center gap-9'
         )}
       >
@@ -176,9 +199,14 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-xl tablet-lg:text-2xl font-medium text-ink-soft text-balance"
+          className="text-balance"
         >
-          Tú pones la idea. Nosotros, el resto.
+          <span className="block text-2xl tablet-lg:text-[1.75rem] font-bold text-ink">
+            Lo que imaginas, funcionando de verdad.
+          </span>
+          <span className="mt-2 block text-base tablet-lg:text-lg font-medium text-ink-soft">
+            Diseño, código y lanzamiento, sin jerga y contigo en cada paso.
+          </span>
         </motion.p>
 
         <motion.div
@@ -214,6 +242,8 @@ export const Hero = () => {
           </a>
         </motion.div>
       </div>
+
+      <ServicesMarquee />
     </section>
   );
 };

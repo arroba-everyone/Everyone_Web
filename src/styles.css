@@ -165,8 +165,8 @@ html {
   --animate-spin-slow: spin-slow 18s linear infinite;
   --animate-float-slow: float-slow 9s ease-in-out infinite;
   --animate-float-slower: float-slow 13s ease-in-out infinite reverse;
-  --animate-blob-drift: blob-drift 18s ease-in-out infinite;
-  --animate-blob-drift-slow: blob-drift 26s ease-in-out infinite reverse;
+  --animate-blob-drift: blob-drift 13s ease-in-out infinite;
+  --animate-blob-drift-slow: blob-drift 19s ease-in-out infinite reverse;
 
   /* Custom Breakpoints for Responsive Design */
   /* Mobile: default (< 768px) */
@@ -254,10 +254,10 @@ html {
     transform: translate(0, 0) scale(1);
   }
   33% {
-    transform: translate(50px, -35px) scale(1.1);
+    transform: translate(70px, -50px) scale(1.12);
   }
   66% {
-    transform: translate(-35px, 30px) scale(0.94);
+    transform: translate(-55px, 45px) scale(0.92);
   }
 }
 

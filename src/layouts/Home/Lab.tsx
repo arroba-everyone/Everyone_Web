@@ -1,8 +1,55 @@
 import { Link } from '@tanstack/react-router';
 import { ArrowRight } from 'lucide-react';
+import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
 import { cn } from '@everyone-web/libs/utils';
 import loopMockup from '@everyone-web/assets/mockUpLoop.png';
 import { Reveal } from './Reveal';
+
+/** Purple card with the Loop mockup — tilts in 3D following the cursor,
+ *  and the phone floats with extra depth of its own. */
+const LoopShowcase = () => {
+  // Normalized cursor position within the card (-0.5 … 0.5)
+  const posX = useMotionValue(0);
+  const posY = useMotionValue(0);
+  const springCfg = { stiffness: 150, damping: 18 };
+  const rotateX = useSpring(useTransform(posY, v => v * -10), springCfg);
+  const rotateY = useSpring(useTransform(posX, v => v * 12), springCfg);
+  const phoneX = useSpring(useTransform(posX, v => v * 26), springCfg);
+  const phoneY = useSpring(useTransform(posY, v => v * 20), springCfg);
+
+  return (
+    <div className="[perspective:1200px]">
+      <motion.div
+        style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+        onMouseMove={e => {
+          const rect = e.currentTarget.getBoundingClientRect();
+          posX.set((e.clientX - rect.left) / rect.width - 0.5);
+          posY.set((e.clientY - rect.top) / rect.height - 0.5);
+        }}
+        onMouseLeave={() => {
+          posX.set(0);
+          posY.set(0);
+        }}
+        className={cn(
+          'relative rounded-[2.5rem] bg-gradient-to-br from-grape to-grape-deep',
+          'p-6 tablet-lg:p-8 rotate-2'
+        )}
+      >
+        <div
+          aria-hidden
+          className="absolute -top-10 -right-10 size-40 rounded-full bg-lime/30 blur-2xl pointer-events-none"
+        />
+        <motion.img
+          src={loopMockup}
+          alt="Loop, nuestra app de retos cotidianos"
+          style={{ x: phoneX, y: phoneY, z: 50 }}
+          className="relative w-full max-h-[32rem] object-contain drop-shadow-2xl pointer-events-none"
+          loading="lazy"
+        />
+      </motion.div>
+    </div>
+  );
+};
 
 /** Featured own product — proof that we ship real products end to end. */
 export const Lab = () => (
@@ -39,23 +86,7 @@ export const Lab = () => (
       </Reveal>
 
       <Reveal delay={0.15}>
-        <div
-          className={cn(
-            'relative rounded-[2.5rem] bg-gradient-to-br from-grape to-grape-deep',
-            'p-10 tablet-lg:p-14 rotate-2 transition-transform duration-500 hover:rotate-0'
-          )}
-        >
-          <div
-            aria-hidden
-            className="absolute -top-10 -right-10 size-40 rounded-full bg-lime/30 blur-2xl pointer-events-none"
-          />
-          <img
-            src={loopMockup}
-            alt="Loop, nuestra app de retos cotidianos"
-            className="relative w-full max-h-[26rem] object-contain drop-shadow-2xl"
-            loading="lazy"
-          />
-        </div>
+        <LoopShowcase />
       </Reveal>
     </div>
   </section>

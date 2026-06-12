@@ -1,14 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
-import {
-  Hero,
-  ServicesMarquee,
-  Services,
-  Process,
-  Lab,
-  Team,
-  FinalCTA,
-} from '@everyone-web/layouts/Home';
+import { Hero, Services, Process, Lab, Team, FinalCTA } from '@everyone-web/layouts/Home';
 
 const title = '@everyone · Diseño y desarrollo de productos digitales';
 const description =
@@ -61,7 +53,6 @@ function App() {
   return (
     <MainLayout tone="light">
       <Hero />
-      <ServicesMarquee />
       <Services />
       <Process />
       <Lab />
