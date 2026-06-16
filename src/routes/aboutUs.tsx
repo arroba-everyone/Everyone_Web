@@ -42,6 +42,9 @@ interface IValue {
   title: string;
   description: string;
   tint: string;
+  /** Keeps the card's accent visible in dark mode, where the tinted
+   *  backgrounds flatten — see the same pattern in Services. */
+  iconAccent: string;
 }
 
 const values: IValue[] = [
@@ -50,21 +53,24 @@ const values: IValue[] = [
     title: 'Claridad ante todo',
     description:
       'Te hablamos en tu idioma, no en jerga técnica. Sabrás en todo momento qué estamos haciendo, por qué y cuánto cuesta.',
-    tint: 'bg-lime-tint',
+    tint: 'bg-lime-tint dark:bg-paper dark:ring-lime/30',
+    iconAccent: 'dark:bg-lime dark:text-ink-solid',
   },
   {
     icon: Sparkles,
     title: 'Diseño que se nota',
     description:
       'Cuidamos cada detalle, desde la primera pantalla hasta el último píxel. Lo bonito también tiene que funcionar.',
-    tint: 'bg-grape-tint',
+    tint: 'bg-grape-tint dark:bg-paper dark:ring-grape/30',
+    iconAccent: 'dark:bg-grape dark:text-ink-solid',
   },
   {
     icon: HeartHandshake,
     title: 'Cerca de verdad',
     description:
       'Sin intermediarios ni gestores de cuenta: tratas directamente con las personas que diseñan y programan tu proyecto.',
-    tint: 'bg-peach-tint',
+    tint: 'bg-peach-tint dark:bg-paper dark:ring-peach/30',
+    iconAccent: 'dark:bg-peach dark:text-ink-solid',
   },
 ];
 
@@ -188,7 +194,12 @@ function AboutUs() {
                     value.tint
                   )}
                 >
-                  <div className="grid place-items-center size-12 rounded-2xl bg-ink text-cream">
+                  <div
+                    className={cn(
+                      'grid place-items-center size-12 rounded-2xl bg-ink text-cream',
+                      value.iconAccent
+                    )}
+                  >
                     <value.icon className="size-6" />
                   </div>
                   <h3 className="text-xl font-bold text-ink">{value.title}</h3>
