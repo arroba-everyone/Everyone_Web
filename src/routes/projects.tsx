@@ -4,12 +4,13 @@ import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
 import { Reveal } from '@everyone-web/layouts/Home';
 import { cn } from '@everyone-web/libs/utils';
 import loopMockup from '@everyone-web/assets/mockUpLoop.png';
+import ineditoMockup from '@everyone-web/assets/inedito.png';
 import mysteryPhone from '@everyone-web/assets/mysteryPhone.webp';
 import { TiltShowcase } from '@everyone-web/components/TiltShowcase';
 
 const title = 'Proyectos · @everyone';
 const description =
-  'Productos que diseñamos, desarrollamos y lanzamos de principio a fin. Loop, NutrIA y los proyectos que están por venir. Quizá el tuyo.';
+  'Productos que diseñamos, desarrollamos y lanzamos de principio a fin. Loop, Inédito, NutrIA y los proyectos que están por venir. Quizá el tuyo.';
 
 export const Route = createFileRoute('/projects')({
   component: Projects,
@@ -28,7 +29,7 @@ export const Route = createFileRoute('/projects')({
       {
         name: 'keywords',
         content:
-          'proyectos @everyone, Loop, NutrIA, desarrollo de aplicaciones, apps móviles, productos digitales, porfolio',
+          'proyectos @everyone, Loop, Inédito, NutrIA, desarrollo de aplicaciones, apps móviles, productos digitales, porfolio',
       },
     ],
     links: [{ rel: 'canonical', href: 'https://arrobaeveryone.com/projects' }],
@@ -106,6 +107,55 @@ function Projects() {
             </p>
             <p className="text-base text-ink-soft leading-relaxed">
               Diseño, desarrollo, backend y lanzamiento: todo hecho en casa.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Inédito */}
+      <section className="bg-cream">
+        <div
+          className={cn(
+            'mx-auto max-w-6xl px-6 py-12 tablet-lg:py-16',
+            'grid grid-cols-1 tablet-lg:grid-cols-2 items-center gap-12'
+          )}
+        >
+          <Reveal className="tablet-lg:order-2">
+            <TiltShowcase
+              className={cn(
+                'rounded-[2.5rem] bg-lime',
+                'aspect-square flex items-center justify-center',
+                'p-6 tablet-lg:p-10 rotate-2'
+              )}
+              imgSrc={ineditoMockup}
+              imgAlt="Inédito, cámara analógica para iPhone"
+              imgClassName="drop-shadow-2xl rounded-2xl"
+              decor={
+                <div
+                  aria-hidden
+                  className="absolute -bottom-10 -left-10 size-40 rounded-full bg-grape/30 blur-2xl pointer-events-none"
+                />
+              }
+            />
+          </Reveal>
+
+          <Reveal delay={0.15} className="tablet-lg:order-1 flex flex-col items-start gap-5">
+            <div className="flex flex-wrap gap-2">
+              <span className="rounded-full bg-grape-tint text-grape-deep px-3.5 py-1.5 text-xs font-bold">
+                Producto propio
+              </span>
+              <span className="rounded-full bg-lime-tint text-lime-deep px-3.5 py-1.5 text-xs font-bold">
+                App iOS
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-ink">
+              Inédito
+            </h2>
+            <p className="text-lg text-ink-soft leading-relaxed">
+              Dispara a ciegas. Completa un carrete de 27 fotos. Espera 24 horas reales para revelarlo. Sin pantalla, sin repeticiones y sin filtros instantáneos. Solo recuerdos auténticos con el encanto de la fotografía analógica y la emoción de no saber qué capturaste hasta el momento del revelado.
+            </p>
+            <p className="text-base text-ink-soft leading-relaxed">
+              En desarrollo. Próximamente en la App Store.
             </p>
           </Reveal>
         </div>
