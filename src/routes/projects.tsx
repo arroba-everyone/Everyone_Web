@@ -152,10 +152,7 @@ function Projects() {
               Inédito
             </h2>
             <p className="text-lg text-ink-soft leading-relaxed">
-              Una cámara analógica sin pantalla. Disparas a ciegas un carrete de 27 fotos y
-              esperas 24 horas reales a que se revelen: solo entonces ves lo que saliste, con
-              grano, halación y fecha impresa como la película de los 2000. Esa espera es justo
-              lo que la hace especial.
+              Dispara a ciegas. Completa un carrete de 27 fotos. Espera 24 horas reales para revelarlo. Sin pantalla, sin repeticiones y sin filtros instantáneos. Solo recuerdos auténticos con el encanto de la fotografía analógica y la emoción de no saber qué capturaste hasta el momento del revelado.
             </p>
             <p className="text-base text-ink-soft leading-relaxed">
               En desarrollo. Próximamente en la App Store.
