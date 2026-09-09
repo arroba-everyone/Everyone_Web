@@ -8,3 +8,18 @@
 [dev]
   command = "vite dev"
   port = 3000
+
+# URLs limpias para las páginas legales de Spotter: /spotter/privacidad sirve
+# el HTML estático de public/spotter/privacidad.html sin cambiar la barra de
+# direcciones (status 200 = reescritura, no redirección).
+# Las rutas con .html siguen funcionando: son las que se enlazan desde las fichas
+# de App Store y Google Play y no se pueden romper una vez publicadas.
+[[redirects]]
+  from = "/spotter/privacidad"
+  to = "/spotter/privacidad.html"
+  status = 200
+
+[[redirects]]
+  from = "/spotter/eliminar-cuenta"
+  to = "/spotter/eliminar-cuenta.html"
+  status = 200
