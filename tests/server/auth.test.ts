@@ -17,6 +17,11 @@ vi.mock('@tanstack/react-start', () => ({
   })),
 }));
 
+// getSessionFn lee la petición en curso con getRequest(); aquí se simula.
+vi.mock('@tanstack/react-start/server', () => ({
+  getRequest: vi.fn(() => new Request('https://example.com/')),
+}));
+
 // Mock TanStack Router redirect
 vi.mock('@tanstack/react-router', () => ({
   redirect: vi.fn((opts: unknown) => {
@@ -120,6 +125,54 @@ describe('getSession()', () => {
     const result: Session | null = await getSession(makeRequest('sb-token=xyz'));
     expect(result).not.toBeNull();
     expect(result?.role).toBe('user');
+  });
+});
+
+describe('getSessionFn()', () => {
+  let getServerClientMock: ReturnType<typeof vi.fn>;
+
+  beforeEach(async () => {
+    vi.resetModules();
+    const mod = await import('@everyone-web/libs/supabase-server');
+    getServerClientMock = vi.mocked(mod.getServerClient);
+  });
+
+  // Con el mock de createServerFn, `getSessionFn` es directamente el handler.
+  async function callGetSessionFn(): Promise<Session | null> {
+    const { getSessionFn } = await import('@everyone-web/server/auth');
+    return (getSessionFn as unknown as () => Promise<Session | null>)();
+  }
+
+  it('returns the session when Supabase works', async () => {
+    getServerClientMock.mockReturnValue(
+      makeSupabaseClientMock({ user: { id: 'user-1', email: 'a@example.com' } })
+    );
+
+    const result = await callGetSessionFn();
+    expect(result?.userId).toBe('user-1');
+  });
+
+  it('returns null instead of throwing when the Supabase client cannot be created', async () => {
+    const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
+    getServerClientMock.mockImplementation(() => {
+      throw new Error("Your project's URL and Key are required");
+    });
+
+    await expect(callGetSessionFn()).resolves.toBeNull();
+    expect(consoleError).toHaveBeenCalledOnce();
+    consoleError.mockRestore();
+  });
+
+  it('returns null instead of throwing when Supabase Auth is unreachable', async () => {
+    const consoleError = vi.spyOn(console, 'error').mockImplementation(() => {});
+    getServerClientMock.mockReturnValue({
+      auth: { getUser: vi.fn().mockRejectedValue(new TypeError('fetch failed')) },
+      from: vi.fn(),
+    });
+
+    await expect(callGetSessionFn()).resolves.toBeNull();
+    expect(consoleError).toHaveBeenCalledOnce();
+    consoleError.mockRestore();
   });
 });
 
