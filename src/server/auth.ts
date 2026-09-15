@@ -73,10 +73,23 @@ export async function getSession(request: Request): Promise<Session | null> {
 /**
  * Server fn that reads the session from the incoming request cookies.
  * Called in `__root.tsx` `beforeLoad` to hydrate `context.session`.
+ *
+ * Nunca lanza: si Supabase no responde o está mal configurado, devuelve `null`
+ * y la petición se sirve como visitante anónimo. Motivo: el `beforeLoad` del
+ * root se ejecuta en TODAS las páginas, así que una excepción aquí tumbaría la
+ * web pública entera (y Google indexaría la pantalla de error) por un fallo que
+ * solo afecta al login. Las zonas privadas no pierden protección: `requireAdmin`
+ * llama a `getSession` directamente y sigue fallando en cerrado.
  */
 export const getSessionFn = createServerFn({ method: 'GET' }).handler(async () => {
   const request = getRequest();
-  return getSession(request);
+  try {
+    return await getSession(request);
+  } catch (error) {
+    // Se registra en los logs de funciones de Netlify para poder investigarlo.
+    console.error('[getSessionFn] No se pudo leer la sesión; se sirve como anónimo:', error);
+    return null;
+  }
 });
 
 // ---------------------------------------------------------------------------
