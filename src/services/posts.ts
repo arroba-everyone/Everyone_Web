@@ -46,6 +46,27 @@ export const getPublishedPostsFn = createServerFn({ method: 'GET' }).handler(asy
 });
 
 /**
+ * Slug y fecha de publicación de los posts publicados, para el sitemap.xml.
+ * Es una función normal y no un `createServerFn` porque solo la llama la ruta
+ * de servidor /sitemap.xml, que ya se ejecuta en el servidor y tiene la petición.
+ * Filtra por status='published' igual que getPublishedPostsFn.
+ */
+export async function getPublishedPostsForSitemap(
+  request: Request
+): Promise<Pick<Post, 'slug' | 'published_at'>[]> {
+  const client = getServerClient(request);
+
+  const { data, error } = await client
+    .from('posts')
+    .select('slug, published_at')
+    .eq('status', 'published')
+    .order('published_at', { ascending: false });
+
+  if (error) throw error;
+  return data ?? [];
+}
+
+/**
  * Returns a single published post by slug, including markdown content from Storage.
  * Returns null if the post doesn't exist or isn't published.
  */
