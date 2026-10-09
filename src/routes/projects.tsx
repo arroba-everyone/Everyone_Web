@@ -43,11 +43,8 @@ function Projects() {
           aria-hidden
           className="absolute -top-32 left-1/4 size-[26rem] rounded-full bg-lime/20 blur-3xl pointer-events-none"
         />
-        <div className="relative mx-auto max-w-6xl px-6 pt-36 pb-12 tablet-lg:pt-48 tablet-lg:pb-16 flex flex-col items-start gap-6">
+        <div className="relative mx-auto max-w-6xl px-6 pt-32 pb-12 tablet-lg:pt-36 tablet-lg:pb-16 flex flex-col items-start gap-6">
           <Reveal className="flex flex-col items-start gap-5 max-w-3xl">
-            <span className="rounded-full bg-paper ring-1 ring-ink/8 text-ink-soft px-4 py-1.5 text-sm font-bold">
-              Proyectos
-            </span>
             <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-ink text-balance leading-[1.05]">
               Lo que construimos cuando nadie nos lo pide.
             </h1>
