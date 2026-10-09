@@ -164,6 +164,14 @@ html {
   --color-ink-solid: #101013;
   --color-paper-solid: #ffffff;
 
+  /* Colores de marca de nuestras apps (/projects). Constantes: son el fondo
+     de los escenarios de capturas y no cambian en modo oscuro. Loop usa los
+     grape de arriba. */
+  --color-spotter: #e62b36;
+  --color-spotter-deep: #8f0f19;
+  --color-inedito: #ffc21a;
+  --color-inedito-deep: #f08a0c;
+
   /* V2 animations */
   --animate-marquee: marquee 36s linear infinite;
   --animate-spin-slow: spin-slow 18s linear infinite;
