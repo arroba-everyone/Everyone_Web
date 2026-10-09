@@ -22,10 +22,10 @@ export const Lab = () => (
           También construimos productos propios.
         </h2>
         <p className="text-lg text-ink-soft leading-relaxed">
-          Loop es nuestra app de retos cotidianos: la diseñamos, la desarrollamos y la
-          lanzamos nosotros, de cero a la App Store. Es nuestra mejor carta de presentación.
-          Sabemos lo que cuesta llevar un producto al mundo real porque lo hacemos también con
-          los nuestros.
+          Loop es nuestra app para contar tu día en emojis con tus amigos: la diseñamos, la
+          desarrollamos y la lanzamos nosotros, de cero a las tiendas. Es nuestra mejor carta de
+          presentación. Sabemos lo que cuesta llevar un producto al mundo real porque lo hacemos
+          también con los nuestros.
         </p>
         <Link
           to="/projects"
@@ -46,7 +46,7 @@ export const Lab = () => (
             'p-6 tablet-lg:p-8 rotate-2'
           )}
           imgSrc={loopMockup}
-          imgAlt="Loop, nuestra app de retos cotidianos"
+          imgAlt="Loop, nuestra app para contar tu día en emojis"
           imgClassName="max-h-[32rem] drop-shadow-2xl"
           decor={
             <div

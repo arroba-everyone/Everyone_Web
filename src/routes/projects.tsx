@@ -1,16 +1,14 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { ArrowRight } from 'lucide-react';
 import { MainLayout } from '@everyone-web/components/MainLayout/MainLayout';
+import { AppShowcase } from '@everyone-web/components/projects/AppShowcase';
+import { APPS } from '@everyone-web/constants/apps';
 import { Reveal } from '@everyone-web/layouts/Home';
 import { cn } from '@everyone-web/libs/utils';
-import loopMockup from '@everyone-web/assets/mockUpLoop.png';
-import ineditoMockup from '@everyone-web/assets/inedito.png';
-import mysteryPhone from '@everyone-web/assets/mysteryPhone.webp';
-import { TiltShowcase } from '@everyone-web/components/TiltShowcase';
 
 const title = 'Proyectos · @everyone';
 const description =
-  'Productos que diseñamos, desarrollamos y lanzamos de principio a fin. Loop, Inédito, NutrIA y los proyectos que están por venir. Quizá el tuyo.';
+  'Spotter, Inédito y Loop: las apps propias que diseñamos, desarrollamos y lanzamos de principio a fin. Disponibles en App Store y Google Play.';
 
 export const Route = createFileRoute('/projects')({
   component: Projects,
@@ -29,7 +27,7 @@ export const Route = createFileRoute('/projects')({
       {
         name: 'keywords',
         content:
-          'proyectos @everyone, Loop, Inédito, NutrIA, desarrollo de aplicaciones, apps móviles, productos digitales, porfolio',
+          'proyectos @everyone, Spotter, Inédito, Loop, apps iOS, apps Android, App Store, Google Play, desarrollo de aplicaciones, productos digitales, porfolio',
       },
     ],
     links: [{ rel: 'canonical', href: 'https://arrobaeveryone.com/projects' }],
@@ -54,173 +52,63 @@ function Projects() {
               Lo que construimos cuando nadie nos lo pide.
             </h1>
             <p className="text-lg tablet-lg:text-xl text-ink-soft leading-relaxed">
-              Estos son nuestros productos propios: ideas que diseñamos, desarrollamos y
-              lanzamos de principio a fin. La mejor prueba de cómo trabajaríamos en tu
-              proyecto.
+              Estos son nuestros productos propios: ideas que diseñamos, desarrollamos y lanzamos de
+              principio a fin. La mejor prueba de cómo trabajaríamos en tu proyecto.
             </p>
+            <nav aria-label="Ir a un proyecto" className="flex flex-wrap gap-2 pt-1">
+              {APPS.map(app => (
+                <a
+                  key={app.id}
+                  href={`#${app.id}`}
+                  className={cn(
+                    'rounded-full bg-paper ring-1 ring-ink/8 px-5 py-2.5 text-sm font-bold text-ink',
+                    'transition-all hover:-translate-y-0.5 hover:shadow-md hover:shadow-ink/10'
+                  )}
+                >
+                  {app.name}
+                </a>
+              ))}
+            </nav>
           </Reveal>
         </div>
       </section>
 
-      {/* Loop */}
+      {/* Apps publicadas */}
+      {APPS.map((app, index) => (
+        <AppShowcase key={app.id} app={app} reverse={index % 2 === 1} />
+      ))}
+
+      {/* Tu proyecto */}
       <section className="bg-cream">
-        <div
-          className={cn(
-            'mx-auto max-w-6xl px-6 py-12 tablet-lg:py-16',
-            'grid grid-cols-1 tablet-lg:grid-cols-2 items-center gap-12'
-          )}
-        >
+        <div className="mx-auto max-w-6xl px-6 py-12 tablet-lg:py-20">
           <Reveal>
-            <TiltShowcase
-              className={cn(
-                'rounded-[2.5rem] bg-gradient-to-br from-grape to-grape-deep',
-                'p-6 tablet-lg:p-10 -rotate-2'
-              )}
-              imgSrc={loopMockup}
-              imgAlt="Loop, app de retos cotidianos"
-              imgClassName="max-h-[28rem] drop-shadow-2xl"
-              decor={
-                <div
-                  aria-hidden
-                  className="absolute -top-10 -right-10 size-40 rounded-full bg-lime/30 blur-2xl pointer-events-none"
-                />
-              }
-            />
-          </Reveal>
-
-          <Reveal delay={0.15} className="flex flex-col items-start gap-5">
-            <div className="flex flex-wrap gap-2">
-              <span className="rounded-full bg-grape-tint text-grape-deep px-3.5 py-1.5 text-xs font-bold">
-                Producto propio
-              </span>
-              <span className="rounded-full bg-lime-tint text-lime-deep px-3.5 py-1.5 text-xs font-bold">
-                App móvil
-              </span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-ink">
-              Loop
-            </h2>
-            <p className="text-lg text-ink-soft leading-relaxed">
-              Hay cosas que hacemos todos los días sin pensarlo: un paseo, una tarea, un logro
-              pequeño. Loop las convierte en juego, con retos cotidianos para compartir,
-              celebrar el progreso y descubrir que competir también puede ser sano y divertido.
-            </p>
-            <p className="text-base text-ink-soft leading-relaxed">
-              Diseño, desarrollo, backend y lanzamiento: todo hecho en casa.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Inédito */}
-      <section className="bg-cream">
-        <div
-          className={cn(
-            'mx-auto max-w-6xl px-6 py-12 tablet-lg:py-16',
-            'grid grid-cols-1 tablet-lg:grid-cols-2 items-center gap-12'
-          )}
-        >
-          <Reveal className="tablet-lg:order-2">
-            <TiltShowcase
-              className={cn(
-                'rounded-[2.5rem] bg-lime',
-                'aspect-square flex items-center justify-center',
-                'p-6 tablet-lg:p-10 rotate-2'
-              )}
-              imgSrc={ineditoMockup}
-              imgAlt="Inédito, cámara analógica para iPhone"
-              imgClassName="drop-shadow-2xl rounded-2xl"
-              decor={
-                <div
-                  aria-hidden
-                  className="absolute -bottom-10 -left-10 size-40 rounded-full bg-grape/30 blur-2xl pointer-events-none"
-                />
-              }
-            />
-          </Reveal>
-
-          <Reveal delay={0.15} className="tablet-lg:order-1 flex flex-col items-start gap-5">
-            <div className="flex flex-wrap gap-2">
-              <span className="rounded-full bg-grape-tint text-grape-deep px-3.5 py-1.5 text-xs font-bold">
-                Producto propio
-              </span>
-              <span className="rounded-full bg-lime-tint text-lime-deep px-3.5 py-1.5 text-xs font-bold">
-                App iOS
-              </span>
-            </div>
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-ink">
-              Inédito
-            </h2>
-            <p className="text-lg text-ink-soft leading-relaxed">
-              Dispara a ciegas. Completa un carrete de 27 fotos. Espera 24 horas reales para revelarlo. Sin pantalla, sin repeticiones y sin filtros instantáneos. Solo recuerdos auténticos con el encanto de la fotografía analógica y la emoción de no saber qué capturaste hasta el momento del revelado.
-            </p>
-            <p className="text-base text-ink-soft leading-relaxed">
-              En desarrollo. Próximamente en la App Store.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* NutrIA + tu proyecto */}
-      <section className="bg-cream">
-        <div className="mx-auto max-w-6xl px-6 py-12 tablet-lg:py-16 grid grid-cols-1 tablet-lg:grid-cols-2 gap-6">
-          <Reveal>
-            <TiltShowcase
-              className={cn(
-                'flex flex-col gap-5 rounded-[2.5rem] bg-ink text-cream',
-                'dark:bg-paper dark:text-ink dark:ring-1 dark:ring-ink/10',
-                'p-10 tablet-lg:p-12 h-full overflow-hidden'
-              )}
-              imgSrc={mysteryPhone}
-              imgAlt="NutrIA, próximamente"
-              imgClassName="max-h-60 drop-shadow-xl"
-              decor={
-                <div
-                  aria-hidden
-                  className="absolute -bottom-20 -right-16 size-64 rounded-full bg-grape/25 blur-3xl pointer-events-none"
-                />
-              }
-            >
-              <div className="relative flex flex-col gap-3">
-                <span className="self-start rounded-full bg-cream/10 text-lime dark:bg-lime/10 px-3.5 py-1.5 text-xs font-bold">
-                  En el horno 🤫
-                </span>
-                <h3 className="text-2xl font-bold">NutrIA</h3>
-                <p className="text-cream/70 dark:text-ink-soft leading-relaxed">
-                  Lo siguiente que sale de nuestro laboratorio. Aún no podemos contar mucho,
-                  pero el nombre no es casualidad… y si te intriga, es buena señal.
-                </p>
-              </div>
-            </TiltShowcase>
-          </Reveal>
-
-          <Reveal delay={0.1}>
             <div
               className={cn(
-                'relative flex flex-col justify-between gap-8 rounded-[2.5rem] bg-lime',
-                'p-10 tablet-lg:p-12 h-full overflow-hidden'
+                'relative overflow-hidden rounded-[2.5rem] tablet-lg:rounded-[3rem] bg-lime',
+                'p-10 tablet-lg:p-14 flex flex-col gap-8',
+                'tablet-lg:flex-row tablet-lg:items-end tablet-lg:justify-between'
               )}
             >
               <div
                 aria-hidden
-                className="absolute -top-16 -right-16 size-56 rounded-full bg-paper/40 blur-2xl pointer-events-none"
+                className="absolute -top-16 -right-16 size-56 rounded-full bg-paper-solid/40 blur-2xl pointer-events-none"
               />
-              <div className="relative flex flex-col gap-3">
+              <div className="relative flex flex-col gap-3 max-w-2xl">
                 <span className="self-start rounded-full bg-ink-solid/10 text-ink-solid px-3.5 py-1.5 text-xs font-bold">
                   Hueco libre
                 </span>
-                <h3 className="text-3xl tablet-lg:text-4xl font-extrabold tracking-tight text-ink-solid text-balance">
+                <h2 className="text-3xl tablet-lg:text-5xl font-extrabold tracking-tight text-ink-solid text-balance">
                   ¿El siguiente proyecto? El tuyo.
-                </h3>
+                </h2>
                 <p className="text-ink-solid/70 font-medium leading-relaxed">
-                  Ponemos el mismo cariño en los proyectos de nuestros clientes que en los
-                  nuestros. Cuéntanos qué necesitas y lo construimos juntos.
+                  Ponemos el mismo cariño en los proyectos de nuestros clientes que en los nuestros.
+                  Cuéntanos qué necesitas y lo construimos juntos.
                 </p>
               </div>
               <Link
                 to="/contact"
                 className={cn(
-                  'group relative inline-flex items-center gap-2 self-start rounded-full',
+                  'group relative inline-flex shrink-0 items-center gap-2 self-start rounded-full',
                   'bg-ink-solid text-paper-solid px-6 py-3.5 font-bold transition-all',
                   'hover:-translate-y-0.5 hover:shadow-xl hover:shadow-ink-solid/25'
                 )}
